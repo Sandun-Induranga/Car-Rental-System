@@ -1,1 +1,4 @@
-
+body{
+    background: url("../image/background.png");
+    height: 100vh;
+}
