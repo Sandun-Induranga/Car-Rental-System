@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class CarController {
 
     @GetMapping
-    public void getAll(){
+    public void getAll() {
         System.out.println("Invoked");
     }
 
