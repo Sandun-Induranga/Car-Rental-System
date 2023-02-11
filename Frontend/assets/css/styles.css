@@ -5,3 +5,8 @@
 body{
     height: 100vh;
 }
+
+.image-context{
+    width: 100px;
+    height: 80px;
+}
