@@ -713,7 +713,7 @@ const Manipulator = {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.2.1): util/config.js
+ * Bootstrap (v5.2.1): util/lk.easy.car_rental.config.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -749,7 +749,7 @@ class Config {
   }
 
   _mergeConfigObj(config, element) {
-    const jsonConfig = isElement(element) ? Manipulator.getDataAttribute(element, 'config') : {}; // try to parse
+    const jsonConfig = isElement(element) ? Manipulator.getDataAttribute(element, 'lk.easy.car_rental.config') : {}; // try to parse
 
     return { ...this.constructor.Default,
       ...(typeof jsonConfig === 'object' ? jsonConfig : {}),
@@ -4025,7 +4025,7 @@ class Tooltip extends BaseComponent {
     } else {
       this._templateFactory = new TemplateFactory({ ...this._config,
         // the `content` var has to be after `this._config`
-        // to override config.content in case of popover
+        // to override lk.easy.car_rental.config.content in case of popover
         content,
         extraClass: this._resolvePossibleFunction(this._config.customClass)
       });
@@ -4442,7 +4442,7 @@ const DefaultType$1 = {
 
 class ScrollSpy extends BaseComponent {
   constructor(element, config) {
-    super(element, config); // this._element is the observablesContainer and config.target the menu links wrapper
+    super(element, config); // this._element is the observablesContainer and lk.easy.car_rental.config.target the menu links wrapper
 
     this._targetLinks = new Map();
     this._observableSections = new Map();
