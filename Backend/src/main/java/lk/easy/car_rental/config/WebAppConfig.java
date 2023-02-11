@@ -1,5 +1,6 @@
 package lk.easy.car_rental.config;
 
+import lk.easy.car_rental.controller.CarController;
 import lk.easy.car_rental.controller.CustomerController;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -12,6 +13,6 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackageClasses = {CustomerController.class})
+@ComponentScan(basePackageClasses = {CustomerController.class, CarController.class})
 public class WebAppConfig {
 }
