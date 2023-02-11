@@ -1,4 +1,7 @@
-body{
+.background-img{
     background: url("../image/background.png");
+}
+
+body{
     height: 100vh;
 }
