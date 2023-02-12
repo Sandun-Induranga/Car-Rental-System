@@ -22,18 +22,21 @@ import java.nio.file.Paths;
 public class CustomerController {
 
     @PostMapping
-    public void getAll(@RequestParam("file") MultipartFile file, ModelMap modelMap){
-
-        modelMap.addAttribute("file", file);
+    public void getAll(@RequestParam("nicImage") MultipartFile nicFile, @RequestParam("licenseImage") MultipartFile licenseFile){
 
         try {
-            byte[] byteArray = file.getBytes();
-            String serverPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getParentFile().getAbsolutePath();
+            byte[] nicFileBytes = nicFile.getBytes();
+            byte[] licenseFileBytes = licenseFile.getBytes();
 
-            Path location = Paths.get(serverPath + "/image.jpeg");
-            Files.write(location, byteArray);
-            file.transferTo(location);
-            System.out.println(serverPath);
+            String serverPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getParentFile().getAbsolutePath();
+            Path nicLocation = Paths.get(serverPath + "/nic_image.jpeg");
+            Path licenseLocation = Paths.get(serverPath + "/license_image.jpeg");
+
+            Files.write(nicLocation, nicFileBytes);
+            Files.write(licenseLocation, licenseFileBytes);
+
+            nicFile.transferTo(nicLocation);
+            licenseFile.transferTo(licenseLocation);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
