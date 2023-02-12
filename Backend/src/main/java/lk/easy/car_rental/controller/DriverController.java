@@ -1,9 +1,7 @@
 package lk.easy.car_rental.controller;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import lk.easy.car_rental.dto.DriverDTO;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author : Sandun Induranga
@@ -16,8 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class DriverController {
 
     @PostMapping
-    public void saveDriver() {
-        System.out.println("Invoked");
+    public void saveDriver(@ModelAttribute DriverDTO driverDTO) {
+        System.out.println(driverDTO);
     }
 
 }
