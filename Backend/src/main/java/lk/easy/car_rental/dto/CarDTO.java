@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.math.BigDecimal;
 
@@ -27,17 +26,9 @@ public class CarDTO {
     private String fuelType;
     private int passengers;
     private Price price;
-//    private BigDecimal dailyPriceRate;
-//    private BigDecimal monthlyPriceRate;
     private FreeMileage freeMileage;
-//    private BigDecimal dailyRate;
-//    private BigDecimal monthlyRate;
     private BigDecimal extraKMPrice;
     private BigDecimal lostDamageCost;
     private String meterValue;
     private CarPhoto photos;
-//    private MultipartFile front;
-//    private MultipartFile back;
-//    private MultipartFile side;
-//    private MultipartFile interior;
 }
