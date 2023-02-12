@@ -69,15 +69,20 @@
         <div class="mb-3 col-md-5">
             <label for="freeMileage" class="form-label">Free Mileage</label>
             <div class="input-group form-control d-flex align-items-center justify-content-center" id="freeMileage">
-                <label for="dailyRate" class="form-label form-control">Daily</label>
-                <input type="number" class="form-control" id="dailyRate" name="dailyRate" aria-describedby="emailHelp">
-                <label for="dailyRate" class="form-label form-control">Monthly</label>
+                <label for="dailyRate" class="form-label me-2">Daily</label>
+                <input type="number" class="form-control me-2" id="dailyRate" name="dailyRate" aria-describedby="emailHelp">
+                <label for="dailyRate" class="form-label me-2">Monthly</label>
                 <input type="number" class="form-control input-group" id="license" name="license" aria-describedby="emailHelp">
             </div>
         </div>
         <div class="mb-3 col-md-5">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password" name="password">
+            <label for="fuelType" class="form-label">Fuel Type</label>
+            <div class="form-control d-flex justify-content-center" id="fuelType">
+                <label for="petrol" class="form-label me-2">Petrol</label>
+                <input class="form-check-input me-5" type="radio" name="petrol" id="petrol">
+                <label for="diesel" class="form-label me-2">Diesel</label>
+                <input class="form-check-input me-5" type="radio" name="diesel" id="diesel">
+            </div>
         </div>
         <div class="mb-3 col-md-5">
             <label for="address" class="form-label">Address</label>
