@@ -52,5 +52,5 @@ $("#btnSubmit").on("click", function () {
         success: function (res) {
 
         }
-    })
-})
+    });
+});

@@ -48,7 +48,7 @@
 
 <main class="m-md-5">
     <div class="mt-5 p-3"></div>
-    <form class="row justify-content-between p-5 rounded-5" id="customerForm">
+    <form class="row justify-content-between p-5 rounded-5" id="carForm">
         <div class="mb-3 col-md-5">
             <label for="regNum" class="form-label">Register Number</label>
             <input type="text" class="form-control" id="regNum" name="regNum">
@@ -82,9 +82,9 @@
         <div class="mb-3 col-md-5">
             <label for="fuelType" class="form-label">Fuel Type</label>
             <div class="form-check-inline form-control d-flex justify-content-center" id="fuelType">
-                <input class="form-check-input me-2" type="radio" name="fuel" id="petrol" value="petrol">
+                <input class="form-check-input me-2" type="radio" name="fuelType" id="petrol" value="petrol">
                 <label for="petrol" class="form-label me-5">Petrol</label>
-                <input class="form-check-input me-2" type="radio" name="fuel" id="diesel" value="diesel">
+                <input class="form-check-input me-2" type="radio" name="fuelType" id="diesel" value="diesel">
                 <label for="diesel" class="form-label">Diesel</label>
             </div>
         </div>
@@ -93,9 +93,9 @@
             <label for="availability" class="form-label">Availability</label>
             <div class="form-check-inline form-control d-flex justify-content-center" id="availability">
                 <label for="yes" class="form-label me-2">Yes</label>
-                <input class="form-check-input me-5" type="radio" name="fuel" id="yes" value="yes">
+                <input class="form-check-input me-5" type="radio" name="availability" id="yes" value="yes">
                 <label for="no" class="form-label me-2">No</label>
-                <input class="form-check-input me-5" type="radio" name="fuel" id="no" value="no">
+                <input class="form-check-input me-5" type="radio" name="availability" id="no" value="no">
             </div>
         </div>
 
@@ -103,10 +103,10 @@
             <label for="price" class="form-label">Price</label>
             <div class="input-group form-control d-flex align-items-center justify-content-center" id="price">
                 <label for="dailyPriceRate" class="form-label me-2">Daily</label>
-                <input type="number" class="form-control me-2" id="dailyPriceRate" name="dailyPriceRate"
+                <input type="text" class="form-control me-2" id="dailyPriceRate" name="dailyPriceRate"
                        aria-describedby="emailHelp">
                 <label for="monthlyPriceRate" class="form-label me-2">Monthly</label>
-                <input type="number" class="form-control input-group" id="monthlyPriceRate" name="monthlyPriceRate"
+                <input type="text" class="form-control input-group" id="monthlyPriceRate" name="monthlyPriceRate"
                        aria-describedby="emailHelp">
             </div>
         </div>
@@ -114,9 +114,9 @@
         <div class="mb-3 col-md-5">
             <label for="transmission" class="form-label">Transmission Type</label>
             <div class="form-check-inline form-control d-flex justify-content-center" id="transmission">
-                <input class="form-check-input me-2" type="radio" name="fuel" id="gear" value="gear">
+                <input class="form-check-input me-2" type="radio" name="transmission" id="gear" value="gear">
                 <label for="gear" class="form-label me-5">Gear</label>
-                <input class="form-check-input me-2" type="radio" name="fuel" id="manual" value="manual">
+                <input class="form-check-input me-2" type="radio" name="transmission" id="manual" value="manual">
                 <label for="manual" class="form-label">Manual</label>
             </div>
         </div>
@@ -141,7 +141,7 @@
             <input type="text" class="form-control" id="meterValue" name="meterValue">
         </div>
 
-        <section class="col-12 row gap-3 justify-content-center">
+        <form name="image" class="col-12 row gap-3 justify-content-center">
 
             <aside class="d-flex justify-content-center align-items-center flex-lg-row flex-column gap-5 mb-2">
                 <div class="col-md-5 d-flex flex-column align-items-center">
@@ -172,7 +172,7 @@
 
             </aside>
 
-        </section>
+        </form>
 
         <div class="mt-5 col-md-5 d-flex flex-column">
             <button type="button" class="btn btn-primary mt-3" id="btnSubmit">Submit</button>
@@ -188,8 +188,8 @@
 <!-- JS For jQuery -->
 <script src="../assets/js/jquery-3.6.1.min.js"></script>
 
-<!-- Customer Controller -->
-<script src="../controller/CustomerController.js"></script>
+<!-- Car Controller -->
+<script src="../controller/CarController.js"></script>
 
 </body>
 </html>
