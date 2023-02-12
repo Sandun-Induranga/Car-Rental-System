@@ -1,8 +1,7 @@
 package lk.easy.car_rental.controller;
 
-import org.springframework.ui.ModelMap;
+import lk.easy.car_rental.dto.CustomerDTO;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,11 +21,13 @@ import java.nio.file.Paths;
 public class CustomerController {
 
     @PostMapping
-    public void getAll(@RequestParam("nicImage") MultipartFile nicFile, @RequestParam("licenseImage") MultipartFile licenseFile){
+    public void getAll(@ModelAttribute CustomerDTO customerDTO){
+
+        System.out.println(customerDTO);
 
         try {
-            byte[] nicFileBytes = nicFile.getBytes();
-            byte[] licenseFileBytes = licenseFile.getBytes();
+            byte[] nicFileBytes = customerDTO.getNicImage().getBytes();
+            byte[] licenseFileBytes = customerDTO.getLicenseImage().getBytes();
 
             String serverPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getParentFile().getAbsolutePath();
             Path nicLocation = Paths.get(serverPath + "/nic_image.jpeg");
@@ -35,8 +36,8 @@ public class CustomerController {
             Files.write(nicLocation, nicFileBytes);
             Files.write(licenseLocation, licenseFileBytes);
 
-            nicFile.transferTo(nicLocation);
-            licenseFile.transferTo(licenseLocation);
+            customerDTO.getNicImage().transferTo(nicLocation);
+            customerDTO.getLicenseImage().transferTo(licenseLocation);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
