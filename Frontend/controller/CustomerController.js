@@ -1,5 +1,3 @@
-const baseurl = "http://localhost:8080/easy/";
-
 // Upload NIC Image
 loadSelectedImage("#nicImage");
 

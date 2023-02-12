@@ -6,7 +6,7 @@ $("#btnSubmit").on("click", function () {
     let data = new FormData($("#customerForm")[0]);
 
     $.ajax({
-        url: baseurl + "customer",
+        url: baseurl + "driver",
         method: "post",
         data: data,
         contentType: false,
