@@ -1,4 +1,4 @@
-package lk.easy.car_rental.dto;
+package lk.easy.car_rental.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
