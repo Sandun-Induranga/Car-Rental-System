@@ -16,14 +16,14 @@ import org.springframework.web.multipart.MultipartFile;
 @Data
 @ToString
 public class CustomerDTO {
-    String nic;
-    String name;
-    String license;
-    String address;
-    String contact;
-    String email;
-    String username;
-    String password;
-    MultipartFile nicImage;
-    MultipartFile licenseImage;
+    private String nic;
+    private String name;
+    private String license;
+    private String address;
+    private String contact;
+    private String email;
+    private String username;
+    private String password;
+    private MultipartFile nicImage;
+    private MultipartFile licenseImage;
 }

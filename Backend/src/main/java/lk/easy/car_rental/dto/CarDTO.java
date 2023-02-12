@@ -6,6 +6,7 @@ import java.math.BigDecimal;
  * @author : Sandun Induranga
  * @since : 0.1.0
  **/
+
 public class CarDTO {
     String regNum;
     String type;
@@ -14,7 +15,9 @@ public class CarDTO {
     String Availability;
     String transmissionType;
     int passengers;
+    FreeMileage freeMileage;
     BigDecimal extraKMPrice;
-    BigDecimal lostDamage;
+    BigDecimal lostDamageCost;
     String meterValue;
+    CarPhoto photos;
 }
