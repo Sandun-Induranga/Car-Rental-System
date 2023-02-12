@@ -1,9 +1,8 @@
 package lk.easy.car_rental.controller;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * @author : Sandun Induranga
@@ -17,7 +16,7 @@ public class CarController {
 
     @GetMapping
     public void getAll() {
-        System.out.println("Invoked");
+
     }
 
 }
