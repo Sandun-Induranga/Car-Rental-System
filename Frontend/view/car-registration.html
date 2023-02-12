@@ -46,26 +46,34 @@
 
 <main class="m-md-5">
     <div class="mt-5 p-3"></div>
-    <form class="row justify-content-between shadow p-5 rounded-5" id="customerForm">
+    <form class="row justify-content-between p-5 rounded-5" id="customerForm">
         <div class="mb-3 col-md-5">
-            <label for="name" class="form-label">Full Name</label>
-            <input type="text" class="form-control" id="name" name="name">
+            <label for="regNum" class="form-label">Register Number</label>
+            <input type="text" class="form-control" id="regNum" name="regNum">
         </div>
         <div class="mb-3 col-md-5">
-            <label for="email" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="email" name="email">
+            <label for="type" class="form-label">Email address</label>
+            <select name="type" id="type" class="form-control">
+                <option value="Luxury">Luxury</option>
+                <option value="General">General</option>
+            </select>
         </div>
         <div class="mb-3 col-md-5">
-            <label for="nic" class="form-label">NIC</label>
-            <input type="text" class="form-control" id="nic" name="nic" aria-describedby="emailHelp">
+            <label for="color" class="form-label">Color</label>
+            <input type="text" class="form-control" id="color" name="color">
         </div>
         <div class="mb-3 col-md-5">
-            <label for="username" class="form-label">Username</label>
-            <input type="text" class="form-control" id="username" name="username" aria-describedby="emailHelp">
+            <label for="brand" class="form-label">Brand</label>
+            <input type="text" class="form-control" id="brand" name="brand">
         </div>
         <div class="mb-3 col-md-5">
-            <label for="license" class="form-label">License Number</label>
-            <input type="text" class="form-control" id="license" name="license" aria-describedby="emailHelp">
+            <label for="freeMileage" class="form-label">Free Mileage</label>
+            <div class="input-group form-control d-flex align-items-center justify-content-center" id="freeMileage">
+                <label for="dailyRate" class="form-label form-control">Daily</label>
+                <input type="number" class="form-control" id="dailyRate" name="dailyRate" aria-describedby="emailHelp">
+                <label for="dailyRate" class="form-label form-control">Monthly</label>
+                <input type="number" class="form-control input-group" id="license" name="license" aria-describedby="emailHelp">
+            </div>
         </div>
         <div class="mb-3 col-md-5">
             <label for="password" class="form-label">Password</label>
@@ -85,10 +93,10 @@
             <input type="text" class="form-control" id="contact" name="contact">
         </div>
 
-        <section class="m-5 col-10 row gap-2">
+        <section class="col-12 row gap-3 justify-content-center">
 
-            <aside class="d-flex justify-content-center gap-5 mb-2">
-                <div class="col-md-5 d-flex flex-column align-items-center ">
+            <aside class="d-flex justify-content-center align-items-center flex-lg-row flex-column gap-5 mb-2">
+                <div class="col-md-5 d-flex flex-column align-items-center">
                     <div class="image-context border border-2 rounded-3" id="licenseImgContext"></div>
                     <label for="licenseImage" class="form-label">License Photo</label>
                     <input type="file" id="licenseImage" class="form-control" name="licenseImage">
@@ -101,7 +109,7 @@
                 </div>
             </aside>
 
-            <aside class="d-flex justify-content-center gap-5">
+            <aside class="d-flex justify-content-center flex-lg-row flex-column gap-5">
                 <div class="col-md-5 d-flex flex-column align-items-center">
                     <div class="image-context border border-2 rounded-3" id="nicImgContext"></div>
                     <label for="nicImage" class="form-label">NIC Photo</label>
@@ -113,6 +121,7 @@
                     <label for="nicImage" class="form-label">NIC Photo</label>
                     <input type="file" id="nicImage" class="form-control" name="nicImage">
                 </div>
+
             </aside>
 
         </section>
