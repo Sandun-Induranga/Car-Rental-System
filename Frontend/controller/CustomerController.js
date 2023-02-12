@@ -22,11 +22,11 @@ $("#nicImage").on("change", function (e) {
 
 // Upload License Image
 $("#licenseImage").on("change", function (e) {
-    var file = e.target.files;
+    let file = e.target.files;
     console.log("come")
 
     if (FileReader && file && file.length) {
-        var reader = new FileReader();
+        let reader = new FileReader();
         reader.onload = function () {
             $("#licenseImgContext").css({
                 "background": `url(${reader.result})`,
@@ -39,12 +39,18 @@ $("#licenseImage").on("change", function (e) {
 
 })
 
-$.ajax({
-    url: baseurl + "customer",
-    method: "post",
-    contentType: false,
-    processData: false,
-    success: function (res) {
+$("#btnSubmit").on("click", function () {
 
-    }
+    var data = new FormData($("#customerForm")[0]);
+
+    $.ajax({
+        url: baseurl + "customer",
+        method: "post",
+        data: data,
+        contentType: false,
+        processData: false,
+        success: function (res) {
+
+        }
+    })
 })
