@@ -1,8 +1,14 @@
 package lk.easy.car_rental.controller;
 
+import lk.easy.car_rental.dto.CarDTO;
+import lk.easy.car_rental.dto.CarPhoto;
+import lk.easy.car_rental.dto.FreeMileage;
+import lk.easy.car_rental.dto.Price;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.math.BigDecimal;
 
 /**
  * @author : Sandun Induranga
@@ -14,9 +20,13 @@ import org.springframework.web.multipart.MultipartFile;
 @CrossOrigin
 public class CarController {
 
-    @GetMapping
-    public void getAll() {
-
+    @PostMapping
+    public void saveCar(@RequestParam MultipartFile front, @RequestParam MultipartFile back, @RequestParam MultipartFile side, @RequestParam MultipartFile interior,
+                        @RequestParam BigDecimal dailyRate, @RequestParam BigDecimal monthlyRate, @RequestParam BigDecimal dailyPriceRate, @RequestParam BigDecimal monthlyPriceRate, @ModelAttribute CarDTO carDTO) {
+        carDTO.setPhotos(new CarPhoto(front, back, side, interior));
+        carDTO.setPrice(new Price(dailyPriceRate, monthlyPriceRate));
+        carDTO.setFreeMileage(new FreeMileage(dailyRate, monthlyRate));
+        System.out.println(carDTO);
     }
 
 }
