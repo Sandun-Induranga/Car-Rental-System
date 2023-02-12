@@ -14,7 +14,7 @@
 <body>
 
 <header class="fixed-top">
-    <nav class="navbar navbar-expand-lg bg-light">
+    <nav class="navbar navbar-expand-lg bg-light shadow-sm">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Easy Car Rental</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -54,8 +54,8 @@
             <input type="text" class="form-control" id="regNum" name="regNum">
         </div>
         <div class="mb-3 col-md-5">
-            <label for="type" class="form-label">Email address</label>
-            <select name="type" id="type" class="form-control">
+            <label for="type" class="form-label">Type</label>
+            <select name="type" id="type" class="form-control form-select">
                 <option value="Luxury">Luxury</option>
                 <option value="General">General</option>
             </select>
@@ -74,27 +74,51 @@
                 <label for="dailyRate" class="form-label me-2">Daily</label>
                 <input type="number" class="form-control me-2" id="dailyRate" name="dailyRate"
                        aria-describedby="emailHelp">
-                <label for="dailyRate" class="form-label me-2">Monthly</label>
-                <input type="number" class="form-control input-group" id="license" name="license"
+                <label for="monthlyRate" class="form-label me-2">Monthly</label>
+                <input type="number" class="form-control input-group" id="monthlyRate" name="monthlyRate"
                        aria-describedby="emailHelp">
             </div>
         </div>
         <div class="mb-3 col-md-5">
             <label for="fuelType" class="form-label">Fuel Type</label>
-            <div class="form-control d-flex justify-content-center" id="fuelType">
-                <label for="petrol" class="form-label me-2">Petrol</label>
-                <input class="form-check-input me-5" type="radio" name="petrol" id="petrol">
-                <label for="diesel" class="form-label me-2">Diesel</label>
-                <input class="form-check-input me-5" type="radio" name="diesel" id="diesel">
+            <div class="form-check-inline form-control d-flex justify-content-center" id="fuelType">
+                <input class="form-check-input me-2" type="radio" name="fuel" id="petrol" value="petrol">
+                <label for="petrol" class="form-label me-5">Petrol</label>
+                <input class="form-check-input me-2" type="radio" name="fuel" id="diesel" value="diesel">
+                <label for="diesel" class="form-label">Diesel</label>
             </div>
         </div>
+
         <div class="mb-3 col-md-5">
-            <label for="address" class="form-label">Address</label>
-            <input type="text" class="form-control" id="address" name="address" aria-describedby="emailHelp">
+            <label for="availability" class="form-label">Availability</label>
+            <div class="form-check-inline form-control d-flex justify-content-center" id="availability">
+                <label for="yes" class="form-label me-2">Yes</label>
+                <input class="form-check-input me-5" type="radio" name="fuel" id="yes" value="yes">
+                <label for="no" class="form-label me-2">No</label>
+                <input class="form-check-input me-5" type="radio" name="fuel" id="no" value="no">
+            </div>
         </div>
+
         <div class="mb-3 col-md-5">
-            <label for="re-password" class="form-label">Confirm Password</label>
-            <input type="password" class="form-control" id="re-password">
+            <label for="price" class="form-label">Price</label>
+            <div class="input-group form-control d-flex align-items-center justify-content-center" id="price">
+                <label for="dailyPriceRate" class="form-label me-2">Daily</label>
+                <input type="number" class="form-control me-2" id="dailyPriceRate" name="dailyPriceRate"
+                       aria-describedby="emailHelp">
+                <label for="monthlyPriceRate" class="form-label me-2">Monthly</label>
+                <input type="number" class="form-control input-group" id="monthlyPriceRate" name="monthlyPriceRate"
+                       aria-describedby="emailHelp">
+            </div>
+        </div>
+
+        <div class="mb-3 col-md-5">
+            <label for="transmission" class="form-label">Transmission Type</label>
+            <div class="form-check-inline form-control d-flex justify-content-center" id="transmission">
+                <input class="form-check-input me-2" type="radio" name="fuel" id="gear" value="gear">
+                <label for="gear" class="form-label me-5">Gear</label>
+                <input class="form-check-input me-2" type="radio" name="fuel" id="manual" value="manual">
+                <label for="manual" class="form-label">Manual</label>
+            </div>
         </div>
 
         <div class="mb-3 col-md-5">
