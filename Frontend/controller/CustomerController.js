@@ -6,9 +6,10 @@ loadSelectedImage("#nicImage");
 // Upload License Image
 loadSelectedImage("#licenseImage");
 
+// Save Customer
 $("#btnSubmit").on("click", function () {
 
-    var data = new FormData($("#customerForm")[0]);
+    let data = new FormData($("#customerForm")[0]);
 
     $.ajax({
         url: baseurl + "customer",
