@@ -4,6 +4,8 @@ import lk.easy.car_rental.dto.CarDTO;
 import lk.easy.car_rental.dto.CarPhotoDTO;
 import lk.easy.car_rental.embed.FreeMileage;
 import lk.easy.car_rental.embed.Price;
+import lk.easy.car_rental.service.CarService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -16,12 +18,17 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin
 public class CarController {
 
+    @Autowired
+    CarService carService;
+
     @PostMapping
     public void saveCar(@ModelAttribute CarPhotoDTO carPhotoDTO, @ModelAttribute Price price, @ModelAttribute FreeMileage freeMileage, @ModelAttribute CarDTO carDTO) {
         carDTO.setPhotos(carPhotoDTO);
         carDTO.setPrice(price);
         carDTO.setFreeMileage(freeMileage);
-        System.out.println(carDTO);
+
+        carService.saveCar(carDTO);
+
     }
 
 }

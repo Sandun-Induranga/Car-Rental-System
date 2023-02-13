@@ -1,5 +1,6 @@
 package lk.easy.car_rental.config;
 
+import lk.easy.car_rental.service.CarService;
 import lk.easy.car_rental.service.CustomerService;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
@@ -15,7 +16,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 @Configuration
 @Import(JPAConfig.class)
-@ComponentScan(basePackageClasses = {CustomerService.class})
+@ComponentScan(basePackageClasses = {CustomerService.class, CarService.class})
 public class WebRootConfig {
 
     @Bean
