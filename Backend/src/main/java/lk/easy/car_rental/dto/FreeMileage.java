@@ -17,6 +17,6 @@ import java.math.BigDecimal;
 @Data
 @ToString
 public class FreeMileage {
-    BigDecimal dailyRate;
-    BigDecimal monthlyRate;
+    private BigDecimal dailyRate;
+    private BigDecimal monthlyRate;
 }

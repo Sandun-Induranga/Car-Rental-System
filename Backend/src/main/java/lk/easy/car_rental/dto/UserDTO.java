@@ -15,7 +15,7 @@ import lombok.ToString;
 @Data
 @ToString
 public class UserDTO {
-    String username;
-    String password;
-    String role;
+    private String username;
+    private String password;
+    private String role;
 }

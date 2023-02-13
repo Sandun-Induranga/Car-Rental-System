@@ -17,6 +17,6 @@ import java.math.BigDecimal;
 @Data
 @ToString
 public class Price {
-    BigDecimal dailyPriceRate;
-    BigDecimal monthlyPriceRate;
+    private BigDecimal dailyPriceRate;
+    private BigDecimal monthlyPriceRate;
 }

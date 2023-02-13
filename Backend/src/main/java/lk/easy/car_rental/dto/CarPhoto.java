@@ -16,8 +16,8 @@ import org.springframework.web.multipart.MultipartFile;
 @Data
 @ToString
 public class CarPhoto {
-    MultipartFile front;
-    MultipartFile back;
-    MultipartFile side;
-    MultipartFile interior;
+    private MultipartFile front;
+    private MultipartFile back;
+    private MultipartFile side;
+    private MultipartFile interior;
 }

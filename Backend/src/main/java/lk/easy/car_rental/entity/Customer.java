@@ -15,14 +15,14 @@ import lombok.ToString;
 @Data
 @ToString
 public class Customer {
-    String nic;
-    String name;
-    String license;
-    String address;
-    String contact;
-    String email;
-    String username;
-    String password;
-    String nicImage;
-    String licenseImage;
+    private String nic;
+    private String name;
+    private String license;
+    private String address;
+    private String contact;
+    private String email;
+    private String username;
+    private String password;
+    private String nicImage;
+    private String licenseImage;
 }

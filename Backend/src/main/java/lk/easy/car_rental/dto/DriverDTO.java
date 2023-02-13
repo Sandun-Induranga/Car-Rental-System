@@ -16,14 +16,14 @@ import org.springframework.web.multipart.MultipartFile;
 @Data
 @ToString
 public class DriverDTO {
-    String nic;
-    String license;
-    String name;
-    String address;
-    String contact;
-    String email;
-    String username;
-    String password;
-    MultipartFile licenseImage;
+    private String nic;
+    private String license;
+    private String name;
+    private String address;
+    private String contact;
+    private String email;
+    private String username;
+    private String password;
+    private MultipartFile licenseImage;
 
 }
