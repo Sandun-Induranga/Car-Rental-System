@@ -43,9 +43,9 @@ public class CustomerServiceImpl implements CustomerService {
             byte[] nicFileBytes = customerDTO.getNicImage().getBytes();
             byte[] licenseFileBytes = customerDTO.getLicenseImage().getBytes();
 
-            String serverPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getParentFile().getAbsolutePath();
-            Path nicLocation = Paths.get(serverPath + "/nic_image.jpeg");
-            Path licenseLocation = Paths.get(serverPath + "/license_image.jpeg");
+            String serverPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getParentFile().getParentFile().getAbsolutePath();
+            Path nicLocation = Paths.get(serverPath + "/bucket/customer/nic/nic_"+customer.getNic()+".jpeg");
+            Path licenseLocation = Paths.get(serverPath + "/bucket/customer/license/license_"+customer.getNic()+".jpeg");
 
             Files.write(nicLocation, nicFileBytes);
             Files.write(licenseLocation, licenseFileBytes);
