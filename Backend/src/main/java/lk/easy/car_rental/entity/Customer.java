@@ -30,4 +30,5 @@ public class Customer {
     private User user;
     private String nicImage;
     private String licenseImage;
+
 }

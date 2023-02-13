@@ -1,6 +1,9 @@
 package lk.easy.car_rental.controller;
 
 import lk.easy.car_rental.dto.CustomerDTO;
+import lk.easy.car_rental.dto.UserDTO;
+import lk.easy.car_rental.entity.User;
+import lk.easy.car_rental.service.CustomerService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,34 +26,17 @@ import java.nio.file.Paths;
 public class CustomerController {
 
     @Autowired
+    CustomerService customerService;
+
+    @Autowired
     ModelMapper modelMapper;
 
     @PostMapping
     public void saveCustomer(@RequestParam String username, @RequestParam String password, @ModelAttribute CustomerDTO customerDTO) {
 
-//        Customer map = modelMapper.map(customerDTO, Customer.class);
+        customerDTO.setUser(new UserDTO(username, password,"Customer"));
+        customerService.saveCustomer(customerDTO);
 
-//        System.out.println(map);
-
-//        try {
-//            byte[] nicFileBytes = customerDTO.getNicImage().getBytes();
-//            byte[] licenseFileBytes = customerDTO.getLicenseImage().getBytes();
-//
-//            String serverPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getParentFile().getAbsolutePath();
-//            Path nicLocation = Paths.get(serverPath + "/nic_image.jpeg");
-//            Path licenseLocation = Paths.get(serverPath + "/license_image.jpeg");
-//
-//            Files.write(nicLocation, nicFileBytes);
-//            Files.write(licenseLocation, licenseFileBytes);
-//
-//            customerDTO.getNicImage().transferTo(nicLocation);
-//            customerDTO.getLicenseImage().transferTo(licenseLocation);
-//
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        } catch (URISyntaxException e) {
-//            throw new RuntimeException(e);
-//        }
     }
 
 }

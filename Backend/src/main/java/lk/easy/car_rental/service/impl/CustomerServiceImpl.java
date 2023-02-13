@@ -1,7 +1,9 @@
 package lk.easy.car_rental.service.impl;
 
 import lk.easy.car_rental.dto.CustomerDTO;
+import lk.easy.car_rental.dto.UserDTO;
 import lk.easy.car_rental.entity.Customer;
+import lk.easy.car_rental.entity.User;
 import lk.easy.car_rental.repo.CustomerRepo;
 import lk.easy.car_rental.service.CustomerService;
 import org.modelmapper.ModelMapper;
@@ -33,7 +35,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void saveCustomer(CustomerDTO customerDTO) throws RuntimeException {
 
-        Customer customer = mapper.map(customerDTO, Customer.class);
+        Customer customer = new Customer(customerDTO.getNic(),customerDTO.getName(),customerDTO.getLicense(),customerDTO.getAddress(),customerDTO.getContact(),customerDTO.getEmail(),new User(customerDTO.getUser().getUsername(),customerDTO.getUser().getPassword(),customerDTO.getUser().getRole()),"","");
 
         if (customerRepo.existsById(customerDTO.getNic())) throw new RuntimeException("Customer Already Exits..!");
 
@@ -59,6 +61,8 @@ public class CustomerServiceImpl implements CustomerService {
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }
+
+        System.out.println(customerDTO);
 
         customerRepo.save(customer);
     }
