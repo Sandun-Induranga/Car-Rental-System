@@ -22,8 +22,7 @@ public class DriverDTO {
     private String address;
     private String contact;
     private String email;
-    private String username;
-    private String password;
+    private UserDTO user;
     private MultipartFile licenseImage;
 
 }

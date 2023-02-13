@@ -1,10 +1,9 @@
 package lk.easy.car_rental.controller;
 
 import lk.easy.car_rental.dto.CarDTO;
-import lk.easy.car_rental.dto.CarPhoto;
-import lk.easy.car_rental.dto.FreeMileage;
-import lk.easy.car_rental.dto.Price;
-import org.springframework.ui.ModelMap;
+import lk.easy.car_rental.embed.CarPhoto;
+import lk.easy.car_rental.embed.FreeMileage;
+import lk.easy.car_rental.embed.Price;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
