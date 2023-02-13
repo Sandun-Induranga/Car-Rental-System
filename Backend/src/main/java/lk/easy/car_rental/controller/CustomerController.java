@@ -1,7 +1,6 @@
 package lk.easy.car_rental.controller;
 
 import lk.easy.car_rental.dto.CustomerDTO;
-import lk.easy.car_rental.entity.Customer;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -29,9 +28,9 @@ public class CustomerController {
     @PostMapping
     public void saveCustomer(@RequestParam String username, @RequestParam String password, @ModelAttribute CustomerDTO customerDTO) {
 
-        Customer map = modelMapper.map(customerDTO, Customer.class);
+//        Customer map = modelMapper.map(customerDTO, Customer.class);
 
-        System.out.println(map);
+//        System.out.println(map);
 
 //        try {
 //            byte[] nicFileBytes = customerDTO.getNicImage().getBytes();

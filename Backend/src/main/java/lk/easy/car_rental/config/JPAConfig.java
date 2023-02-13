@@ -28,6 +28,7 @@ import javax.sql.DataSource;
 @EnableJpaRepositories(basePackageClasses = {})
 @PropertySource("classpath:application.properties")
 public class JPAConfig {
+
     @Autowired
     Environment environment;
 
@@ -35,7 +36,7 @@ public class JPAConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource, JpaVendorAdapter vendorAdapter) {
 
         LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
-        factoryBean.setPackagesToScan(environment.getProperty("spring.entity"));
+        factoryBean.setPackagesToScan(environment.getRequiredProperty("pro.entity"));
         factoryBean.setDataSource(dataSource);
         factoryBean.setJpaVendorAdapter(vendorAdapter);
 
@@ -47,10 +48,10 @@ public class JPAConfig {
     public DataSource dataSource() {
 
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(environment.getProperty("spring.driver"));
-        dataSource.setUrl(environment.getProperty("spring.url"));
-        dataSource.setUsername(environment.getProperty("spring.username"));
-        dataSource.setPassword(environment.getProperty("spring.password"));
+        dataSource.setDriverClassName(environment.getRequiredProperty("pro.driver"));
+        dataSource.setUrl(environment.getRequiredProperty("pro.url"));
+        dataSource.setUsername(environment.getRequiredProperty("pro.username"));
+        dataSource.setPassword(environment.getRequiredProperty("pro.password"));
         return dataSource;
 
     }
@@ -59,18 +60,19 @@ public class JPAConfig {
     public JpaVendorAdapter jpaVendorAdapter() {
 
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+        vendorAdapter.setDatabasePlatform(environment.getProperty("pro.dial"));
         vendorAdapter.setDatabase(Database.MYSQL);
         vendorAdapter.setGenerateDdl(true);
-        vendorAdapter.setDatabasePlatform(environment.getProperty("spring.dial"));
         vendorAdapter.setShowSql(true);
         return vendorAdapter;
 
     }
 
     @Bean
-    public PlatformTransactionManager transactionManager(EntityManagerFactory managerFactory) {
+    public PlatformTransactionManager transactionManager(EntityManagerFactory managerFactory){
 
         return new JpaTransactionManager(managerFactory);
 
     }
+
 }

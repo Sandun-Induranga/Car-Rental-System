@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import javax.persistence.Embeddable;
 import java.math.BigDecimal;
 
 /**
@@ -12,6 +13,7 @@ import java.math.BigDecimal;
  * @since : 0.1.0
  **/
 
+@Embeddable
 @AllArgsConstructor
 @NoArgsConstructor
 @Data

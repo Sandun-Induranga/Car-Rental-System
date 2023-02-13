@@ -1,6 +1,7 @@
 package lk.easy.car_rental.controller;
 
 import lk.easy.car_rental.dto.CarDTO;
+import lk.easy.car_rental.dto.CarPhotoDTO;
 import lk.easy.car_rental.embed.CarPhoto;
 import lk.easy.car_rental.embed.FreeMileage;
 import lk.easy.car_rental.embed.Price;
@@ -22,7 +23,7 @@ public class CarController {
     @PostMapping
     public void saveCar(@RequestParam MultipartFile front, @RequestParam MultipartFile back, @RequestParam MultipartFile side, @RequestParam MultipartFile interior,
                         @RequestParam BigDecimal dailyRate, @RequestParam BigDecimal monthlyRate, @RequestParam BigDecimal dailyPriceRate, @RequestParam BigDecimal monthlyPriceRate, @ModelAttribute CarDTO carDTO) {
-        carDTO.setPhotos(new CarPhoto(front, back, side, interior));
+        carDTO.setPhotos(new CarPhotoDTO(front, back, side, interior));
         carDTO.setPrice(new Price(dailyPriceRate, monthlyPriceRate));
         carDTO.setFreeMileage(new FreeMileage(dailyRate, monthlyRate));
         System.out.println(carDTO);

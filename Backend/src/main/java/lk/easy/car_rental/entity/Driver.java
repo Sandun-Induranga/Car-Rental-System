@@ -25,8 +25,7 @@ public class Driver {
     private String address;
     private String contact;
     private String email;
-    @OneToOne(cascade = {CascadeType.REFRESH, CascadeType.DETACH})
-    @JoinColumn(name = "username", referencedColumnName = "username", nullable = false)
+    @OneToOne(cascade = CascadeType.ALL)
     private User user;
     private String licenseImage;
 }
