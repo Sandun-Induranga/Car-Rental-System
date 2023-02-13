@@ -5,4 +5,7 @@ package lk.easy.car_rental.service;
  * @since : 0.1.0
  **/
 public interface CustomerService {
+
+    public void saveCustomer() throws RuntimeException;
+
 }
