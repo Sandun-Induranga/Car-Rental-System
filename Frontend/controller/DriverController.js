@@ -3,7 +3,7 @@ loadSelectedImage("#licenseImage");
 
 $("#btnSubmit").on("click", function () {
 
-    let data = new FormData($("#customerForm")[0]);
+    let data = new FormData($("#driverForm")[0]);
 
     $.ajax({
         url: baseurl + "driver",
