@@ -27,7 +27,7 @@ public class CustomerController {
     ModelMapper modelMapper;
 
     @PostMapping
-    public void saveCustomer(@RequestParam String username, @RequestParam String password, @ModelAttribute CustomerDTO customerDTO){
+    public void saveCustomer(@RequestParam String username, @RequestParam String password, @ModelAttribute CustomerDTO customerDTO) {
 
         Customer map = modelMapper.map(customerDTO, Customer.class);
 
