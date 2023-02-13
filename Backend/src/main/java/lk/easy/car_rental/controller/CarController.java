@@ -21,11 +21,10 @@ import java.math.BigDecimal;
 public class CarController {
 
     @PostMapping
-    public void saveCar(@RequestParam MultipartFile front, @RequestParam MultipartFile back, @RequestParam MultipartFile side, @RequestParam MultipartFile interior,
-                        @RequestParam BigDecimal dailyRate, @RequestParam BigDecimal monthlyRate, @RequestParam BigDecimal dailyPriceRate, @RequestParam BigDecimal monthlyPriceRate, @ModelAttribute CarDTO carDTO) {
-        carDTO.setPhotos(new CarPhotoDTO(front, back, side, interior));
-        carDTO.setPrice(new Price(dailyPriceRate, monthlyPriceRate));
-        carDTO.setFreeMileage(new FreeMileage(dailyRate, monthlyRate));
+    public void saveCar(@ModelAttribute CarPhotoDTO carPhotoDTO, @ModelAttribute Price price, @ModelAttribute FreeMileage freeMileage, @ModelAttribute CarDTO carDTO) {
+        carDTO.setPhotos(carPhotoDTO);
+        carDTO.setPrice(price);
+        carDTO.setFreeMileage(freeMileage);
         System.out.println(carDTO);
     }
 
