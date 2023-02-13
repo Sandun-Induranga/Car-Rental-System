@@ -43,7 +43,7 @@ public class CarServiceImpl implements CarService {
             byte[] side = car.getPhotos().getSide().getBytes();
             byte[] interior = car.getPhotos().getInterior().getBytes();
 
-            String serverPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getParentFile().getAbsolutePath();
+            String serverPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getParentFile().getParentFile().getAbsolutePath();
             Path frontLocation = Paths.get(serverPath + "/bucket/car/front_"+carDTO.getRegNum()+".jpeg");
             Path backLocation = Paths.get(serverPath + "/bucket/car/back_"+carDTO.getRegNum()+".jpeg");
             Path sideLocation = Paths.get(serverPath + "/bucket/car/side_"+carDTO.getRegNum()+".jpeg");
