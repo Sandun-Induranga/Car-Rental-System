@@ -60,7 +60,7 @@ public class JPAConfig {
 
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         vendorAdapter.setDatabase(Database.MYSQL);
-        vendorAdapter.setGenerateDdl(true); // Creates Queries
+        vendorAdapter.setGenerateDdl(true);
         vendorAdapter.setDatabasePlatform(environment.getProperty("spring.dial"));
         vendorAdapter.setShowSql(true);
         return vendorAdapter;

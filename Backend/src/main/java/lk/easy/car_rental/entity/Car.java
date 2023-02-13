@@ -8,6 +8,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.math.BigDecimal;
 
 /**
@@ -15,11 +18,13 @@ import java.math.BigDecimal;
  * @since : 0.1.0
  **/
 
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @ToString
 public class Car {
+    @Id
     private String regNum;
     private String type;
     private String color;
@@ -28,10 +33,13 @@ public class Car {
     private String transmissionType;
     private String fuelType;
     private int passengers;
+    @Embedded
     private Price price;
+    @Embedded
     private FreeMileage freeMileage;
     private BigDecimal extraKMPrice;
     private BigDecimal lostDamageCost;
     private String meterValue;
+    @Embedded
     private CarPhoto photos;
 }
