@@ -15,14 +15,6 @@ import org.springframework.web.multipart.MultipartFile;
 @NoArgsConstructor
 @Data
 @ToString
-public class DriverDTO {
-    private String nic;
-    private String license;
-    private String name;
-    private String address;
-    private String contact;
-    private String email;
-    private UserDTO user;
-    private DriverPhotoDTO licenseImage;
-
+public class DriverPhotoDTO {
+    MultipartFile multipartFile;
 }
