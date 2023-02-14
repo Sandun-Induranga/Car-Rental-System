@@ -16,7 +16,7 @@ function loadAllCars() {
                     <h5 class="card-title">${car.brand}</h5>
 
                     <section class="mb-4">
-                        <img src="../../../../../../../../../${car.photos.back}" class="w-25" alt="${car.photos.back}">
+                        <img src="../assets/image/background.png" class="w-25" alt="${car.photos.back}">
                         <img src="../assets/image/background.png" class="w-25" alt="car">
                         <img src="../assets/image/background.png" class="w-25" alt="car">
                     </section>
