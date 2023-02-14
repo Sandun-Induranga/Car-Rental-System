@@ -16,7 +16,7 @@ function loadAllCars() {
                     <h5 class="card-title">${car.brand}</h5>
 
                     <section class="mb-4">
-                        <img src="../assets/image/background.png" class="w-25" alt="car">
+                        <img src="../../../../../../../../../${car.photos.back}" class="w-25" alt="${car.photos.back}">
                         <img src="../assets/image/background.png" class="w-25" alt="car">
                         <img src="../assets/image/background.png" class="w-25" alt="car">
                     </section>
@@ -50,7 +50,7 @@ function loadAllCars() {
                         <section class="d-flex justify-content-between flex-lg-row flex-column gap-1">
                         <button class="btn btn-success"><p class="card-text"><i class="bi bi-upc-scan"></i> Rent</p></button>
                         <button class="btn btn-warning"><p class="card-text"><i class="bi bi-cart-check-fill"></i> Add to cart</p></button>
-</section>
+                    </section>
 
                 </div>
 
