@@ -33,7 +33,9 @@ public class CarController {
     }
 
     @GetMapping
-    public ResponseUtil getAll(){
+    public ResponseUtil getAll() {
+
+        return new ResponseUtil("OK", "Successfully Loaded..!", carService.getAllCars());
 
     }
 

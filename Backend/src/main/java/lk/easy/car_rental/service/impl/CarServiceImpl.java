@@ -1,11 +1,13 @@
 package lk.easy.car_rental.service.impl;
 
 import lk.easy.car_rental.dto.CarDTO;
+import lk.easy.car_rental.dto.CarSpDTO;
 import lk.easy.car_rental.entity.Car;
 import lk.easy.car_rental.repo.CarRepo;
 import lk.easy.car_rental.service.CarService;
 import lk.easy.car_rental.util.ResponseUtil;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,7 +39,7 @@ public class CarServiceImpl implements CarService {
     @Override
     public void saveCar(CarDTO carDTO) throws RuntimeException {
 
-        if (carRepo.existsById(carDTO.getRegNum())) throw new  RuntimeException("Car Already Exist..!");
+        if (carRepo.existsById(carDTO.getRegNum())) throw new RuntimeException("Car Already Exist..!");
 
         Car car = mapper.map(carDTO, Car.class);
         try {
@@ -47,10 +49,10 @@ public class CarServiceImpl implements CarService {
             byte[] interior = car.getPhotos().getInterior().getBytes();
 
             String serverPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getParentFile().getParentFile().getAbsolutePath();
-            Path frontLocation = Paths.get(serverPath + "/bucket/car/front_"+carDTO.getRegNum()+".jpeg");
-            Path backLocation = Paths.get(serverPath + "/bucket/car/back_"+carDTO.getRegNum()+".jpeg");
-            Path sideLocation = Paths.get(serverPath + "/bucket/car/side_"+carDTO.getRegNum()+".jpeg");
-            Path interiorLocation = Paths.get(serverPath + "/bucket/car/interior_"+carDTO.getRegNum()+".jpeg");
+            Path frontLocation = Paths.get(serverPath + "/bucket/car/front_" + carDTO.getRegNum() + ".jpeg");
+            Path backLocation = Paths.get(serverPath + "/bucket/car/back_" + carDTO.getRegNum() + ".jpeg");
+            Path sideLocation = Paths.get(serverPath + "/bucket/car/side_" + carDTO.getRegNum() + ".jpeg");
+            Path interiorLocation = Paths.get(serverPath + "/bucket/car/interior_" + carDTO.getRegNum() + ".jpeg");
 
             Files.write(frontLocation, front);
             Files.write(backLocation, back);
@@ -79,7 +81,8 @@ public class CarServiceImpl implements CarService {
     @Override
     public List<CarDTO> getAllCars() throws RuntimeException {
 
-
+        return mapper.map(carRepo.findAll(), new TypeToken<ArrayList<CarSpDTO>>() {
+        }.getType());
 
     }
 
