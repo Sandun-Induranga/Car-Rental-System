@@ -1,8 +1,60 @@
-$.ajax({
-    url: baseurl + "car",
-    method: "get",
-    contentType: "application/json",
-    success: function (res) {
-        alert("Come")
-    }
-})
+loadAllCars();
+
+function loadAllCars() {
+
+    $.ajax({
+        url: baseurl + "car",
+        method: "get",
+        success: function (res) {
+
+            for (let car of res.data) {
+                $("#cars").append(`<div class="col">
+            <div class="card">
+                <img src="../assets/image/background.png" class="card-img-top" alt="car">
+
+                <div class="card-body">
+                    <h5 class="card-title">${car.brand}</h5>
+
+                    <section class="mb-4">
+                        <img src="../assets/image/background.png" class="w-25" alt="car">
+                        <img src="../assets/image/background.png" class="w-25" alt="car">
+                        <img src="../assets/image/background.png" class="w-25" alt="car">
+                    </section>
+
+                    <section class="d-flex gap-3 justify-content-between">
+                        <p class="card-text"><i class="bi bi-fuel-pump-diesel-fill me-1 text-success"></i>${car.fuelType}</p>
+                        <p class="card-text"><i class="bi bi-palette-fill me-1 text-danger"></i>${car.color}</p>
+                        <p class="card-text"><i class="bi bi-gear-wide-connected me-1 text-info"></i>${car.transmissionType}</p>
+                        <p class="card-text"><i class="bi bi-people-fill me-1 text-primary"></i>${car.passengers}</p>
+                    </section>
+
+                    <section class="row justify-content-between">
+                        <p class="card-text col col-md-5">Free Mileage</p>
+                        <p class="card-text text-secondary col col-lg-3 mb-lg-0 mb-4">${car.freeMileage.dailyRate}km Daily</p>
+                        <p class="card-text text-secondary col col-lg-3 mb-lg-0 mb-4">${car.freeMileage.monthlyRate}km Monthly</p>
+                    </section>
+
+                    <section class="row justify-content-between">
+                        <p class="card-text col col-4">Price</p>
+                        <p class="card-text text-secondary col col-lg-4 mb-lg-0 mb-4">${car.price.dailyPriceRate} LKR Daily</p>
+                        <p class="card-text text-secondary col col-lg-4 mb-lg-0 mb-4">${car.price.monthlyPriceRate} LKR Monthly</p>
+                    </section>
+
+                    <section class="row justify-content-between">
+                        <p class="card-text col col-lg-4">Lost Damage Cost</p>
+                        <p class="card-text text-secondary col">${car.lostDamageCost} LKR</p>
+                    </section>
+
+                        <p class="card-text text-secondary"><i class="bi bi-car-front me-1"></i>${car.regNum}</p>
+
+                </div>
+
+            </div>
+        </div>`);
+
+            }
+        }
+
+    });
+
+}
