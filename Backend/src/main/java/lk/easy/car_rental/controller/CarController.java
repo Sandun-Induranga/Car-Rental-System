@@ -5,6 +5,7 @@ import lk.easy.car_rental.dto.CarPhotoDTO;
 import lk.easy.car_rental.embed.FreeMileage;
 import lk.easy.car_rental.embed.Price;
 import lk.easy.car_rental.service.CarService;
+import lk.easy.car_rental.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,6 +29,11 @@ public class CarController {
         carDTO.setFreeMileage(freeMileage);
 
         carService.saveCar(carDTO);
+
+    }
+
+    @GetMapping
+    public ResponseUtil getAll(){
 
     }
 

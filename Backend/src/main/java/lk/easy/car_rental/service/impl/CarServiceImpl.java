@@ -4,6 +4,7 @@ import lk.easy.car_rental.dto.CarDTO;
 import lk.easy.car_rental.entity.Car;
 import lk.easy.car_rental.repo.CarRepo;
 import lk.easy.car_rental.service.CarService;
+import lk.easy.car_rental.util.ResponseUtil;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,8 @@ import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author : Sandun Induranga
@@ -59,10 +62,10 @@ public class CarServiceImpl implements CarService {
             carDTO.getPhotos().getSide().transferTo(sideLocation);
             carDTO.getPhotos().getInterior().transferTo(interiorLocation);
 
-            car.getPhotos().setFront("/bucket/car/front_"+carDTO.getRegNum()+".jpeg");
-            car.getPhotos().setBack("/bucket/car/back_"+carDTO.getRegNum()+".jpeg");
-            car.getPhotos().setSide("/bucket/car/side_"+carDTO.getRegNum()+".jpeg");
-            car.getPhotos().setInterior("/bucket/car/interior_"+carDTO.getRegNum()+".jpeg");
+            car.getPhotos().setFront(frontLocation.toString());
+            car.getPhotos().setBack(backLocation.toString());
+            car.getPhotos().setSide(sideLocation.toString());
+            car.getPhotos().setInterior(interiorLocation.toString());
 
             carRepo.save(car);
 
@@ -71,6 +74,13 @@ public class CarServiceImpl implements CarService {
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public List<CarDTO> getAllCars() throws RuntimeException {
+
+
+
     }
 
 }
