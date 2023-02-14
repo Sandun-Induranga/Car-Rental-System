@@ -186,19 +186,25 @@
     <!-- Modal -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
          aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="staticBackdropLabel">Rent Car</h5>
                     <button type="button" class="btn-close text-white bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
-                <p class="p-5">You should pay the lost damage cost to rent cars and the car cost can be paid after returning the car.</p>
-
                 <!-- Form -->
-                <div class="d-flex justify-content-center">
-                    <form id="customerForm" class="w-75 d-flex flex-column">
-                        <section class="d-flex justify-content-between">
+                <div class="d-flex justify-content-center mt-4">
+                    <form id="customerForm" class="d-flex flex-column">
+                        <section class="d-flex justify-content-between flex-lg-row flex-column gap-2">
+                            <div class="mb-3">
+                                <label for="cusId" class="form-label">Pick Up Date</label>
+                                <input type="date" class="form-control" name="id" id="cusId">
+                            </div>
+                            <div class="mb-3">
+                                <label for="cusName" class="form-label">Pick Up Time</label>
+                                <input type="time" class="form-control" name="name" id="cusName">
+                            </div>
                             <div class="mb-3">
                                 <label for="cusId" class="form-label">Pick Up Date</label>
                                 <input type="date" class="form-control" name="id" id="cusId">
@@ -208,30 +214,50 @@
                                 <input type="time" class="form-control" name="name" id="cusName">
                             </div>
                         </section>
-                        <section class="d-flex justify-content-between">
+                        <section class="d-flex justify-content-between flex-lg-row flex-column">
                             <div class="mb-3">
-                                <label for="cusId" class="form-label">Pick Up Date</label>
-                                <input type="date" class="form-control" name="id" id="cusId">
+                                <label for="cusAddress" class="form-label">Lost Damage Cost</label>
+                                <input type="text" class="form-control" name="address" id="cusAddress">
                             </div>
                             <div class="mb-3">
-                                <label for="cusName" class="form-label">Pick Up Time</label>
-                                <input type="time" class="form-control" name="name" id="cusName">
+                                <label for="cusSalary" class="form-label">Rent Cost</label>
+                                <input type="text" class="form-control" name="salary" id="cusSalary">
                             </div>
                         </section>
-                        <div class="mb-3">
-                            <label for="cusAddress" class="form-label">Lost Damage Cost</label>
-                            <input type="text" class="form-control" name="address" id="cusAddress">
-                        </div>
-                        <div class="mb-3">
-                            <label for="cusSalary" class="form-label">Rent Cost</label>
-                            <input type="text" class="form-control" name="salary" id="cusSalary">
-                        </div>
+
+                        <section class="d-flex justify-content-between flex-lg-row flex-column align-items-center">
+                            <div class="mb-3">
+                                <label for="cusAddress" class="form-label form-check-label">I want a Driver</label>
+                                <input type="checkbox" class="form-check-input" name="address" id="cusAddress">
+                            </div>
+                            <div class="mb-3">
+                                <label for="cusSalary" class="form-label">Driver Cost</label>
+                                <input type="text" class="form-control" name="salary" id="cusSalary">
+                            </div>
+                        </section>
+
+                        <section class="d-flex justify-content-between flex-lg-row flex-column align-items-center">
+                            <div class="mb-3">
+                                <label for="cusSalary" class="form-label">Total Cost</label>
+                                <input type="text" class="form-control" name="salary" id="cusSalary">
+                            </div>
+                        </section>
+
+                        <section class="d-flex justify-content-between flex-lg-row flex-column align-items-center">
+                            <div class="mb-3 col col-12">
+                                <label for="cusAddress" class="form-label form-check-label">Proof the Lost Damage Payment</label>
+                                <input type="text" class="form-control" name="salary" id="cusSalary">
+                            </div>
+                        </section>
+
                     </form>
                 </div>
 
+                <p class="p-5 small text-secondary text-center">You should pay the lost damage cost to rent cars and the car cost can be paid after returning the car.</p>
+
                 <div class="modal-footer">
                     <button name="" type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-success" id="btnSaveCar" data-bs-dismiss="modal">Save
+                    <button type="button" class="btn btn-success" id="btnSaveCar" data-bs-dismiss="modal">Request
                     </button>
                 </div>
             </div>
