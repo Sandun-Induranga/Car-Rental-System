@@ -46,6 +46,11 @@ function loadAllCars() {
                     </section>
 
                         <p class="card-text text-secondary"><i class="bi bi-car-front me-1"></i>${car.regNum}</p>
+                        
+                        <section class="d-flex justify-content-between flex-lg-row flex-column gap-1">
+                        <button class="btn btn-success"><p class="card-text"><i class="bi bi-upc-scan"></i> Rent</p></button>
+                        <button class="btn btn-warning"><p class="card-text"><i class="bi bi-cart-check-fill"></i> Add to cart</p></button>
+</section>
 
                 </div>
 
