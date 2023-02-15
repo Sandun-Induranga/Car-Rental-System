@@ -5,8 +5,8 @@ function loadAllCars() {
     $.ajax({
         url: baseurl + "car",
         method: "get",
-        success: function (res) {
 
+        success: function (res) {
             for (let car of res.data) {
                 $("#cars").append(`<div class="col">
             <div class="card">
@@ -56,10 +56,23 @@ function loadAllCars() {
 
             </div>
         </div>`);
-
             }
         }
 
     });
 
 }
+
+$("#btnRequestCar").on("click", function () {
+
+    $.ajax({
+        url: baseurl + "rent",
+        method: "post",
+        data: $("#requestForm").serialize(),
+
+        success:function (res) {
+
+        }
+    });
+
+});
