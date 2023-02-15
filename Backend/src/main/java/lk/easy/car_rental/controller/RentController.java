@@ -1,8 +1,7 @@
 package lk.easy.car_rental.controller;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import lk.easy.car_rental.util.ResponseUtil;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author : Sandun Induranga
@@ -13,4 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/rent")
 @CrossOrigin
 public class RentController {
+
+    @PostMapping
+    public ResponseUtil rentRequest() {
+        System.out.println("Invoked");
+        return new ResponseUtil("OK", "Successfully Requested..!", "");
+    }
+
 }
