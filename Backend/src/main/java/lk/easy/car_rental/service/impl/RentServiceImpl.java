@@ -4,6 +4,7 @@ import lk.easy.car_rental.dto.RentDTO;
 import lk.easy.car_rental.entity.Rent;
 import lk.easy.car_rental.service.RentService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +23,7 @@ public class RentServiceImpl implements RentService {
 
     @Override
     public void requestRent(RentDTO rentDTO) throws RuntimeException {
+        mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         System.out.println(rentDTO);
         Rent rent = mapper.map(rentDTO, Rent.class);
         System.out.println(rent);
