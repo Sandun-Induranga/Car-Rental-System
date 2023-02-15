@@ -16,7 +16,7 @@ import java.util.List;
  * @since : 0.1.0
  **/
 
-//@Entity
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Data

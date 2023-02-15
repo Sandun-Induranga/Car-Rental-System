@@ -17,6 +17,6 @@ import java.io.Serializable;
 public class RentCar_PK implements Serializable {
 
     private String rentId;
-    private String code;
+    private String regNum;
 
 }

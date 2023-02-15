@@ -13,22 +13,19 @@ import java.math.BigDecimal;
  * @since : 0.1.0
  **/
 
-//@Entity
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @ToString
-//@IdClass(RentCar_PK.class)
+@IdClass(RentCar_PK.class)
 public class RentDetail {
 
     @Id
     private String rentId;
     @Id
     private String regNum;
-
-    @ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.DETACH})
-    @JoinColumn(name = "nic",referencedColumnName = "nic")
-    private Driver nic;
+    private String nic;
     private BigDecimal driverCost;
     private BigDecimal carCost;
 
@@ -40,8 +37,8 @@ public class RentDetail {
     @JoinColumn(name = "regNum", referencedColumnName = "regNum", insertable = false, updatable = false)
     private Car car;
 
-//    @ManyToOne
-//    @JoinColumn(name = "nic", referencedColumnName = "nic", insertable = false, updatable = false)
-//    private Driver driver;
+    @ManyToOne
+    @JoinColumn(name = "nic", referencedColumnName = "nic", insertable = false, updatable = false)
+    private Driver driver;
 
 }
