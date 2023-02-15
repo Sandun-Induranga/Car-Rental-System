@@ -65,11 +65,32 @@ function loadAllCars() {
 
 $("#btnRequestCar").on("click", function () {
 
+    let json={
+        rentId:"",
+        pickUpDate:$("#pickUpDate").val(),
+        pickUpTime:$("#pickUpTime").val(),
+        returnDate:$("#returnDate").val(),
+        returnTime:$("#returnTime").val(),
+        driverRequest:$("#driverRequest").val(),
+        status:"Pending",
+        cost:$("#cost").val(),
+        description:$("#description").val(),
+        rentDetails:[
+            {
+                rentId: "",
+                regNum:,
+                driverCost:$("#driverCost").val(),
+                carCost:$("#carCost").val()
+            }
+        ]
+    }
+
     $.ajax({
         url: baseurl + "rent",
         method: "post",
         data: $("#requestForm").serialize(),
-
+        dataType:"json",
+        contentType:"application/json",
         success:function (res) {
 
         }
