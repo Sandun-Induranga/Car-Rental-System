@@ -22,7 +22,7 @@ public class RentServiceImpl implements RentService {
 
     @Override
     public void requestRent(RentDTO rentDTO) throws RuntimeException {
-
+        System.out.println(rentDTO);
         Rent rent = mapper.map(rentDTO, Rent.class);
         System.out.println(rent);
 

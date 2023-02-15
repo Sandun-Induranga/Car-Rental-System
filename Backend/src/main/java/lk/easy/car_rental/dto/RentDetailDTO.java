@@ -20,6 +20,7 @@ public class RentDetailDTO {
 
     private String rentId;
     private String regNum;
+    private String nic;
     private BigDecimal driverCost;
     private BigDecimal carCost;
 
