@@ -18,9 +18,9 @@ import java.math.BigDecimal;
 @ToString
 public class RentDetailDTO {
 
-    String rentId;
-    String regNum;
-    BigDecimal driverCost;
-    BigDecimal carCost;
+    private String rentId;
+    private String regNum;
+    private BigDecimal driverCost;
+    private BigDecimal carCost;
 
 }

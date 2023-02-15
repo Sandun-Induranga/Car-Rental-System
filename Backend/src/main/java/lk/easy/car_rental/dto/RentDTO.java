@@ -21,15 +21,15 @@ import java.util.List;
 @ToString
 public class RentDTO {
 
-    String rentId;
-    LocalDate pickUpDate;
-    LocalTime pickUpTime;
-    LocalDate returnDate;
-    LocalTime returnTime;
-    String driverRequest;
-    String status;
-    BigDecimal cost;
-    String description;
-    List<RentDetailDTO> rentDetails;
+    private String rentId;
+    private LocalDate pickUpDate;
+    private LocalTime pickUpTime;
+    private LocalDate returnDate;
+    private LocalTime returnTime;
+    private String driverRequest;
+    private String status;
+    private BigDecimal cost;
+    private String description;
+    private List<RentDetailDTO> rentDetails;
 
 }
