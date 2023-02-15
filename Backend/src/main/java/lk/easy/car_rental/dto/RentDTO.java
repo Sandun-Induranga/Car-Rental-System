@@ -23,7 +23,7 @@ public class RentDTO {
 
     String rentId;
     LocalDate pickUpDate;
-    LocalTime pickupTime;
+    LocalTime pickUpTime;
     LocalDate returnDate;
     LocalTime returnTime;
     String driverRequest;
