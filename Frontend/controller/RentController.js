@@ -45,10 +45,10 @@ function loadAllCars() {
                         <p class="card-text text-secondary col">${car.lostDamageCost} LKR</p>
                     </section>
 
-                        <p class="card-text text-secondary"><i class="bi bi-car-front me-1"></i>${car.regNum}</p>
+                        <p class="card-text text-secondary" id="registerNum"><i class="bi bi-car-front me-1"></i>${car.regNum}</p>
                         
                         <section class="d-flex justify-content-between flex-lg-row flex-column gap-1">
-                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><p class="card-text"><i class="bi bi-upc-scan"></i> Rent</p></button>
+                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="btnRequest"><p class="card-text"><i class="bi bi-upc-scan"></i> Rent </p></button>
                         <button class="btn btn-warning"><p class="card-text"><i class="bi bi-cart-check-fill"></i> Add to cart</p></button>
                     </section>
 
@@ -63,24 +63,28 @@ function loadAllCars() {
 
 }
 
+$("#btnRequest").on("click", function () {
+
+})
+
 $("#btnRequestCar").on("click", function () {
 
-    let json={
-        rentId:"",
-        pickUpDate:$("#pickUpDate").val(),
-        pickUpTime:$("#pickUpTime").val(),
-        returnDate:$("#returnDate").val(),
-        returnTime:$("#returnTime").val(),
-        driverRequest:$("#driverRequest").val(),
-        status:"Pending",
-        cost:$("#cost").val(),
-        description:$("#description").val(),
-        rentDetails:[
+    let json = {
+        rentId: "",
+        pickUpDate: $("#pickUpDate").val(),
+        pickUpTime: $("#pickUpTime").val(),
+        returnDate: $("#returnDate").val(),
+        returnTime: $("#returnTime").val(),
+        driverRequest: $("#driverRequest").val(),
+        status: "Pending",
+        cost: $("#cost").val(),
+        description: $("#description").val(),
+        rentDetails: [
             {
                 rentId: "",
-                regNum:,
-                driverCost:$("#driverCost").val(),
-                carCost:$("#carCost").val()
+                regNum: $("#registerNum").text(),
+                driverCost: $("#driverCost").val(),
+                carCost: $("#carCost").val()
             }
         ]
     }
@@ -88,10 +92,10 @@ $("#btnRequestCar").on("click", function () {
     $.ajax({
         url: baseurl + "rent",
         method: "post",
-        data: $("#requestForm").serialize(),
-        dataType:"json",
-        contentType:"application/json",
-        success:function (res) {
+        data: JSON.stringify(json),
+        dataType: "json",
+        contentType: "application/json",
+        success: function (res) {
 
         }
     });
