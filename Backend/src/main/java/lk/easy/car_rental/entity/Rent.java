@@ -9,7 +9,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author : Sandun Induranga
@@ -38,6 +38,7 @@ public class Rent {
     private BigDecimal cost;
     private String description;
 
-    private ArrayList<RentDetail> rentDetails;
+    @OneToMany(mappedBy = "rent",cascade = CascadeType.ALL)
+    private List<RentDetail> rentDetails;
 
 }

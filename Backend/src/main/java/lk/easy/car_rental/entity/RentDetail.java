@@ -5,8 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 /**
@@ -19,6 +18,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Data
 @ToString
+@IdClass(RentCar_PK.class)
 public class RentDetail {
 
     @Id
@@ -28,5 +28,17 @@ public class RentDetail {
     private String nic;
     private BigDecimal driverCost;
     private BigDecimal carCost;
+
+    @ManyToOne
+    @JoinColumn(name = "rentId", referencedColumnName = "rentId", insertable = false, updatable = false)
+    private Rent rent;
+
+    @ManyToOne
+    @JoinColumn(name = "regNum", referencedColumnName = "regNum", insertable = false, updatable = false)
+    private Car car;
+
+    @ManyToOne
+    @JoinColumn(name = "nic", referencedColumnName = "nic", insertable = false, updatable = false)
+    private Driver driver;
 
 }
