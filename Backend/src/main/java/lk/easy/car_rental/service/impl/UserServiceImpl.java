@@ -1,14 +1,23 @@
 package lk.easy.car_rental.service.impl;
 
 import lk.easy.car_rental.dto.UserDTO;
+import lk.easy.car_rental.repo.UserRepo;
 import lk.easy.car_rental.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author : Sandun Induranga
  * @since : 0.1.0
  **/
 
+@Service
+@Transactional
 public class UserServiceImpl implements UserService {
+
+    @Autowired
+    UserRepo userRepo;
 
     @Override
     public UserDTO getUser(String username) throws RuntimeException {
