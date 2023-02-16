@@ -10,13 +10,13 @@ function loadAllCars() {
             for (let car of res.data) {
                 $("#cars").append(`<div class="col">
             <div class="card">
-                <img src="../assets/image/background.png" class="card-img-top" alt="car">
+                <img src="http://localhost:8080/AvatarMaker.png" class="card-img-top" alt="car">
 
                 <div class="card-body">
                     <h5 class="card-title">${car.brand}</h5>
 
                     <section class="mb-4">
-                        <img src="../assets/image/background.png" class="w-25" alt="${car.photos.back}">
+                        <img src="http://localhost:8080/easy/AvatarMaker.png" class="w-25" alt="${car.photos.back}">
                         <img src="../assets/image/background.png" class="w-25" alt="car">
                         <img src="../assets/image/background.png" class="w-25" alt="car">
                     </section>
