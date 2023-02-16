@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
  * @since : 0.1.0
  **/
 
-
 @RestController
 @RequestMapping("login")
 @CrossOrigin

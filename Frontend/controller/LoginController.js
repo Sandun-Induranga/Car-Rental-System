@@ -9,8 +9,14 @@ $("#btnLogin").on("click", function () {
         url: baseurl + "login",
         method: "post",
         data: $("#loginForm").serialize(),
-        success: function () {
-
+        success: function (res) {
+            switch (res.data.role) {
+                case "Customer":
+                    alert("Customer");
+                    break;
+                default:
+                    alert("none");
+            }
         }
     })
 
