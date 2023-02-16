@@ -20,9 +20,9 @@ public class ManageLoginController {
     UserService userService;
 
     @PostMapping
-    public ResponseUtil getUser(@RequestParam String username) {
+    public ResponseUtil getUser(@RequestParam String username, @RequestParam String password) {
 
-        userService.getUser(username);
+        userService.getUser(username, password);
         return new ResponseUtil("OK", "Successfully Loaded..!", "");
     }
 

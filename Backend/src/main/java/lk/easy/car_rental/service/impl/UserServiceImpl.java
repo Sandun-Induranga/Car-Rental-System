@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
-
 /**
  * @author : Sandun Induranga
  * @since : 0.1.0
@@ -23,11 +21,12 @@ public class UserServiceImpl implements UserService {
     UserRepo userRepo;
 
     @Override
-    public UserDTO getUser(String username) throws RuntimeException {
+    public UserDTO getUser(String username, String password) throws RuntimeException {
 
         User user = userRepo.findById(username).get();
+        if (!user.getPassword().equals(password)) throw new RuntimeException("Wrong Login Details. Please Try Again..!");
 
-        System.out.println(user);
+
 
         return null;
 
