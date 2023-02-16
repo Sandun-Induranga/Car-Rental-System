@@ -68,15 +68,12 @@ function loadAllCars() {
 
 }
 
-$("#btnRequest").on("click", function () {
-
-})
-
 $("#btnRequestCar").on("click", function () {
 
     let json = {
         rentId: "",
         pickUpDate: $("#pickUpDate").val(),
+        nic:"",
         pickUpTime: $("#pickUpTime").val(),
         returnDate: $("#returnDate").val(),
         returnTime: $("#returnTime").val(),
