@@ -11,13 +11,16 @@ $("#btnLogin").on("click", function () {
         data: $("#loginForm").serialize(),
         success: function (res) {
             switch (res.data.role) {
+                case "Admin":
+                    window.open("admin-home-page.html", '_self');
+                    break;
                 case "Customer":
-                    alert("Customer");
+                    window.open("admin-home-page.html", '_self');
                     break;
                 default:
                     alert("none");
             }
         }
-    })
+    });
 
-})
+});
