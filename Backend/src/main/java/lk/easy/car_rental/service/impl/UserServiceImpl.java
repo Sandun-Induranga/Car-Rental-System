@@ -5,6 +5,7 @@ import lk.easy.car_rental.entity.User;
 import lk.easy.car_rental.repo.UserRepo;
 import lk.easy.car_rental.service.UserService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +22,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserRepo userRepo;
 
+    @Autowired
     ModelMapper mapper;
 
     @Override
