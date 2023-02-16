@@ -22,8 +22,8 @@ public class ManageLoginController {
     @PostMapping
     public ResponseUtil getUser(@RequestParam String username, @RequestParam String password) {
 
-        userService.getUser(username, password);
-        return new ResponseUtil("OK", "Successfully Loaded..!", "");
+        return new ResponseUtil("OK", "Successfully Loaded..!", userService.getUser(username, password));
+
     }
 
 }
