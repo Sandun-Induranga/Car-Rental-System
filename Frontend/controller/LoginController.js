@@ -4,5 +4,14 @@
  **/
 
 $("#btnLogin").on("click", function () {
-    alert("come")
+
+    $.ajax({
+        url: baseurl + "login",
+        method: "get",
+        data: $("#loginForm").serialize(),
+        success: function () {
+
+        }
+    })
+
 })

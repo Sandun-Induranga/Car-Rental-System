@@ -3,6 +3,7 @@ package lk.easy.car_rental.config;
 import lk.easy.car_rental.advicer.AppWideExceptionHandler;
 import lk.easy.car_rental.controller.CarController;
 import lk.easy.car_rental.controller.CustomerController;
+import lk.easy.car_rental.controller.ManageLoginController;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -20,7 +21,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackageClasses = {CustomerController.class, CarController.class, AppWideExceptionHandler.class})
+@ComponentScan(basePackageClasses = {CustomerController.class, CarController.class, ManageLoginController.class, AppWideExceptionHandler.class})
 public class WebAppConfig implements WebMvcConfigurer {
 
     @Bean
