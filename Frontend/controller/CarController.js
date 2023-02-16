@@ -1,3 +1,8 @@
+/**
+ * @author : Sandun Induranga
+ * @since : 0.1.0
+ **/
+
 loadSelectedImage("#front")
 loadSelectedImage("#back")
 loadSelectedImage("#side")

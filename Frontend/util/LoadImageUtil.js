@@ -1,3 +1,8 @@
+/**
+ * @author : Sandun Induranga
+ * @since : 0.1.0
+ **/
+
 // Load Selected Image
 function loadSelectedImage(divId) {
     $(divId).on("change", function (e) {
