@@ -7,7 +7,7 @@ $("#btnLogin").on("click", function () {
 
     $.ajax({
         url: baseurl + "login",
-        method: "get",
+        method: "post",
         data: $("#loginForm").serialize(),
         success: function () {
 
