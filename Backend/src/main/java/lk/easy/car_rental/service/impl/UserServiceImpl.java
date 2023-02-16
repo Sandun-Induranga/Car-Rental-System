@@ -11,7 +11,7 @@ import lk.easy.car_rental.service.UserService;
 public class UserServiceImpl implements UserService {
 
     @Override
-    public UserDTO getUser() throws RuntimeException {
+    public UserDTO getUser(String username) throws RuntimeException {
         return null;
     }
 

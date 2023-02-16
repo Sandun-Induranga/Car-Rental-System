@@ -9,6 +9,6 @@ import lk.easy.car_rental.dto.UserDTO;
 
 public interface UserService {
 
-    public UserDTO getUser() throws RuntimeException;
+    public UserDTO getUser(String username) throws RuntimeException;
 
 }
