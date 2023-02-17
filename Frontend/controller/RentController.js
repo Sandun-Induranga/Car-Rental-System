@@ -50,10 +50,10 @@ function loadAllCars() {
                         <p class="card-text text-secondary col">${car.lostDamageCost} LKR</p>
                     </section>
 
-                        <p class="card-text text-secondary" id="registerNum"><i class="bi bi-car-front me-1"></i>${car.regNum}</p>
+                    <p class="card-text text-secondary" id="registerNum"><i class="bi bi-car-front me-1"></i>${car.regNum}</p>
                         
-                        <section class="d-flex justify-content-between flex-lg-row flex-column gap-1">
-                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="btnRequest"><p class="card-text"><i class="bi bi-upc-scan"></i> Rent </p></button>
+                    <section class="d-flex justify-content-between flex-lg-row flex-column gap-1">
+                        <button class="btn btn-success rent" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><p class="card-text"><i class="bi bi-upc-scan"></i> Rent </p></button>
                         <button class="btn btn-warning"><p class="card-text"><i class="bi bi-cart-check-fill"></i> Add to cart</p></button>
                     </section>
 
@@ -61,6 +61,10 @@ function loadAllCars() {
 
             </div>
         </div>`);
+                $(".rent").on("click", function () {
+                    console.log("invoked")
+                    console.log($(this).parent().parent().children(":eq(6)").text())
+                })
             }
         }
 
@@ -68,8 +72,11 @@ function loadAllCars() {
 
 }
 
+function getDetail () {
+    console.log($(this).parent().parent().children().text())
+}
+
 $("#btnRequestCar").on("click", function () {
-    alert($("#pickUpDate").val())
 
     let days = (new Date(Date.parse($("#returnDate").val()) - Date.parse($("#pickUpDate").val())))/1000/60/60/24;
 
