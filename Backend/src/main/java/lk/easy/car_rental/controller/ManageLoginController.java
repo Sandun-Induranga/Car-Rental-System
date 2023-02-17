@@ -28,6 +28,7 @@ public class ManageLoginController {
 
     @GetMapping
     public ResponseUtil getCurrentUserDetails() {
+        System.out.println(CurrentUserUtil.currentUser);
 
         return new ResponseUtil("OK", "Successfully Loaded..!", CurrentUserUtil.currentUser);
 

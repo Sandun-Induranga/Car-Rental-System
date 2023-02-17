@@ -11,9 +11,6 @@ $("#btnLogin").on("click", function () {
         data: $("#loginForm").serialize(),
         success: function (res) {
 
-            currentUser = res.data.username;
-            console.log(res.data.username)
-
             switch (res.data.role) {
                 case "Admin":
                     window.open("admin-home-page.html", '_self');

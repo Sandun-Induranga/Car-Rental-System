@@ -13,7 +13,23 @@ let currentUser;
 
 loadAllCars();
 
+
+// $("#username").text(currentUser.username)
+
 function loadAllCars() {
+
+    // $.ajax({
+    //     url: baseurl + "login",
+    //     method: "get",
+    //     async: false,
+    //     dataType: "json",
+    //     contentType: "application/json",
+    //     success: function (res) {
+    //         console.log("invoked")
+    //         currentUser = res.data;
+    //         $("#username").text(res.data.username)
+    //     }
+    // });
 
     $.ajax({
         url: baseurl + "car",
@@ -150,24 +166,11 @@ function generateNewRentId() {
     $.ajax({
         url: baseurl + "rent",
         method: "get",
-        async:false,
+        async: false,
         dataType: "json",
         contentType: "application/json",
         success: function (res) {
-            rentId =  res.data;
-        }
-    });
-}
-
-function getCurrentUserDetails() {
-    $.ajax({
-        url: baseurl + "login",
-        method: "get",
-        async:false,
-        dataType: "json",
-        contentType: "application/json",
-        success: function (res) {
-            currentUser =  res.data;
+            rentId = res.data;
         }
     });
 }
