@@ -90,10 +90,6 @@ function getDetail() {
 
 $("#btnRequestCar").on("click", function () {
 
-    // let days = (new Date(Date.parse($("#returnDate").val()) - Date.parse($("#pickUpDate").val()))) / 1000 / 60 / 60 / 24;
-    //
-    // let carCost = days < 30 ? dailyPrice.split(" ")[0] * days : monthlyPrice.split(" ")[0] * (days / 30);
-
     let json = {
         rentId: "",
         pickUpDate: $("#pickUpDate").val(),
@@ -138,7 +134,9 @@ $("#returnDate").on("change", function () {
 
 
 function setCosts() {
+
     let days = (new Date(Date.parse($("#returnDate").val()) - Date.parse($("#pickUpDate").val()))) / 1000 / 60 / 60 / 24;
     let carCost = days < 30 ? dailyPrice.split(" ")[0] * days : monthlyPrice.split(" ")[0] * (days / 30);
-    alert(carCost)
+    $("#carCost").val(carCost);
+
 }
