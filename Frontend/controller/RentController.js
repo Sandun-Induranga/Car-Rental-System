@@ -141,3 +141,11 @@ function setCosts() {
     $("#driverCost").val(1000 * days);
 
 }
+
+$.ajax({
+    url: baseurl + "rent",
+    method: "get",
+    success: function () {
+
+    }
+})
