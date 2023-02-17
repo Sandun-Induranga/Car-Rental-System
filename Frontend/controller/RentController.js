@@ -108,7 +108,7 @@ $("#btnRequestCar").on("click", function () {
     let json = {
         rentId: rentId,
         pickUpDate: $("#pickUpDate").val(),
-        nic: currentUser.nic,
+        nic: null,
         pickUpTime: $("#pickUpTime").val(),
         returnDate: $("#returnDate").val(),
         returnTime: $("#returnTime").val(),

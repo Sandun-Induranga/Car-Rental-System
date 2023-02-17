@@ -27,7 +27,7 @@ public class Rent {
     private String rentId;
 
     @ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.DETACH})
-    @JoinColumn(name = "nic",referencedColumnName = "nic")
+    @JoinColumn(name = "nic",referencedColumnName = "nic", nullable = false)
     private Customer nic;
     private LocalDate pickUpDate;
     private LocalTime pickUpTime;
