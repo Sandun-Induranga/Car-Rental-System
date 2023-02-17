@@ -80,7 +80,9 @@ function getDetail() {
         regNum = $(this).parent().parent().children(":eq(6)").text();
         dailyMileage = $(this).parent().parent().children(":eq(4)").children(":eq(1)").text();
         monthlyMileage = $(this).parent().parent().children(":eq(4)").children(":eq(2)").text();
-        console.log(regNum + dailyMileage + monthlyMileage);
+        dailyPrice = $(this).parent().parent().children(":eq(4)").children(":eq(1)").text();
+        monthlyPrice = $(this).parent().parent().children(":eq(4)").children(":eq(2)").text();
+        console.log(regNum + dailyMileage + monthlyMileage + dailyPrice + monthlyPrice);
     });
 }
 
