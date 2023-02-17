@@ -3,6 +3,8 @@
  * @since : 0.1.0
  **/
 
+let regNum;
+
 loadAllCars();
 
 function loadAllCars() {
@@ -61,10 +63,7 @@ function loadAllCars() {
 
             </div>
         </div>`);
-                $(".rent").on("click", function () {
-                    console.log("invoked")
-                    console.log($(this).parent().parent().children(":eq(6)").text())
-                })
+                getDetail();
             }
         }
 
@@ -72,13 +71,15 @@ function loadAllCars() {
 
 }
 
-function getDetail () {
-    console.log($(this).parent().parent().children().text())
+function getDetail() {
+    $(".rent").on("click", function () {
+        regNum = $(this).parent().parent().children(":eq(6)").text();
+    });
 }
 
 $("#btnRequestCar").on("click", function () {
 
-    let days = (new Date(Date.parse($("#returnDate").val()) - Date.parse($("#pickUpDate").val())))/1000/60/60/24;
+    let days = (new Date(Date.parse($("#returnDate").val()) - Date.parse($("#pickUpDate").val()))) / 1000 / 60 / 60 / 24;
 
     let json = {
         rentId: "",
@@ -94,7 +95,7 @@ $("#btnRequestCar").on("click", function () {
         rentDetails: [
             {
                 rentId: "",
-                regNum: $("#registerNum").text(),
+                regNum: regNum,
                 driverCost: $("#driverCost").val(),
                 carCost: $("#carCost").val()
             }
