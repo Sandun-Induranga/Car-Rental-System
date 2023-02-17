@@ -30,6 +30,8 @@ public class RentController {
     @GetMapping
     public void generateNewRentId(){
 
+        rentService.generateNewRentId();
+
     }
 
 }
