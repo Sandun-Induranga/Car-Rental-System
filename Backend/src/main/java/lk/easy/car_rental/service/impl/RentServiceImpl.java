@@ -29,4 +29,9 @@ public class RentServiceImpl implements RentService {
 
     }
 
+    @Override
+    public String generateNewRentId() throws RuntimeException {
+        return null;
+    }
+
 }

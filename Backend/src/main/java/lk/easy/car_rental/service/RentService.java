@@ -10,4 +10,6 @@ public interface RentService {
 
     public void requestRent(RentDTO rentDTO) throws RuntimeException;
 
+    public String generateNewRentId() throws RuntimeException;
+
 }
