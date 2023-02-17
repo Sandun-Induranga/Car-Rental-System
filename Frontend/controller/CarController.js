@@ -3,14 +3,14 @@
  * @since : 0.1.0
  **/
 
-loadSelectedImage("#front")
-loadSelectedImage("#back")
-loadSelectedImage("#side")
-loadSelectedImage("#interior")
+loadSelectedImage("#front");
+loadSelectedImage("#back");
+loadSelectedImage("#side");
+loadSelectedImage("#interior");
 
 $("#btnSubmit").on("click", function () {
 
-    var data = new FormData($("#carForm")[0]);
+    let data = new FormData($("#carForm")[0]);
 
     $.ajax({
         url: baseurl + "car",
