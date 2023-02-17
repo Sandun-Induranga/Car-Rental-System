@@ -2,6 +2,7 @@ package lk.easy.car_rental.service.impl;
 
 import lk.easy.car_rental.dto.RentDTO;
 import lk.easy.car_rental.entity.Rent;
+import lk.easy.car_rental.repo.RentRepo;
 import lk.easy.car_rental.service.RentService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
@@ -19,10 +20,13 @@ import org.springframework.transaction.annotation.Transactional;
 public class RentServiceImpl implements RentService {
 
     @Autowired
+    RentRepo rentRepo;
+    @Autowired
     ModelMapper mapper;
 
     @Override
     public void requestRent(RentDTO rentDTO) throws RuntimeException {
+
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         Rent rent = mapper.map(rentDTO, Rent.class);
         System.out.println(rent);
@@ -31,6 +35,8 @@ public class RentServiceImpl implements RentService {
 
     @Override
     public String generateNewRentId() throws RuntimeException {
+        Rent lastRentId = rentRepo.getLastRentId();
+        System.out.println(lastRentId);
         return null;
     }
 
