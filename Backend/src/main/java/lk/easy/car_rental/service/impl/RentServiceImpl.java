@@ -35,9 +35,10 @@ public class RentServiceImpl implements RentService {
 
     @Override
     public String generateNewRentId() throws RuntimeException {
-        Rent lastRentId = rentRepo.getLastRentId();
-        System.out.println(lastRentId);
-        return null;
+
+        Rent rent = rentRepo.getLastRentId();
+        return rent != null ? String.format("RID-%03d", (Integer.parseInt(rent.getRentId().replace("RID-", "")) + 1)) : "RID-001";
+
     }
 
 }
