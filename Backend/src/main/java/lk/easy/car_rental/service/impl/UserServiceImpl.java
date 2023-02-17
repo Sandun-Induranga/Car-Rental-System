@@ -32,7 +32,8 @@ public class UserServiceImpl implements UserService {
         if (!user.getPassword().equals(password))
             throw new RuntimeException("Wrong Login Details. Please Try Again..!");
 
-        return mapper.map(user, UserDTO.class);
+        UserDTO userDTO = mapper.map(user, UserDTO.class);
+        return userDTO;
 
     }
 
