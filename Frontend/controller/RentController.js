@@ -5,8 +5,6 @@
 
 loadAllCars();
 
-$("#username").text(currentUser.username);
-
 function loadAllCars() {
 
     $.ajax({
@@ -71,6 +69,9 @@ function loadAllCars() {
 }
 
 $("#btnRequestCar").on("click", function () {
+    alert($("#pickUpDate").val())
+
+    let days = (new Date(Date.parse($("#returnDate").val()) - Date.parse($("#pickUpDate").val())))/1000/60/60/24;
 
     let json = {
         rentId: "",
