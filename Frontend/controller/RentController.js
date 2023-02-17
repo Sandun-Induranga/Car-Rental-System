@@ -78,13 +78,17 @@ function loadAllCars() {
 function getDetail() {
     $(".rent").on("click", function () {
         regNum = $(this).parent().parent().children(":eq(6)").text();
-        regNum = $(this).parent().parent().children(":eq(6)").text();
+        dailyMileage = $(this).parent().parent().children(":eq(4)").children(":eq(1)").text();
+        monthlyMileage = $(this).parent().parent().children(":eq(4)").children(":eq(2)").text();
+        console.log(regNum + dailyMileage + monthlyMileage);
     });
 }
 
 $("#btnRequestCar").on("click", function () {
 
     let days = (new Date(Date.parse($("#returnDate").val()) - Date.parse($("#pickUpDate").val()))) / 1000 / 60 / 60 / 24;
+
+
 
     let json = {
         rentId: "",
