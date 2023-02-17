@@ -8,6 +8,7 @@ let dailyMileage;
 let monthlyMileage;
 let dailyPrice;
 let monthlyPrice;
+let rentId;
 
 loadAllCars();
 
@@ -91,7 +92,7 @@ function getDetail() {
 $("#btnRequestCar").on("click", function () {
 
     let json = {
-        rentId: "",
+        rentId: rentId,
         pickUpDate: $("#pickUpDate").val(),
         nic: "",
         pickUpTime: $("#pickUpTime").val(),
@@ -103,7 +104,7 @@ $("#btnRequestCar").on("click", function () {
         description: $("#description").val(),
         rentDetails: [
             {
-                rentId: "",
+                rentId: rentId,
                 regNum: regNum,
                 driverCost: $("#driverCost").val(),
                 carCost: $("#carCost").val()
@@ -142,10 +143,17 @@ function setCosts() {
 
 }
 
-$.ajax({
-    url: baseurl + "rent",
-    method: "get",
-    success: function () {
+generateNewRentId();
 
-    }
-})
+function generateNewRentId() {
+    $.ajax({
+        url: baseurl + "rent",
+        method: "get",
+        async:false,
+        dataType: "json",
+        contentType: "application/json",
+        success: function (res) {
+            rentId =  res.data;
+        }
+    });
+}
