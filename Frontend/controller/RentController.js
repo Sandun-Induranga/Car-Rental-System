@@ -4,6 +4,10 @@
  **/
 
 let regNum;
+let dailyMileage;
+let monthlyMileage;
+let dailyPrice;
+let monthlyPrice;
 
 loadAllCars();
 
@@ -73,6 +77,7 @@ function loadAllCars() {
 
 function getDetail() {
     $(".rent").on("click", function () {
+        regNum = $(this).parent().parent().children(":eq(6)").text();
         regNum = $(this).parent().parent().children(":eq(6)").text();
     });
 }
