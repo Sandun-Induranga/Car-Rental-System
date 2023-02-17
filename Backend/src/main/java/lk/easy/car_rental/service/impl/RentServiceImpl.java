@@ -30,6 +30,7 @@ public class RentServiceImpl implements RentService {
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         Rent rent = mapper.map(rentDTO, Rent.class);
         System.out.println(rent);
+        rentRepo.save(rent);
 
     }
 

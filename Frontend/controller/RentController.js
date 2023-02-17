@@ -127,11 +127,11 @@ $("#btnRequestCar").on("click", function () {
 
 $("#pickUpDate").on("change", function () {
     setCosts();
-})
+});
 
 $("#returnDate").on("change", function () {
     setCosts();
-})
+});
 
 
 function setCosts() {
