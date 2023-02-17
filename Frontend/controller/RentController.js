@@ -5,6 +5,8 @@
 
 loadAllCars();
 
+$("#username").text(currentUser.username);
+
 function loadAllCars() {
 
     $.ajax({
@@ -73,7 +75,7 @@ $("#btnRequestCar").on("click", function () {
     let json = {
         rentId: "",
         pickUpDate: $("#pickUpDate").val(),
-        nic:"",
+        nic: "",
         pickUpTime: $("#pickUpTime").val(),
         returnDate: $("#returnDate").val(),
         returnTime: $("#returnTime").val(),

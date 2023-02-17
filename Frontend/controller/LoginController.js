@@ -10,16 +10,20 @@ $("#btnLogin").on("click", function () {
         method: "post",
         data: $("#loginForm").serialize(),
         success: function (res) {
+
+            currentUser = res.data;
+
             switch (res.data.role) {
                 case "Admin":
                     window.open("admin-home-page.html", '_self');
                     break;
                 case "Customer":
-                    window.open("admin-home-page.html", '_self');
+                    window.open("car-page.html", '_self');
                     break;
                 default:
                     alert("none");
             }
+
         }
     });
 
