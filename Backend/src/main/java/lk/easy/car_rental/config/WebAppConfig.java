@@ -33,7 +33,7 @@ public class WebAppConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/uploads/**").addResourceLocations("/uploads/");
+        registry.addResourceHandler("/**/**").addResourceLocations("http://localhost:8080");
     }
 
 }
