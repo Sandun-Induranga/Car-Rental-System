@@ -35,12 +35,13 @@ public class RentServiceImpl implements RentService {
 
     @Autowired
     DriverRepo driverRepo;
+
     @Autowired
     ModelMapper mapper;
 
     @Override
     public void requestRent(RentDTO rentDTO) throws RuntimeException {
-
+        System.out.println(rentDTO);
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 
         if (rentDTO.getDriverRequest().equals("YES")) {

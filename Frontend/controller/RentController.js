@@ -30,7 +30,7 @@ $.ajax({
 // getCustomer();
 function getCustomer() {
     $.ajax({
-        url: baseurl + "rent?username=dasun",
+        url: baseurl + `rent?username=${currentUser.username}`,
         method: "get",
         async: false,
         dataType: "json",
