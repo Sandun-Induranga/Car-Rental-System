@@ -25,6 +25,7 @@ public class Driver {
     private String address;
     private String contact;
     private String email;
+    private String availabilityStatus;
     @OneToOne(cascade = CascadeType.ALL)
     private User user;
     private String licenseImage;
