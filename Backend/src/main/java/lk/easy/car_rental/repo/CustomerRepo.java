@@ -2,6 +2,7 @@ package lk.easy.car_rental.repo;
 
 import lk.easy.car_rental.entity.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 /**
  * @author : Sandun Induranga
@@ -10,6 +11,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CustomerRepo extends JpaRepository<Customer, String> {
 
-    Customer getCustomerByUserUsername(String username);
+    @Query(value = "SELECT * FROM Customer WHERE user_username=?1", nativeQuery = true)
+    Customer getCustomerByUsername(String username);
 
 }

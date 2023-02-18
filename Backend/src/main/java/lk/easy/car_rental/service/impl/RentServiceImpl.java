@@ -50,8 +50,9 @@ public class RentServiceImpl implements RentService {
 
     @Override
     public CustomerDTO getCustomerByUsername(String username) throws RuntimeException {
+        System.out.println(customerRepo.getCustomerByUsername(username));
 
-        return mapper.map(customerRepo.getCustomerByUserUsername(username), CustomerDTO.class);
+        return mapper.map(customerRepo.getCustomerByUsername(username), CustomerDTO.class);
 
     }
 
