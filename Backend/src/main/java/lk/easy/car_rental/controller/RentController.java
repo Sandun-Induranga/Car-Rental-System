@@ -34,4 +34,11 @@ public class RentController {
 
     }
 
+    @GetMapping(params = {"username"})
+    public ResponseUtil getCustomer(@RequestParam String username){
+
+
+
+    }
+
 }
