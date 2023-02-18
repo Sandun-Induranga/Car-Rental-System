@@ -23,7 +23,7 @@ import java.util.List;
 public class RentDTO {
 
     private String rentId;
-    private String nic;
+    private CustomerDTO nic;
     private LocalDate pickUpDate;
     private LocalTime pickUpTime;
     private LocalDate returnDate;

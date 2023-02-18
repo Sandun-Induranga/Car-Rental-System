@@ -23,11 +23,11 @@ $.ajax({
     success: function (res) {
         currentUser = res.data;
         $("#username").text(res.data.username);
-        // getCustomer();
+        getCustomer();
     }
 });
 
-getCustomer();
+// getCustomer();
 function getCustomer() {
     $.ajax({
         url: baseurl + "rent?username=dasun",
@@ -123,8 +123,8 @@ $("#btnRequestCar").on("click", function () {
 
     let json = {
         rentId: rentId,
+        nic: customer,
         pickUpDate: $("#pickUpDate").val(),
-        nic: null,
         pickUpTime: $("#pickUpTime").val(),
         returnDate: $("#returnDate").val(),
         returnTime: $("#returnTime").val(),
@@ -135,6 +135,7 @@ $("#btnRequestCar").on("click", function () {
         rentDetails: [
             {
                 rentId: rentId,
+                nic: null,
                 regNum: regNum,
                 driverCost: $("#driverCost").val(),
                 carCost: $("#carCost").val()
