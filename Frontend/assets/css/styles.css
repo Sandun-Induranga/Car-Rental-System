@@ -1,12 +1,12 @@
-.background-img{
+.background-img {
     background: url("../image/background.png");
 }
 
-body{
+body {
     height: 100vh;
 }
 
-.image-context{
+.image-context {
     width: 200px;
     height: 160px;
 }
