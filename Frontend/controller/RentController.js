@@ -17,7 +17,7 @@ loadAllCars();
 $.ajax({
     url: baseurl + "login",
     method: "get",
-    async:false,
+    async: false,
     dataType: "json",
     contentType: "application/json",
     success: function (res) {
@@ -32,7 +32,7 @@ function getCustomer() {
     $.ajax({
         url: baseurl + "rent?username=dasun",
         method: "get",
-        async:false,
+        async: false,
         dataType: "json",
         contentType: "application/json",
         success: function (res) {
@@ -128,7 +128,7 @@ $("#btnRequestCar").on("click", function () {
         pickUpTime: $("#pickUpTime").val(),
         returnDate: $("#returnDate").val(),
         returnTime: $("#returnTime").val(),
-        driverRequest: $("#driverRequest").val()?"YES":"NO",
+        driverRequest: $("#driverRequest").val() ? "YES" : "NO",
         status: "Pending",
         cost: $("#cost").val(),
         description: $("#description").val(),

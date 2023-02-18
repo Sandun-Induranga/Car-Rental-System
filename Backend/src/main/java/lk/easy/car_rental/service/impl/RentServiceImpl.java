@@ -4,6 +4,7 @@ import lk.easy.car_rental.dto.CustomerDTO;
 import lk.easy.car_rental.dto.RentDTO;
 import lk.easy.car_rental.entity.Rent;
 import lk.easy.car_rental.repo.CustomerRepo;
+import lk.easy.car_rental.repo.DriverRepo;
 import lk.easy.car_rental.repo.RentRepo;
 import lk.easy.car_rental.service.RentService;
 import org.modelmapper.ModelMapper;
@@ -26,6 +27,9 @@ public class RentServiceImpl implements RentService {
 
     @Autowired
     CustomerRepo customerRepo;
+
+    @Autowired
+    DriverRepo driverRepo;
     @Autowired
     ModelMapper mapper;
 
@@ -33,9 +37,11 @@ public class RentServiceImpl implements RentService {
     public void requestRent(RentDTO rentDTO) throws RuntimeException {
 
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
-        Rent rent = mapper.map(rentDTO, Rent.class);
-        System.out.println(rent);
-        rentRepo.save(rent);
+
+        if (rentDTO.getDriverRequest().equals("YES")) {
+
+        }
+        rentRepo.save(mapper.map(rentDTO, Rent.class));
 
     }
 
