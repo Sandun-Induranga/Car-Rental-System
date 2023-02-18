@@ -16,8 +16,9 @@ $.ajax({
             $("#rent-context").append(`
             <div class="card text-center p-2 w-50">
             <div class="card-body">
-                <h5 class="card-title">${res.rentId}</h5>
-                <p class="card-text">Customer NIC : 123456</p>
+                <h5 class="card-title">${rent.rentId}</h5>
+                <p class="card-text">Customer NIC : ${rent.nic.nic}</p>
+                <p class="card-text">Customer Name : ${rent.nic.name}</p>
                 <p class="card-text">Driver NIC : 123456</p>
                 <p class="card-text">Lost Damage Payment : Bank Receipt 123456</p>
                 <p class="card-text">Total Cost : 42000.00</p>
