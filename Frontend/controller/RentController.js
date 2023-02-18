@@ -10,21 +10,35 @@ let dailyPrice;
 let monthlyPrice;
 let rentId;
 let currentUser;
+let customer;
 
 loadAllCars();
 
 $.ajax({
     url: baseurl + "login",
     method: "get",
-    async: false,
     dataType: "json",
     contentType: "application/json",
     success: function (res) {
         currentUser = res.data;
-        $("#username").text(res.data.username)
-        //
+        $("#username").text(res.data.username);
+        getCustomer();
     }
 });
+
+function getCustomer() {
+    $.ajax({
+        url: baseurl + "rent",
+        method: "get",
+        dataType: "json",
+        contentType: "application/json",
+        success: function (res) {
+
+            customer = res.data;
+
+        }
+    });
+}
 
 function loadAllCars() {
 
