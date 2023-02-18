@@ -42,7 +42,7 @@ public class RentController {
     }
 
     @GetMapping(path = "/all")
-    public ResponseUtil getAllRent(){
+    public ResponseUtil getAllRent() {
         System.out.println("All Invoked");
         return null;
     }
