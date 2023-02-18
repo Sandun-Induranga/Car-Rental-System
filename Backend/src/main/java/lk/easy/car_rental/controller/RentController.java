@@ -36,8 +36,15 @@ public class RentController {
 
     @GetMapping(params = "username")
     public ResponseUtil getCustomer(@RequestParam String username) {
-        System.out.println(rentService.getCustomerByUsername(username));
+
         return new ResponseUtil("OK", "Successfully Loaded..!", rentService.getCustomerByUsername(username));
+
+    }
+
+    @GetMapping(path = "/all")
+    public ResponseUtil getAllRent(){
+        System.out.println("All Invoked");
+        return null;
     }
 
 }
