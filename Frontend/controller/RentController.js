@@ -128,7 +128,7 @@ $("#btnRequestCar").on("click", function () {
         pickUpTime: $("#pickUpTime").val(),
         returnDate: $("#returnDate").val(),
         returnTime: $("#returnTime").val(),
-        driverRequest: $("#driverRequest").val() ? "YES" : "NO",
+        driverRequest: $('#driverRequest').is(':checked') ? "YES" : "NO",
         status: "Pending",
         cost: $("#cost").val(),
         description: $("#description").val(),

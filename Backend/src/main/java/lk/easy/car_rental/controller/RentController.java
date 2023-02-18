@@ -22,7 +22,7 @@ public class RentController {
     @PostMapping
     public ResponseUtil rentRequest(@RequestBody RentDTO rentDTO) {
 
-        rentService.requestRent(rentDTO);
+//        rentService.requestRent(rentDTO);
         return new ResponseUtil("OK", "Successfully Requested..!", "");
 
     }
