@@ -43,8 +43,9 @@ public class RentController {
 
     @GetMapping(path = "/all")
     public ResponseUtil getAllRent() {
-        System.out.println("All Invoked");
-        return null;
+
+        return new ResponseUtil("OK", "Successfully Loaded..!", rentService.getAllRents());
+
     }
 
 }
