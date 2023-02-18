@@ -8,4 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @since : 0.1.0
  **/
 public interface CustomerRepo extends JpaRepository<Customer, String> {
+
+    public Customer getCustomersByUserUsername(String username);
+
 }
