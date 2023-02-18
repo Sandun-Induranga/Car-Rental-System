@@ -2,6 +2,8 @@ package lk.easy.car_rental.service.impl;
 
 import lk.easy.car_rental.dto.CustomerDTO;
 import lk.easy.car_rental.dto.RentDTO;
+import lk.easy.car_rental.dto.RentDetailDTO;
+import lk.easy.car_rental.entity.Driver;
 import lk.easy.car_rental.entity.Rent;
 import lk.easy.car_rental.repo.CustomerRepo;
 import lk.easy.car_rental.repo.DriverRepo;
@@ -12,6 +14,9 @@ import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.Random;
 
 /**
  * @author : Sandun Induranga
@@ -40,7 +45,15 @@ public class RentServiceImpl implements RentService {
 
         if (rentDTO.getDriverRequest().equals("YES")) {
 
+            List<Driver> drivers = driverRepo.getAvailableDrivers();
+            int randomNumber = new Random().nextInt(drivers.size());
+
+            for (RentDetailDTO rentDetail : rentDTO.getRentDetails()) {
+                rentDetail.setNic(drivers.get(randomNumber).getNic());
+            }
+
         }
+
         rentRepo.save(mapper.map(rentDTO, Rent.class));
 
     }
