@@ -1,7 +1,9 @@
 package lk.easy.car_rental.service.impl;
 
+import lk.easy.car_rental.dto.CustomerDTO;
 import lk.easy.car_rental.dto.RentDTO;
 import lk.easy.car_rental.entity.Rent;
+import lk.easy.car_rental.repo.CustomerRepo;
 import lk.easy.car_rental.repo.RentRepo;
 import lk.easy.car_rental.service.RentService;
 import org.modelmapper.ModelMapper;
@@ -21,6 +23,9 @@ public class RentServiceImpl implements RentService {
 
     @Autowired
     RentRepo rentRepo;
+
+    @Autowired
+    CustomerRepo customerRepo;
     @Autowired
     ModelMapper mapper;
 
@@ -40,6 +45,13 @@ public class RentServiceImpl implements RentService {
         Rent rent = rentRepo.getLastRentId();
         System.out.println(rent != null ? String.format("RID-%03d", (Integer.parseInt(rent.getRentId().replace("RID-", "")) + 1)) : "RID-001");
         return rent != null ? String.format("RID-%03d", (Integer.parseInt(rent.getRentId().replace("RID-", "")) + 1)) : "RID-001";
+
+    }
+
+    @Override
+    public CustomerDTO getCustomerByUsername(String username) throws RuntimeException {
+
+        return mapper.map(customerRepo.getCustomerByUserUsername(username), CustomerDTO.class);
 
     }
 
