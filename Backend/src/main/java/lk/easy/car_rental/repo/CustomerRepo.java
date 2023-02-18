@@ -11,7 +11,7 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface CustomerRepo extends JpaRepository<Customer, String> {
 
-    @Query(value = "SELECT * FROM Customer WHERE user_username=?1", nativeQuery = true)
+    @Query(value = "SELECT * FROM Customer WHERE user_username=?", nativeQuery = true)
     Customer getCustomerByUsername(String username);
 
 }
