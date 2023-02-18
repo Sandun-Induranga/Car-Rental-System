@@ -5,6 +5,7 @@ import lk.easy.car_rental.dto.RentDTO;
 import lk.easy.car_rental.dto.RentDetailDTO;
 import lk.easy.car_rental.entity.Driver;
 import lk.easy.car_rental.entity.Rent;
+import lk.easy.car_rental.entity.RentDetail;
 import lk.easy.car_rental.repo.CustomerRepo;
 import lk.easy.car_rental.repo.DriverRepo;
 import lk.easy.car_rental.repo.RentRepo;
@@ -43,19 +44,20 @@ public class RentServiceImpl implements RentService {
     public void requestRent(RentDTO rentDTO) throws RuntimeException {
         System.out.println(rentDTO);
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+        Rent rent = mapper.map(rentDTO, Rent.class);
 
         if (rentDTO.getDriverRequest().equals("YES")) {
 
             List<Driver> drivers = driverRepo.getAvailableDrivers();
             int randomNumber = new Random().nextInt(drivers.size());
 
-            for (RentDetailDTO rentDetail : rentDTO.getRentDetails()) {
+            for (RentDetail rentDetail : rent.getRentDetails()) {
                 rentDetail.setNic(drivers.get(randomNumber).getNic());
             }
 
         }
 
-        rentRepo.save(mapper.map(rentDTO, Rent.class));
+        rentRepo.save(rent);
 
     }
 
