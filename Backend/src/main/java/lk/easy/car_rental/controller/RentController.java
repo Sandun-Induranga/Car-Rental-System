@@ -35,9 +35,9 @@ public class RentController {
     }
 
     @GetMapping(params = {"username"})
-    public ResponseUtil getCustomer(@RequestParam String username){
+    public ResponseUtil getCustomer(@RequestParam String username) {
 
-
+        return new ResponseUtil("OK", "Successfully Loaded..!", rentService.getCustomerByUsername(username));
 
     }
 
