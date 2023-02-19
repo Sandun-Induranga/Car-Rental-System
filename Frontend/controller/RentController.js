@@ -107,6 +107,7 @@ function loadAllCars() {
 }
 
 function getDetail() {
+
     $(".rent").on("click", function () {
 
         regNum = $(this).parent().parent().children(":eq(6)").text();
@@ -117,6 +118,7 @@ function getDetail() {
         console.log(regNum + dailyMileage + monthlyMileage + dailyPrice + monthlyPrice);
 
     });
+
 }
 
 $("#btnRequestCar").on("click", function () {
