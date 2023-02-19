@@ -51,6 +51,8 @@ public class RentController {
     @GetMapping(path = "/unique")
     public ResponseUtil getRentByRentId(String rentId){
 
+        return new ResponseUtil("OK", "Successfully Loaded..!", rentService.getRentByRentId(rentId));
+
     }
 
     @PutMapping
