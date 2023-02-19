@@ -46,7 +46,7 @@ $.ajax({
 
             $(`#${res.rentId} > tbody`).empty();
 
-            for (let rentDetail of  rent.rentDetails) {
+            for (let rentDetail of rent.rentDetails) {
                 $(`#${rent.rentId} > tbody`).append(`
                    
                     <tr>
@@ -69,24 +69,27 @@ function bindAcceptEvent() {
     $(".btnAccept").on("click", function () {
 
         let text = $(this).parent().parent().children(":eq(0)").children(":eq(0)").text();
-        let rent;
+        let json;
+
+        // $.ajax({
+        //     url: baseurl + `rent?rentId=${text}`,
+        //     async: false,
+        //     method: "get",
+        //     dataType: "json",
+        //     contentType: "application/json",
+        //     success: function (res) {
+        //
+        //     }
+        // });
+
+
 
         $.ajax({
-            url: baseurl+`rent?rentId=${text}`,
-            method: "get",
-            dataType: "json",
-            contentType: "application/json",
-            success:function (res) {
-                rent = res.data;
-            }
-        });
-
-        $.ajax({
-            url: baseurl+"rent",
+            url: baseurl + `rent?rentId=${text}`,
             method: "put",
             dataType: "json",
             contentType: "application/json",
-            success:function (res) {
+            success: function (res) {
 
             }
         });
