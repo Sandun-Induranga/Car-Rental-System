@@ -87,6 +87,10 @@ public class RentServiceImpl implements RentService {
     @Override
     public void acceptRentRequest(RentDTO rentDTO) throws RuntimeException {
 
+        if (!rentRepo.existsById(rentDTO.getRentId())) {
+            throw new RuntimeException("Rent Does Not Exits");
+        }
+
     }
 
 }
