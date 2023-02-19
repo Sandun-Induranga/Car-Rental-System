@@ -46,7 +46,7 @@ function loadCards(res) {
                 </div>
                 <section class="mb-2">
                     <button class="btn btn-success me-2 btnAccept">Accept</button>
-                    <button class="btn btn-success me-2 btn-warning btnPayment">Pay</button>
+                    <button class="btn btn-success me-2 btn-warning btnPayment" data-bs-toggle="modal" data-bs-target="#paymentModel">Pay</button>
                     <button class="btn btn-danger">Reject</button>
                 </section>
             </div>
