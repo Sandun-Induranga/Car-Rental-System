@@ -1,7 +1,10 @@
 package lk.easy.car_rental.service.impl;
 
 import lk.easy.car_rental.dto.PaymentDTO;
+import lk.easy.car_rental.repo.PaymentRepo;
 import lk.easy.car_rental.service.PaymentService;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,6 +16,12 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 public class PaymentServiceImpl implements PaymentService {
+
+    @Autowired
+    PaymentRepo paymentRepo;
+
+    @Autowired
+    ModelMapper mapper;
 
     @Override
     public void savePayment(PaymentDTO paymentDTO) throws RuntimeException {
