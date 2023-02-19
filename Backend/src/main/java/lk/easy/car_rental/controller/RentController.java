@@ -49,7 +49,7 @@ public class RentController {
     }
 
     @GetMapping(path = "/unique")
-    public ResponseUtil getRentByRentId(String rent){
+    public ResponseUtil getRentByRentId(String rentId){
 
     }
 
