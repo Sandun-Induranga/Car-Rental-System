@@ -68,6 +68,7 @@ function loadCards(res) {
     }
 
     bindAcceptEvent();
+
 }
 
 function bindAcceptEvent() {
