@@ -89,3 +89,21 @@ function bindAcceptEvent() {
 
     });
 }
+
+function managePayment() {
+    $(".btnPayment").on("click", function () {
+
+        let text = $(this).parent().parent().children(":eq(0)").children(":eq(0)").text();
+
+        $.ajax({
+            url: baseurl + `payment?rentId=${text}`,
+            method: "post",
+            dataType: "json",
+            contentType: "application/json",
+            success: function (res) {
+
+            }
+        });
+
+    });
+}

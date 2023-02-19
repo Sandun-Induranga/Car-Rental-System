@@ -23,7 +23,8 @@ import java.time.LocalTime;
 public class Payment {
 
     @Id
-    String paymentId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Integer paymentId;
     @ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.DETACH})
     @JoinColumn(name = "rentId",referencedColumnName = "rentId", nullable = false)
     Rent rentId;
