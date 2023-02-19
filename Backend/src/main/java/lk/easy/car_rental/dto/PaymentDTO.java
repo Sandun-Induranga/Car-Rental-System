@@ -21,7 +21,7 @@ import java.time.LocalTime;
 @ToString
 public class PaymentDTO {
 
-    String paymentId;
+    Integer paymentId;
     Rent rentId;
     String type;
     String description;

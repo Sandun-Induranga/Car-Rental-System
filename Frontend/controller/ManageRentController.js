@@ -94,11 +94,20 @@ function bindAcceptEvent() {
 function bindManagePayment() {
     $(".btnPayment").on("click", function () {
 
-        let text = $(this).parent().parent().children(":eq(0)").children(":eq(0)").text();
+        let rentId = $(this).parent().parent().children(":eq(0)").children(":eq(0)").text();
+        let json = {
+            rentId: rentId,
+            balance: $("#balance").val(),
+            cash: $("#cash").val(),
+            description: $("#description").val(),
+            total: $("#total").val(),
+            type: $("#type").val(),
+        }
 
         $.ajax({
             url: baseurl + `payment?rentId=${text}`,
             method: "post",
+            data: JSON.stringify(json),
             dataType: "json",
             contentType: "application/json",
             success: function (res) {
