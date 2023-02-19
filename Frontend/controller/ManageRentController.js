@@ -19,11 +19,14 @@ $.ajax({
                 <h5 class="card-title">${rent.rentId}</h5>
                 <p class="card-text">Customer NIC : ${rent.nic.nic}</p>
                 <p class="card-text">Customer Name : ${rent.nic.name}</p>
+                <p class="card-text">Pick Up Date : ${rent.pickUpDate}</p>
+                <p class="card-text">Pick Up Time: ${rent.pickUpTime}</p>
+                <p class="card-text">Return Date : ${rent.returnDate}</p>
+                <p class="card-text">Return Time : ${rent.returnTime}</p>
                    <table class="table">
                   <thead>
                     <tr>
                       <th scope="col">Register Number</th>
-                      <th scope="col">Lost Damage Cost</th>
                       <th scope="col">Car Cost</th>
                       <th scope="col">Driver Cost</th>
                       <th scope="col">Driver NIC</th>
@@ -44,20 +47,11 @@ $.ajax({
                 $(`.table> tbody`).append(`
 
                     <tr>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                    </tr>
-                    <tr>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr>
-                      <td colspan="2">Larry the Bird</td>
-                      <td>@twitter</td>
-                    </tr>
-           
+                      <td>${rentDetail.regNum}</td>
+                      <td>${rentDetail.carCost}</td>
+                      <td>${rentDetail.driverCost}</td>
+                      <td>${rentDetail.nic}</td>
+                    </tr>  
         `);
             }
 
