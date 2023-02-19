@@ -48,10 +48,16 @@ public class RentController {
 
     }
 
+    @GetMapping(path = "/unique")
+    public ResponseUtil getRentByRentId(String rent){
+
+    }
+
     @PutMapping
-    public ResponseUtil acceptRentRequest(){
+    public ResponseUtil acceptRentRequest(@RequestBody RentDTO rentDTO){
 
-
+        rentService.acceptRentRequest(rentDTO);
+        return new ResponseUtil("OK", "Successfully Loaded..!", "");
 
     }
 

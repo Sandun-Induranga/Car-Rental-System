@@ -68,6 +68,8 @@ $.ajax({
 function bindAcceptEvent() {
     $(".btnAccept").on("click", function () {
 
+
+
         $.ajax({
             url: baseurl+"rent",
             method: "put",
