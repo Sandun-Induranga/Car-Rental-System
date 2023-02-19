@@ -23,7 +23,7 @@ $.ajax({
                 <p class="card-text">Pick Up Time: ${rent.pickUpTime}</p>
                 <p class="card-text">Return Date : ${rent.returnDate}</p>
                 <p class="card-text">Return Time : ${rent.returnTime}</p>
-                   <table class="table">
+                   <table class="table" id=${rent.rentId}>
                   <thead>
                     <tr>
                       <th scope="col">Register Number</th>
@@ -42,10 +42,11 @@ $.ajax({
                 </section>
             </div>
             `);
+            $(`#${res.rentId} > tbody`).empty();
 
-            for (let rentDetail of rent.rentDetails) {
-                $(`.table> tbody`).append(`
-
+            for (let rentDetail of  rent.rentDetails) {
+                $(`#${rent.rentId} > tbody`).append(`
+                   
                     <tr>
                       <td>${rentDetail.regNum}</td>
                       <td>${rentDetail.carCost}</td>
