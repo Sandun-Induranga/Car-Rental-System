@@ -69,20 +69,6 @@ function bindAcceptEvent() {
     $(".btnAccept").on("click", function () {
 
         let text = $(this).parent().parent().children(":eq(0)").children(":eq(0)").text();
-        let json;
-
-        // $.ajax({
-        //     url: baseurl + `rent?rentId=${text}`,
-        //     async: false,
-        //     method: "get",
-        //     dataType: "json",
-        //     contentType: "application/json",
-        //     success: function (res) {
-        //
-        //     }
-        // });
-
-
 
         $.ajax({
             url: baseurl + `rent?rentId=${text}`,
