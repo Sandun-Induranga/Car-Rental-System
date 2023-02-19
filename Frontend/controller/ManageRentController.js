@@ -68,7 +68,18 @@ $.ajax({
 function bindAcceptEvent() {
     $(".btnAccept").on("click", function () {
 
+        let text = $(this).parent().parent().children(":eq(0)").children(":eq(0)").text();
+        let rent;
 
+        $.ajax({
+            url: baseurl+`rent?rentId=${text}`,
+            method: "get",
+            dataType: "json",
+            contentType: "application/json",
+            success:function (res) {
+                rent = res.data;
+            }
+        });
 
         $.ajax({
             url: baseurl+"rent",
@@ -78,7 +89,7 @@ function bindAcceptEvent() {
             success:function (res) {
 
             }
-        })
+        });
 
     });
 }
