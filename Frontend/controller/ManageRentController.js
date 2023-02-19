@@ -10,19 +10,25 @@ $.ajax({
     contentType: "application/json",
     dataType: "json",
     success: function (res) {
+        loadCards(res);
+    }
 
-        for (let rent of res.data) {
+});
 
-            $("#rent-context").append(`
+function loadCards(res) {
+
+    for (let rent of res.data) {
+
+        $("#rent-context").append(`
             <div class="card text-center p-2 w-50 shadow">
                 <div class="card-body" id="${res.rentId}">
                     <h5 class="card-title">${rent.rentId}</h5>
                     <p class="card-text">Customer NIC : ${rent.nic.nic}</p>
                     <p class="card-text">Customer Name : ${rent.nic.name}</p>
-                    <p class="card-text">Pick Up Date : ${rent.pickUpDate.toString().replaceAll(",","/")}</p>
-                    <p class="card-text">Pick Up Time: ${rent.pickUpTime.toString().replaceAll(",",":")}</p>
-                    <p class="card-text">Return Date : ${rent.returnDate.toString().replaceAll(",","/")}</p>
-                    <p class="card-text">Return Time : ${rent.returnTime.toString().replaceAll(",",":")}</p>
+                    <p class="card-text">Pick Up Date : ${rent.pickUpDate.toString().replaceAll(",", "/")}</p>
+                    <p class="card-text">Pick Up Time: ${rent.pickUpTime.toString().replaceAll(",", ":")}</p>
+                    <p class="card-text">Return Date : ${rent.returnDate.toString().replaceAll(",", "/")}</p>
+                    <p class="card-text">Return Time : ${rent.returnTime.toString().replaceAll(",", ":")}</p>
                     <p class="card-text">Description : ${rent.description.split(".")[0]}</p>
                     <p class="card-text">Rent Status : ${rent.status}</p>
                     <table class="table" id=${rent.rentId}>
@@ -45,26 +51,24 @@ $.ajax({
             </div>
             `);
 
-            $(`#${res.rentId} > tbody`).empty();
+        $(`#${res.rentId} > tbody`).empty();
 
-            for (let rentDetail of rent.rentDetails) {
-                $(`#${rent.rentId} > tbody`).append(`
+        for (let rentDetail of rent.rentDetails) {
+            $(`#${rent.rentId} > tbody`).append(`
                    
                     <tr>
                       <td>${rentDetail.regNum}</td>
                       <td>${rentDetail.carCost}</td>
                       <td>${rentDetail.driverCost}</td>
-                      <td>${rentDetail.nic==null?"--":rentDetail.nic}</td>
+                      <td>${rentDetail.nic == null ? "--" : rentDetail.nic}</td>
                     </tr>  
                 `);
-            }
-
         }
-        bindAcceptEvent();
 
     }
 
-});
+    bindAcceptEvent();
+}
 
 function bindAcceptEvent() {
     $(".btnAccept").on("click", function () {
