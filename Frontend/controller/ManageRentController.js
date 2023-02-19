@@ -20,10 +20,10 @@ $.ajax({
                     <p class="card-text">Customer NIC : ${rent.nic.nic}</p>
                     <p class="card-text">Customer Name : ${rent.nic.name}</p>
                     <p class="card-text">Pick Up Date : ${rent.pickUpDate.toString().replaceAll(",","/")}</p>
-                    <p class="card-text">Pick Up Time: ${rent.pickUpTime}</p>
+                    <p class="card-text">Pick Up Time: ${rent.pickUpTime.toString().replaceAll(",",":")}</p>
+                    <p class="card-text">Return Time : ${rent.returnTime.toString().replaceAll(",",":")}</p>
                     <p class="card-text">Return Date : ${rent.returnDate.toString().replaceAll(",","/")}</p>
                     <p class="card-text">Description : ${rent.description.split(".")[0]}</p>
-                    <p class="card-text">Return Time : ${rent.returnTime}</p>
                     <p class="card-text text-successs">Rent Status : ${rent.status}</p>
                     <table class="table" id=${rent.rentId}>
                         <thead>
@@ -40,7 +40,7 @@ $.ajax({
                 </div>
                 <section>
                     <button class="btn btn-success me-2 btnAccept">Accept</button>
-                    <button class="btn btn-warning">Deny</button>
+                    <button class="btn btn-warning">Reject</button>
                 </section>
             </div>
             `);
