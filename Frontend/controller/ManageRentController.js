@@ -108,12 +108,14 @@ function bindManagePayment() {
             time:null
         }
 
+        alert(json.balance)
+
         $.ajax({
             url: baseurl + `payment`,
             method: "post",
             data: data,
             dataType: "json",
-            contentType: "application/json",
+            // contentType: "application/json",
             success: function (res) {
 
             }
