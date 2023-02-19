@@ -55,10 +55,10 @@ public class RentController {
 
     }
 
-    @PutMapping
-    public ResponseUtil acceptRentRequest(@RequestBody RentDTO rentDTO) {
+    @PutMapping(params = "rentId")
+    public ResponseUtil acceptRentRequest(@RequestParam String rentId) {
 
-        rentService.acceptRentRequest(rentDTO);
+        rentService.acceptRentRequest(rentId);
         return new ResponseUtil("OK", "Successfully Loaded..!", "");
 
     }

@@ -16,6 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -85,13 +87,14 @@ public class RentServiceImpl implements RentService {
     }
 
     @Override
-    public void acceptRentRequest(RentDTO rentDTO) throws RuntimeException {
+    public void acceptRentRequest(String rentId) throws RuntimeException {
 
-        if (!rentRepo.existsById(rentDTO.getRentId())) {
-            throw new RuntimeException("Rent Does Not Exits");
-        }
+        Rent rent = rentRepo.findById(rentId).get();
 
-        rentRepo.save(mapper.map(rentDTO, Rent.class));
+        rent.setStatus("Accepted");
+        rent.setDescription("Rent Accepted On" + LocalDate.now() + LocalTime.now());
+
+        rentRepo.save(rent);
 
     }
 
