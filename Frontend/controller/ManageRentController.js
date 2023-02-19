@@ -55,7 +55,7 @@ $.ajax({
                       <td>${rentDetail.driverCost}</td>
                       <td>${rentDetail.nic}</td>
                     </tr>  
-        `);
+                `);
             }
 
         }
@@ -67,6 +67,16 @@ $.ajax({
 
 function bindAcceptEvent() {
     $(".btnAccept").on("click", function () {
-        alert($(this).parent().parent().children(":eq(0)").children(":eq(0)").text())
+
+        $.ajax({
+            url: baseurl+"rent",
+            method: "put",
+            dataType: "json",
+            contentType: "application/json",
+            success:function (res) {
+
+            }
+        })
+
     });
 }
