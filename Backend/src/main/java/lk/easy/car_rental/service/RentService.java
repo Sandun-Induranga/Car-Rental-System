@@ -19,4 +19,6 @@ public interface RentService {
 
     public List<RentDTO> getAllRents() throws RuntimeException;
 
+    public void acceptRentRequest(RentDTO rentDTO) throws RuntimeException;
+
 }
