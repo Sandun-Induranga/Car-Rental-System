@@ -97,7 +97,9 @@ public class RentServiceImpl implements RentService {
 
     @Override
     public RentDTO getRentByRentId(String rentId) throws RuntimeException {
-        return null;
+
+        return mapper.map(rentRepo.findById(rentId), RentDTO.class);
+
     }
 
 }
