@@ -84,4 +84,9 @@ public class RentServiceImpl implements RentService {
 
     }
 
+    @Override
+    public void acceptRentRequest(RentDTO rentDTO) throws RuntimeException {
+
+    }
+
 }
