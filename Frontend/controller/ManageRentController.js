@@ -14,7 +14,7 @@ $.ajax({
         for (let rent of res.data) {
 
             $("#rent-context").append(`
-            <div class="card text-center p-2 w-50">
+            <div class="card text-center p-2 w-50 shadow">
             <div class="card-body" id="${res.rentId}">
                 <h5 class="card-title">${rent.rentId}</h5>
                 <p class="card-text">Customer NIC : ${rent.nic.nic}</p>
@@ -23,6 +23,7 @@ $.ajax({
                 <p class="card-text">Pick Up Time: ${rent.pickUpTime}</p>
                 <p class="card-text">Return Date : ${rent.returnDate}</p>
                 <p class="card-text">Return Time : ${rent.returnTime}</p>
+                <p class="card-text text-successs">Rent Status : ${rent.status}</p>
                    <table class="table" id=${rent.rentId}>
                   <thead>
                     <tr>
@@ -37,11 +38,12 @@ $.ajax({
                 </table>
                 </div>
                 <section>
-                    <button class="btn btn-success me-2">Accept</button>
+                    <button class="btn btn-success me-2 btnAccept">Accept</button>
                     <button class="btn btn-warning">Deny</button>
                 </section>
             </div>
             `);
+
             $(`#${res.rentId} > tbody`).empty();
 
             for (let rentDetail of  rent.rentDetails) {
@@ -60,4 +62,8 @@ $.ajax({
 
     }
 
-})
+});
+
+$(".btnAccept").on("click", function () {
+    alert($(this).parent().parent().children(":eq(0)").text())
+});
