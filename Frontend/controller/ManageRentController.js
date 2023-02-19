@@ -69,6 +69,7 @@ function loadCards(res) {
     }
 
     bindAcceptEvent();
+    bindManagePayment();
 
 }
 
@@ -90,7 +91,7 @@ function bindAcceptEvent() {
     });
 }
 
-function managePayment() {
+function bindManagePayment() {
     $(".btnPayment").on("click", function () {
 
         let text = $(this).parent().parent().children(":eq(0)").children(":eq(0)").text();
