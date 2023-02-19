@@ -91,6 +91,8 @@ public class RentServiceImpl implements RentService {
             throw new RuntimeException("Rent Does Not Exits");
         }
 
+        rentRepo.save(mapper.map(rentDTO, Rent.class));
+
     }
 
 }
