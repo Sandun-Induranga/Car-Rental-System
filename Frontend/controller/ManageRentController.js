@@ -22,7 +22,6 @@ $.ajax({
                    <table class="table">
                   <thead>
                     <tr>
-                      <th scope="col">#</th>
                       <th scope="col">Register Number</th>
                       <th scope="col">Lost Damage Cost</th>
                       <th scope="col">Car Cost</th>
@@ -31,36 +30,34 @@ $.ajax({
                     </tr>
                   </thead>
                   <tbody>
-`);
-
-            for (let rentDetail of rent.rentDetails) {
-                $(`#${res.rentId}`).append(`
-                
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td colspan="2">Larry the Bird</td>
-                      <td>@twitter</td>
-                    </tr>
                   </tbody>
                 </table>
+                </div>
                 <section>
                     <button class="btn btn-success me-2">Accept</button>
                     <button class="btn btn-warning">Deny</button>
                 </section>
             </div>
-        </div>
+            `);
+
+            for (let rentDetail of rent.rentDetails) {
+                $(`.table> tbody`).append(`
+
+                    <tr>
+                      <td>Mark</td>
+                      <td>Otto</td>
+                      <td>@mdo</td>
+                    </tr>
+                    <tr>
+                      <td>Jacob</td>
+                      <td>Thornton</td>
+                      <td>@fat</td>
+                    </tr>
+                    <tr>
+                      <td colspan="2">Larry the Bird</td>
+                      <td>@twitter</td>
+                    </tr>
+           
         `);
             }
 
