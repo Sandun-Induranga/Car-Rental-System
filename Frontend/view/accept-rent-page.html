@@ -80,8 +80,11 @@
 
                         <section class="d-flex justify-content-between flex-lg-row flex-column align-items-center">
                             <div class="mb-3">
-                                <label for="driverRequest" class="form-label form-check-label">I want a Driver</label>
-                                <input type="checkbox" class="form-check-input" name="driver" id="driverRequest">
+                                <label for="type" class="form-label">Payment Type</label>
+                                <select name="type" id="type" class="form-select">
+                                    <option value="Lost_Damage_Payment">Lost Damage Payment</option>
+                                    <option value="Normal_Payment">Normal Payment</option>
+                                </select>
                             </div>
                             <div class="mb-3">
                                 <label for="balance" class="form-label">Balance</label>
@@ -101,7 +104,7 @@
 
                 <div class="modal-footer">
                     <button name="" type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-success" id="btnRequestCar" data-bs-dismiss="modal">Request
+                    <button type="button" class="btn btn-success" id="btnRequestCar" data-bs-dismiss="modal">Save
                     </button>
                 </div>
             </div>
