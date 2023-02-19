@@ -46,7 +46,7 @@ function loadCards(res) {
                 </div>
                 <section class="mb-2">
                     <button class="btn btn-success me-2 btnAccept">Accept</button>
-                    <button class="btn btn-success me-2 btn-warning btnPayment" data-bs-toggle="modal" data-bs-target="#paymentModel">Pay</button>
+                    <button class="btn btn-success me-2 btn-warning" data-bs-toggle="modal" data-bs-target="#paymentModel">Pay</button>
                     <button class="btn btn-danger">Reject</button>
                 </section>
             </div>
@@ -92,22 +92,26 @@ function bindAcceptEvent() {
 }
 
 function bindManagePayment() {
-    $(".btnPayment").on("click", function () {
+    $("#btnPayment").on("click", function () {
 
+        let data = $("#paymentForm").serialize();
         let rentId = $(this).parent().parent().children(":eq(0)").children(":eq(0)").text();
         let json = {
+            paymentId:null,
             rentId: rentId,
             balance: $("#balance").val(),
             cash: $("#cash").val(),
             description: $("#description").val(),
             total: $("#total").val(),
             type: $("#type").val(),
+            date:Date.now(),
+            time:null
         }
 
         $.ajax({
-            url: baseurl + `payment?rentId=${text}`,
+            url: baseurl + `payment`,
             method: "post",
-            data: JSON.stringify(json),
+            data: data,
             dataType: "json",
             contentType: "application/json",
             success: function (res) {

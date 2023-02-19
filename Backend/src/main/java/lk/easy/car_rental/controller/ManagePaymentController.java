@@ -4,10 +4,7 @@ import lk.easy.car_rental.dto.PaymentDTO;
 import lk.easy.car_rental.service.PaymentService;
 import lk.easy.car_rental.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author : Sandun Induranga
@@ -23,9 +20,11 @@ public class ManagePaymentController {
     PaymentService paymentService;
 
     @PostMapping
-    public ResponseUtil savePayment(PaymentDTO paymentDTO) {
+    public ResponseUtil savePayment(@ModelAttribute PaymentDTO paymentDTO) {
 
-        paymentService.savePayment(paymentDTO);
+//        paymentService.savePayment(paymentDTO);
+        System.out.println(paymentDTO);
+        System.out.println("Invoked");
         return new ResponseUtil("OK", "Successfully Saved..!", "");
 
     }
