@@ -16,3 +16,13 @@ $.ajax({
         $("#username").text(res.data.user.username);
     }
 });
+
+$.ajax({
+    url: baseurl + "driver/schedule",
+    method: "get",
+    dataType: "json",
+    contentType: "application/json",
+    success: function (res) {
+        console.log(res)
+    }
+});
