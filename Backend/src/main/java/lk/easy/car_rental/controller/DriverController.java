@@ -30,9 +30,16 @@ public class DriverController {
     }
 
     @GetMapping
-    public ResponseUtil getCurrentDriver(){
+    public ResponseUtil getCurrentDriver() {
 
         return new ResponseUtil("OK", "Successfully Loaded..!", driverService.getDriver());
+
+    }
+
+    @GetMapping(params = {"nic"})
+    public ResponseUtil getDriverSchedule(String nic){
+
+
 
     }
 

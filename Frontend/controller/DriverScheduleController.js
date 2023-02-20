@@ -18,7 +18,7 @@ $.ajax({
 });
 
 $.ajax({
-    url: baseurl + "driver/schedule",
+    url: baseurl + "driver?nic=" + currentUser.nic,
     method: "get",
     dataType: "json",
     contentType: "application/json",

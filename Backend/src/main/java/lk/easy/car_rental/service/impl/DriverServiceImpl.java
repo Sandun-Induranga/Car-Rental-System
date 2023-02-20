@@ -2,6 +2,7 @@ package lk.easy.car_rental.service.impl;
 
 import lk.easy.car_rental.dto.DriverDTO;
 import lk.easy.car_rental.entity.Driver;
+import lk.easy.car_rental.entity.RentDetail;
 import lk.easy.car_rental.repo.DriverRepo;
 import lk.easy.car_rental.service.DriverService;
 import lk.easy.car_rental.util.CurrentUserUtil;

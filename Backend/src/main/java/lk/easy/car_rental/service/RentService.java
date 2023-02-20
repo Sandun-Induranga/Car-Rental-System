@@ -1,7 +1,9 @@
 package lk.easy.car_rental.service;
 
 import lk.easy.car_rental.dto.CustomerDTO;
+import lk.easy.car_rental.dto.DriverDTO;
 import lk.easy.car_rental.dto.RentDTO;
+import lk.easy.car_rental.dto.RentDetailDTO;
 
 import java.util.List;
 
@@ -20,6 +22,9 @@ public interface RentService {
     public List<RentDTO> getAllRents() throws RuntimeException;
 
     public void acceptRentRequest(String rentId) throws RuntimeException;
+
     public RentDTO getRentByRentId(String rentId) throws RuntimeException;
+
+    public RentDetailDTO getDriverSchedule(String nic) throws RuntimeException;
 
 }

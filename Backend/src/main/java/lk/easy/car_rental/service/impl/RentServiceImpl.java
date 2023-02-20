@@ -2,6 +2,7 @@ package lk.easy.car_rental.service.impl;
 
 import lk.easy.car_rental.dto.CustomerDTO;
 import lk.easy.car_rental.dto.RentDTO;
+import lk.easy.car_rental.dto.RentDetailDTO;
 import lk.easy.car_rental.entity.Driver;
 import lk.easy.car_rental.entity.Rent;
 import lk.easy.car_rental.entity.RentDetail;
@@ -103,6 +104,11 @@ public class RentServiceImpl implements RentService {
 
         return mapper.map(rentRepo.findById(rentId), RentDTO.class);
 
+    }
+
+    @Override
+    public RentDetailDTO getDriverSchedule(String nic) throws RuntimeException {
+        return null;
     }
 
 }
