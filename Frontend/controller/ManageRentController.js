@@ -3,6 +3,8 @@
  * @since : 0.1.0
  **/
 
+let rentId;
+
 $.ajax({
 
     url: baseurl + "rent/all",
@@ -46,7 +48,7 @@ function loadCards(res) {
                 </div>
                 <section class="mb-2">
                     <button class="btn btn-success me-2 btnAccept">Accept</button>
-                    <button class="btn btn-success me-2 btn-warning" data-bs-toggle="modal" data-bs-target="#paymentModel">Pay</button>
+                    <button class="btn btn-success me-2 btn-warning pay" data-bs-toggle="modal" data-bs-target="#paymentModel">Pay</button>
                     <button class="btn btn-danger">Reject</button>
                 </section>
             </div>
@@ -70,6 +72,7 @@ function loadCards(res) {
 
     bindAcceptEvent();
     bindManagePayment();
+    bindPayEvent()
 
 }
 
@@ -91,11 +94,21 @@ function bindAcceptEvent() {
     });
 }
 
+
+function bindPayEvent() {
+
+    $(".pay").on("click", function () {
+        rentId = $(this).parent().parent().children(":eq(0)").children(":eq(0)").text();
+    });
+
+}
+
 function bindManagePayment() {
     $("#btnPayment").on("click", function () {
 
         let data = $("#paymentForm").serialize();
-        let rentId = $(this).parent().parent().children(":eq(0)").children(":eq(0)").text();
+
+        alert(rentId)
         let json = {
             paymentId:null,
             rentId: rentId,
@@ -110,16 +123,16 @@ function bindManagePayment() {
 
         alert(json.balance)
 
-        $.ajax({
-            url: baseurl + `payment`,
-            method: "post",
-            data: data,
-            dataType: "json",
-            // contentType: "application/json",
-            success: function (res) {
-
-            }
-        });
+        // $.ajax({
+        //     url: baseurl + `payment`,
+        //     method: "post",
+        //     data: data,
+        //     dataType: "json",
+        //     // contentType: "application/json",
+        //     success: function (res) {
+        //
+        //     }
+        // });
 
     });
 }
