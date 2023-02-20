@@ -8,6 +8,7 @@ import lk.easy.car_rental.entity.Rent;
 import lk.easy.car_rental.entity.RentDetail;
 import lk.easy.car_rental.repo.CustomerRepo;
 import lk.easy.car_rental.repo.DriverRepo;
+import lk.easy.car_rental.repo.RentDetailRepo;
 import lk.easy.car_rental.repo.RentRepo;
 import lk.easy.car_rental.service.RentService;
 import org.modelmapper.ModelMapper;
@@ -40,6 +41,9 @@ public class RentServiceImpl implements RentService {
 
     @Autowired
     DriverRepo driverRepo;
+
+    @Autowired
+    RentDetailRepo rentDetailRepo;
 
     @Autowired
     ModelMapper mapper;
@@ -108,7 +112,9 @@ public class RentServiceImpl implements RentService {
 
     @Override
     public RentDetailDTO getDriverSchedule(String nic) throws RuntimeException {
-        return null;
+
+        return mapper.map(rentDetailRepo.findById(nic).get(), RentDetailDTO.class);
+
     }
 
 }
