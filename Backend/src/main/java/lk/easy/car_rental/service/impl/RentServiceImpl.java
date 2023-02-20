@@ -57,10 +57,14 @@ public class RentServiceImpl implements RentService {
         if (rentDTO.getDriverRequest().equals("YES")) {
 
             List<Driver> drivers = driverRepo.getAvailableDrivers();
+            int i = new Random().nextInt(drivers.size());
 
             for (RentDetail rentDetail : rent.getRentDetails()) {
-                rentDetail.setNic(drivers.get(new Random().nextInt(drivers.size())).getNic());
+                rentDetail.setNic(drivers.get(i).getNic());
             }
+
+            drivers.get(i).setAvailabilityStatus("NO");
+            driverRepo.save(drivers.get(i));
 
         }
 
