@@ -121,9 +121,10 @@ public class RentServiceImpl implements RentService {
     }
 
     @Override
-    public RentDetailDTO getDriverSchedule(String nic) throws RuntimeException {
+    public List<RentDetailDTO> getDriverSchedule(String nic) throws RuntimeException {
 
-        return mapper.map(rentDetailRepo.findById(nic).get(), RentDetailDTO.class);
+        return mapper.map(rentDetailRepo.getRentDetailByNic(nic), new TypeToken<ArrayList<RentDetailDTO>>() {
+        }.getType());
 
     }
 
