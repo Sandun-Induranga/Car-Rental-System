@@ -23,6 +23,17 @@ $.ajax({
     dataType: "json",
     contentType: "application/json",
     success: function (res) {
-        console.log(res.data)
+        for (let detail of res.data) {
+            $("#tblDriverSchedule").append(`
+                <tr>
+                    <td>${detail.rentId}</td>
+                    <td>${detail.pickUpDate}</td>
+                    <td>${detail.pickUpTime}</td>
+                    <td>${detail.returnDate}</td>
+                    <td>${detail.returnTime}</td>
+                    <td>${detail.regNum}</td>
+                </tr>
+            `);
+        }
     }
 });
