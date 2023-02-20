@@ -16,4 +16,7 @@ public interface DriverRepo extends JpaRepository<Driver, String> {
     @Query(value = "SELECT * FROM Driver WHERE availabilityStatus='YES'", nativeQuery = true)
     List<Driver> getAvailableDrivers() throws RuntimeException;
 
+    @Query(value = "SELECT * FROM Driver WHERE user_username=?", nativeQuery = true)
+    Driver getDriverByUsername(String username);
+
 }
