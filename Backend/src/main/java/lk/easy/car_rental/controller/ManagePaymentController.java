@@ -22,9 +22,8 @@ public class ManagePaymentController {
     @PostMapping
     public ResponseUtil savePayment(@RequestBody PaymentDTO paymentDTO) {
 
-//        paymentService.savePayment(paymentDTO);
+        paymentService.savePayment(paymentDTO);
         System.out.println(paymentDTO);
-        System.out.println("Invoked");
         return new ResponseUtil("OK", "Successfully Saved..!", "");
 
     }
