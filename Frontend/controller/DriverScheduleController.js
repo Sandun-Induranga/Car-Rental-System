@@ -41,10 +41,10 @@ $.ajax({
             $("#tblDriverSchedule").append(`
                 <tr>
                     <td>${detail.rentId}</td>
-                    <td>${rent.pickUpDate}</td>
-                    <td>${rent.pickUpTime}</td>
-                    <td>${rent.returnDate}</td>
-                    <td>${rent.returnTime}</td>
+                    <td>${rent.pickUpDate.toString().replaceAll(",","-")}</td>
+                    <td>${rent.pickUpTime.toString().replaceAll(",",":")}</td>
+                    <td>${rent.returnDate.toString().replaceAll(",","-")}</td>
+                    <td>${rent.returnTime.toString().replaceAll(",",":")}</td>
                     <td>${detail.regNum}</td>
                 </tr>
             `);
