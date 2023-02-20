@@ -24,13 +24,27 @@ $.ajax({
     contentType: "application/json",
     success: function (res) {
         for (let detail of res.data) {
+
+            let rent;
+
+            $.ajax({
+                url: baseurl + "rent?rentId=" + detail.rentId,
+                async:false,
+                method: "get",
+                dataType: "json",
+                contentType: "application/json",
+                success:function (res) {
+                    rent = res.data;
+                }
+            })
+
             $("#tblDriverSchedule").append(`
                 <tr>
                     <td>${detail.rentId}</td>
-                    <td>${detail.pickUpDate}</td>
-                    <td>${detail.pickUpTime}</td>
-                    <td>${detail.returnDate}</td>
-                    <td>${detail.returnTime}</td>
+                    <td>${rent.pickUpDate}</td>
+                    <td>${rent.pickUpTime}</td>
+                    <td>${rent.returnDate}</td>
+                    <td>${rent.returnTime}</td>
                     <td>${detail.regNum}</td>
                 </tr>
             `);
