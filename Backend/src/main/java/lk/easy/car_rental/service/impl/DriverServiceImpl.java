@@ -61,4 +61,12 @@ public class DriverServiceImpl implements DriverService {
         driverRepo.save(driver);
 
     }
+
+    @Override
+    public DriverDTO getDriver(String username) throws RuntimeException {
+
+        return mapper.map(driverRepo.getDriverByUsername(username), DriverDTO.class);
+
+    }
+
 }

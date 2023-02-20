@@ -11,4 +11,6 @@ public interface DriverService {
 
     public void saveDriver(DriverDTO driverDTO) throws RuntimeException;
 
+    public DriverDTO getDriver(String username) throws RuntimeException;
+
 }
