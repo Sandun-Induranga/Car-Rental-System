@@ -11,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 /**
  * @author : Sandun Induranga
  * @since : 0.1.0
@@ -34,6 +37,8 @@ public class PaymentServiceImpl implements PaymentService {
 
         Payment payment = mapper.map(paymentDTO, Payment.class);
         payment.setRentId(rentRepo.findById(paymentDTO.getRentId().getRentId()).get());
+        payment.setDate(LocalDate.now());
+        payment.setTime(LocalTime.now());
         paymentRepo.save(payment);
 
     }
