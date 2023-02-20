@@ -44,7 +44,7 @@ public class DriverServiceImpl implements DriverService {
             byte[] licenseFileBytes = driverDTO.getLicenseImage().getBytes();
 
             String serverPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getParentFile().getParentFile().getAbsolutePath();
-            Path licenseLocation = Paths.get(serverPath + "/bucket/driver/license_"+driver.getNic()+".jpeg");
+            Path licenseLocation = Paths.get(serverPath + "/bucket/driver/license_" + driver.getNic() + ".jpeg");
 
             Files.write(licenseLocation, licenseFileBytes);
 
