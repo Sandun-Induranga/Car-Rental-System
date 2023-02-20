@@ -29,7 +29,10 @@ public class DriverController {
 
     }
 
-    public ResponseUtil getCurrentDriver(){
+    @GetMapping
+    public ResponseUtil getCurrentDriver(String username){
+
+        return new ResponseUtil("OK", "Successfully Loaded..!", driverService.getDriver(username));
 
     }
 
