@@ -108,31 +108,27 @@ function bindManagePayment() {
 
         let data = $("#paymentForm").serialize();
 
-        alert(rentId)
         let json = {
-            paymentId:null,
-            rentId: rentId,
             balance: $("#balance").val(),
             cash: $("#cash").val(),
             description: $("#description").val(),
             total: $("#total").val(),
             type: $("#type").val(),
-            date:Date.now(),
-            time:null
+            rentId: {
+                rentId:rentId
+            }
         }
 
-        alert(json.balance)
+        $.ajax({
+            url: baseurl + `payment`,
+            method: "post",
+            data: JSON.stringify(json),
+            dataType: "json",
+            contentType: "application/json",
+            success: function (res) {
 
-        // $.ajax({
-        //     url: baseurl + `payment`,
-        //     method: "post",
-        //     data: data,
-        //     dataType: "json",
-        //     // contentType: "application/json",
-        //     success: function (res) {
-        //
-        //     }
-        // });
+            }
+        });
 
     });
 }

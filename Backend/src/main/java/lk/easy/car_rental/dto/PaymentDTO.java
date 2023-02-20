@@ -1,6 +1,5 @@
 package lk.easy.car_rental.dto;
 
-import lk.easy.car_rental.entity.Rent;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,7 +21,7 @@ import java.time.LocalTime;
 public class PaymentDTO {
 
     Integer paymentId;
-    Rent rentId;
+    RentDTO rentId;
     String type;
     String description;
     LocalDate date;
