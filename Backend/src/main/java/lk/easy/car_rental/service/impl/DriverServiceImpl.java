@@ -4,6 +4,7 @@ import lk.easy.car_rental.dto.DriverDTO;
 import lk.easy.car_rental.entity.Driver;
 import lk.easy.car_rental.repo.DriverRepo;
 import lk.easy.car_rental.service.DriverService;
+import lk.easy.car_rental.util.CurrentUserUtil;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -63,9 +64,9 @@ public class DriverServiceImpl implements DriverService {
     }
 
     @Override
-    public DriverDTO getDriver(String username) throws RuntimeException {
+    public DriverDTO getDriver() throws RuntimeException {
 
-        return mapper.map(driverRepo.getDriverByUsername(username), DriverDTO.class);
+        return mapper.map(driverRepo.getDriverByUsername(CurrentUserUtil.currentUser.getUsername()), DriverDTO.class);
 
     }
 
