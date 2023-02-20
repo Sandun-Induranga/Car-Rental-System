@@ -18,6 +18,9 @@ $("#btnLogin").on("click", function () {
                 case "Customer":
                     window.open("car-page.html", '_self');
                     break;
+                case "Driver":
+                    window.open("driver-page.html", '_self');
+                    break;
                 default:
                     alert("none");
             }
