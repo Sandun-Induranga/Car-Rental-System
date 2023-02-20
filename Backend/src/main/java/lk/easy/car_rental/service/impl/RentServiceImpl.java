@@ -3,13 +3,11 @@ package lk.easy.car_rental.service.impl;
 import lk.easy.car_rental.dto.CustomerDTO;
 import lk.easy.car_rental.dto.RentDTO;
 import lk.easy.car_rental.dto.RentDetailDTO;
+import lk.easy.car_rental.entity.Car;
 import lk.easy.car_rental.entity.Driver;
 import lk.easy.car_rental.entity.Rent;
 import lk.easy.car_rental.entity.RentDetail;
-import lk.easy.car_rental.repo.CustomerRepo;
-import lk.easy.car_rental.repo.DriverRepo;
-import lk.easy.car_rental.repo.RentDetailRepo;
-import lk.easy.car_rental.repo.RentRepo;
+import lk.easy.car_rental.repo.*;
 import lk.easy.car_rental.service.RentService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -22,6 +20,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 /**
@@ -46,6 +45,9 @@ public class RentServiceImpl implements RentService {
     RentDetailRepo rentDetailRepo;
 
     @Autowired
+    CarRepo carRepo;
+
+    @Autowired
     ModelMapper mapper;
 
     @Override
@@ -54,17 +56,21 @@ public class RentServiceImpl implements RentService {
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         Rent rent = mapper.map(rentDTO, Rent.class);
 
+
         if (rentDTO.getDriverRequest().equals("YES")) {
 
             List<Driver> drivers = driverRepo.getAvailableDrivers();
-            int i = new Random().nextInt(drivers.size());
+            int i;
 
             for (RentDetail rentDetail : rent.getRentDetails()) {
+                i = new Random().nextInt(drivers.size());
                 rentDetail.setNic(drivers.get(i).getNic());
+                Car car = carRepo.findById(rentDetail.getRegNum()).get();
+                car.setAvailability("NO");
+                carRepo.save(car);
+                drivers.get(i).setAvailabilityStatus("NO");
+                driverRepo.save(drivers.get(i));
             }
-
-            drivers.get(i).setAvailabilityStatus("NO");
-            driverRepo.save(drivers.get(i));
 
         }
 
