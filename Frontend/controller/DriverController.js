@@ -6,7 +6,7 @@
 // Upload NIC Image
 loadSelectedImage("#licenseImage");
 
-$("#btnSubmit").on("click", function () {
+$("#btnSaveDriver").on("click", function () {
 
     let data = new FormData($("#driverForm")[0]);
 
