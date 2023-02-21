@@ -18,7 +18,7 @@ body {
 
 #main-context {
     /*background: url("../image/context.jpg") !important;*/
-    background: url("../image/context.jpg") !important;
+    /*background: url("../image/context.jpg") !important;*/
     background-size: cover !important;
     background-position: top !important;
 }
@@ -42,6 +42,3 @@ form{
     background: transparent;
 }
 
-input{
-    opacity: 60%;
-}
