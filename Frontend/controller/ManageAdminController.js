@@ -343,3 +343,24 @@ $("#btnSubmit").on("click", function () {
     });
 });
 
+
+/* Driver */
+
+// Upload License Image
+loadSelectedImage("#licenseImage");
+
+$("#btnSaveDriver").on("click", function () {
+
+    let data = new FormData($("#driverForm")[0]);
+
+    $.ajax({
+        url: baseurl + "driver",
+        method: "post",
+        data: data,
+        contentType: false,
+        processData: false,
+        success: function (res) {
+
+        }
+    });
+});
