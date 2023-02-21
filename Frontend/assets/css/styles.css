@@ -4,6 +4,7 @@
 
 body {
     height: 100vh;
+
 }
 
 .image-context {
@@ -11,19 +12,32 @@ body {
     height: 160px;
 }
 
-.bg-color{
+.bg-color {
     background: #360557;
 }
 
-#main-context{
-    background-image: linear-gradient(to right top, #3f8efc, #5080ff, #716dff, #9751ff, #be0aff);
+#main-context {
+    /*background: url("../image/context.jpg") !important;*/
+    background: url("../image/context.jpg") !important;
+    background-size: cover !important;
+    background-position: top !important;
 }
 
-main{
+#home,
+#manageCustomers,
+#manageCar,
+#viewCar,
+#manageDriver,
+#drivers,
+#rents {
     background: rgba(255, 255, 255, 0.01);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+form{
+    background: transparent;
 }
