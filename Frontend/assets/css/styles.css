@@ -12,5 +12,9 @@ body {
 }
 
 .bg-color{
-    background: #240046;
+    background: #360557;
+}
+
+#main-context{
+    background-image: linear-gradient(to right top, #3f8efc, #5080ff, #716dff, #9751ff, #be0aff);
 }
