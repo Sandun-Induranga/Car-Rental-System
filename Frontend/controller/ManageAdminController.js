@@ -12,8 +12,6 @@ let rentId;
 let currentUser;
 let customer;
 
-loadAllCars();
-
 $.ajax({
     url: baseurl + "login",
     method: "get",
@@ -328,17 +326,17 @@ $("#btnCar").on("click", function () {
         });
     });
 
-});
+    loadAllCars();
 
-function loadAllCars() {
+    function loadAllCars() {
 
-    $.ajax({
-        url: baseurl + "car",
-        method: "get",
+        $.ajax({
+            url: baseurl + "car",
+            method: "get",
 
-        success: function (res) {
-            for (let car of res.data) {
-                $("#cars").append(`<div class="col w-25">
+            success: function (res) {
+                for (let car of res.data) {
+                    $("#cars").append(`<div class="col w-25">
             <div class="card">
                 <img src="../assets/image/background.png" class="card-img-top" alt="car">
 
@@ -386,16 +384,19 @@ function loadAllCars() {
 
             </div>
         </div>`);
-                getDetail();
+                    getDetail();
+                }
             }
-        }
 
-    });
+        });
 
-}
+    }
+
+});
 
 
 /** ********************************************************** Driver ****************************************************** **/
+
 
 // Upload License Image
 loadSelectedImage("#licenseImage");
