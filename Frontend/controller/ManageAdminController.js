@@ -301,8 +301,8 @@ $("#btnCar").on("click", function () {
 
     $("#home").attr("style", "display : none !important");
     $("#manageCustomers").attr("style", "display : none !important");
-    $("#manageCar").attr("style", "display : block !important");
-    $("#viewCar").attr("style", "display : none !important");
+    $("#manageCar").attr("style", "display : none !important");
+    $("#viewCar").attr("style", "display : block !important");
     $("#manageDriver").attr("style", "display : none !important");
     $("#drivers").attr("style", "display : none !important");
     $("#rents").attr("style", "display : none !important");
