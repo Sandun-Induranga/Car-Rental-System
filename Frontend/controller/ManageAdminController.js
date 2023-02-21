@@ -398,23 +398,33 @@ $("#btnCar").on("click", function () {
 /** ********************************************************** Driver ****************************************************** **/
 
 
-// Upload License Image
-loadSelectedImage("#licenseImage");
+$("#btnDriver").on("click", function () {
 
-$("#btnSaveDriver").on("click", function () {
+    $("#home").attr("style", "display : none !important");
+    $("#manageCustomers").attr("style", "display : none !important");
+    $("#manageCar").attr("style", "display : none !important");
+    $("#viewCar").attr("style", "display : none !important");
+    $("#manageDriver").attr("style", "display : block !important");
+    $("#drivers").attr("style", "display : none !important");
+    $("#rents").attr("style", "display : none !important");
 
-    let data = new FormData($("#driverForm")[0]);
+    // Upload License Image
+    loadSelectedImage("#licenseImage");
 
-    $.ajax({
-        url: baseurl + "driver",
-        method: "post",
-        data: data,
-        contentType: false,
-        processData: false,
-        success: function (res) {
+    $("#btnSaveDriver").on("click", function () {
 
-        }
+        let data = new FormData($("#driverForm")[0]);
+
+        $.ajax({
+            url: baseurl + "driver",
+            method: "post",
+            data: data,
+            contentType: false,
+            processData: false,
+            success: function (res) {
+
+            }
+        });
     });
-});
 
-$("#btnDriver")
+})
