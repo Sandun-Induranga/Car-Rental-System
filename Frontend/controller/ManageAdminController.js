@@ -23,46 +23,58 @@ $.ajax({
     success: function (res) {
         currentUser = res.data;
         $("#user").text(res.data.username);
-        getCustomer();
+        // getCustomer();
     }
 });
 
 // getCustomer();
-function getCustomer() {
-    $.ajax({
-        url: baseurl + `rent?username=${currentUser.username}`,
-        method: "get",
-        async: false,
-        dataType: "json",
-        contentType: "application/json",
-        success: function (res) {
-            customer = res.data;
-            console.log(customer)
-        }
+// function getCustomer() {
+//     $.ajax({
+//         url: baseurl + `rent?username=${currentUser.username}`,
+//         method: "get",
+//         async: false,
+//         dataType: "json",
+//         contentType: "application/json",
+//         success: function (res) {
+//             customer = res.data;
+//             console.log(customer)
+//         }
+//     });
+// }
+
+$("#btnCustomer").on("click", function () {
+
+    $("#home").attr("style", "display : none !important");
+    $("#manageCustomers").attr("style", "display : block !important");
+    $("#manageCar").attr("style", "display : none !important");
+    $("#viewCar").attr("style", "display : none !important");
+    $("#manageDriver").attr("style", "display : none !important");
+    $("#drivers").attr("style", "display : none !important");
+    $("#rents").attr("style", "display : none !important");
+
+    // Upload NIC Image
+    loadSelectedImage("#cusNicImage");
+
+    // Upload License Image
+    loadSelectedImage("#cusLicenseImage");
+
+    // Save Customer
+    $("#btnSaveCustomer").on("click", function () {
+
+        let data = new FormData($("#customerForm")[0]);
+
+        $.ajax({
+            url: baseurl + "customer",
+            method: "post",
+            data: data,
+            contentType: false,
+            processData: false,
+            success: function (res) {
+
+            }
+        });
     });
-}
 
-// Upload NIC Image
-loadSelectedImage("#cusNicImage");
-
-// Upload License Image
-loadSelectedImage("#cusLicenseImage");
-
-// Save Customer
-$("#btnSaveCustomer").on("click", function () {
-
-    let data = new FormData($("#customerForm")[0]);
-
-    $.ajax({
-        url: baseurl + "customer",
-        method: "post",
-        data: data,
-        contentType: false,
-        processData: false,
-        success: function (res) {
-
-        }
-    });
 });
 
 
@@ -263,7 +275,7 @@ function bindManagePayment() {
             total: $("#total").val(),
             type: $("#type").val(),
             rentId: {
-                rentId:rentId
+                rentId: rentId
             }
         }
 
