@@ -296,25 +296,38 @@ function bindManagePayment() {
 
 /** *************************************************************** Car ***************************************************** **/
 
-loadSelectedImage("#front");
-loadSelectedImage("#back");
-loadSelectedImage("#side");
-loadSelectedImage("#interior");
 
-$("#btnSubmit").on("click", function () {
+$("#btnCar").on("click", function () {
 
-    let data = new FormData($("#carForm")[0]);
+    $("#home").attr("style", "display : none !important");
+    $("#manageCustomers").attr("style", "display : none !important");
+    $("#manageCar").attr("style", "display : block !important");
+    $("#viewCar").attr("style", "display : none !important");
+    $("#manageDriver").attr("style", "display : none !important");
+    $("#drivers").attr("style", "display : none !important");
+    $("#rents").attr("style", "display : none !important");
 
-    $.ajax({
-        url: baseurl + "car",
-        method: "post",
-        data: data,
-        contentType: false,
-        processData: false,
-        success: function (res) {
+    loadSelectedImage("#front");
+    loadSelectedImage("#back");
+    loadSelectedImage("#side");
+    loadSelectedImage("#interior");
 
-        }
+    $("#btnSubmit").on("click", function () {
+
+        let data = new FormData($("#carForm")[0]);
+
+        $.ajax({
+            url: baseurl + "car",
+            method: "post",
+            data: data,
+            contentType: false,
+            processData: false,
+            success: function (res) {
+
+            }
+        });
     });
+
 });
 
 function loadAllCars() {
