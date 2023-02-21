@@ -385,6 +385,70 @@
                     </section>
                 </main>
 
+                <main id="rents">
+                    <section class="d-flex gap-5 align-items-center flex-column p-5 mt-5" id="rent-context">
+
+                    </section>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="paymentModel" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel">Payments</h5>
+                                    <button type="button" class="btn-close text-white bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+
+                                <!-- Form -->
+                                <div class="d-flex justify-content-center mt-4">
+                                    <form id="paymentForm" class="d-flex flex-column">
+
+                                        <section class="d-flex justify-content-between flex-lg-row flex-column gap-2">
+                                            <div class="mb-3">
+                                                <label for="total" class="form-label">Total</label>
+                                                <input type="text" class="form-control" name="total" id="total">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="cash" class="form-label">Cash</label>
+                                                <input type="text" class="form-control" name="cash" id="cash">
+                                            </div>
+                                        </section>
+
+                                        <section class="d-flex justify-content-between flex-lg-row flex-column align-items-center">
+                                            <div class="mb-3">
+                                                <label for="type" class="form-label">Payment Type</label>
+                                                <select name="type" id="type" class="form-select">
+                                                    <option value="Lost_Damage_Payment">Lost Damage Payment</option>
+                                                    <option value="Normal_Payment">Normal Payment</option>
+                                                </select>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="balance" class="form-label">Balance</label>
+                                                <input type="text" class="form-control" name="balance" id="balance">
+                                            </div>
+                                        </section>
+
+                                        <section class="d-flex justify-content-between flex-lg-row flex-column align-items-center">
+                                            <div class="mb-3 col col-12">
+                                                <label for="description" class="form-label form-check-label">Description</label>
+                                                <input type="text" class="form-control" name="description" id="description">
+                                            </div>
+                                        </section>
+
+                                    </form>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button name="" type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-success" id="btnPayment" data-bs-dismiss="modal">Save
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+
             </div>
         </div>
     </div>
