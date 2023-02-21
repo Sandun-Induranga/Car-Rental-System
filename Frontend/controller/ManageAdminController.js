@@ -70,16 +70,16 @@ function loadAllCars() {
                         <p class="card-text"><i class="bi bi-people-fill me-1 text-primary"></i>${car.passengers}</p>
                     </section>
 
-                    <section class="row justify-content-between">
-                        <p class="card-text col col-md-5">Free Mileage</p>
-                        <p class="card-text text-secondary col col-lg-3 mb-lg-0 mb-4">${car.freeMileage.dailyRate}km Daily</p>
-                        <p class="card-text text-secondary col col-lg-3 mb-lg-0 mb-4">${car.freeMileage.monthlyRate}km Monthly</p>
+                    <section class="row justify-content-between align-items-center">
+                        <p class="card-text col col-12">Free Mileage</p>
+                        <p class="card-text text-secondary col col-lg-6 mb-lg-0 mb-4">${car.freeMileage.dailyRate}km Daily</p>
+                        <p class="card-text text-secondary col col-lg-6 mb-lg-0 mb-4">${car.freeMileage.monthlyRate}km Monthly</p>
                     </section>
 
-                    <section class="row justify-content-between">
-                        <p class="card-text col col-4">Price</p>
-                        <p class="card-text text-secondary col col-lg-4 mb-lg-0 mb-4">${car.price.dailyPriceRate} LKR Daily</p>
-                        <p class="card-text text-secondary col col-lg-4 mb-lg-0 mb-4">${car.price.monthlyPriceRate} LKR Monthly</p>
+                    <section class="row justify-content-between align-items-center">
+                        <p class="card-text col col-12">Price</p>
+                        <p class="card-text text-secondary col col-lg-6 mb-lg-0 mb-4">${car.price.dailyPriceRate} LKR Daily</p>
+                        <p class="card-text text-secondary col col-lg-6 mb-lg-0 mb-4">${car.price.monthlyPriceRate} LKR Monthly</p>
                     </section>
 
                     <section class="row justify-content-between">
@@ -318,4 +318,28 @@ function bindManagePayment() {
 
     });
 }
+
+
+/* Car */
+
+loadSelectedImage("#front");
+loadSelectedImage("#back");
+loadSelectedImage("#side");
+loadSelectedImage("#interior");
+
+$("#btnSubmit").on("click", function () {
+
+    let data = new FormData($("#carForm")[0]);
+
+    $.ajax({
+        url: baseurl + "car",
+        method: "post",
+        data: data,
+        contentType: false,
+        processData: false,
+        success: function (res) {
+
+        }
+    });
+});
 
