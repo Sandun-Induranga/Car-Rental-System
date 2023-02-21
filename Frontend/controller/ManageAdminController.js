@@ -42,69 +42,8 @@ function getCustomer() {
     });
 }
 
-function loadAllCars() {
 
-    $.ajax({
-        url: baseurl + "car",
-        method: "get",
-
-        success: function (res) {
-            for (let car of res.data) {
-                $("#cars").append(`<div class="col w-25">
-            <div class="card">
-                <img src="../assets/image/background.png" class="card-img-top" alt="car">
-
-                <div class="card-body">
-                    <h5 class="card-title">${car.brand}</h5>
-
-                    <section class="mb-4">
-                        <img src="../assets/image/background.png" class="w-25" alt="${car.photos.back}">
-                        <img src="../assets/image/background.png" class="w-25" alt="car">
-                        <img src="../assets/image/background.png" class="w-25" alt="car">
-                    </section>
-
-                    <section class="d-flex gap-3 justify-content-between">
-                        <p class="card-text"><i class="bi bi-fuel-pump-diesel-fill me-1 text-success"></i>${car.fuelType}</p>
-                        <p class="card-text"><i class="bi bi-palette-fill me-1 text-danger"></i>${car.color}</p>
-                        <p class="card-text"><i class="bi bi-gear-wide-connected me-1 text-info"></i>${car.transmissionType}</p>
-                        <p class="card-text"><i class="bi bi-people-fill me-1 text-primary"></i>${car.passengers}</p>
-                    </section>
-
-                    <section class="row justify-content-between align-items-center">
-                        <p class="card-text col col-12">Free Mileage</p>
-                        <p class="card-text text-secondary col col-lg-6 mb-lg-0 mb-4">${car.freeMileage.dailyRate}km Daily</p>
-                        <p class="card-text text-secondary col col-lg-6 mb-lg-0 mb-4">${car.freeMileage.monthlyRate}km Monthly</p>
-                    </section>
-
-                    <section class="row justify-content-between align-items-center">
-                        <p class="card-text col col-12">Price</p>
-                        <p class="card-text text-secondary col col-lg-6 mb-lg-0 mb-4">${car.price.dailyPriceRate} LKR Daily</p>
-                        <p class="card-text text-secondary col col-lg-6 mb-lg-0 mb-4">${car.price.monthlyPriceRate} LKR Monthly</p>
-                    </section>
-
-                    <section class="row justify-content-between">
-                        <p class="card-text col col-lg-4">Lost Damage Cost</p>
-                        <p class="card-text text-secondary col">${car.lostDamageCost} LKR</p>
-                    </section>
-
-                    <p class="card-text text-secondary" id="registerNum"><i class="bi bi-car-front me-1"></i>${car.regNum}</p>
-                        
-                    <section class="d-flex justify-content-between flex-lg-row flex-column gap-1">
-                        <button class="btn btn-success rent" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><p class="card-text"><i class="bi bi-upc-scan"></i> Rent </p></button>
-                        <button class="btn btn-warning"><p class="card-text"><i class="bi bi-cart-check-fill"></i> Add to cart</p></button>
-                    </section>
-
-                </div>
-
-            </div>
-        </div>`);
-                getDetail();
-            }
-        }
-
-    });
-
-}
+/** ********************************************************* Rent ***************************************************** **/
 
 function getDetail() {
 
@@ -320,7 +259,7 @@ function bindManagePayment() {
 }
 
 
-/* Car */
+/** *************************************************************** Car ***************************************************** **/
 
 loadSelectedImage("#front");
 loadSelectedImage("#back");
@@ -343,8 +282,72 @@ $("#btnSubmit").on("click", function () {
     });
 });
 
+function loadAllCars() {
 
-/* Driver */
+    $.ajax({
+        url: baseurl + "car",
+        method: "get",
+
+        success: function (res) {
+            for (let car of res.data) {
+                $("#cars").append(`<div class="col w-25">
+            <div class="card">
+                <img src="../assets/image/background.png" class="card-img-top" alt="car">
+
+                <div class="card-body">
+                    <h5 class="card-title">${car.brand}</h5>
+
+                    <section class="mb-4">
+                        <img src="../assets/image/background.png" class="w-25" alt="${car.photos.back}">
+                        <img src="../assets/image/background.png" class="w-25" alt="car">
+                        <img src="../assets/image/background.png" class="w-25" alt="car">
+                    </section>
+
+                    <section class="d-flex gap-3 justify-content-between">
+                        <p class="card-text"><i class="bi bi-fuel-pump-diesel-fill me-1 text-success"></i>${car.fuelType}</p>
+                        <p class="card-text"><i class="bi bi-palette-fill me-1 text-danger"></i>${car.color}</p>
+                        <p class="card-text"><i class="bi bi-gear-wide-connected me-1 text-info"></i>${car.transmissionType}</p>
+                        <p class="card-text"><i class="bi bi-people-fill me-1 text-primary"></i>${car.passengers}</p>
+                    </section>
+
+                    <section class="row justify-content-between align-items-center">
+                        <p class="card-text col col-12">Free Mileage</p>
+                        <p class="card-text text-secondary col col-lg-6 mb-lg-0 mb-4">${car.freeMileage.dailyRate}km Daily</p>
+                        <p class="card-text text-secondary col col-lg-6 mb-lg-0 mb-4">${car.freeMileage.monthlyRate}km Monthly</p>
+                    </section>
+
+                    <section class="row justify-content-between align-items-center">
+                        <p class="card-text col col-12">Price</p>
+                        <p class="card-text text-secondary col col-lg-6 mb-lg-0 mb-4">${car.price.dailyPriceRate} LKR Daily</p>
+                        <p class="card-text text-secondary col col-lg-6 mb-lg-0 mb-4">${car.price.monthlyPriceRate} LKR Monthly</p>
+                    </section>
+
+                    <section class="row justify-content-between">
+                        <p class="card-text col col-lg-4">Lost Damage Cost</p>
+                        <p class="card-text text-secondary col">${car.lostDamageCost} LKR</p>
+                    </section>
+
+                    <p class="card-text text-secondary" id="registerNum"><i class="bi bi-car-front me-1"></i>${car.regNum}</p>
+                        
+                    <section class="d-flex justify-content-between flex-lg-row flex-column gap-1">
+                        <button class="btn btn-success rent" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><p class="card-text"><i class="bi bi-upc-scan"></i> Rent </p></button>
+                        <button class="btn btn-warning"><p class="card-text"><i class="bi bi-cart-check-fill"></i> Add to cart</p></button>
+                    </section>
+
+                </div>
+
+            </div>
+        </div>`);
+                getDetail();
+            }
+        }
+
+    });
+
+}
+
+
+/** ********************************************************** Driver ****************************************************** **/
 
 // Upload License Image
 loadSelectedImage("#licenseImage");
