@@ -67,6 +67,12 @@ function manageCustomerPage() {
             $("#manageCustomers").attr("style", "display : block !important");
             $("#viewCustomer").attr("style", "display : none !important");
             $(this).attr("style", "display : block !important");
+        });
+
+        $("#btnBackCustomer").on("click", function () {
+            $("#manageCustomers").attr("style", "display : none !important");
+            $("#viewCustomer").attr("style", "display : block !important");
+            $(this).attr("style", "display : block !important");
         })
 
         // Save Customer
