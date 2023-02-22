@@ -41,13 +41,9 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void saveCustomer(CustomerDTO customerDTO) throws RuntimeException {
 
-        Customer customer = new Customer(customerDTO.getNic(), customerDTO.getName(), customerDTO.getLicense(), customerDTO.getAddress(), customerDTO.getContact(), customerDTO.getEmail(), new User(customerDTO.getUser().getUsername(), customerDTO.getUser().getPassword(), customerDTO.getUser().getRole()), "", "");
-
         if (customerRepo.existsById(customerDTO.getNic())) throw new RuntimeException("Customer Already Exits..!");
 
-        System.out.println(customerDTO);
-
-        customerRepo.save(customer);
+        customerRepo.save(mapper.map(customerDTO, Customer.class));
     }
 
     @Override
@@ -84,6 +80,15 @@ public class CustomerServiceImpl implements CustomerService {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public void updateCustomer(CustomerDTO customerDTO) throws RuntimeException {
+
+        if (!customerRepo.existsById(customerDTO.getNic())) throw new RuntimeException("Invalid Customer..!");
+
+        customerRepo.save(mapper.map(customerDTO, Customer.class));
+
     }
 
 }

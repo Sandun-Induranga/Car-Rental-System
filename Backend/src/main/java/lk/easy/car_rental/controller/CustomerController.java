@@ -33,6 +33,13 @@ public class CustomerController {
 
     }
 
+    @GetMapping
+    public ResponseUtil getAll() {
+
+        return new ResponseUtil("OK", "Successfully Saved..!", customerService.getAllCustomer());
+
+    }
+
     @PostMapping(params = {"image"})
     public ResponseUtil saveImages(@ModelAttribute CustomerImageDTO customerImageDTO) {
 
@@ -41,11 +48,13 @@ public class CustomerController {
 
     }
 
-    @GetMapping
-    public ResponseUtil getAll() {
+    @PutMapping
+    public ResponseUtil updateCustomer(@RequestBody CustomerDTO customerDTO){
 
-        return new ResponseUtil("OK", "Successfully Saved..!", customerService.getAllCustomer());
+        customerService.updateCustomer(customerDTO);
+        return new ResponseUtil("OK", "Successfully Updated..!", "");
 
     }
+
 
 }

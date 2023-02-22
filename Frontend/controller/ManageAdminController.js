@@ -67,12 +67,14 @@ function manageCustomerPage() {
             $("#manageCustomers").attr("style", "display : block !important");
             $("#viewCustomer").attr("style", "display : none !important");
             $(this).attr("style", "display : block !important");
+            $("#btnSaveCustomer").text("Save");
         });
 
         $("#btnBackCustomer").on("click", function () {
             $("#manageCustomers").attr("style", "display : none !important");
             $("#viewCustomer").attr("style", "display : block !important");
             $(this).attr("style", "display : block !important");
+            $("#btnSaveCustomer").text("Save");
         })
 
         // Save Customer
@@ -149,14 +151,38 @@ function manageCustomerPage() {
                     `);
                     }
 
+                    bindUpdateEvent();
+
                 }
             });
+
+
 
         }
 
         loadAllCustomers();
 
-        $(".btnUpdate").on("click", function () {
+        function bindUpdateEvent() {
+            $(".btnUpdate").on("click", function () {
+
+                alert($(this).parent().parent().children(":eq(0)").text())
+
+                $("#cusNic").val($(this).parent().parent().children(":eq(0)").text());
+                $("#cusName").val($(this).parent().parent().children(":eq(0)").text());
+                $("#cusLicense").val($(this).parent().parent().children(":eq(0)").text());
+                $("#cusAddress").val($(this).parent().parent().children(":eq(0)").text());
+                $("#cusContact").val($(this).parent().parent().children(":eq(0)").text());
+                $("#cusEmail").val($(this).parent().parent().children(":eq(0)").text());
+
+                $("#cusUsername").val($(this).parent().parent().children(":eq(0)").text());
+                $("#cusPassword").val($(this).parent().parent().children(":eq(0)").text());
+                $("#btnSaveCustomer").text("Update");
+
+            });
+        }
+
+        function updateCustomer() {
+            let data = new FormData($("#customerForm")[0]);
 
             let json = {
                 nic: $("#cusNic").val(),
@@ -198,7 +224,7 @@ function manageCustomerPage() {
                     loadAllCustomers();
                 }
             });
-        })
+        }
 
     });
 }
