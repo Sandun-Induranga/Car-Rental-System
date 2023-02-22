@@ -49,15 +49,13 @@ function manageCustomerPage() {
     $("#btnCustomer").on("click", function () {
 
         $("#home").attr("style", "display : none !important");
-        $("#manageCustomers").attr("style", "display : block !important");
+        $("#viewCustomer").attr("style", "display : block !important");
+        $("#manageCustomers").attr("style", "display : none !important");
         $("#manageCar").attr("style", "display : none !important");
         $("#viewCar").attr("style", "display : none !important");
         $("#manageDriver").attr("style", "display : none !important");
         $("#drivers").attr("style", "display : none !important");
         $("#rents").attr("style", "display : none !important");
-        // manageCarPage();
-        // manageDriverPage();
-        // manageRentPage();
 
         // Upload NIC Image
         loadSelectedImage("#cusNicImage");
@@ -131,7 +129,7 @@ function manageCustomerPage() {
                         <td>${customer.license}</td>
                         <td><img src="${customer.nicImage}" alt="" srcset="" width="80px" height="60px"></td>
                         <td><img src="${customer.licenseImage}" alt="" srcset="" width="80px" height="60px"></td>
-                        <td><i class="bi bi-trash-fill text-white text-center btn btn-danger"></i></td>
+                        <td><i class="bi bi-pen-fill text-success text-center btn"></i><i class="bi bi-trash-fill text-danger text-center btn"></i></td>
                     </tr>
                     `);
                     }
@@ -470,7 +468,6 @@ function manageRentPage() {
 
                 for (let rentDetail of rent.rentDetails) {
                     $(`#${rent.rentId} > tbody`).append(`
-                   
                     <tr>
                       <td>${rentDetail.regNum}</td>
                       <td>${rentDetail.carCost}</td>
