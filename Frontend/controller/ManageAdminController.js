@@ -144,7 +144,7 @@ function manageCustomerPage() {
                         <td>${customer.license}</td>
                         <td><img src="${customer.nicImage}" alt="" srcset="" width="80px" height="60px"></td>
                         <td><img src="${customer.licenseImage}" alt="" srcset="" width="80px" height="60px"></td>
-                        <td><i class="bi bi-pen-fill text-success text-center btn"></i><i class="bi bi-trash-fill text-danger text-center btn"></i></td>
+                        <td><i class="bi bi-pen-fill text-success text-center btn btnUpdate"></i><i class="bi bi-trash-fill text-danger text-center btn"></i></td>
                     </tr>
                     `);
                     }
@@ -155,6 +155,50 @@ function manageCustomerPage() {
         }
 
         loadAllCustomers();
+
+        $(".btnUpdate").on("click", function () {
+
+            let json = {
+                nic: $("#cusNic").val(),
+                name: $("#cusName").val(),
+                license: $("#cusLicense").val(),
+                address: $("#cusAddress").val(),
+                contact: $("#cusContact").val(),
+                email: $("#cusEmail").val(),
+                user: {
+                    username: $("#cusUsername").val(),
+                    password: $("#cusPassword").val(),
+                }
+
+            }
+
+            $.ajax({
+                url: baseurl + "customer",
+                method: "put",
+                async: false,
+                data: JSON.stringify(json),
+                contentType: "application/json",
+                dataType: "json",
+                success: function (res) {
+
+                }
+            });
+
+            $.ajax({
+                url: baseurl + "customer?image",
+                method: "post",
+                async: false,
+                data: data,
+                contentType: false,
+                processData: false,
+                success: function (res) {
+                    alert(res.message);
+                    $("#manageCustomers").attr("style", "display : none !important");
+                    $("#viewCustomer").attr("style", "display : block !important");
+                    loadAllCustomers();
+                }
+            });
+        })
 
     });
 }
