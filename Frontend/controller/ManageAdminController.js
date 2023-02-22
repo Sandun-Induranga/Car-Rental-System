@@ -332,8 +332,36 @@ function manageCarPage() {
 
             let data = new FormData($("#carForm")[0]);
 
+            let json = {
+                regNum: $("#regNum").val(),
+                type: $("#carType").val(),
+                color: $("#color").val(),
+                brand: $("#brand").val(),
+                Availability: $("#availability").val(),
+                transmissionType: $("#transmission").val(),
+                fuelType: $("#fuelType").val(),
+                passengers: $("#passengers").val(),
+                price: $("#price").val(),
+                freeMileage: $("#freeMileage").val(),
+                extraKMPrice: $("#extraKMPrice").val(),
+                lostDamageCost: $("#lostDamageCost").val(),
+                meterValue: $("#meterValue").val(),
+            }
+
             $.ajax({
                 url: baseurl + "car",
+                async: false,
+                method: "post",
+                data: JSON.stringify(json),
+                contentType: "application/json",
+                dataType: "json",
+                success: function (res) {
+                    loadAllCars();
+                }
+            });
+
+            $.ajax({
+                url: baseurl + "car/image",
                 method: "post",
                 data: data,
                 contentType: false,
@@ -366,10 +394,10 @@ function manageCarPage() {
             }
 
             $.ajax({
-                url: baseurl + "car/image",
+                url: baseurl + "car",
                 async: false,
                 method: "put",
-                data: json,
+                data: JSON.stringify(json),
                 contentType: "application/json",
                 dataType: "json",
                 success: function (res) {
@@ -378,7 +406,7 @@ function manageCarPage() {
             });
 
             $.ajax({
-                url: baseurl + "car",
+                url: baseurl + "car/image",
                 async: false,
                 method: "post",
                 data: data,
