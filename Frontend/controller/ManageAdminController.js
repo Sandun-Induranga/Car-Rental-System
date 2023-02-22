@@ -44,6 +44,7 @@ manageCustomerPage();
 manageCarPage();
 manageDriverPage();
 manageRentPage();
+managePaymentsPage();
 
 function manageCustomerPage() {
     $("#btnCustomer").on("click", function () {
@@ -56,6 +57,7 @@ function manageCustomerPage() {
         $("#manageDriver").attr("style", "display : none !important");
         $("#drivers").attr("style", "display : none !important");
         $("#rents").attr("style", "display : none !important");
+        $("#payments").attr("style", "display : none !important");
 
         // Upload NIC Image
         loadSelectedImage("#cusNicImage");
@@ -322,6 +324,7 @@ function manageCarPage() {
         $("#manageDriver").attr("style", "display : none !important");
         $("#drivers").attr("style", "display : none !important");
         $("#rents").attr("style", "display : none !important");
+        $("#payments").attr("style", "display : none !important");
 
         loadSelectedImage("#front");
         loadSelectedImage("#back");
@@ -483,6 +486,7 @@ function manageDriverPage() {
         $("#manageDriver").attr("style", "display : block !important");
         $("#drivers").attr("style", "display : none !important");
         $("#rents").attr("style", "display : none !important");
+        $("#payments").attr("style", "display : none !important");
 
         // Upload License Image
         loadSelectedImage("#licenseImage");
@@ -521,6 +525,7 @@ function manageRentPage() {
         $("#manageDriver").attr("style", "display : none !important");
         $("#drivers").attr("style", "display : none !important");
         $("#rents").attr("style", "display : block !important");
+        $("#payments").attr("style", "display : none !important");
 
         $.ajax({
 
@@ -649,4 +654,22 @@ function manageRentPage() {
             });
         }
     });
+}
+
+function managePaymentsPage() {
+
+    $("#btnManagePayment").on("click", function () {
+
+        $("#home").attr("style", "display : none !important");
+        $("#viewCustomer").attr("style", "display : none !important");
+        $("#manageCustomers").attr("style", "display : none !important");
+        $("#manageCar").attr("style", "display : none !important");
+        $("#viewCar").attr("style", "display : none !important");
+        $("#manageDriver").attr("style", "display : none !important");
+        $("#drivers").attr("style", "display : none !important");
+        $("#rents").attr("style", "display : none !important");
+        $("#payments").attr("style", "display : block !important");
+
+    })
+
 }
