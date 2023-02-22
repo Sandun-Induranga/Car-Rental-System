@@ -7,6 +7,7 @@ import lk.easy.car_rental.util.ResponseUtil;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * @author : Sandun Induranga
@@ -34,9 +35,10 @@ public class CustomerController {
     }
 
     @PutMapping
-    public ResponseUtil saveImages(@RequestParam String nic, @ModelAttribute CustomerImageDTO imageDTO) {
+    public ResponseUtil saveImages(@RequestPart MultipartFile nicImage, @RequestPart MultipartFile licenseImage, @RequestParam String nic) {
 
-        customerService.saveImages(nic, imageDTO);
+        System.out.println(nic);
+        customerService.saveImages(nic, new CustomerImageDTO(nic, nicImage, licenseImage));
         return new ResponseUtil("OK", "Successfully Saved..!", "");
 
     }

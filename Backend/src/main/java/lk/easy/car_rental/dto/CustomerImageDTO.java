@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 @ToString
 public class CustomerImageDTO {
 
+    String nic;
     MultipartFile nicImage;
     MultipartFile licenseImage;
 
