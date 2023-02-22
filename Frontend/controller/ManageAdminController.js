@@ -46,9 +46,10 @@ manageDriverPage();
 manageRentPage();
 managePaymentsPage();
 
+
 function manageCustomerPage() {
     $("#btnCustomer").on("click", function () {
-
+        $('#viewCustomer').fadeIn();
         $("#home").attr("style", "display : none !important");
         $("#viewCustomer").attr("style", "display : block !important");
         $("#manageCustomers").attr("style", "display : none !important");
@@ -316,6 +317,7 @@ function manageCustomerPage() {
 function manageCarPage() {
     $("#btnCar").on("click", function () {
 
+        $('#viewCar').fadeIn();
         $("#home").attr("style", "display : none !important");
         $("#manageCustomers").attr("style", "display : none !important");
         $("#viewCustomer").attr("style", "display : none !important");
@@ -478,6 +480,7 @@ function manageCarPage() {
 function manageDriverPage() {
     $("#btnDriver").on("click", function () {
 
+        $('#manageDriver').fadeIn();
         $("#home").attr("style", "display : none !important");
         $("#viewCustomer").attr("style", "display : none !important");
         $("#manageCustomers").attr("style", "display : none !important");
@@ -517,6 +520,7 @@ function manageDriverPage() {
 function manageRentPage() {
     $("#btnRent").on("click", function () {
 
+        $('#rents').fadeIn();
         $("#home").attr("style", "display : none !important");
         $("#viewCustomer").attr("style", "display : none !important");
         $("#manageCustomers").attr("style", "display : none !important");
@@ -660,6 +664,7 @@ function managePaymentsPage() {
 
     $("#btnManagePayment").on("click", function () {
 
+        $('#payments').fadeIn();
         $("#home").attr("style", "display : none !important");
         $("#viewCustomer").attr("style", "display : none !important");
         $("#manageCustomers").attr("style", "display : none !important");
