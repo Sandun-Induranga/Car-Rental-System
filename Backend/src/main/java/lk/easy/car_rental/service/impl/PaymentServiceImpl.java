@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 /**
  * @author : Sandun Induranga
@@ -41,6 +42,11 @@ public class PaymentServiceImpl implements PaymentService {
         payment.setTime(LocalTime.now());
         paymentRepo.save(payment);
 
+    }
+
+    @Override
+    public List<PaymentDTO> loadAllPayments() throws RuntimeException {
+        return null;
     }
 
 }

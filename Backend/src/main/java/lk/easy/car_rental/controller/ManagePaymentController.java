@@ -28,4 +28,9 @@ public class ManagePaymentController {
 
     }
 
+    @GetMapping
+    public ResponseUtil getAllPayments() {
+
+    }
+
 }
