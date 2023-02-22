@@ -362,6 +362,17 @@ function manageCarPage() {
 
         $(".btnUpdate").on("click", function () {
 
+            regNum = $(this).parent().parent().children(":eq(6)").text();
+
+            $.ajax({
+                url: baseurl + "car?regNum="+regNum,
+                method: "put",
+                dataType:"json",
+                success: function (res) {
+                    loadAllCars();
+                }
+            });
+
         });
 
         loadAllCars();

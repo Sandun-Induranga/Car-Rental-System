@@ -44,8 +44,6 @@ public class CarServiceImpl implements CarService {
         Car car = mapper.map(carDTO, Car.class);
         try {
 
-            String serverPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getParentFile().getParentFile().getAbsolutePath();
-
             car.getPhotos().setFront(new WriteImageUtil().writeImage(carDTO.getPhotos().getFront(), Paths.get(WriteImageUtil.projectPath + "/image/bucket/car/front_" + carDTO.getRegNum() + ".jpeg")));
             car.getPhotos().setBack(new WriteImageUtil().writeImage(carDTO.getPhotos().getBack(), Paths.get(WriteImageUtil.projectPath + "/image/bucket/car/back_" + carDTO.getRegNum() + ".jpeg")));
             car.getPhotos().setSide(new WriteImageUtil().writeImage(carDTO.getPhotos().getSide(), Paths.get(WriteImageUtil.projectPath + "/image/bucket/car/side_" + carDTO.getRegNum() + ".jpeg")));

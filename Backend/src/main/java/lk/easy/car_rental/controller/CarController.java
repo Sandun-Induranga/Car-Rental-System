@@ -40,10 +40,17 @@ public class CarController {
     }
 
     @PostMapping(path = "/image")
-    public ResponseUtil saveImages(@ModelAttribute CarPhotoDTO carPhotoDTO){
+    public ResponseUtil saveImages(@ModelAttribute CarPhotoDTO carPhotoDTO) {
 
         carService.saveCarImages(carPhotoDTO);
         return new ResponseUtil("OK", "Successfully Saved..!", "");
+
+    }
+
+    @PutMapping(params = {"regNum"})
+    public ResponseUtil addToMaintains() {
+
+
 
     }
 
