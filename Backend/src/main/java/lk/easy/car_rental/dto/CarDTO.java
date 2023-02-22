@@ -33,5 +33,5 @@ public class CarDTO {
     private BigDecimal extraKMPrice;
     private BigDecimal lostDamageCost;
     private String meterValue;
-    private CarPhoto photos;
+    private CarPhotoDTO photos;
 }

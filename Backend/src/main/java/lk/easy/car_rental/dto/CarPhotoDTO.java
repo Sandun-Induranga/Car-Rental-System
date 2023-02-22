@@ -17,7 +17,6 @@ import org.springframework.web.multipart.MultipartFile;
 @ToString
 public class CarPhotoDTO {
 
-    private String nic;
     private MultipartFile front;
     private MultipartFile back;
     private MultipartFile side;

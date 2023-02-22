@@ -41,23 +41,23 @@ public class CarServiceImpl implements CarService {
 
         if (carRepo.existsById(carDTO.getRegNum())) throw new RuntimeException("Car Already Exist..!");
 
-        carRepo.save(mapper.map(carDTO, Car.class));
-//        try {
-//
-//            String serverPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getParentFile().getParentFile().getAbsolutePath();
-//
-//            car.getPhotos().setFront(new WriteImageUtil().writeImage(carDTO.getPhotos().getFront(), Paths.get(serverPath + "/bucket/car/front_" + carDTO.getRegNum() + ".jpeg")));
-//            car.getPhotos().setBack(new WriteImageUtil().writeImage(carDTO.getPhotos().getBack(), Paths.get(serverPath + "/bucket/car/back_" + carDTO.getRegNum() + ".jpeg")));
-//            car.getPhotos().setSide(new WriteImageUtil().writeImage(carDTO.getPhotos().getSide(), Paths.get(serverPath + "/bucket/car/side_" + carDTO.getRegNum() + ".jpeg")));
-//            car.getPhotos().setInterior(new WriteImageUtil().writeImage(carDTO.getPhotos().getInterior(), Paths.get(serverPath + "/bucket/car/interior_" + carDTO.getRegNum() + ".jpeg")));
-//
-//            carRepo.save(car);
-//
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        } catch (URISyntaxException e) {
-//            throw new RuntimeException(e);
-//        }
+        Car car = mapper.map(carDTO, Car.class);
+        try {
+
+            String serverPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getParentFile().getParentFile().getAbsolutePath();
+
+            car.getPhotos().setFront(new WriteImageUtil().writeImage(carDTO.getPhotos().getFront(), Paths.get(WriteImageUtil.projectPath + "/image/bucket/car/front_" + carDTO.getRegNum() + ".jpeg")));
+            car.getPhotos().setBack(new WriteImageUtil().writeImage(carDTO.getPhotos().getBack(), Paths.get(WriteImageUtil.projectPath + "/image/bucket/car/back_" + carDTO.getRegNum() + ".jpeg")));
+            car.getPhotos().setSide(new WriteImageUtil().writeImage(carDTO.getPhotos().getSide(), Paths.get(WriteImageUtil.projectPath + "/image/bucket/car/side_" + carDTO.getRegNum() + ".jpeg")));
+            car.getPhotos().setInterior(new WriteImageUtil().writeImage(carDTO.getPhotos().getInterior(), Paths.get(WriteImageUtil.projectPath + "/image/bucket/car/interior_" + carDTO.getRegNum() + ".jpeg")));
+
+            carRepo.save(car);
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -71,22 +71,22 @@ public class CarServiceImpl implements CarService {
     @Override
     public void saveCarImages(CarPhotoDTO carPhotoDTO) throws RuntimeException {
 
-        Car car = carRepo.findById(carPhotoDTO.getNic()).get();
+//        Car car = carRepo.findById(carPhotoDTO.getNic()).get();
 
-        try {
-
-            car.getPhotos().setFront(new WriteImageUtil().writeImage(carPhotoDTO.getFront(), Paths.get( WriteImageUtil.projectPath+"/bucket/car/front_" + car.getRegNum() + ".jpeg")));
-            car.getPhotos().setBack(new WriteImageUtil().writeImage(carPhotoDTO.getBack(), Paths.get( WriteImageUtil.projectPath+"/bucket/car/back_" + car.getRegNum() + ".jpeg")));
-            car.getPhotos().setSide(new WriteImageUtil().writeImage(carPhotoDTO.getSide(), Paths.get(WriteImageUtil.projectPath+"/bucket/car/side_" + car.getRegNum() + ".jpeg")));
-            car.getPhotos().setInterior(new WriteImageUtil().writeImage(carPhotoDTO.getInterior(), Paths.get( WriteImageUtil.projectPath+"/bucket/car/interior_" + car.getRegNum() + ".jpeg")));
-
-            carRepo.save(car);
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
-        }
+//        try {
+//
+////            car.getPhotos().setFront(new WriteImageUtil().writeImage(carPhotoDTO.getFront(), Paths.get( WriteImageUtil.projectPath+"/bucket/car/front_" + car.getRegNum() + ".jpeg")));
+////            car.getPhotos().setBack(new WriteImageUtil().writeImage(carPhotoDTO.getBack(), Paths.get( WriteImageUtil.projectPath+"/bucket/car/back_" + car.getRegNum() + ".jpeg")));
+////            car.getPhotos().setSide(new WriteImageUtil().writeImage(carPhotoDTO.getSide(), Paths.get(WriteImageUtil.projectPath+"/bucket/car/side_" + car.getRegNum() + ".jpeg")));
+////            car.getPhotos().setInterior(new WriteImageUtil().writeImage(carPhotoDTO.getInterior(), Paths.get( WriteImageUtil.projectPath+"/bucket/car/interior_" + car.getRegNum() + ".jpeg")));
+////
+////            carRepo.save(car);
+//
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        } catch (URISyntaxException e) {
+//            throw new RuntimeException(e);
+//        }
 
     }
 

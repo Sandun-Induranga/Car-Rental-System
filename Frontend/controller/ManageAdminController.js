@@ -342,94 +342,36 @@ function manageCarPage() {
             $("#btnSaveCar").text("Save");
         })
 
-        $("#btnSubmit").on("click", function () {
+        $("#btnSaveCar").on("click", function () {
 
             let data = new FormData($("#carForm")[0]);
-
-            let json = {
-                regNum: $("#regNum").val(),
-                type: $("#carType").val(),
-                color: $("#color").val(),
-                brand: $("#brand").val(),
-                Availability: $("#availability").val(),
-                transmissionType: $("#transmission").val(),
-                fuelType: $("#fuelType").val(),
-                passengers: $("#passengers").val(),
-                price: $("#price").val(),
-                freeMileage: $("#freeMileage").val(),
-                extraKMPrice: $("#extraKMPrice").val(),
-                lostDamageCost: $("#lostDamageCost").val(),
-                meterValue: $("#meterValue").val(),
-            }
 
             $.ajax({
                 url: baseurl + "car",
                 async: false,
+                data:data,
                 method: "post",
-                data: JSON.stringify(json),
-                contentType: "application/json",
-                dataType: "json",
-                success: function (res) {
-                    loadAllCars();
-                }
-            });
-
-            $.ajax({
-                url: baseurl + "car/image",
-                method: "post",
-                data: data,
                 contentType: false,
                 processData: false,
                 success: function (res) {
                     loadAllCars();
                 }
             });
+
+            // $.ajax({
+            //     url: baseurl + "car/image",
+            //     method: "post",
+            //     data: data,
+            //     contentType: false,
+            //     processData: false,
+            //     success: function (res) {
+            //         loadAllCars();
+            //     }
+            // });
 
         });
 
         $(".btnUpdate").on("click", function () {
-
-            let data = new FormData($("#carForm")[0]);
-
-            let json = {
-                regNum: $("#regNum").val(),
-                type: $("#carType").val(),
-                color: $("#color").val(),
-                brand: $("#brand").val(),
-                Availability: $("#availability").val(),
-                transmissionType: $("#transmission").val(),
-                fuelType: $("#fuelType").val(),
-                passengers: $("#passengers").val(),
-                price: $("#price").val(),
-                freeMileage: $("#freeMileage").val(),
-                extraKMPrice: $("#extraKMPrice").val(),
-                lostDamageCost: $("#lostDamageCost").val(),
-                meterValue: $("#meterValue").val(),
-            }
-
-            $.ajax({
-                url: baseurl + "car",
-                async: false,
-                method: "put",
-                data: JSON.stringify(json),
-                contentType: "application/json",
-                dataType: "json",
-                success: function (res) {
-                    loadAllCars();
-                }
-            });
-
-            $.ajax({
-                url: baseurl + "car/image",
-                async: false,
-                method: "post",
-                data: data,
-                contentType: false,
-                processData: false,
-                success: function (res) {
-                    loadAllCars();
-                }
-            });
 
         });
 

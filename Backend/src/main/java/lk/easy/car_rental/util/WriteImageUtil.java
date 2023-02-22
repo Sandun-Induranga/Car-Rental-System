@@ -19,7 +19,7 @@ public class WriteImageUtil {
         Files.write(location, file.getBytes());
         file.transferTo(location);
 
-        return location.toString().replace("/media/sandu/0559F5C021740317/GDSE/Project_Zone/IdeaProjects/Car_Rental_System/Frontend", "");
+        return location.toString().replace("/media/sandu/0559F5C021740317/GDSE/Project_Zone/IdeaProjects/Car_Rental_System/Frontend/assets", "");
 
     }
 

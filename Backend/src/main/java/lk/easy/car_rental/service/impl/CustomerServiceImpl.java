@@ -37,8 +37,8 @@ public class CustomerServiceImpl implements CustomerService {
     public void saveCustomer(CustomerDTO customerDTO) throws RuntimeException {
 
         if (customerRepo.existsById(customerDTO.getNic())) throw new RuntimeException("Customer Already Exits..!");
-
         customerRepo.save(mapper.map(customerDTO, Customer.class));
+
     }
 
     @Override
