@@ -73,6 +73,8 @@ $("#btnCustomer").on("click", function () {
         });
     });
 
+    loadAllCustomers();
+
     function loadAllCustomers() {
 
         $.ajax({
@@ -81,7 +83,19 @@ $("#btnCustomer").on("click", function () {
             dataType:"application/json",
             success: function (res) {
 
-
+                for (let customer of res.data) {
+                    $("#tblCustomer").append(`
+                    <tr>
+                        <td>${customer.nic}</td>
+                        <td>${customer.name}</td>
+                        <td>${customer.email}</td>
+                        <td>${customer.address}</td>
+                        <td>${customer.license}</td>
+                        <td>${customer.nicImage}</td>
+                        <td>${customer.licenseImage}</td>
+                    </tr>
+                    `);
+                }
 
             }
         });
