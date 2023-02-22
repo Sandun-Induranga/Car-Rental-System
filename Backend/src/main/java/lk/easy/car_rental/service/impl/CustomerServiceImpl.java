@@ -73,7 +73,7 @@ public class CustomerServiceImpl implements CustomerService {
             imageDTO.getNicImage().transferTo(nicLocation);
             imageDTO.getLicenseImage().transferTo(licenseLocation);
 
-            Customer customer = customerRepo.getCustomerByNic(nic);
+            Customer customer = customerRepo.findById(nic).get();
 
             customer.setNicImage(nicLocation.toString());
             customer.setLicenseImage(licenseLocation.toString());

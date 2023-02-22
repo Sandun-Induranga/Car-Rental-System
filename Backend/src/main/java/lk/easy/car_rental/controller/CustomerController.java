@@ -34,11 +34,10 @@ public class CustomerController {
 
     }
 
-    @PutMapping
-    public ResponseUtil saveImages(@RequestPart MultipartFile nicImage, @RequestPart MultipartFile licenseImage, @RequestParam String nic) {
+    @PostMapping(params = {"image"})
+    public ResponseUtil saveImages(@ModelAttribute CustomerImageDTO customerImageDTO) {
 
-        System.out.println(nic);
-        customerService.saveImages(nic, new CustomerImageDTO(nic, nicImage, licenseImage));
+        customerService.saveImages(customerImageDTO.getNic(), customerImageDTO);
         return new ResponseUtil("OK", "Successfully Saved..!", "");
 
     }

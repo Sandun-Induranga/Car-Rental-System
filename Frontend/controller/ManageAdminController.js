@@ -62,15 +62,15 @@ $("#btnCustomer").on("click", function () {
         let data = new FormData($("#customerForm")[0]);
 
         let json = {
-            nic:$("#cusNic").val(),
-            name:$("#cusName").val(),
-            license:$("#cusLicense").val(),
-            address:$("#cusAddress").val(),
-            contact:$("#cusContact").val(),
-            email:$("#cusEmail").val(),
-            user:{
-                username:$("#cusUsername").val(),
-                password:$("#cusPassword").val(),
+            nic: $("#cusNic").val(),
+            name: $("#cusName").val(),
+            license: $("#cusLicense").val(),
+            address: $("#cusAddress").val(),
+            contact: $("#cusContact").val(),
+            email: $("#cusEmail").val(),
+            user: {
+                username: $("#cusUsername").val(),
+                password: $("#cusPassword").val(),
             }
 
         }
@@ -78,19 +78,19 @@ $("#btnCustomer").on("click", function () {
         $.ajax({
             url: baseurl + "customer",
             method: "post",
-            async:false,
+            async: false,
             data: JSON.stringify(json),
             contentType: "application/json",
-            dataType:"json",
+            dataType: "json",
             success: function (res) {
 
             }
         });
 
         $.ajax({
-            url: baseurl + "customer",
-            method: "put",
-            async:false,
+            url: baseurl + "customer?image=",
+            method: "post",
+            async: false,
             data: data,
             contentType: false,
             processData: false,
@@ -108,7 +108,7 @@ $("#btnCustomer").on("click", function () {
         $.ajax({
             url: baseurl + "customer",
             method: "get",
-            dataType:"json",
+            dataType: "json",
             success: function (res) {
 
                 for (let customer of res.data) {
