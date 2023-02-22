@@ -75,7 +75,7 @@ function manageCustomerPage() {
             $("#viewCustomer").attr("style", "display : block !important");
             $(this).attr("style", "display : block !important");
             $("#btnSaveCustomer").text("Save");
-        })
+        });
 
         // Save Customer
         $("#btnSaveCustomer").on("click", function () {
@@ -327,6 +327,20 @@ function manageCarPage() {
         loadSelectedImage("#back");
         loadSelectedImage("#side");
         loadSelectedImage("#interior");
+
+        $("#btnAddNewCar").on("click", function () {
+            $("#manageCar").attr("style", "display : block !important");
+            $("#viewCar").attr("style", "display : none !important");
+            $(this).attr("style", "display : block !important");
+            $("#btnSaveCar").text("Save");
+        });
+
+        $("#btnBackCar").on("click", function () {
+            $("#manageCar").attr("style", "display : none !important");
+            $("#viewCar").attr("style", "display : block !important");
+            $(this).attr("style", "display : block !important");
+            $("#btnSaveCar").text("Save");
+        })
 
         $("#btnSubmit").on("click", function () {
 
