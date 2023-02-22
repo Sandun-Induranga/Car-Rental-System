@@ -40,78 +40,87 @@ $.ajax({
 //     });
 // }
 
-$("#btnCustomer").on("click", function () {
+manageCustomerPage();
+manageCarPage();
+manageDriverPage();
+manageRentPage();
 
-    $("#home").attr("style", "display : none !important");
-    $("#manageCustomers").attr("style", "display : block !important");
-    $("#manageCar").attr("style", "display : none !important");
-    $("#viewCar").attr("style", "display : none !important");
-    $("#manageDriver").attr("style", "display : none !important");
-    $("#drivers").attr("style", "display : none !important");
-    $("#rents").attr("style", "display : none !important");
+function manageCustomerPage() {
+    $("#btnCustomer").on("click", function () {
 
-    // Upload NIC Image
-    loadSelectedImage("#cusNicImage");
+        $("#home").attr("style", "display : none !important");
+        $("#manageCustomers").attr("style", "display : block !important");
+        $("#manageCar").attr("style", "display : none !important");
+        $("#viewCar").attr("style", "display : none !important");
+        $("#manageDriver").attr("style", "display : none !important");
+        $("#drivers").attr("style", "display : none !important");
+        $("#rents").attr("style", "display : none !important");
+        manageCarPage();
+        manageDriverPage();
+        manageRentPage();
 
-    // Upload License Image
-    loadSelectedImage("#cusLicenseImage");
+        // Upload NIC Image
+        loadSelectedImage("#cusNicImage");
 
-    // Save Customer
-    $("#btnSaveCustomer").on("click", function () {
+        // Upload License Image
+        loadSelectedImage("#cusLicenseImage");
 
-        let data = new FormData($("#customerForm")[0]);
+        // Save Customer
+        $("#btnSaveCustomer").on("click", function () {
 
-        let json = {
-            nic: $("#cusNic").val(),
-            name: $("#cusName").val(),
-            license: $("#cusLicense").val(),
-            address: $("#cusAddress").val(),
-            contact: $("#cusContact").val(),
-            email: $("#cusEmail").val(),
-            user: {
-                username: $("#cusUsername").val(),
-                password: $("#cusPassword").val(),
-            }
+            let data = new FormData($("#customerForm")[0]);
 
-        }
-
-        $.ajax({
-            url: baseurl + "customer",
-            method: "post",
-            async: false,
-            data: JSON.stringify(json),
-            contentType: "application/json",
-            dataType: "json",
-            success: function (res) {
+            let json = {
+                nic: $("#cusNic").val(),
+                name: $("#cusName").val(),
+                license: $("#cusLicense").val(),
+                address: $("#cusAddress").val(),
+                contact: $("#cusContact").val(),
+                email: $("#cusEmail").val(),
+                user: {
+                    username: $("#cusUsername").val(),
+                    password: $("#cusPassword").val(),
+                }
 
             }
+
+            $.ajax({
+                url: baseurl + "customer",
+                method: "post",
+                async: false,
+                data: JSON.stringify(json),
+                contentType: "application/json",
+                dataType: "json",
+                success: function (res) {
+
+                }
+            });
+
+            $.ajax({
+                url: baseurl + "customer?image=",
+                method: "post",
+                async: false,
+                data: data,
+                contentType: false,
+                processData: false,
+                success: function (res) {
+
+                }
+            });
+
         });
 
-        $.ajax({
-            url: baseurl + "customer?image=",
-            method: "post",
-            async: false,
-            data: data,
-            contentType: false,
-            processData: false,
-            success: function (res) {
+        function loadAllCustomers() {
 
-            }
-        });
+            $.ajax({
+                url: baseurl + "customer",
+                method: "get",
+                dataType: "json",
+                success: function (res) {
 
-    });
-
-    function loadAllCustomers() {
-
-        $.ajax({
-            url: baseurl + "customer",
-            method: "get",
-            dataType: "json",
-            success: function (res) {
-
-                for (let customer of res.data) {
-                    console.log(customer)
-                    $("#tblCustomer").append(`
+                    for (let customer of res.data) {
+                        console.log(customer)
+                        $("#tblCustomer").append(`
                     <tr class="text-secondary">
                         <td>${customer.nic}</td>
                         <td>${customer.name}</td>
@@ -120,18 +129,20 @@ $("#btnCustomer").on("click", function () {
                         <td>${customer.license}</td>
                         <td><img src="${customer.nicImage}" alt="" srcset="" width="80px" height="60px"></td>
                         <td><img src="${customer.licenseImage}" alt="" srcset="" width="80px" height="60px"></td>
+                        <td><i class="bi bi-trash-fill text-white text-center btn btn-danger"></i></td>
                     </tr>
                     `);
+                    }
+
                 }
+            });
 
-            }
-        });
+        }
 
-    }
+        loadAllCustomers();
 
-    loadAllCustomers();
-
-});
+    });
+}
 
 
 // /** ********************************************************* Rent ***************************************************** **/
@@ -225,49 +236,54 @@ $("#btnCustomer").on("click", function () {
 /** *************************************************************** Car ***************************************************** **/
 
 
-$("#btnCar").on("click", function () {
+function manageCarPage() {
+    $("#btnCar").on("click", function () {
 
-    $("#home").attr("style", "display : none !important");
-    $("#manageCustomers").attr("style", "display : none !important");
-    $("#manageCar").attr("style", "display : none !important");
-    $("#viewCar").attr("style", "display : block !important");
-    $("#manageDriver").attr("style", "display : none !important");
-    $("#drivers").attr("style", "display : none !important");
-    $("#rents").attr("style", "display : none !important");
+        $("#home").attr("style", "display : none !important");
+        $("#manageCustomers").attr("style", "display : none !important");
+        $("#viewCustomer").attr("style", "display : none !important");
+        $("#manageCar").attr("style", "display : none !important");
+        $("#viewCar").attr("style", "display : block !important");
+        $("#manageDriver").attr("style", "display : none !important");
+        $("#drivers").attr("style", "display : none !important");
+        $("#rents").attr("style", "display : none !important");
 
-    loadSelectedImage("#front");
-    loadSelectedImage("#back");
-    loadSelectedImage("#side");
-    loadSelectedImage("#interior");
+        loadSelectedImage("#front");
+        loadSelectedImage("#back");
+        loadSelectedImage("#side");
+        loadSelectedImage("#interior");
+        manageCustomerPage();
+        manageDriverPage();
+        manageRentPage();
 
-    $("#btnSubmit").on("click", function () {
+        $("#btnSubmit").on("click", function () {
 
-        let data = new FormData($("#carForm")[0]);
+            let data = new FormData($("#carForm")[0]);
 
-        $.ajax({
-            url: baseurl + "car",
-            method: "post",
-            data: data,
-            contentType: false,
-            processData: false,
-            success: function (res) {
+            $.ajax({
+                url: baseurl + "car",
+                method: "post",
+                data: data,
+                contentType: false,
+                processData: false,
+                success: function (res) {
 
-            }
+                }
+            });
+
         });
 
-    });
+        loadAllCars();
 
-    loadAllCars();
+        function loadAllCars() {
 
-    function loadAllCars() {
+            $.ajax({
+                url: baseurl + "car",
+                method: "get",
 
-        $.ajax({
-            url: baseurl + "car",
-            method: "get",
-
-            success: function (res) {
-                for (let car of res.data) {
-                    $("#cars").append(`<div class="col col-12 col-md-5 col-lg-3">
+                success: function (res) {
+                    for (let car of res.data) {
+                        $("#cars").append(`<div class="col col-12 col-md-5 col-lg-3">
             <div class="card">
                 <img src="../assets/image/background.png" class="card-img-top" alt="car">
 
@@ -318,97 +334,108 @@ $("#btnCar").on("click", function () {
 
             </div>
         </div>`);
-                    getDetail();
+                        getDetail();
+                    }
                 }
-            }
 
-        });
+            });
 
-    }
+        }
 
-    function getDetail() {
+        function getDetail() {
 
-        $(".rent").on("click", function () {
+            $(".rent").on("click", function () {
 
-            regNum = $(this).parent().parent().children(":eq(6)").text();
-            dailyMileage = $(this).parent().parent().children(":eq(4)").children(":eq(1)").text();
-            monthlyMileage = $(this).parent().parent().children(":eq(4)").children(":eq(2)").text();
-            dailyPrice = $(this).parent().parent().children(":eq(4)").children(":eq(1)").text();
-            monthlyPrice = $(this).parent().parent().children(":eq(4)").children(":eq(2)").text();
-            console.log(regNum + dailyMileage + monthlyMileage + dailyPrice + monthlyPrice);
+                regNum = $(this).parent().parent().children(":eq(6)").text();
+                dailyMileage = $(this).parent().parent().children(":eq(4)").children(":eq(1)").text();
+                monthlyMileage = $(this).parent().parent().children(":eq(4)").children(":eq(2)").text();
+                dailyPrice = $(this).parent().parent().children(":eq(4)").children(":eq(1)").text();
+                monthlyPrice = $(this).parent().parent().children(":eq(4)").children(":eq(2)").text();
+                console.log(regNum + dailyMileage + monthlyMileage + dailyPrice + monthlyPrice);
 
-        });
+            });
 
-    }
+        }
 
-});
+    });
+
+}
 
 
 /** ********************************************************** Driver ****************************************************** **/
 
 
-$("#btnDriver").on("click", function () {
+function manageDriverPage() {
+    $("#btnDriver").on("click", function () {
 
-    $("#home").attr("style", "display : none !important");
-    $("#manageCustomers").attr("style", "display : none !important");
-    $("#manageCar").attr("style", "display : none !important");
-    $("#viewCar").attr("style", "display : none !important");
-    $("#manageDriver").attr("style", "display : block !important");
-    $("#drivers").attr("style", "display : none !important");
-    $("#rents").attr("style", "display : none !important");
+        $("#home").attr("style", "display : none !important");
+        $("#manageCustomers").attr("style", "display : none !important");
+        $("#manageCar").attr("style", "display : none !important");
+        $("#viewCar").attr("style", "display : none !important");
+        $("#manageDriver").attr("style", "display : block !important");
+        $("#drivers").attr("style", "display : none !important");
+        $("#rents").attr("style", "display : none !important");
+        manageCustomerPage();
+        manageCarPage();
+        manageRentPage();
 
-    // Upload License Image
-    loadSelectedImage("#licenseImage");
+        // Upload License Image
+        loadSelectedImage("#licenseImage");
 
-    $("#btnSaveDriver").on("click", function () {
+        $("#btnSaveDriver").on("click", function () {
 
-        let data = new FormData($("#driverForm")[0]);
+            let data = new FormData($("#driverForm")[0]);
 
-        $.ajax({
-            url: baseurl + "driver",
-            method: "post",
-            data: data,
-            contentType: false,
-            processData: false,
-            success: function (res) {
+            $.ajax({
+                url: baseurl + "driver",
+                method: "post",
+                data: data,
+                contentType: false,
+                processData: false,
+                success: function (res) {
 
-            }
+                }
+            });
         });
-    });
 
-});
+    });
+}
 
 
 /** ********************************************************** Rent ****************************************************** **/
 
 
-$("#btnRent").on("click", function () {
+function manageRentPage() {
+    $("#btnRent").on("click", function () {
 
-    $("#home").attr("style", "display : none !important");
-    $("#manageCustomers").attr("style", "display : none !important");
-    $("#manageCar").attr("style", "display : none !important");
-    $("#viewCar").attr("style", "display : none !important");
-    $("#manageDriver").attr("style", "display : none !important");
-    $("#drivers").attr("style", "display : none !important");
-    $("#rents").attr("style", "display : flex !important");
+        $("#home").attr("style", "display : none !important");
+        $("#manageCustomers").attr("style", "display : none !important");
+        $("#manageCar").attr("style", "display : none !important");
+        $("#viewCar").attr("style", "display : none !important");
+        $("#manageDriver").attr("style", "display : none !important");
+        $("#drivers").attr("style", "display : none !important");
+        $("#rents").attr("style", "display : flex !important");
+        manageCustomerPage();
+        manageCarPage();
+        manageDriverPage();
 
-    $.ajax({
+        $.ajax({
 
-        url: baseurl + "rent/all",
-        method: "get",
-        contentType: "application/json",
-        dataType: "json",
-        success: function (res) {
-            loadCards(res);
-        }
+            url: baseurl + "rent/all",
+            method: "get",
+            contentType: "application/json",
+            dataType: "json",
+            success: function (res) {
+                loadCards(res);
+            }
 
-    });
+        });
 
-    function loadCards(res) {
+        function loadCards(res) {
 
-        for (let rent of res.data) {
+            for (let rent of res.data) {
 
-            $("#rent-context").append(`
+                $("#rent-context").append(`
             <div class="card text-center p-2 w-50 shadow">
                 <div class="card-body" id="${res.rentId}">
                     <h5 class="card-title">${rent.rentId}</h5>
@@ -441,10 +468,10 @@ $("#btnRent").on("click", function () {
             </div>
             `);
 
-            $(`#${res.rentId} > tbody`).empty();
+                $(`#${res.rentId} > tbody`).empty();
 
-            for (let rentDetail of rent.rentDetails) {
-                $(`#${rent.rentId} > tbody`).append(`
+                for (let rentDetail of rent.rentDetails) {
+                    $(`#${rent.rentId} > tbody`).append(`
                    
                     <tr>
                       <td>${rentDetail.regNum}</td>
@@ -453,68 +480,69 @@ $("#btnRent").on("click", function () {
                       <td>${rentDetail.nic == null ? "--" : rentDetail.nic}</td>
                     </tr>  
                 `);
+                }
+
             }
+
+            bindAcceptEvent();
+            bindManagePayment();
+            bindPayEvent()
 
         }
 
-        bindAcceptEvent();
-        bindManagePayment();
-        bindPayEvent()
+        function bindAcceptEvent() {
+            $(".btnAccept").on("click", function () {
 
-    }
+                let text = $(this).parent().parent().children(":eq(0)").children(":eq(0)").text();
 
-    function bindAcceptEvent() {
-        $(".btnAccept").on("click", function () {
+                $.ajax({
+                    url: baseurl + `rent?rentId=${text}`,
+                    method: "put",
+                    dataType: "json",
+                    contentType: "application/json",
+                    success: function (res) {
 
-            let text = $(this).parent().parent().children(":eq(0)").children(":eq(0)").text();
+                    }
+                });
 
-            $.ajax({
-                url: baseurl + `rent?rentId=${text}`,
-                method: "put",
-                dataType: "json",
-                contentType: "application/json",
-                success: function (res) {
+            });
+        }
 
-                }
+
+        function bindPayEvent() {
+
+            $(".pay").on("click", function () {
+                rentId = $(this).parent().parent().children(":eq(0)").children(":eq(0)").text();
             });
 
-        });
-    }
+        }
 
+        function bindManagePayment() {
+            $("#btnPayment").on("click", function () {
 
-    function bindPayEvent() {
-
-        $(".pay").on("click", function () {
-            rentId = $(this).parent().parent().children(":eq(0)").children(":eq(0)").text();
-        });
-
-    }
-
-    function bindManagePayment() {
-        $("#btnPayment").on("click", function () {
-
-            let json = {
-                balance: $("#balance").val(),
-                cash: $("#cash").val(),
-                description: $("#description").val(),
-                total: $("#total").val(),
-                type: $("#type").val(),
-                rentId: {
-                    rentId: rentId
+                let json = {
+                    balance: $("#balance").val(),
+                    cash: $("#cash").val(),
+                    description: $("#description").val(),
+                    total: $("#total").val(),
+                    type: $("#type").val(),
+                    rentId: {
+                        rentId: rentId
+                    }
                 }
-            }
 
-            $.ajax({
-                url: baseurl + `payment`,
-                method: "post",
-                data: JSON.stringify(json),
-                dataType: "json",
-                contentType: "application/json",
-                success: function (res) {
+                $.ajax({
+                    url: baseurl + `payment`,
+                    method: "post",
+                    data: JSON.stringify(json),
+                    dataType: "json",
+                    contentType: "application/json",
+                    success: function (res) {
 
-                }
+                    }
+                });
+
             });
-
-        });
-    }
-});
+        }
+    });
+}
