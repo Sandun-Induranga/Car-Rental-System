@@ -55,9 +55,9 @@ function manageCustomerPage() {
         $("#manageDriver").attr("style", "display : none !important");
         $("#drivers").attr("style", "display : none !important");
         $("#rents").attr("style", "display : none !important");
-        manageCarPage();
-        manageDriverPage();
-        manageRentPage();
+        // manageCarPage();
+        // manageDriverPage();
+        // manageRentPage();
 
         // Upload NIC Image
         loadSelectedImage("#cusNicImage");
@@ -118,8 +118,10 @@ function manageCustomerPage() {
                 dataType: "json",
                 success: function (res) {
 
+                    $("#tblCustomer").empty();
+
                     for (let customer of res.data) {
-                        console.log(customer)
+
                         $("#tblCustomer").append(`
                     <tr class="text-secondary">
                         <td>${customer.nic}</td>
@@ -252,9 +254,6 @@ function manageCarPage() {
         loadSelectedImage("#back");
         loadSelectedImage("#side");
         loadSelectedImage("#interior");
-        manageCustomerPage();
-        manageDriverPage();
-        manageRentPage();
 
         $("#btnSubmit").on("click", function () {
 
@@ -282,6 +281,9 @@ function manageCarPage() {
                 method: "get",
 
                 success: function (res) {
+
+                    $("#cars").empty();
+
                     for (let car of res.data) {
                         $("#cars").append(`<div class="col col-12 col-md-5 col-lg-3">
             <div class="card">
@@ -375,9 +377,6 @@ function manageDriverPage() {
         $("#manageDriver").attr("style", "display : block !important");
         $("#drivers").attr("style", "display : none !important");
         $("#rents").attr("style", "display : none !important");
-        manageCustomerPage();
-        manageCarPage();
-        manageRentPage();
 
         // Upload License Image
         loadSelectedImage("#licenseImage");
@@ -415,9 +414,6 @@ function manageRentPage() {
         $("#manageDriver").attr("style", "display : none !important");
         $("#drivers").attr("style", "display : none !important");
         $("#rents").attr("style", "display : flex !important");
-        manageCustomerPage();
-        manageCarPage();
-        manageDriverPage();
 
         $.ajax({
 
@@ -432,6 +428,8 @@ function manageRentPage() {
         });
 
         function loadCards(res) {
+
+            $("#rent-context").empty();
 
             for (let rent of res.data) {
 
