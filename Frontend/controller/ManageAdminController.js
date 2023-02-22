@@ -305,6 +305,15 @@ $("#btnDriver").on("click", function () {
 });
 
 $("#btnRent").on("click", function () {
+
+    $("#home").attr("style", "display : none !important");
+    $("#manageCustomers").attr("style", "display : none !important");
+    $("#manageCar").attr("style", "display : none !important");
+    $("#viewCar").attr("style", "display : none !important");
+    $("#manageDriver").attr("style", "display : none !important");
+    $("#drivers").attr("style", "display : none !important");
+    $("#rents").attr("style", "display : flex !important");
+
     $.ajax({
 
         url: baseurl + "rent/all",
