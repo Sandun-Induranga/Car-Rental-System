@@ -340,7 +340,7 @@ function manageCarPage() {
             $("#viewCar").attr("style", "display : block !important");
             $(this).attr("style", "display : block !important");
             $("#btnSaveCar").text("Save");
-        })
+        });
 
         $("#btnSaveCar").on("click", function () {
 
@@ -363,7 +363,7 @@ function manageCarPage() {
         function bindUpdateEvent() {
             $(".btnUpdate").on("click", function () {
 
-                regNum = $(this).parent().parent().children(":eq(6)").text();
+                regNum = $(this).parent().parent().children(":eq(6)").children(":eq(0)").text().trim();
 
                 $.ajax({
                     url: baseurl + "car?regNum="+regNum,
