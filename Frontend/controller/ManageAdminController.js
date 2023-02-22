@@ -356,9 +356,9 @@ $("#btnRent").on("click", function () {
                     </table>
                 </div>
                 <section class="mb-2">
-                    <button class="btn btn-success me-2 btnAccept">Accept</button>
-                    <button class="btn btn-success me-2 btn-warning pay" data-bs-toggle="modal" data-bs-target="#paymentModel">Pay</button>
-                    <button class="btn btn-danger">Reject</button>
+                    <button class="btn btn-success me-2 btnAccept"><i class="bi bi-calendar2-check"></i> Accept</button>
+                    <button class="btn btn-success me-2 btn-warning pay" data-bs-toggle="modal" data-bs-target="#paymentModel"><i class="bi bi-paypal"></i> Pay</button>
+                    <button class="btn btn-danger"><i class="bi bi-calendar-x-fill"></i> Reject</button>
                 </section>
             </div>
             `);
