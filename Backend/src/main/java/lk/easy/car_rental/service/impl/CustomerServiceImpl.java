@@ -58,7 +58,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public List<CustomerDTO> saveImages(String nic, CustomerImageDTO imageDTO) throws RuntimeException {
+    public void saveImages(String nic, CustomerImageDTO imageDTO) throws RuntimeException {
         try {
             byte[] nicFileBytes = imageDTO.getNicImage().getBytes();
             byte[] licenseFileBytes = imageDTO.getLicenseImage().getBytes();
