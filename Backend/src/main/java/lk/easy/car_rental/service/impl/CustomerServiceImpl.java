@@ -73,8 +73,12 @@ public class CustomerServiceImpl implements CustomerService {
             imageDTO.getNicImage().transferTo(nicLocation);
             imageDTO.getLicenseImage().transferTo(licenseLocation);
 
+            Customer customer = customerRepo.getCustomerByNic(nic);
+
             customer.setNicImage(nicLocation.toString());
             customer.setLicenseImage(licenseLocation.toString());
+
+            customerRepo.save(customer);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
