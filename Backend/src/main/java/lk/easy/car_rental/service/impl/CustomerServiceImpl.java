@@ -76,8 +76,8 @@ public class CustomerServiceImpl implements CustomerService {
 
             Customer customer = customerRepo.findById(nic).get();
 
-            customer.setNicImage("/image/bucket/customer/nic/nic_" + nic + ".jpeg");
-            customer.setLicenseImage("/image/bucket/customer/nic/nic_" + nic + ".jpeg");
+            customer.setNicImage("/assets/image/bucket/customer/nic/nic_" + nic + ".jpeg");
+            customer.setLicenseImage("/assets/image/bucket/customer/license/license_" + nic + ".jpeg");
 
             customerRepo.save(customer);
 

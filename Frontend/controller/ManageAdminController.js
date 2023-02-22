@@ -63,6 +63,12 @@ function manageCustomerPage() {
         // Upload License Image
         loadSelectedImage("#cusLicenseImage");
 
+        $("#btnAddCustomer").on("click", function () {
+            $("#manageCustomers").attr("style", "display : block !important");
+            $("#viewCustomer").attr("style", "display : none !important");
+            $(this).attr("style", "display : block !important");
+        })
+
         // Save Customer
         $("#btnSaveCustomer").on("click", function () {
 
@@ -102,7 +108,9 @@ function manageCustomerPage() {
                 contentType: false,
                 processData: false,
                 success: function (res) {
-
+                    alert(res.message);
+                    $("#manageCustomers").attr("style", "display : none !important");
+                    $("#viewCustomer").attr("style", "display : block !important");
                 }
             });
 
