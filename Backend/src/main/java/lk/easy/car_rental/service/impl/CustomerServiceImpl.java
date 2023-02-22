@@ -35,6 +35,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Autowired
     CustomerRepo customerRepo;
 
+    @Autowired
     ModelMapper mapper;
 
     @Override

@@ -101,8 +101,6 @@ $("#btnCustomer").on("click", function () {
 
     });
 
-    loadAllCustomers();
-
     function loadAllCustomers() {
 
         $.ajax({
@@ -130,6 +128,8 @@ $("#btnCustomer").on("click", function () {
         });
 
     }
+
+    loadAllCustomers();
 
 });
 

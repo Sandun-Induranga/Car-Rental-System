@@ -26,9 +26,8 @@ public class CustomerController {
     ModelMapper modelMapper;
 
     @PostMapping
-    public ResponseUtil saveCustomer(/*@RequestParam String username, @RequestParam String password,*/ @RequestBody CustomerDTO customerDTO) {
+    public ResponseUtil saveCustomer(@RequestBody CustomerDTO customerDTO) {
 
-//        customerDTO.setUser(new UserDTO(username, password, "Customer"));
         customerService.saveCustomer(customerDTO);
         return new ResponseUtil("OK", "Successfully Saved..!", "");
 
