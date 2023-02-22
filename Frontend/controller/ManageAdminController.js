@@ -98,7 +98,7 @@ function manageCustomerPage() {
 
             $.ajax({
                 url: baseurl + "customer",
-                method: "post",
+                method: $("#btnSaveCustomer").text() == "Save" ? "post" : "put",
                 async: false,
                 data: JSON.stringify(json),
                 contentType: "application/json",
@@ -107,6 +107,10 @@ function manageCustomerPage() {
 
                 }
             });
+
+            if ($('#cusNicImage').get(0).files.length === 0 || $('#cusLicenseImage').get(0).files.length === 0) {
+                return;
+            }
 
             $.ajax({
                 url: baseurl + "customer?image",
@@ -119,9 +123,9 @@ function manageCustomerPage() {
                     alert(res.message);
                     $("#manageCustomers").attr("style", "display : none !important");
                     $("#viewCustomer").attr("style", "display : block !important");
-                    loadAllCustomers();
                 }
             });
+            loadAllCustomers();
 
         });
 
@@ -144,9 +148,12 @@ function manageCustomerPage() {
                         <td>${customer.email}</td>
                         <td>${customer.address}</td>
                         <td>${customer.license}</td>
+                        <td>${customer.user.username}</td>
+                        <td>${customer.user.password}</td>
+                        <td>${customer.contact}</td>
                         <td><img src="${customer.nicImage}" alt="" srcset="" width="80px" height="60px"></td>
                         <td><img src="${customer.licenseImage}" alt="" srcset="" width="80px" height="60px"></td>
-                        <td><i class="bi bi-pen-fill text-success text-center btn btnUpdate"></i><i class="bi bi-trash-fill text-danger text-center btn"></i></td>
+                        <td><i class="bi bi-pen-fill text-success text-center btn btnUpdate"></i><i class="bi bi-trash-fill text-danger text-center btn btnDelete"></i></td>
                     </tr>
                     `);
                     }
@@ -157,7 +164,6 @@ function manageCustomerPage() {
             });
 
 
-
         }
 
         loadAllCustomers();
@@ -165,66 +171,45 @@ function manageCustomerPage() {
         function bindUpdateEvent() {
             $(".btnUpdate").on("click", function () {
 
-                alert($(this).parent().parent().children(":eq(0)").text())
-
                 $("#cusNic").val($(this).parent().parent().children(":eq(0)").text());
-                $("#cusName").val($(this).parent().parent().children(":eq(0)").text());
-                $("#cusLicense").val($(this).parent().parent().children(":eq(0)").text());
-                $("#cusAddress").val($(this).parent().parent().children(":eq(0)").text());
-                $("#cusContact").val($(this).parent().parent().children(":eq(0)").text());
-                $("#cusEmail").val($(this).parent().parent().children(":eq(0)").text());
+                $("#cusName").val($(this).parent().parent().children(":eq(1)").text());
+                $("#cusLicense").val($(this).parent().parent().children(":eq(4)").text());
+                $("#cusAddress").val($(this).parent().parent().children(":eq(3)").text());
+                $("#cusContact").val($(this).parent().parent().children(":eq(7)").text());
+                $("#cusEmail").val($(this).parent().parent().children(":eq(2)").text());
+                $("#cusUsername").val($(this).parent().parent().children(":eq(5)").text());
+                $("#cusPassword").val($(this).parent().parent().children(":eq(6)").text());
 
-                $("#cusUsername").val($(this).parent().parent().children(":eq(0)").text());
-                $("#cusPassword").val($(this).parent().parent().children(":eq(0)").text());
+                $("#manageCustomers").attr("style", "display : block !important");
+                $("#viewCustomer").attr("style", "display : none !important");
+                $(this).attr("style", "display : block !important");
                 $("#btnSaveCustomer").text("Update");
 
             });
         }
 
-        function updateCustomer() {
-            let data = new FormData($("#customerForm")[0]);
+        function bindDeleteEvent() {
+            $(".btnUpdate").on("click", function () {
 
-            let json = {
-                nic: $("#cusNic").val(),
-                name: $("#cusName").val(),
-                license: $("#cusLicense").val(),
-                address: $("#cusAddress").val(),
-                contact: $("#cusContact").val(),
-                email: $("#cusEmail").val(),
-                user: {
-                    username: $("#cusUsername").val(),
-                    password: $("#cusPassword").val(),
-                }
+                let nic = $("#cusNic").val($(this).parent().parent().children(":eq(0)").text());
 
-            }
+                $.ajax({
+                    url: baseurl + "customer?nic=" + nic,
+                    method: "delete",
+                    async: false,
+                    data: nic,
+                    contentType: false,
+                    processData: false,
+                    success: function (res) {
+                        alert(res.message);
+                        $("#manageCustomers").attr("style", "display : none !important");
+                        $("#viewCustomer").attr("style", "display : block !important");
+                    }
+                });
 
-            $.ajax({
-                url: baseurl + "customer",
-                method: "put",
-                async: false,
-                data: JSON.stringify(json),
-                contentType: "application/json",
-                dataType: "json",
-                success: function (res) {
-
-                }
-            });
-
-            $.ajax({
-                url: baseurl + "customer?image",
-                method: "post",
-                async: false,
-                data: data,
-                contentType: false,
-                processData: false,
-                success: function (res) {
-                    alert(res.message);
-                    $("#manageCustomers").attr("style", "display : none !important");
-                    $("#viewCustomer").attr("style", "display : block !important");
-                    loadAllCustomers();
-                }
             });
         }
+
 
     });
 }
