@@ -73,6 +73,21 @@ $("#btnCustomer").on("click", function () {
         });
     });
 
+    function loadAllCustomers() {
+
+        $.ajax({
+            url: baseurl + "customer",
+            method: "get",
+            dataType:"application/json",
+            success: function (res) {
+
+
+
+            }
+        });
+
+    }
+
 });
 
 
@@ -196,6 +211,7 @@ $("#btnCar").on("click", function () {
 
             }
         });
+
     });
 
     loadAllCars();
