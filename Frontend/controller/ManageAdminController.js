@@ -675,6 +675,21 @@ function managePaymentsPage() {
         $("#rents").attr("style", "display : none !important");
         $("#payments").attr("style", "display : block !important");
 
-    })
+    });
+
+    function loadAllPayments() {
+
+        $.ajax({
+            url: baseurl + `payment`,
+            method: "get",
+            dataType: "json",
+            success: function (res) {
+                $("#tblPayment").append(`
+                    
+                `)
+            }
+        });
+
+    }
 
 }
