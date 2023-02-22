@@ -216,6 +216,11 @@
                 </main>
 
                 <main class="mt-5" id="manageCar">
+
+                    <section>
+                        <button class="btn btn-dark" id="btnBackCar"><i class="bi bi-backspace-fill"></i> Back</button>
+                    </section>
+
                     <form class="row justify-content-between m-5 p-5 rounded-5 bg-white shadow-sm" id="carForm">
                         <div class="mb-3 col-md-5">
                             <label for="regNum" class="form-label">Register Number</label>
@@ -578,6 +583,29 @@
                             </div>
                         </div>
                     </div>
+                </main>
+
+                <main class="mt-5" id="payments">
+                    <section class="p-5 shadow-sm w-100 overflow-scroll">
+                        <table class="table table-striped table-responsive-xxl table-responsive">
+                            <thead class="table-dark">
+                            <tr>
+                                <th scope="col">Payment ID</th>
+                                <th scope="col">Payment Type</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Total</th>
+                                <th scope="col">Cash</th>
+                                <th scope="col">Balance</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Time</th>
+                                <th scope="col">Option</th>
+                            </tr>
+                            </thead>
+                            <tbody id="tblPayment">
+
+                            </tbody>
+                        </table>
+                    </section>
                 </main>
 
             </div>
