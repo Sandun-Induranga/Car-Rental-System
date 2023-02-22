@@ -44,7 +44,7 @@ public class CustomerController {
     @GetMapping
     public ResponseUtil getAll() {
 
-        return new ResponseUtil("OK", "Successfully Saved..!", "");
+        return new ResponseUtil("OK", "Successfully Saved..!", customerService.getAllCustomer());
 
     }
 

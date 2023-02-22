@@ -80,10 +80,11 @@ $("#btnCustomer").on("click", function () {
         $.ajax({
             url: baseurl + "customer",
             method: "get",
-            dataType:"application/json",
+            dataType:"json",
             success: function (res) {
 
                 for (let customer of res.data) {
+                    console.log(customer)
                     $("#tblCustomer").append(`
                     <tr>
                         <td>${customer.nic}</td>
