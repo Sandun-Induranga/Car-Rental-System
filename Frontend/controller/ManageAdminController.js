@@ -677,6 +677,8 @@ function managePaymentsPage() {
 
     });
 
+    loadAllPayments();
+
     function loadAllPayments() {
 
         $.ajax({
@@ -688,7 +690,7 @@ function managePaymentsPage() {
                     $("#tblPayment").append(`
                     <tr>
                         <td>${payment.paymentId}</td>
-                        <td>${payment.rentId}</td>
+                        <td>${payment.rentId.rentId}</td>
                         <td>${payment.type}</td>
                         <td>${payment.description}</td>
                         <td>${payment.total}</td>

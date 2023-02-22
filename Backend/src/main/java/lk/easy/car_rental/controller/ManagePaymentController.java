@@ -1,10 +1,14 @@
 package lk.easy.car_rental.controller;
 
 import lk.easy.car_rental.dto.PaymentDTO;
+import lk.easy.car_rental.dto.RentDetailDTO;
 import lk.easy.car_rental.service.PaymentService;
 import lk.easy.car_rental.util.ResponseUtil;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 
 /**
  * @author : Sandun Induranga
@@ -30,6 +34,8 @@ public class ManagePaymentController {
 
     @GetMapping
     public ResponseUtil getAllPayments() {
+
+        return new ResponseUtil("OK", "Successfully Loaded..!", paymentService.loadAllPayments());
 
     }
 
