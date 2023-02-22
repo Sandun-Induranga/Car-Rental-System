@@ -336,7 +336,7 @@ $("#btnCar").on("click", function () {
 
             success: function (res) {
                 for (let car of res.data) {
-                    $("#cars").append(`<div class="col w-25">
+                    $("#cars").append(`<div class="col col-12 col-md-5 col-lg-3">
             <div class="card">
                 <img src="../assets/image/background.png" class="card-img-top" alt="car">
 
@@ -376,8 +376,8 @@ $("#btnCar").on("click", function () {
                     <p class="card-text text-secondary" id="registerNum"><i class="bi bi-car-front me-1"></i>${car.regNum}</p>
                         
                     <section class="d-flex justify-content-between flex-lg-row flex-column gap-1">
-                        <button class="btn btn-success rent" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><p class="card-text"><i class="bi bi-upc-scan"></i> Rent </p></button>
-                        <button class="btn btn-warning"><p class="card-text"><i class="bi bi-cart-check-fill"></i> Add to cart</p></button>
+                        <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><p class="card-text"><i class="bi bi-app-indicator"></i> Update </p></button>
+                        <button class="btn btn-danger"><p class="card-text"><i class="bi bi-trash-fill"></i> Delete </p></button>
                     </section>
 
                 </div>
@@ -427,4 +427,4 @@ $("#btnDriver").on("click", function () {
         });
     });
 
-})
+});
