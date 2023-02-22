@@ -13,5 +13,6 @@ public interface CustomerService {
     public void saveCustomer(CustomerDTO customerDTO) throws RuntimeException;
 
     public List<CustomerDTO> getAllCustomer() throws RuntimeException;
+    public List<CustomerDTO> saveImages() throws RuntimeException;
 
 }

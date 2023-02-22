@@ -23,6 +23,6 @@ public class CustomerDTO {
     private String contact;
     private String email;
     private UserDTO user;
-    private MultipartFile nicImage;
-    private MultipartFile licenseImage;
+    private String nicImage;
+    private String licenseImage;
 }

@@ -43,29 +43,6 @@ public class CustomerServiceImpl implements CustomerService {
 
         if (customerRepo.existsById(customerDTO.getNic())) throw new RuntimeException("Customer Already Exits..!");
 
-        try {
-            byte[] nicFileBytes = customerDTO.getNicImage().getBytes();
-            byte[] licenseFileBytes = customerDTO.getLicenseImage().getBytes();
-
-            String serverPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getParentFile().getParentFile().getAbsolutePath();
-            Path nicLocation = Paths.get(serverPath + "/bucket/customer/nic/nic_"+customer.getNic()+".jpeg");
-            Path licenseLocation = Paths.get(serverPath + "/bucket/customer/license/license_"+customer.getNic()+".jpeg");
-
-            Files.write(nicLocation, nicFileBytes);
-            Files.write(licenseLocation, licenseFileBytes);
-
-            customerDTO.getNicImage().transferTo(nicLocation);
-            customerDTO.getLicenseImage().transferTo(licenseLocation);
-
-            customer.setNicImage(nicLocation.toString());
-            customer.setLicenseImage(licenseLocation.toString());
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
-        }
-
         System.out.println(customerDTO);
 
         customerRepo.save(customer);
@@ -77,6 +54,32 @@ public class CustomerServiceImpl implements CustomerService {
         return mapper.map(customerRepo.findAll(), new TypeToken<ArrayList<CustomerDTO>>() {
         }.getType());
 
+    }
+
+    @Override
+    public List<CustomerDTO> saveImages() throws RuntimeException {
+        try {
+            byte[] nicFileBytes = customerDTO.getNicImage().getBytes();
+            byte[] licenseFileBytes = customerDTO.getLicenseImage().getBytes();
+
+            String serverPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getParentFile().getParentFile().getAbsolutePath();
+            Path nicLocation = Paths.get(serverPath + "/bucket/customer/nic/nic_"+customer.getNic()+".jpeg");
+            Path licenseLocation = Paths.get(serverPath + "/bucket/customer/license/license_"+customer.getNic()+".jpeg");
+
+            Files.write(nicLocation, nicFileBytes);
+            Files.write(licenseLocation, licenseFileBytes);
+
+//            customerDTO.getNicImage().transferTo(nicLocation);
+//            customerDTO.getLicenseImage().transferTo(licenseLocation);
+
+            customer.setNicImage(nicLocation.toString());
+            customer.setLicenseImage(licenseLocation.toString());
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }
