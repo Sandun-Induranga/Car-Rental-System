@@ -1,10 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Admin | Dashboard</title>
+
+    <!-- CSS For Bootstrap -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+
+    <meta name="viewport" content="width=device-width initial-scale=1">
+
 </head>
-<body>
+<body class="">
+
+<header class="fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark shadow-sm bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand text-success" href="#">Easy Car Rental</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="admin-home-page.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="car-page.html">Manage Cars</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="driver-registration.html">Manage Drivers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="car-page.html">Manage Rents</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main>
+
+    <div class="container-fluid" id="main-context">
+        <div class="row flex-nowrap">
+            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-light">
+                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100 position-fixed">
+                    <a href="/"
+                       class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                        <span class="fs-5 d-none d-sm-inline mt-5 py-2">Menu</span>
+                    </a>
+                    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+                        id="menu">
+                        <li class="nav-item nav-link align-middle px-0">
+                            <a href="#" class="nav-link align-middle px-0">
+                                <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item nav-link align-middle px-0" id="btnCustomer">
+                            <a href="#" class="nav-link align-middle px-0">
+                                <i class="fs-4 bi-people"></i> <span
+                                    class="ms-1 d-none d-sm-inline">Manage Customers</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item nav-link align-middle px-0" id="btnCar">
+                            <a href="#" class="nav-link align-middle px-0">
+                                <i class="fs-4 bi-car-front"></i> <span
+                                    class="ms-1 d-none d-sm-inline">Manage Cars</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link align-middle px-0" id="btnDriver">
+                                <i class="fs-4 bi-person-bounding-box"></i> <span class="ms-1 d-none d-sm-inline">Manage Drivers</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link align-middle px-0" id="btnRent">
+                                <i class="fs-4 bi-cart2"></i> <span class="ms-1 d-none d-sm-inline">Manage Rents</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link align-middle px-0" id="btnManagePayment">
+                                <i class="fs-4 bi-cash-coin"></i> <span class="ms-1 d-none d-sm-inline">Payments</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                    <hr>
+                    <div class="pb-4">
+                        <img src="https://github.com/mdo.png" alt="user" width="30" height="30"
+                             class="rounded-circle">
+                        <p class="d-none d-sm-inline mx-1" id="user">User</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col p-3">
+
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<!-- JS For Bootstrap -->
+<script src="../assets/js/bootstrap.min.js"></script>
+
+<!-- JS For jQuery -->
+<script src="../assets/js/jquery-3.6.1.min.js"></script>
+
+<!-- Util -->
+<script src="../util/LoadImageUtil.js"></script>
+<script src="../util/BaseUrl.js"></script>
+
+<!-- Controller -->
+<script src="../controller/ManageAdminController.js"></script>
 
 </body>
 </html>
