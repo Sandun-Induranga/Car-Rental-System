@@ -366,7 +366,7 @@ function manageCarPage() {
             }
 
             $.ajax({
-                url: baseurl + "car",
+                url: baseurl + "car/image",
                 async: false,
                 method: "put",
                 data: json,
