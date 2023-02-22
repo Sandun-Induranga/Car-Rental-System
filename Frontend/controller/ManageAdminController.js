@@ -365,7 +365,6 @@ function manageCarPage() {
                 monthlyMileage = $(this).parent().parent().children(":eq(4)").children(":eq(2)").text();
                 dailyPrice = $(this).parent().parent().children(":eq(4)").children(":eq(1)").text();
                 monthlyPrice = $(this).parent().parent().children(":eq(4)").children(":eq(2)").text();
-                console.log(regNum + dailyMileage + monthlyMileage + dailyPrice + monthlyPrice);
 
             });
 
@@ -383,6 +382,7 @@ function manageDriverPage() {
     $("#btnDriver").on("click", function () {
 
         $("#home").attr("style", "display : none !important");
+        $("#viewCustomer").attr("style", "display : none !important");
         $("#manageCustomers").attr("style", "display : none !important");
         $("#manageCar").attr("style", "display : none !important");
         $("#viewCar").attr("style", "display : none !important");
@@ -420,12 +420,13 @@ function manageRentPage() {
     $("#btnRent").on("click", function () {
 
         $("#home").attr("style", "display : none !important");
+        $("#viewCustomer").attr("style", "display : none !important");
         $("#manageCustomers").attr("style", "display : none !important");
         $("#manageCar").attr("style", "display : none !important");
         $("#viewCar").attr("style", "display : none !important");
         $("#manageDriver").attr("style", "display : none !important");
         $("#drivers").attr("style", "display : none !important");
-        $("#rents").attr("style", "display : flex !important");
+        $("#rents").attr("style", "display : block !important");
 
         $.ajax({
 
