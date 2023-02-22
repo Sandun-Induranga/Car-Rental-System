@@ -49,10 +49,18 @@ public class CustomerController {
     }
 
     @PutMapping
-    public ResponseUtil updateCustomer(@RequestBody CustomerDTO customerDTO){
+    public ResponseUtil updateCustomer(@RequestBody CustomerDTO customerDTO) {
 
         customerService.updateCustomer(customerDTO);
         return new ResponseUtil("OK", "Successfully Updated..!", "");
+
+    }
+
+    @DeleteMapping
+    public ResponseUtil deleteCustomer(@RequestParam String nic) {
+
+        customerService.deleteCustomer(nic);
+        return new ResponseUtil("OK", "Successfully Deleted..!", "");
 
     }
 

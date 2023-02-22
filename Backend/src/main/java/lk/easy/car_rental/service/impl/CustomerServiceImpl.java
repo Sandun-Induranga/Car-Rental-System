@@ -1,11 +1,8 @@
 package lk.easy.car_rental.service.impl;
 
-import lk.easy.car_rental.dto.CarSpDTO;
 import lk.easy.car_rental.dto.CustomerDTO;
 import lk.easy.car_rental.dto.CustomerImageDTO;
-import lk.easy.car_rental.dto.UserDTO;
 import lk.easy.car_rental.entity.Customer;
-import lk.easy.car_rental.entity.User;
 import lk.easy.car_rental.repo.CustomerRepo;
 import lk.easy.car_rental.service.CustomerService;
 import org.modelmapper.ModelMapper;
@@ -14,9 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -88,6 +83,14 @@ public class CustomerServiceImpl implements CustomerService {
         if (!customerRepo.existsById(customerDTO.getNic())) throw new RuntimeException("Invalid Customer..!");
 
         customerRepo.save(mapper.map(customerDTO, Customer.class));
+
+    }
+
+    @Override
+    public void deleteCustomer(String nic) throws RuntimeException {
+
+        if (!customerRepo.existsById(nic)) throw new RuntimeException("Invalid Customer..!");
+        customerRepo.deleteById(nic);
 
     }
 

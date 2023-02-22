@@ -159,6 +159,7 @@ function manageCustomerPage() {
                     }
 
                     bindUpdateEvent();
+                    bindDeleteEvent();
 
                 }
             });
@@ -189,9 +190,12 @@ function manageCustomerPage() {
         }
 
         function bindDeleteEvent() {
-            $(".btnUpdate").on("click", function () {
+            $(".btnDelete").on("click", function () {
 
-                let nic = $("#cusNic").val($(this).parent().parent().children(":eq(0)").text());
+                let nic = $(this).parent().parent().children(":eq(0)").text();
+
+                if (!confirm("Are You Sure")) return;
+
 
                 $.ajax({
                     url: baseurl + "customer?nic=" + nic,
@@ -204,6 +208,7 @@ function manageCustomerPage() {
                         alert(res.message);
                         $("#manageCustomers").attr("style", "display : none !important");
                         $("#viewCustomer").attr("style", "display : block !important");
+                        loadAllCustomers();
                     }
                 });
 
