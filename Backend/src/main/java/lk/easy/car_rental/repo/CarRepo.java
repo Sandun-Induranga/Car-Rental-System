@@ -7,5 +7,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author : Sandun Induranga
  * @since : 0.1.0
  **/
+
 public interface CarRepo extends JpaRepository<Car, String> {
+
+    Car findCarByRegNum(String regNum) throws RuntimeException;
+
 }

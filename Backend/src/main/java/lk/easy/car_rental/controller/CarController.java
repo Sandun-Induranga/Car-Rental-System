@@ -48,9 +48,10 @@ public class CarController {
     }
 
     @PutMapping(params = {"regNum"})
-    public ResponseUtil addToMaintains() {
+    public ResponseUtil addToMaintains(@RequestParam String regNum) {
 
-
+        carService.addToMaintains(regNum);
+        return new ResponseUtil("OK", "Successfully Saved..!", "");
 
     }
 

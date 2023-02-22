@@ -88,4 +88,14 @@ public class CarServiceImpl implements CarService {
 
     }
 
+    @Override
+    public void addToMaintains(String regNum) throws RuntimeException {
+
+        Car car = carRepo.findCarByRegNum(regNum);
+        car.setAvailability(car.getAvailability().equals("YES")?"NO":"YES");
+
+        carRepo.save(car);
+
+    }
+
 }
