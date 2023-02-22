@@ -6,6 +6,8 @@ import lk.easy.car_rental.service.CustomerService;
 import lk.easy.car_rental.util.ResponseUtil;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -17,13 +19,11 @@ import org.springframework.web.multipart.MultipartFile;
 @RestController
 @RequestMapping("/customer")
 @CrossOrigin
+@Transactional
 public class CustomerController {
 
     @Autowired
     CustomerService customerService;
-
-    @Autowired
-    ModelMapper modelMapper;
 
     @PostMapping
     public ResponseUtil saveCustomer(@RequestBody CustomerDTO customerDTO) {

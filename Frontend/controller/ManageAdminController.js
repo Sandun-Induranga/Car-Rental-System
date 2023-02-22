@@ -107,7 +107,7 @@ function manageCustomerPage() {
             });
 
             $.ajax({
-                url: baseurl + "customer?image=",
+                url: baseurl + "customer?image",
                 method: "post",
                 async: false,
                 data: data,
@@ -117,6 +117,7 @@ function manageCustomerPage() {
                     alert(res.message);
                     $("#manageCustomers").attr("style", "display : none !important");
                     $("#viewCustomer").attr("style", "display : block !important");
+                    loadAllCustomers();
                 }
             });
 
