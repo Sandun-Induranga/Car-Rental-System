@@ -4,6 +4,7 @@ import lk.easy.car_rental.dto.CustomerDTO;
 import lk.easy.car_rental.dto.UserDTO;
 import lk.easy.car_rental.entity.User;
 import lk.easy.car_rental.service.CustomerService;
+import lk.easy.car_rental.util.ResponseUtil;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -32,10 +33,18 @@ public class CustomerController {
     ModelMapper modelMapper;
 
     @PostMapping
-    public void saveCustomer(@RequestParam String username, @RequestParam String password, @ModelAttribute CustomerDTO customerDTO) {
+    public ResponseUtil saveCustomer(@RequestParam String username, @RequestParam String password, @ModelAttribute CustomerDTO customerDTO) {
 
-        customerDTO.setUser(new UserDTO(username, password,"Customer"));
+        customerDTO.setUser(new UserDTO(username, password, "Customer"));
         customerService.saveCustomer(customerDTO);
+        return new ResponseUtil("OK", "Successfully Saved..!", "");
+
+    }
+
+    @GetMapping
+    public ResponseUtil getAll() {
+
+        return new ResponseUtil("OK", "Successfully Saved..!", "");
 
     }
 
