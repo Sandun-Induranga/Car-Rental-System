@@ -64,9 +64,9 @@ public class CustomerServiceImpl implements CustomerService {
             byte[] nicFileBytes = imageDTO.getNicImage().getBytes();
             byte[] licenseFileBytes = imageDTO.getLicenseImage().getBytes();
 
-            String serverPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getParentFile().getParentFile().getAbsolutePath();
-            Path nicLocation = Paths.get(serverPath + "/bucket/customer/nic/nic_" + nic + ".jpeg");
-            Path licenseLocation = Paths.get(serverPath + "/bucket/customer/license/license_" + nic + ".jpeg");
+            String projectPath = "/media/sandu/0559F5C021740317/GDSE/Project_Zone/IdeaProjects/Car_Rental_System/Frontend/assets";
+            Path nicLocation = Paths.get(projectPath + "/image/bucket/customer/nic/nic_" + nic + ".jpeg");
+            Path licenseLocation = Paths.get(projectPath + "/image/bucket/customer/license/license_" + nic + ".jpeg");
 
             Files.write(nicLocation, nicFileBytes);
             Files.write(licenseLocation, licenseFileBytes);
@@ -76,14 +76,12 @@ public class CustomerServiceImpl implements CustomerService {
 
             Customer customer = customerRepo.findById(nic).get();
 
-            customer.setNicImage(nicLocation.toString());
-            customer.setLicenseImage(licenseLocation.toString());
+            customer.setNicImage("/image/bucket/customer/nic/nic_" + nic + ".jpeg");
+            customer.setLicenseImage("/image/bucket/customer/nic/nic_" + nic + ".jpeg");
 
             customerRepo.save(customer);
 
         } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }
     }

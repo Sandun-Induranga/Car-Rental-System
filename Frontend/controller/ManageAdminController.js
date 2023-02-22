@@ -112,14 +112,14 @@ $("#btnCustomer").on("click", function () {
                 for (let customer of res.data) {
                     console.log(customer)
                     $("#tblCustomer").append(`
-                    <tr>
+                    <tr class="text-secondary">
                         <td>${customer.nic}</td>
                         <td>${customer.name}</td>
                         <td>${customer.email}</td>
                         <td>${customer.address}</td>
                         <td>${customer.license}</td>
-                        <td>${customer.nicImage}</td>
-                        <td>${customer.licenseImage}</td>
+                        <td><img src="${customer.nicImage}" alt="" srcset="" width="80px" height="60px"></td>
+                        <td><img src="${customer.licenseImage}" alt="" srcset="" width="80px" height="60px"></td>
                     </tr>
                     `);
                 }
