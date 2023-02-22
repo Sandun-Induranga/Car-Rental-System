@@ -2,6 +2,7 @@ package lk.easy.car_rental.service.impl;
 
 import lk.easy.car_rental.dto.CarSpDTO;
 import lk.easy.car_rental.dto.CustomerDTO;
+import lk.easy.car_rental.dto.CustomerImageDTO;
 import lk.easy.car_rental.dto.UserDTO;
 import lk.easy.car_rental.entity.Customer;
 import lk.easy.car_rental.entity.User;
@@ -39,7 +40,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void saveCustomer(CustomerDTO customerDTO) throws RuntimeException {
 
-        Customer customer = new Customer(customerDTO.getNic(),customerDTO.getName(),customerDTO.getLicense(),customerDTO.getAddress(),customerDTO.getContact(),customerDTO.getEmail(),new User(customerDTO.getUser().getUsername(),customerDTO.getUser().getPassword(),customerDTO.getUser().getRole()),"","");
+        Customer customer = new Customer(customerDTO.getNic(), customerDTO.getName(), customerDTO.getLicense(), customerDTO.getAddress(), customerDTO.getContact(), customerDTO.getEmail(), new User(customerDTO.getUser().getUsername(), customerDTO.getUser().getPassword(), customerDTO.getUser().getRole()), "", "");
 
         if (customerRepo.existsById(customerDTO.getNic())) throw new RuntimeException("Customer Already Exits..!");
 
@@ -57,20 +58,20 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public List<CustomerDTO> saveImages() throws RuntimeException {
+    public List<CustomerDTO> saveImages(String nic, CustomerImageDTO imageDTO) throws RuntimeException {
         try {
-            byte[] nicFileBytes = customerDTO.getNicImage().getBytes();
-            byte[] licenseFileBytes = customerDTO.getLicenseImage().getBytes();
+            byte[] nicFileBytes = imageDTO.getNicImage().getBytes();
+            byte[] licenseFileBytes = imageDTO.getLicenseImage().getBytes();
 
             String serverPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getParentFile().getParentFile().getAbsolutePath();
-            Path nicLocation = Paths.get(serverPath + "/bucket/customer/nic/nic_"+customer.getNic()+".jpeg");
-            Path licenseLocation = Paths.get(serverPath + "/bucket/customer/license/license_"+customer.getNic()+".jpeg");
+            Path nicLocation = Paths.get(serverPath + "/bucket/customer/nic/nic_" + nic + ".jpeg");
+            Path licenseLocation = Paths.get(serverPath + "/bucket/customer/license/license_" + nic + ".jpeg");
 
             Files.write(nicLocation, nicFileBytes);
             Files.write(licenseLocation, licenseFileBytes);
 
-//            customerDTO.getNicImage().transferTo(nicLocation);
-//            customerDTO.getLicenseImage().transferTo(licenseLocation);
+            imageDTO.getNicImage().transferTo(nicLocation);
+            imageDTO.getLicenseImage().transferTo(licenseLocation);
 
             customer.setNicImage(nicLocation.toString());
             customer.setLicenseImage(licenseLocation.toString());
