@@ -128,4 +128,9 @@ public class RentServiceImpl implements RentService {
 
     }
 
+    @Override
+    public List<RentDTO> getRentByNic(String nic) throws RuntimeException {
+        return null;
+    }
+
 }
