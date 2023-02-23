@@ -15,4 +15,6 @@ public interface PaymentService {
 
     public List<PaymentDTO> loadAllPayments() throws RuntimeException;
 
+    public List<PaymentDTO> getPaymentsByNic(String nic) throws RuntimeException;
+
 }

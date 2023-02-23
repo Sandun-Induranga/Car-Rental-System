@@ -53,4 +53,9 @@ public class PaymentServiceImpl implements PaymentService {
 
     }
 
+    @Override
+    public List<PaymentDTO> getPaymentsByNic(String nic) throws RuntimeException {
+        return null;
+    }
+
 }
