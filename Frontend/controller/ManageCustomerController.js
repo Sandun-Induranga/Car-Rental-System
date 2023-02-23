@@ -79,6 +79,7 @@ function manageCarPage() {
                 method: "get",
 
                 success: function (res) {
+                    $("#cars").empty();
                     for (let car of res.data) {
                         $("#cars").append(`<div class="col col-lg-4">
             <div class="card">
@@ -180,15 +181,14 @@ function manageCarPage() {
                     status: "Pending",
                     cost: $("#cost").val(),
                     description: $("#description").val(),
-                    rentDetails: [
-                        {
+                    rentDetails: {
                             rentId: rentId,
                             nic: null,
                             regNum: regNum,
                             driverCost: $("#driverCost").val(),
                             carCost: $("#carCost").val()
                         }
-                    ]
+
                 }
 
                 rent = json;
@@ -206,18 +206,6 @@ function manageCarPage() {
 
                         }
                     });
-
-                } else {
-
-                    // let details = {
-                    //     rentId: rentId,
-                    //     nic: null,
-                    //     regNum: regNum,
-                    //     driverCost: $("#driverCost").val(),
-                    //     carCost: $("#carCost").val()
-                    // };
-                    //
-                    // rent.rentDetails.push(details)
 
                 }
 
@@ -254,6 +242,8 @@ function manageCartPage() {
         $("#manageCar").attr("style", "display : none !important");
         $("#manageCart").attr("style", "display : block !important");
 
+        $("#rent-context").empty();
+
         $("#rent-context").append(`
 <div class="card text-center p-2 w-75 shadow">
                     <p class="card-text">Status : ${rent.status}</p>
@@ -264,9 +254,10 @@ function manageCartPage() {
                     <p class="card-text">Return Time : ${rent.returnTime.toString().replaceAll(",", ":")}</p>
                     <p class="card-text">Description : ${rent.description.split(".")[0]}</p>
                                   
-                    <table class="table">
+                    <table class="table" id=${rent.rentId}>
                         <thead>
                               <tr>
+                                    <th scope="col"></th>
                                     <th scope="col">Register Number</th>
                                     <th scope="col">Car Cost</th>
                                     <th scope="col">Driver Cost</th>
@@ -275,7 +266,7 @@ function manageCartPage() {
                         </thead>
                         <tbody>
                             
-                        </tbody id="body">
+                        </tbody>
                         </tbody>
                     </table>
                 
@@ -287,13 +278,14 @@ function manageCartPage() {
 `);
 
         for (let rendDetail of cart) {
-
-            $("#body").append(`
+            $("#"+rent.rentId).empty();
+            $("#"+rent.rentId).append(`
                 <tr>
-                                    <td>${cart.regNum}</td>
-                                    <td>Car Cost</td>
-                                    <td>Driver Cost</td>
-                                    <td>Driver NIC</td>
+                                    <td>${rendDetail.regNum}</td>
+                                    <td>${rendDetail.regNum}</td>
+                                    <td>${rendDetail.carCost}</td>
+                                    <td>${rendDetail.driverCost}</td>
+                                    <td>${rendDetail.nic}</td>
                               </tr>
                 `)
 
