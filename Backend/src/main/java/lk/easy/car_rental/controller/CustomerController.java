@@ -64,5 +64,12 @@ public class CustomerController {
 
     }
 
+    @GetMapping(path = "/count")
+    public ResponseUtil countCustomers(){
+
+        return new ResponseUtil("OK", "Successfully Loaded..!", customerService.countCustomers());
+
+    }
+
 
 }
