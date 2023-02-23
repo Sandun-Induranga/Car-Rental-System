@@ -105,4 +105,11 @@ public class CarServiceImpl implements CarService {
 
     }
 
+    @Override
+    public Long countAvailableCars() throws RuntimeException {
+
+        return carRepo.countAvailableCars();
+
+    }
+
 }
