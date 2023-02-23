@@ -80,6 +80,15 @@ function manageHomePage() {
             }
         });
 
+        $.ajax({
+            url:baseurl+"car/count",
+            method:"get",
+            dataType:"json",
+            success:function (res) {
+                $("#available-cars").text(res.data);
+            }
+        });
+
     });
 
 }
