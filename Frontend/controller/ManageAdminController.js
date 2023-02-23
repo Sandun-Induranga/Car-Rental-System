@@ -69,7 +69,16 @@ function manageHomePage() {
             success:function (res) {
                 $("#reg-users").text(res.data);
             }
-        })
+        });
+
+        $.ajax({
+            url:baseurl+"rent/count",
+            method:"get",
+            dataType:"json",
+            success:function (res) {
+                $("#rent-count").text(res.data);
+            }
+        });
 
     });
 
