@@ -16,6 +16,6 @@ public interface RentRepo extends JpaRepository<Rent, String> {
     @Query(value = "SELECT rentId FROM Rent ORDER BY rentId  DESC LIMIT 1", nativeQuery = true)
     String getLastRentId();
 
-    List<Rent> getRentsByNic(String nic) throws RuntimeException;
+    List<Rent> getRentsByNic_Nic(String nic) throws RuntimeException;
 
 }
