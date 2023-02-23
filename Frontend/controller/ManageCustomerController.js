@@ -56,6 +56,7 @@ function generateNewRentId() {
 
 manageCarPage();
 manageCartPage();
+manageRentPage();
 
 function manageCarPage() {
 
@@ -317,7 +318,21 @@ function manageCartPage() {
 }
 
 function manageRentPage() {
+
     $("#manageCar").attr("style", "display : none !important");
     $("#manageCart").attr("style", "display : none !important");
     $("#manageRent").attr("style", "display : block !important");
+
+    $.ajax({
+        url: baseurl + "rent?nic="+customer.nic,
+        async: false,
+        method: "get",
+        dataType: "json",
+        success: function (res) {
+
+
+
+        }
+    });
+
 }
