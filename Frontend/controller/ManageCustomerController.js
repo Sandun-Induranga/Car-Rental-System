@@ -11,6 +11,7 @@ let monthlyPrice;
 let rentId;
 let currentUser;
 let customer;
+let cart;
 
 loadAllCars();
 
@@ -94,7 +95,7 @@ function loadAllCars() {
 
                     <section class="d-flex justify-content-between flex-lg-row flex-column gap-1">
                         <button class="btn btn-success rent" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><p class="card-text"><i class="bi bi-upc-scan"></i> Rent </p></button>
-                        <button class="btn btn-warning"><p class="card-text"><i class="bi bi-cart-check-fill"></i> Add to cart</p></button>
+                        <button class="btn btn-warning cart" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><p class="card-text"><i class="bi bi-cart-check-fill"></i> Add to cart</p></button>
                     </section>
 
                 </div>
@@ -103,6 +104,9 @@ function loadAllCars() {
         </div>`);
                 getDetail();
             }
+
+            bindButtonEvents();
+
         }
 
     });
@@ -119,6 +123,18 @@ function getDetail() {
         dailyPrice = $(this).parent().parent().children(":eq(4)").children(":eq(1)").text();
         monthlyPrice = $(this).parent().parent().children(":eq(4)").children(":eq(2)").text();
 
+    });
+
+}
+
+function bindButtonEvents() {
+
+    $(".rent").on("click", function () {
+        $("#btnRequestCar").text("Request");
+    });
+
+    $(".cart").on("click", function () {
+        $("#btnRequestCar").text("Add To Cart");
     });
 
 }
