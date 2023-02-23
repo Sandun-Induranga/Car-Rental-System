@@ -24,4 +24,6 @@ public interface CarService {
 
     public Long countAvailableCars() throws RuntimeException;
 
+    public Long countReservedCars() throws RuntimeException;
+
 }

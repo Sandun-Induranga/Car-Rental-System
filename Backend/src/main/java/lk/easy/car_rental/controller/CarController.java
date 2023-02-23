@@ -69,4 +69,11 @@ public class CarController {
 
     }
 
+    @GetMapping(path = "/count/available")
+    public ResponseUtil countReservedCars() {
+
+        return new ResponseUtil("OK", "Successfully Loaded..!", carService.countReservedCars());
+
+    }
+
 }
