@@ -11,7 +11,7 @@ let monthlyPrice;
 let rentId;
 let currentUser;
 let customer;
-let cart;
+let cart = [];
 
 loadAllCars();
 
@@ -163,16 +163,25 @@ $("#btnRequestCar").on("click", function () {
         ]
     }
 
-    $.ajax({
-        url: baseurl + "rent",
-        method: "post",
-        data: JSON.stringify(json),
-        dataType: "json",
-        contentType: "application/json",
-        success: function (res) {
+    if ($(this).text() == "Request"){
 
-        }
-    });
+        $.ajax({
+            url: baseurl + "rent",
+            method: "post",
+            data: JSON.stringify(json),
+            dataType: "json",
+            contentType: "application/json",
+            success: function (res) {
+
+            }
+        });
+
+    }else{
+
+        cart.push(json);
+        console.log(cart)
+
+    }
 
 });
 
