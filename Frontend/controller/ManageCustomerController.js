@@ -319,20 +319,22 @@ function manageCartPage() {
 
 function manageRentPage() {
 
-    $("#manageCar").attr("style", "display : none !important");
-    $("#manageCart").attr("style", "display : none !important");
-    $("#manageRent").attr("style", "display : block !important");
+    $("#btnRent").on("click", function () {
+        $("#manageCar").attr("style", "display : none !important");
+        $("#manageCart").attr("style", "display : none !important");
+        $("#manageRent").attr("style", "display : block !important");
 
-    $.ajax({
-        url: baseurl + "rent?nic="+customer.nic,
-        async: false,
-        method: "get",
-        dataType: "json",
-        success: function (res) {
+        $.ajax({
+            url: baseurl + "rent?nic="+customer.nic,
+            async: false,
+            method: "get",
+            dataType: "json",
+            success: function (res) {
 
-            console.log(res.data);
+                console.log(res.data);
 
-        }
-    });
+            }
+        });
+    })
 
 }

@@ -107,7 +107,7 @@ public class RentServiceImpl implements RentService {
         Rent rent = rentRepo.findById(rentId).get();
 
         rent.setStatus("Accepted");
-        rent.setDescription("Rent Accepted On" + LocalDate.now() + LocalTime.now());
+        rent.setDescription("Rent Accepted On " + LocalDate.now() + LocalTime.now());
 
         rentRepo.save(rent);
 
