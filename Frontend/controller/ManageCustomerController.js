@@ -415,6 +415,9 @@ function managePaymentPage() {
             method: "get",
             dataType: "json",
             success: function (res) {
+
+                $("#tblPayment").empty();
+
                 for (let payment of res.data) {
                     $("#tblPayment").append(`
                     <tr>
