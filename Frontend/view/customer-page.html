@@ -29,7 +29,7 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="admin-home-page.html">Home</a>
                     </li>
-                    <li class="nav-item" >
+                    <li class="nav-item">
                         <a class="nav-link" href="car-page.html">Manage Cars</a>
                     </li>
                     <li class="nav-item">
@@ -103,49 +103,57 @@
             </div>
             <div class="col p-3">
 
-                <main class="mt-3" id="manageCar" >
+                <main class="mt-3" id="manageCar">
                     <section>
                         <div class="row row-cols-1 row-cols-md-3 g-4 mt-5" id="cars">
-
 
 
                         </div>
 
                         <!-- Modal -->
-                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                             tabindex="-1"
                              aria-labelledby="staticBackdropLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="staticBackdropLabel">Rent Car</h5>
-                                        <button type="button" class="btn-close text-white bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        <button type="button" class="btn-close text-white bg-white"
+                                                data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
 
                                     <!-- Form -->
                                     <div class="d-flex justify-content-center mt-4">
                                         <form id="requestForm" class="d-flex flex-column">
-                                            <section class="d-flex justify-content-between flex-lg-row flex-column gap-2">
+                                            <section
+                                                    class="d-flex justify-content-between flex-lg-row flex-column gap-2">
                                                 <div class="mb-3">
                                                     <label for="pickUpDate" class="form-label">Pick Up Date</label>
-                                                    <input type="date" class="form-control" name="pickUpDate" id="pickUpDate">
+                                                    <input type="date" class="form-control" name="pickUpDate"
+                                                           id="pickUpDate">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="pickUpTime" class="form-label">Pick Up Time</label>
-                                                    <input type="time" class="form-control" name="pickUpTime" id="pickUpTime">
+                                                    <input type="time" class="form-control" name="pickUpTime"
+                                                           id="pickUpTime">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="returnDate" class="form-label">Return Date</label>
-                                                    <input type="date" class="form-control" name="pickUpDate" id="returnDate">
+                                                    <input type="date" class="form-control" name="pickUpDate"
+                                                           id="returnDate">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="returnTime" class="form-label">Return Time</label>
-                                                    <input type="time" class="form-control" name="pickUpTime" id="returnTime">
+                                                    <input type="time" class="form-control" name="pickUpTime"
+                                                           id="returnTime">
                                                 </div>
                                             </section>
                                             <section class="d-flex justify-content-between flex-lg-row flex-column">
                                                 <div class="mb-3">
-                                                    <label for="lostDamageCost" class="form-label">Lost Damage Cost</label>
-                                                    <input type="text" class="form-control" name="lostDamageCost" id="lostDamageCost">
+                                                    <label for="lostDamageCost" class="form-label">Lost Damage
+                                                        Cost</label>
+                                                    <input type="text" class="form-control" name="lostDamageCost"
+                                                           id="lostDamageCost">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="carCost" class="form-label">Rent Cost</label>
@@ -153,39 +161,51 @@
                                                 </div>
                                             </section>
 
-                                            <section class="d-flex justify-content-between flex-lg-row flex-column align-items-center">
+                                            <section
+                                                    class="d-flex justify-content-between flex-lg-row flex-column align-items-center">
                                                 <div class="mb-3">
-                                                    <label for="driverRequest" class="form-label form-check-label">I want a Driver</label>
-                                                    <input type="checkbox" class="form-check-input" name="driver" id="driverRequest">
+                                                    <label for="driverRequest" class="form-label form-check-label">I
+                                                        want a Driver</label>
+                                                    <input type="checkbox" class="form-check-input" name="driver"
+                                                           id="driverRequest">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="driverCost" class="form-label">Driver Cost</label>
-                                                    <input type="text" class="form-control" name="driverCost" id="driverCost">
+                                                    <input type="text" class="form-control" name="driverCost"
+                                                           id="driverCost">
                                                 </div>
                                             </section>
 
-                                            <section class="d-flex justify-content-between flex-lg-row flex-column align-items-center">
+                                            <section
+                                                    class="d-flex justify-content-between flex-lg-row flex-column align-items-center">
                                                 <div class="mb-3">
                                                     <label for="cost" class="form-label">Total Cost</label>
                                                     <input type="text" class="form-control" name="cost" id="cost">
                                                 </div>
                                             </section>
 
-                                            <section class="d-flex justify-content-between flex-lg-row flex-column align-items-center">
+                                            <section
+                                                    class="d-flex justify-content-between flex-lg-row flex-column align-items-center">
                                                 <div class="mb-3 col col-12">
-                                                    <label for="description" class="form-label form-check-label">Proof the Lost Damage Payment</label>
-                                                    <input type="text" class="form-control" name="description" id="description">
+                                                    <label for="description" class="form-label form-check-label">Proof
+                                                        the Lost Damage Payment</label>
+                                                    <input type="text" class="form-control" name="description"
+                                                           id="description">
                                                 </div>
                                             </section>
 
                                         </form>
                                     </div>
 
-                                    <p class="p-5 small text-secondary text-center">You should pay the lost damage cost to rent cars and the car cost can be paid after returning the car.</p>
+                                    <p class="p-5 small text-secondary text-center">You should pay the lost damage cost
+                                        to rent cars and the car cost can be paid after returning the car.</p>
 
                                     <div class="modal-footer">
-                                        <button name="" type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-success" id="btnRequestCar" data-bs-dismiss="modal">Request
+                                        <button name="" type="button" class="btn btn-warning" data-bs-dismiss="modal">
+                                            Close
+                                        </button>
+                                        <button type="button" class="btn btn-success" id="btnRequestCar"
+                                                data-bs-dismiss="modal">Request
                                         </button>
                                     </div>
                                 </div>
@@ -201,7 +221,9 @@
                 </main>
 
                 <main class="mt-3" id="manageRent">
+                    <section class="d-flex gap-5 align-items-center p-5 mt-5" id="manage-rent-context">
 
+                    </section>
                 </main>
 
             </div>
