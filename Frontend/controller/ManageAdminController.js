@@ -60,7 +60,7 @@ function manageHomePage() {
         $("#drivers").attr("style", "display : none !important");
         $("#rents").attr("style", "display : none !important");
         $("#payments").attr("style", "display : none !important");
-    })
+    });
 
 }
 

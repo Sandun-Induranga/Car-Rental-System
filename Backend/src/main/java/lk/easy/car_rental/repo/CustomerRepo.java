@@ -16,4 +16,6 @@ public interface CustomerRepo extends JpaRepository<Customer, String> {
 
     Customer getCustomerByNic(String nic);
 
+    Long countCustomerByNic() throws RuntimeException;
+
 }
