@@ -3,55 +3,63 @@
  * @since : 0.1.0
  **/
 
-let regNum;
-let dailyMileage;
-let monthlyMileage;
-let dailyPrice;
-let monthlyPrice;
-let rentId;
-let currentUser;
-let customer;
-let cart = [];
+manageCarPage();
 
-loadAllCars();
+function manageCarPage() {
 
-$.ajax({
-    url: baseurl + "login",
-    method: "get",
-    async: false,
-    dataType: "json",
-    contentType: "application/json",
-    success: function (res) {
-        currentUser = res.data;
-        $("#username").text(res.data.username);
+    $("#btnManageCar").on("click", function () {
+
+        $("#manageCar").attr("style", "display : block !important");
+
+        let regNum;
+        let dailyMileage;
+        let monthlyMileage;
+        let dailyPrice;
+        let monthlyPrice;
+        let rentId;
+        let currentUser;
+        let customer;
+        let cart = [];
+
+        loadAllCars();
+
+        $.ajax({
+            url: baseurl + "login",
+            method: "get",
+            async: false,
+            dataType: "json",
+            contentType: "application/json",
+            success: function (res) {
+                currentUser = res.data;
+                $("#username").text(res.data.username);
+                getCustomer();
+            }
+        });
+
         getCustomer();
-    }
-});
-
-// getCustomer();
-function getCustomer() {
-    $.ajax({
-        url: baseurl + `rent?username=${currentUser.username}`,
-        method: "get",
-        async: false,
-        dataType: "json",
-        contentType: "application/json",
-        success: function (res) {
-            customer = res.data;
-            console.log(customer)
+        function getCustomer() {
+            $.ajax({
+                url: baseurl + `rent?username=${currentUser.username}`,
+                method: "get",
+                async: false,
+                dataType: "json",
+                contentType: "application/json",
+                success: function (res) {
+                    customer = res.data;
+                    console.log(customer)
+                }
+            });
         }
-    });
-}
 
-function loadAllCars() {
+        function loadAllCars() {
 
-    $.ajax({
-        url: baseurl + "car",
-        method: "get",
+            $.ajax({
+                url: baseurl + "car",
+                method: "get",
 
-        success: function (res) {
-            for (let car of res.data) {
-                $("#cars").append(`<div class="col col-lg-4">
+                success: function (res) {
+                    for (let car of res.data) {
+                        $("#cars").append(`<div class="col col-lg-4">
             <div class="card">
                 <img src="../assets/${car.photos.front}" class="card-img-top" alt="car">
 
@@ -102,118 +110,122 @@ function loadAllCars() {
 
             </div>
         </div>`);
-                getDetail();
-            }
+                        getDetail();
+                    }
 
-            bindButtonEvents();
+                    bindButtonEvents();
+
+                }
+
+            });
 
         }
 
-    });
+        function getDetail() {
 
-}
+            $(".rent").on("click", function () {
 
-function getDetail() {
+                regNum = $(this).parent().parent().children(":eq(6)").text();
+                dailyMileage = $(this).parent().parent().children(":eq(4)").children(":eq(1)").text();
+                monthlyMileage = $(this).parent().parent().children(":eq(4)").children(":eq(2)").text();
+                dailyPrice = $(this).parent().parent().children(":eq(4)").children(":eq(1)").text();
+                monthlyPrice = $(this).parent().parent().children(":eq(4)").children(":eq(2)").text();
 
-    $(".rent").on("click", function () {
+            });
 
-        regNum = $(this).parent().parent().children(":eq(6)").text();
-        dailyMileage = $(this).parent().parent().children(":eq(4)").children(":eq(1)").text();
-        monthlyMileage = $(this).parent().parent().children(":eq(4)").children(":eq(2)").text();
-        dailyPrice = $(this).parent().parent().children(":eq(4)").children(":eq(1)").text();
-        monthlyPrice = $(this).parent().parent().children(":eq(4)").children(":eq(2)").text();
+        }
 
-    });
+        function bindButtonEvents() {
 
-}
+            $(".rent").on("click", function () {
+                $("#btnRequestCar").text("Request");
+            });
 
-function bindButtonEvents() {
+            $(".cart").on("click", function () {
+                $("#btnRequestCar").text("Add To Cart");
+            });
 
-    $(".rent").on("click", function () {
-        $("#btnRequestCar").text("Request");
-    });
+        }
 
-    $(".cart").on("click", function () {
-        $("#btnRequestCar").text("Add To Cart");
-    });
+        $("#btnRequestCar").on("click", function () {
 
-}
-
-$("#btnRequestCar").on("click", function () {
-
-    let json = {
-        rentId: rentId,
-        nic: customer,
-        pickUpDate: $("#pickUpDate").val(),
-        pickUpTime: $("#pickUpTime").val(),
-        returnDate: $("#returnDate").val(),
-        returnTime: $("#returnTime").val(),
-        driverRequest: $('#driverRequest').is(':checked') ? "YES" : "NO",
-        status: "Pending",
-        cost: $("#cost").val(),
-        description: $("#description").val(),
-        rentDetails: [
-            {
+            let json = {
                 rentId: rentId,
-                nic: null,
-                regNum: regNum,
-                driverCost: $("#driverCost").val(),
-                carCost: $("#carCost").val()
+                nic: customer,
+                pickUpDate: $("#pickUpDate").val(),
+                pickUpTime: $("#pickUpTime").val(),
+                returnDate: $("#returnDate").val(),
+                returnTime: $("#returnTime").val(),
+                driverRequest: $('#driverRequest').is(':checked') ? "YES" : "NO",
+                status: "Pending",
+                cost: $("#cost").val(),
+                description: $("#description").val(),
+                rentDetails: [
+                    {
+                        rentId: rentId,
+                        nic: null,
+                        regNum: regNum,
+                        driverCost: $("#driverCost").val(),
+                        carCost: $("#carCost").val()
+                    }
+                ]
             }
-        ]
-    }
 
-    if ($(this).text() == "Request"){
+            if ($(this).text() == "Request"){
 
-        $.ajax({
-            url: baseurl + "rent",
-            method: "post",
-            data: JSON.stringify(json),
-            dataType: "json",
-            contentType: "application/json",
-            success: function (res) {
+                $.ajax({
+                    url: baseurl + "rent",
+                    method: "post",
+                    data: JSON.stringify(json),
+                    dataType: "json",
+                    contentType: "application/json",
+                    success: function (res) {
+
+                    }
+                });
+
+            }else{
+
+                cart.push(json);
+                console.log(cart)
 
             }
+
         });
 
-    }else{
+        $("#pickUpDate").on("change", function () {
+            setCosts();
+        });
 
-        cart.push(json);
-        console.log(cart)
-
-    }
-
-});
-
-$("#pickUpDate").on("change", function () {
-    setCosts();
-});
-
-$("#returnDate").on("change", function () {
-    setCosts();
-});
+        $("#returnDate").on("change", function () {
+            setCosts();
+        });
 
 
-function setCosts() {
+        function setCosts() {
 
-    let days = (new Date(Date.parse($("#returnDate").val()) - Date.parse($("#pickUpDate").val()))) / 1000 / 60 / 60 / 24;
-    let carCost = days < 30 ? dailyPrice.split(" ")[0] * days : monthlyPrice.split(" ")[0] * (days / 30);
-    $("#carCost").val(carCost);
-    $("#driverCost").val(1000 * days);
+            let days = (new Date(Date.parse($("#returnDate").val()) - Date.parse($("#pickUpDate").val()))) / 1000 / 60 / 60 / 24;
+            let carCost = days < 30 ? dailyPrice.split(" ")[0] * days : monthlyPrice.split(" ")[0] * (days / 30);
+            $("#carCost").val(carCost);
+            $("#driverCost").val(1000 * days);
 
-}
-
-generateNewRentId();
-
-function generateNewRentId() {
-    $.ajax({
-        url: baseurl + "rent",
-        method: "get",
-        async: false,
-        dataType: "json",
-        contentType: "application/json",
-        success: function (res) {
-            rentId = res.data;
         }
+
+        generateNewRentId();
+
+        function generateNewRentId() {
+            $.ajax({
+                url: baseurl + "rent",
+                method: "get",
+                async: false,
+                dataType: "json",
+                contentType: "application/json",
+                success: function (res) {
+                    rentId = res.data;
+                }
+            });
+        }
+
     });
+
 }
