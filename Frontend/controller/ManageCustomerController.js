@@ -63,6 +63,7 @@ function manageCarPage() {
 
         $("#manageCar").attr("style", "display : block !important");
         $("#manageCart").attr("style", "display : none !important");
+        $("#manageRent").attr("style", "display : none !important");
 
         let regNum;
         let dailyMileage;
@@ -244,6 +245,7 @@ function manageCartPage() {
 
         $("#manageCar").attr("style", "display : none !important");
         $("#manageCart").attr("style", "display : block !important");
+        $("#manageRent").attr("style", "display : none !important");
 
         $("#rent-context").empty();
 
@@ -312,4 +314,10 @@ function manageCartPage() {
 
     });
 
+}
+
+function manageRentPage() {
+    $("#manageCar").attr("style", "display : none !important");
+    $("#manageCart").attr("style", "display : none !important");
+    $("#manageRent").attr("style", "display : block !important");
 }
