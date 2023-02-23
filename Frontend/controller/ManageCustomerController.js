@@ -251,20 +251,16 @@ function manageCartPage() {
         $("#manageCar").attr("style", "display : none !important");
         $("#manageCart").attr("style", "display : block !important");
 
-
         $("#rent-context").append(`
-                    <p class="card-text">Customer NIC : ${rent.status}</p>
-                    <p class="card-text">Customer Name : ${rent.cost}</p>
-                    <p class="card-text">Pick Up Date : ${rent.description}</p>
+<div class="card text-center p-2 w-50 shadow">
+                    <p class="card-text">Status : ${rent.status}</p>
+                    <p class="card-text">Total Cost : ${rent.cost}</p>
+                    <p class="card-text">Description : ${rent.description}</p>
                     <p class="card-text">Pick Up Time: ${rent.pickUpTime.toString().replaceAll(",", ":")}</p>
                     <p class="card-text">Return Date : ${rent.returnDate.toString().replaceAll(",", "/")}</p>
                     <p class="card-text">Return Time : ${rent.returnTime.toString().replaceAll(",", ":")}</p>
                     <p class="card-text">Description : ${rent.description.split(".")[0]}</p>
-                    `);
-
-        for (let rent of cart) {
-
-            $("#rent-context").append(`
+                                  
                     <table class="table" id=${rent.rentId}>
                         <thead>
                               <tr>
@@ -275,16 +271,21 @@ function manageCartPage() {
                               </tr>
                         </thead>
                         <tbody>
-                            <td>${rent.rentDetails.regNum}</td>
+                            <td></td>
                         </tbody>
                     </table>
-                </div>
+                
                 <section class="mb-2">
                     <button class="btn btn-success me-2 btnAccept"><i class="bi bi-calendar2-check"></i> Accept</button>
                     <button class="btn btn-success me-2 btn-warning pay" data-bs-toggle="modal" data-bs-target="#paymentModel"><i class="bi bi-paypal"></i> Pay</button>
                     <button class="btn btn-danger"><i class="bi bi-calendar-x-fill"></i> Reject</button>
-                </section>
-            `);
+                </section>  
+                 
+                </div>   
+`);
+
+        for (let rendDetail of rent) {
+
 
         }
 
