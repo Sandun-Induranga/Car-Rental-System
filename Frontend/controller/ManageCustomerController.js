@@ -174,6 +174,8 @@ function manageCarPage() {
                     ]
                 }
 
+                rent = json;
+
                 if ($("#btnRequestCar").text() == "Request") {
 
                     $.ajax({
@@ -189,7 +191,15 @@ function manageCarPage() {
 
                 } else {
 
-                    cart.push(json);
+                    let details = {
+                        rentId: rentId,
+                        nic: null,
+                        regNum: regNum,
+                        driverCost: $("#driverCost").val(),
+                        carCost: $("#carCost").val()
+                    };
+
+                    rent.rentDetails.push(details)
 
                 }
 
