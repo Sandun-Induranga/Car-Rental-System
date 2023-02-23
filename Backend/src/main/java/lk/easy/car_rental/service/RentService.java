@@ -1,7 +1,6 @@
 package lk.easy.car_rental.service;
 
 import lk.easy.car_rental.dto.CustomerDTO;
-import lk.easy.car_rental.dto.DriverDTO;
 import lk.easy.car_rental.dto.RentDTO;
 import lk.easy.car_rental.dto.RentDetailDTO;
 
@@ -28,5 +27,7 @@ public interface RentService {
     public List<RentDetailDTO> getDriverSchedule(String nic) throws RuntimeException;
 
     public List<RentDTO> getRentByNic(String nic) throws RuntimeException;
+
+    public Long countRents() throws RuntimeException;
 
 }
