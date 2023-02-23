@@ -5,9 +5,10 @@
 
 let currentUser;
 let customer;
-let cart = [];
-let rent;
 let rentId;
+let cart = [];
+let cart1 = [];
+let rent;
 
 $.ajax({
     url: baseurl + "login",
@@ -132,8 +133,9 @@ function manageCarPage() {
 
             </div>
         </div>`);
-                        getDetail();
                     }
+
+                    getDetail();
 
                     bindButtonEvents();
 
@@ -168,50 +170,52 @@ function manageCarPage() {
                 $("#btnRequestCar").text("Add To Cart");
             });
 
-            $("#btnRequestCar").on("click", function () {
-
-                let json = {
-                    rentId: rentId,
-                    nic: customer.nic,
-                    pickUpDate: $("#pickUpDate").val(),
-                    pickUpTime: $("#pickUpTime").val(),
-                    returnDate: $("#returnDate").val(),
-                    returnTime: $("#returnTime").val(),
-                    driverRequest: $('#driverRequest').is(':checked') ? "YES" : "NO",
-                    status: "Pending",
-                    cost: $("#cost").val(),
-                    description: $("#description").val(),
-                    rentDetails: {
-                            rentId: rentId,
-                            nic: null,
-                            regNum: regNum,
-                            driverCost: $("#driverCost").val(),
-                            carCost: $("#carCost").val()
-                        }
-
-                }
-
-                rent = json;
-                cart.push(json.rentDetails)
-
-                if ($("#btnRequestCar").text() == "Request") {
-
-                    $.ajax({
-                        url: baseurl + "rent",
-                        method: "post",
-                        data: JSON.stringify(json),
-                        dataType: "json",
-                        contentType: "application/json",
-                        success: function (res) {
-
-                        }
-                    });
-
-                }
-
-            });
-
         }
+
+
+        $("#btnRequestCar").on("click", function () {
+
+            let json = {
+                rentId: rentId,
+                nic: customer.nic,
+                pickUpDate: $("#pickUpDate").val(),
+                pickUpTime: $("#pickUpTime").val(),
+                returnDate: $("#returnDate").val(),
+                returnTime: $("#returnTime").val(),
+                driverRequest: $('#driverRequest').is(':checked') ? "YES" : "NO",
+                status: "Pending",
+                cost: $("#cost").val(),
+                description: $("#description").val(),
+                rentDetails: {
+                    rentId: rentId,
+                    nic: null,
+                    regNum: regNum,
+                    driverCost: $("#driverCost").val(),
+                    carCost: $("#carCost").val()
+                }
+
+            }
+
+            rent = json;
+            cart1.push(json.rentDetails);
+
+
+            if ($("#btnRequestCar").text() == "Request") {
+
+                $.ajax({
+                    url: baseurl + "rent",
+                    method: "post",
+                    data: JSON.stringify(json),
+                    dataType: "json",
+                    contentType: "application/json",
+                    success: function (res) {
+
+                    }
+                });
+
+            }
+
+        });
 
         $("#pickUpDate").on("change", function () {
             setCosts();
@@ -220,7 +224,6 @@ function manageCarPage() {
         $("#returnDate").on("change", function () {
             setCosts();
         });
-
 
         function setCosts() {
 
@@ -249,6 +252,7 @@ function manageCartPage() {
                     <p class="card-text">Status : ${rent.status}</p>
                     <p class="card-text">Total Cost : ${rent.cost}</p>
                     <p class="card-text">Description : ${rent.description}</p>
+                    <p class="card-text">Pick Up Time: ${rent.pickUpDate.toString().replaceAll(",", "-")}</p>
                     <p class="card-text">Pick Up Time: ${rent.pickUpTime.toString().replaceAll(",", ":")}</p>
                     <p class="card-text">Return Date : ${rent.returnDate.toString().replaceAll(",", "/")}</p>
                     <p class="card-text">Return Time : ${rent.returnTime.toString().replaceAll(",", ":")}</p>
@@ -260,8 +264,8 @@ function manageCartPage() {
                                     <th scope="col"></th>
                                     <th scope="col">Register Number</th>
                                     <th scope="col">Car Cost</th>
+                                    <th scope="col">Driver</th>
                                     <th scope="col">Driver Cost</th>
-                                    <th scope="col">Driver NIC</th>
                               </tr>
                         </thead>
                         <tbody>
@@ -271,6 +275,7 @@ function manageCartPage() {
                     </table>
                 
                 <section class="mb-2">
+                    <button class="btn btn-danger"><i class="bi bi-calendar-x-fill"></i> Cancel</button>
                     <button class="btn btn-danger"><i class="bi bi-calendar-x-fill"></i> Cancel</button>
                 </section>  
                  
@@ -283,8 +288,8 @@ function manageCartPage() {
             let photo;
 
             $.ajax({
-                url: baseurl + "car?regNum="+rendDetail.regNum,
-                async:false,
+                url: baseurl + "car?regNum=" + rendDetail.regNum,
+                async: false,
                 method: "get",
                 dataType: "json",
                 success: function (res) {
@@ -293,13 +298,13 @@ function manageCartPage() {
                 }
             });
 
-            $("#"+rent.rentId).append(`
+            $(`#${rent.rentId}`).append(`
                 <tr>
                                     <td><img src="../assets/${photo}" width="150px" height="80px" alt=""></td>
                                     <td>${rendDetail.regNum}</td>
                                     <td>${rendDetail.carCost}</td>
-                                    <td>${rendDetail.driverCost}</td>
-                                    <td>${rendDetail.nic}</td>
+                                    <td>${rent.driverRequest}</td>
+                                    <td>${rendDetail.nic == null ? 0.00 : rendDetail.driverCost}</td>
                               </tr>
                 `)
 
