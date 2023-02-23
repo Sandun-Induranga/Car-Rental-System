@@ -278,10 +278,24 @@ function manageCartPage() {
 `);
 
         for (let rendDetail of cart) {
+
+            let photo;
+
+            $.ajax({
+                url: baseurl + "car?regNum="+rendDetail.regNum,
+                async:false,
+                method: "get",
+                dataType: "json",
+                success: function (res) {
+                    // photo = res.data.photos.front;
+                    console.log(res)
+                }
+            });
+
             $("#"+rent.rentId).empty();
             $("#"+rent.rentId).append(`
                 <tr>
-                                    <td>${rendDetail.regNum}</td>
+<!--                                    <td><img src="../assets/${photo}" alt=""></td>-->
                                     <td>${rendDetail.regNum}</td>
                                     <td>${rendDetail.carCost}</td>
                                     <td>${rendDetail.driverCost}</td>

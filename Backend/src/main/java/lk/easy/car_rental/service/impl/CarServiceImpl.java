@@ -99,9 +99,9 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public CarDTO getCar(String regNum) throws RuntimeException {
+    public CarSpDTO getCar(String regNum) throws RuntimeException {
 
-        return mapper.map(carRepo.findById(regNum), CarDTO.class);
+        return mapper.map(carRepo.findById(regNum), CarSpDTO.class);
 
     }
 
