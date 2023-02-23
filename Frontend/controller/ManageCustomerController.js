@@ -87,7 +87,10 @@ function loadAllCars() {
                         <p class="card-text text-secondary col">${car.lostDamageCost} LKR</p>
                     </section>
 
-                    <p class="card-text text-secondary" id="registerNum"><i class="bi bi-car-front me-1"></i>${car.regNum}</p>
+                    <section class="row justify-content-between">
+                        <p class="card-text text-secondary col col-6" id="registerNum"><i class="bi bi-car-front me-1"></i>${car.regNum}</p>
+                        <p class="card-text text-secondary col col-6 text-danger">${car.availability == "YES" ? "" : "Out Of Stock"}</p>
+                    </section>
 
                     <section class="d-flex justify-content-between flex-lg-row flex-column gap-1">
                         <button class="btn btn-success rent" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><p class="card-text"><i class="bi bi-upc-scan"></i> Rent </p></button>
