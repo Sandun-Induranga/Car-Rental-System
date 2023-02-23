@@ -10,6 +10,7 @@ function manageCarPage() {
     $("#btnCar").on("click", function () {
 
         $("#manageCar").attr("style", "display : block !important");
+        $("#manageCart").attr("style", "display : none !important");
 
         let regNum;
         let dailyMileage;
@@ -37,6 +38,7 @@ function manageCarPage() {
         });
 
         getCustomer();
+
         function getCustomer() {
             $.ajax({
                 url: baseurl + `rent?username=${currentUser.username}`,
@@ -171,7 +173,7 @@ function manageCarPage() {
                 ]
             }
 
-            if ($(this).text() == "Request"){
+            if ($(this).text() == "Request") {
 
                 $.ajax({
                     url: baseurl + "rent",
@@ -184,7 +186,7 @@ function manageCarPage() {
                     }
                 });
 
-            }else{
+            } else {
 
                 cart.push(json);
                 console.log(cart)
@@ -225,6 +227,17 @@ function manageCarPage() {
                 }
             });
         }
+
+    });
+
+}
+
+function manageCartPage() {
+
+    $("#btnCart").on("click", function () {
+
+        $("#manageCar").attr("style", "display : none !important");
+        $("#manageCart").attr("style", "display : block !important");
 
     });
 
