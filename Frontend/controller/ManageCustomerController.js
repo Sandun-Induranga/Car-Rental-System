@@ -118,7 +118,6 @@ function getDetail() {
         monthlyMileage = $(this).parent().parent().children(":eq(4)").children(":eq(2)").text();
         dailyPrice = $(this).parent().parent().children(":eq(4)").children(":eq(1)").text();
         monthlyPrice = $(this).parent().parent().children(":eq(4)").children(":eq(2)").text();
-        console.log(regNum + dailyMileage + monthlyMileage + dailyPrice + monthlyPrice);
 
     });
 
