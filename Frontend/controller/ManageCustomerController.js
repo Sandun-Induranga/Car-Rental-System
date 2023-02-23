@@ -359,11 +359,6 @@ function manageRentPage() {
                         </tbody>
                         </tbody>
                     </table>
-                
-                <section class="mb-2">
-                    <button class="btn btn-danger"><i class="bi bi-calendar-x-fill"></i> Cancel</button>
-                    <button class="btn btn-danger"><i class="bi bi-calendar-x-fill"></i> Cancel</button>
-                </section>  
                  
                 </div>   
                 `);
