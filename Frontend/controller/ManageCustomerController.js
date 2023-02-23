@@ -310,7 +310,7 @@ function manageCartPage() {
                     <td>${rent.driverRequest}</td>
                     <td>${rendDetail.nic == null ? 0.00 : rendDetail.driverCost}</td>
                 </tr>
-                `);
+        `);
 
     }
 
@@ -324,7 +324,7 @@ function manageRentPage() {
         $("#manageRent").attr("style", "display : block !important");
 
         $.ajax({
-            url: baseurl + "rent?nic="+customer.nic,
+            url: baseurl + "rent?nic=" + customer.nic,
             async: false,
             method: "get",
             dataType: "json",
@@ -368,32 +368,32 @@ function manageRentPage() {
                 </div>   
                 `);
 
-                }
+                    for (let rendDetail of rent.rentDetails) {
 
-                for (let rendDetail of cart) {
+                        let photo;
 
-                    let photo;
+                        $.ajax({
+                            url: baseurl + "car?regNum=" + rendDetail.regNum,
+                            async: false,
+                            method: "get",
+                            dataType: "json",
+                            success: function (res) {
+                                photo = res.data.photos.front;
+                                console.log(res)
+                            }
+                        });
 
-                    $.ajax({
-                        url: baseurl + "car?regNum=" + rendDetail.regNum,
-                        async: false,
-                        method: "get",
-                        dataType: "json",
-                        success: function (res) {
-                            photo = res.data.photos.front;
-                            console.log(res)
-                        }
-                    });
+                        $(`#${rent.rentId}`).append(`
+                            <tr>
+                                <td><img src="../assets/${photo}" width="150px" height="80px" alt=""></td>
+                                <td>${rendDetail.regNum}</td>
+                                <td>${rendDetail.carCost}</td>
+                                <td>${rent.driverRequest}</td>
+                                <td>${rendDetail.nic == null ? 0.00 : rendDetail.driverCost}</td>
+                            </tr>
+                        `);
 
-                    $(`#${rent.rentId}`).append(`
-                <tr>
-                    <td><img src="../assets/${photo}" width="150px" height="80px" alt=""></td>
-                    <td>${rendDetail.regNum}</td>
-                    <td>${rendDetail.carCost}</td>
-                    <td>${rent.driverRequest}</td>
-                    <td>${rendDetail.nic == null ? 0.00 : rendDetail.driverCost}</td>
-                </tr>
-                `);
+                    }
 
                 }
 
