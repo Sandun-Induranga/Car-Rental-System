@@ -303,13 +303,13 @@ function manageCartPage() {
 
             $(`#${rent.rentId}`).append(`
                 <tr>
-                                    <td><img src="../assets/${photo}" width="150px" height="80px" alt=""></td>
-                                    <td>${rendDetail.regNum}</td>
-                                    <td>${rendDetail.carCost}</td>
-                                    <td>${rent.driverRequest}</td>
-                                    <td>${rendDetail.nic == null ? 0.00 : rendDetail.driverCost}</td>
-                              </tr>
-                `)
+                    <td><img src="../assets/${photo}" width="150px" height="80px" alt=""></td>
+                    <td>${rendDetail.regNum}</td>
+                    <td>${rendDetail.carCost}</td>
+                    <td>${rent.driverRequest}</td>
+                    <td>${rendDetail.nic == null ? 0.00 : rendDetail.driverCost}</td>
+                </tr>
+                `);
 
         }
 

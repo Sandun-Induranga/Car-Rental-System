@@ -63,4 +63,11 @@ public class RentController {
 
     }
 
+    @GetMapping(params = {"nic"})
+    public ResponseUtil getRentByNic(@RequestParam String nic){
+
+
+
+    }
+
 }
