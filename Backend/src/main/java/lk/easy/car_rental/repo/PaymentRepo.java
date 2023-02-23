@@ -9,4 +9,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  **/
 
 public interface PaymentRepo extends JpaRepository<Payment, Integer> {
+
+    Payment findAllByRentId_Nic(String nic) throws RuntimeException;
+
 }
