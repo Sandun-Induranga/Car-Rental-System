@@ -5,6 +5,22 @@
 
 let cart = [];
 let rent;
+let rentId;
+
+generateNewRentId();
+
+function generateNewRentId() {
+    $.ajax({
+        url: baseurl + "rent",
+        method: "get",
+        async: false,
+        dataType: "json",
+        contentType: "application/json",
+        success: function (res) {
+            rentId = res.data;
+        }
+    });
+}
 
 manageCarPage();
 manageCartPage();
@@ -21,9 +37,9 @@ function manageCarPage() {
         let monthlyMileage;
         let dailyPrice;
         let monthlyPrice;
-        let rentId;
         let currentUser;
         let customer;
+
 
         loadAllCars();
 
@@ -128,13 +144,14 @@ function manageCarPage() {
 
         function getDetail() {
 
-            $(".rent").on("click", function () {
+            $(".rent, .cart").on("click", function () {
 
-                regNum = $(this).parent().parent().children(":eq(6)").text();
+                regNum = $(this).parent().parent().children(":eq(6)").children(":eq(0)").text();
                 dailyMileage = $(this).parent().parent().children(":eq(4)").children(":eq(1)").text();
                 monthlyMileage = $(this).parent().parent().children(":eq(4)").children(":eq(2)").text();
                 dailyPrice = $(this).parent().parent().children(":eq(4)").children(":eq(1)").text();
                 monthlyPrice = $(this).parent().parent().children(":eq(4)").children(":eq(2)").text();
+                console.log(regNum)
 
             });
 
@@ -175,6 +192,7 @@ function manageCarPage() {
                 }
 
                 rent = json;
+                cart.push(json.rentDetails)
 
                 if ($("#btnRequestCar").text() == "Request") {
 
@@ -191,15 +209,15 @@ function manageCarPage() {
 
                 } else {
 
-                    let details = {
-                        rentId: rentId,
-                        nic: null,
-                        regNum: regNum,
-                        driverCost: $("#driverCost").val(),
-                        carCost: $("#carCost").val()
-                    };
-
-                    rent.rentDetails.push(details)
+                    // let details = {
+                    //     rentId: rentId,
+                    //     nic: null,
+                    //     regNum: regNum,
+                    //     driverCost: $("#driverCost").val(),
+                    //     carCost: $("#carCost").val()
+                    // };
+                    //
+                    // rent.rentDetails.push(details)
 
                 }
 
@@ -225,21 +243,6 @@ function manageCarPage() {
 
         }
 
-        generateNewRentId();
-
-        function generateNewRentId() {
-            $.ajax({
-                url: baseurl + "rent",
-                method: "get",
-                async: false,
-                dataType: "json",
-                contentType: "application/json",
-                success: function (res) {
-                    rentId = res.data;
-                }
-            });
-        }
-
     });
 
 }
@@ -252,7 +255,7 @@ function manageCartPage() {
         $("#manageCart").attr("style", "display : block !important");
 
         $("#rent-context").append(`
-<div class="card text-center p-2 w-50 shadow">
+<div class="card text-center p-2 w-75 shadow">
                     <p class="card-text">Status : ${rent.status}</p>
                     <p class="card-text">Total Cost : ${rent.cost}</p>
                     <p class="card-text">Description : ${rent.description}</p>
@@ -261,7 +264,7 @@ function manageCartPage() {
                     <p class="card-text">Return Time : ${rent.returnTime.toString().replaceAll(",", ":")}</p>
                     <p class="card-text">Description : ${rent.description.split(".")[0]}</p>
                                   
-                    <table class="table" id=${rent.rentId}>
+                    <table class="table">
                         <thead>
                               <tr>
                                     <th scope="col">Register Number</th>
@@ -271,21 +274,28 @@ function manageCartPage() {
                               </tr>
                         </thead>
                         <tbody>
-                            <td></td>
+                            
+                        </tbody id="body">
                         </tbody>
                     </table>
                 
                 <section class="mb-2">
-                    <button class="btn btn-success me-2 btnAccept"><i class="bi bi-calendar2-check"></i> Accept</button>
-                    <button class="btn btn-success me-2 btn-warning pay" data-bs-toggle="modal" data-bs-target="#paymentModel"><i class="bi bi-paypal"></i> Pay</button>
-                    <button class="btn btn-danger"><i class="bi bi-calendar-x-fill"></i> Reject</button>
+                    <button class="btn btn-danger"><i class="bi bi-calendar-x-fill"></i> Cancel</button>
                 </section>  
                  
                 </div>   
 `);
 
-        for (let rendDetail of rent) {
+        for (let rendDetail of cart) {
 
+            $("#body").append(`
+                <tr>
+                                    <td>${cart.regNum}</td>
+                                    <td>Car Cost</td>
+                                    <td>Driver Cost</td>
+                                    <td>Driver NIC</td>
+                              </tr>
+                `)
 
         }
 
