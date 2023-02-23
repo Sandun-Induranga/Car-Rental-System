@@ -52,15 +52,15 @@ function loadAllCars() {
             for (let car of res.data) {
                 $("#cars").append(`<div class="col col-lg-4">
             <div class="card">
-                <img src="../assets/image/background.png" class="card-img-top" alt="car">
+                <img src="../assets/${car.photos.front}" class="card-img-top" alt="car">
 
                 <div class="card-body">
                     <h5 class="card-title">${car.brand}</h5>
 
                     <section class="mb-4">
-                        <img src="../assets/image/background.png" class="w-25" alt="${car.photos.back}">
-                        <img src="../assets/image/background.png" class="w-25" alt="car">
-                        <img src="../assets/image/background.png" class="w-25" alt="car">
+                        <img src="../assets/${car.photos.back}" class="w-25" alt="${car.photos.back}">
+                        <img src="../assets/${car.photos.side}" class="w-25" alt="car">
+                        <img src="../assets/${car.photos.interior}" class="w-25" alt="car">
                     </section>
 
                     <section class="d-flex gap-3 justify-content-between">
