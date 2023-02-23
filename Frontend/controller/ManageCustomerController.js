@@ -7,7 +7,7 @@ manageCarPage();
 
 function manageCarPage() {
 
-    $("#btnManageCar").on("click", function () {
+    $("#btnCar").on("click", function () {
 
         $("#manageCar").attr("style", "display : block !important");
 
