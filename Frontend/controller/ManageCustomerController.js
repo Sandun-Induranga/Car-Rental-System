@@ -427,7 +427,6 @@ function managePaymentPage() {
                         <td>${payment.balance}</td>
                         <td>${payment.date}</td>
                         <td>${payment.time}</td>
-                        <td></td>
                     </tr>
                 `);
                 }
