@@ -3,9 +3,40 @@
  * @since : 0.1.0
  **/
 
+let currentUser;
+let customer;
 let cart = [];
 let rent;
 let rentId;
+
+$.ajax({
+    url: baseurl + "login",
+    method: "get",
+    async: false,
+    dataType: "json",
+    contentType: "application/json",
+    success: function (res) {
+        currentUser = res.data;
+        $("#user").text(res.data.username);
+        getCustomer();
+    }
+});
+
+getCustomer();
+
+function getCustomer() {
+    $.ajax({
+        url: baseurl + `rent?username=${currentUser.username}`,
+        method: "get",
+        async: false,
+        dataType: "json",
+        // contentType: "application/json",
+        success: function (res) {
+            customer = res.data;
+            console.log(customer)
+        }
+    });
+}
 
 generateNewRentId();
 
@@ -37,40 +68,9 @@ function manageCarPage() {
         let monthlyMileage;
         let dailyPrice;
         let monthlyPrice;
-        let currentUser;
-        let customer;
 
 
         loadAllCars();
-
-        $.ajax({
-            url: baseurl + "login",
-            method: "get",
-            async: false,
-            dataType: "json",
-            contentType: "application/json",
-            success: function (res) {
-                currentUser = res.data;
-                $("#username").text(res.data.username);
-                getCustomer();
-            }
-        });
-
-        getCustomer();
-
-        function getCustomer() {
-            $.ajax({
-                url: baseurl + `rent?username=${currentUser.username}`,
-                method: "get",
-                async: false,
-                dataType: "json",
-                contentType: "application/json",
-                success: function (res) {
-                    customer = res.data;
-                    console.log(customer)
-                }
-            });
-        }
 
         function loadAllCars() {
 
@@ -171,7 +171,7 @@ function manageCarPage() {
 
                 let json = {
                     rentId: rentId,
-                    nic: customer,
+                    nic: customer.nic,
                     pickUpDate: $("#pickUpDate").val(),
                     pickUpTime: $("#pickUpTime").val(),
                     returnDate: $("#returnDate").val(),

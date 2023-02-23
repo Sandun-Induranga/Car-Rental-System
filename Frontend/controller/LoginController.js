@@ -16,7 +16,7 @@ $("#btnLogin").on("click", function () {
                     window.open("admin-home-page.html", '_self');
                     break;
                 case "Customer":
-                    window.open("car-page.html", '_self');
+                    window.open("customer-page.html", '_self');
                     break;
                 case "Driver":
                     window.open("driver-page.html", '_self');
