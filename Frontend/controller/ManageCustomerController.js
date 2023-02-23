@@ -383,7 +383,7 @@ function manageRentPage() {
                             }
                         });
 
-                        $(`#${rent.rentId}`).append(`
+                        $(`#rent${rent.rentId}`).append(`
                             <tr>
                                 <td><img src="../assets/${photo}" width="150px" height="80px" alt=""></td>
                                 <td>${rendDetail.regNum}</td>
@@ -399,6 +399,6 @@ function manageRentPage() {
 
             }
         });
-    })
+    });
 
 }
