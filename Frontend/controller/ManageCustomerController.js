@@ -57,6 +57,7 @@ function generateNewRentId() {
 manageCarPage();
 manageCartPage();
 manageRentPage();
+managePaymentPage();
 
 function manageCarPage() {
 
@@ -65,6 +66,7 @@ function manageCarPage() {
         $("#manageCar").attr("style", "display : block !important");
         $("#manageCart").attr("style", "display : none !important");
         $("#manageRent").attr("style", "display : none !important");
+        $("#payments").attr("style", "display : none !important");
 
         let regNum;
         let dailyMileage;
@@ -247,6 +249,7 @@ function manageCartPage() {
         $("#manageCar").attr("style", "display : none !important");
         $("#manageCart").attr("style", "display : block !important");
         $("#manageRent").attr("style", "display : none !important");
+        $("#payments").attr("style", "display : none !important");
 
         $("#rent-context").empty();
 
@@ -322,6 +325,7 @@ function manageRentPage() {
         $("#manageCar").attr("style", "display : none !important");
         $("#manageCart").attr("style", "display : none !important");
         $("#manageRent").attr("style", "display : block !important");
+        $("#payments").attr("style", "display : none !important");
 
         $.ajax({
             url: baseurl + "rent?nic=" + customer.nic,
@@ -394,5 +398,18 @@ function manageRentPage() {
             }
         });
     });
+
+}
+
+function managePaymentPage() {
+
+    $("#manageCar").attr("style", "display : none !important");
+    $("#manageCart").attr("style", "display : none !important");
+    $("#manageRent").attr("style", "display : none !important");
+    $("#payments").attr("style", "display : block !important");
+
+    $("#btnManagePayment").on("click", function () {
+
+    })
 
 }
