@@ -16,6 +16,7 @@ public interface CustomerRepo extends JpaRepository<Customer, String> {
 
     Customer getCustomerByNic(String nic);
 
+    @Query(value = "SELECT COUNT(nic) FROM Customer", nativeQuery = true)
     Long countCustomerByNic() throws RuntimeException;
 
 }

@@ -60,6 +60,17 @@ function manageHomePage() {
         $("#drivers").attr("style", "display : none !important");
         $("#rents").attr("style", "display : none !important");
         $("#payments").attr("style", "display : none !important");
+
+
+        $.ajax({
+            url:baseurl+"customer/count",
+            method:"get",
+            dataType:"json",
+            success:function (res) {
+                $("#reg-users").text(res.data);
+            }
+        })
+
     });
 
 }

@@ -81,7 +81,6 @@ public class CustomerServiceImpl implements CustomerService {
     public void updateCustomer(CustomerDTO customerDTO) throws RuntimeException {
 
         if (!customerRepo.existsById(customerDTO.getNic())) throw new RuntimeException("Invalid Customer..!");
-
         customerRepo.save(mapper.map(customerDTO, Customer.class));
 
     }
