@@ -308,7 +308,7 @@ function manageCartPage() {
                     <td>${rendDetail.regNum}</td>
                     <td>${rendDetail.carCost}</td>
                     <td>${rent.driverRequest}</td>
-                    <td>${rendDetail.nic == null ? 0.00 : rendDetail.driverCost}</td>
+                    <td>${rendDetail.driverCost == null ? 0.00 : rendDetail.driverCost}</td>
                 </tr>
         `);
 
@@ -379,7 +379,6 @@ function manageRentPage() {
                             dataType: "json",
                             success: function (res) {
                                 photo = res.data.photos.front;
-                                console.log(res)
                             }
                         });
 
@@ -389,7 +388,7 @@ function manageRentPage() {
                                 <td>${rendDetail.regNum}</td>
                                 <td>${rendDetail.carCost}</td>
                                 <td>${rent.driverRequest}</td>
-                                <td>${rendDetail.nic == null ? 0.00 : rendDetail.driverCost}</td>
+                                <td>${rendDetail.driverCost == null ? 0.00 : rendDetail.driverCost}</td>
                             </tr>
                         `);
 
