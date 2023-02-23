@@ -410,6 +410,30 @@ function managePaymentPage() {
 
     $("#btnManagePayment").on("click", function () {
 
-    })
+        $.ajax({
+            url: baseurl + `payment`,
+            method: "get",
+            dataType: "json",
+            success: function (res) {
+                for (let payment of res.data) {
+                    $("#tblPayment").append(`
+                    <tr>
+                        <td>${payment.paymentId}</td>
+                        <td>${payment.rentId.rentId}</td>
+                        <td>${payment.type}</td>
+                        <td>${payment.description}</td>
+                        <td>${payment.total}</td>
+                        <td>${payment.cash}</td>
+                        <td>${payment.balance}</td>
+                        <td>${payment.date}</td>
+                        <td>${payment.time}</td>
+                        <td></td>
+                    </tr>
+                `);
+                }
+            }
+        });
+
+    });
 
 }
