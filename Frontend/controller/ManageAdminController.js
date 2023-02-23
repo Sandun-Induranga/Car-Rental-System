@@ -89,6 +89,15 @@ function manageHomePage() {
             }
         });
 
+        $.ajax({
+            url:baseurl+"car/count/reserved",
+            method:"get",
+            dataType:"json",
+            success:function (res) {
+                $("#reserved-cars").text(res.data);
+            }
+        });
+
     });
 
 }
