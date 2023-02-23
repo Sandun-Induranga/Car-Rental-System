@@ -94,4 +94,11 @@ public class CustomerServiceImpl implements CustomerService {
 
     }
 
+    @Override
+    public Long countCustomers() throws RuntimeException {
+
+        return customerRepo.countCustomerByNic();
+
+    }
+
 }
