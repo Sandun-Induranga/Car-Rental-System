@@ -55,9 +55,10 @@ public class CarController {
 
     }
 
+    @GetMapping(params = {"regNum"})
     public ResponseUtil getCar(@RequestParam String regNum){
 
-
+        return new ResponseUtil("OK", "Successfully Loaded..!", carService.getCar(regNum));
 
     }
 
