@@ -16,4 +16,7 @@ public interface CarRepo extends JpaRepository<Car, String> {
     @Query(value = "SELECT COUNT(regNum) FROM Car WHERE Availability='YES'", nativeQuery = true)
     Long countAvailableCars() throws RuntimeException;
 
+    @Query(value = "SELECT COUNT(regNum) FROM Car WHERE Availability='NO'", nativeQuery = true)
+    Long countReservedCars() throws RuntimeException;
+
 }
