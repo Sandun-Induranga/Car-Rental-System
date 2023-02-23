@@ -18,5 +18,6 @@ public interface CarService {
     public void saveCarImages(CarPhotoDTO carPhotoDTO) throws RuntimeException;
 
     public void addToMaintains(String regNum) throws RuntimeException;
+    public CarDTO getCar(String regNum) throws RuntimeException;
 
 }

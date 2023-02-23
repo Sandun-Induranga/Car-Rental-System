@@ -55,6 +55,10 @@ public class CarController {
 
     }
 
-    public
+    public ResponseUtil getCar(@RequestParam String regNum){
+
+
+
+    }
 
 }

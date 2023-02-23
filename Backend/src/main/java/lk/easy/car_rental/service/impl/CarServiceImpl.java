@@ -98,4 +98,9 @@ public class CarServiceImpl implements CarService {
 
     }
 
+    @Override
+    public CarDTO getCar(String regNum) throws RuntimeException {
+        return null;
+    }
+
 }
