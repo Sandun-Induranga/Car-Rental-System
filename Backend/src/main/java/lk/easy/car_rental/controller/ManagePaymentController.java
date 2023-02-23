@@ -39,4 +39,10 @@ public class ManagePaymentController {
 
     }
 
+    public ResponseUtil getPaymentsByNic(){
+
+
+
+    }
+
 }
