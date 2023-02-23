@@ -3,6 +3,8 @@ package lk.easy.car_rental.repo;
 import lk.easy.car_rental.entity.Payment;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
+
 /**
  * @author : Sandun Induranga
  * @since : 0.1.0
@@ -10,6 +12,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PaymentRepo extends JpaRepository<Payment, Integer> {
 
-    Payment findAllByRentId_Nic(String nic) throws RuntimeException;
+    List<Payment> findAllByRentId_Nic_Nic(String nic) throws RuntimeException;
 
 }

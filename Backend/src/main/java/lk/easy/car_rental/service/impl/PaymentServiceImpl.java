@@ -56,7 +56,7 @@ public class PaymentServiceImpl implements PaymentService {
     @Override
     public List<PaymentDTO> getPaymentsByNic(String nic) throws RuntimeException {
 
-        return mapper.map(paymentRepo.findAllByRentId_Nic(nic), new TypeToken<ArrayList<PaymentDTO>>() {
+        return mapper.map(paymentRepo.findAllByRentId_Nic_Nic(nic), new TypeToken<ArrayList<PaymentDTO>>() {
         }.getType());
 
     }

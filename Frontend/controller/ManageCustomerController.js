@@ -411,7 +411,7 @@ function managePaymentPage() {
     $("#btnManagePayment").on("click", function () {
 
         $.ajax({
-            url: baseurl + `payment`,
+            url: baseurl + `payment?nic=`+customer.nic,
             method: "get",
             dataType: "json",
             success: function (res) {
