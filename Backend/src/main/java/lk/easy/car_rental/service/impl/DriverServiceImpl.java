@@ -1,12 +1,13 @@
 package lk.easy.car_rental.service.impl;
 
+import lk.easy.car_rental.dto.CustomerDTO;
 import lk.easy.car_rental.dto.DriverDTO;
 import lk.easy.car_rental.entity.Driver;
-import lk.easy.car_rental.entity.RentDetail;
 import lk.easy.car_rental.repo.DriverRepo;
 import lk.easy.car_rental.service.DriverService;
 import lk.easy.car_rental.util.CurrentUserUtil;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +18,8 @@ import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author : Sandun Induranga
@@ -68,6 +71,14 @@ public class DriverServiceImpl implements DriverService {
     public DriverDTO getDriver() throws RuntimeException {
 
         return mapper.map(driverRepo.getDriverByUsername(CurrentUserUtil.currentUser.getUsername()), DriverDTO.class);
+
+    }
+
+    @Override
+    public List<DriverDTO> getAllDrivers() throws RuntimeException {
+
+        return mapper.map(driverRepo.findAll(), new TypeToken<ArrayList<CustomerDTO>>() {
+        }.getType());
 
     }
 

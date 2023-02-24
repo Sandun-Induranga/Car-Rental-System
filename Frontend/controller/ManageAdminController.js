@@ -604,7 +604,7 @@ function manageDriverPage() {
         function loadAllDrivers() {
 
             $.ajax({
-                url: baseurl + "driver",
+                url: baseurl + "driver/all",
                 method: "get",
                 dataType:"json",
                 success: function (res) {
