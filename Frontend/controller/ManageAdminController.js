@@ -413,6 +413,27 @@ function manageCarPage() {
             });
         }
 
+        function bindDeleteEvent() {
+
+            $(".btnDelete").on("click", function () {
+
+                regNum = $(this).parent().parent().children(":eq(6)").children(":eq(0)").text().trim();
+
+                if (confirm("Are You Sure..?")){
+                    $.ajax({
+                        url: baseurl + "car?regNum="+regNum,
+                        method: "delete",
+                        dataType:"json",
+                        contentType: "application/json",
+                        success: function (res) {
+                            loadAllCars();
+                        }
+                    });
+                }
+            });
+
+        }
+
         loadAllCars();
 
         function loadAllCars() {
@@ -480,6 +501,7 @@ function manageCarPage() {
                         getDetail();
                     }
                     bindUpdateEvent();
+                    bindDeleteEvent();
                 }
 
             });
