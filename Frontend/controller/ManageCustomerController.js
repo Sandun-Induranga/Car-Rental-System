@@ -87,7 +87,7 @@ function manageCarPage() {
                     $("#cars").empty();
                     for (let car of res.data) {
                         $("#cars").append(`<div class="col col-lg-4">
-            <div class="card border border-0">
+            <div class="card border border-0 pt-2">
                 <img src="../assets/${car.photos.front}" class="card-img-top" alt="car">
 
                 <div class="card-body">
@@ -206,7 +206,9 @@ function manageCartPage() {
         $("#manageRent").attr("style", "display : none !important");
         $("#payments").attr("style", "display : none !important");
 
-        $("#rent-context").empty();
+        if (cart.length != 0){
+            $("#rent-context").empty();
+        }
 
         $("#rent-context").append(`
 <div class="card text-center p-2 w-75 shadow">
