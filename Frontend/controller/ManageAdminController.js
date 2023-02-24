@@ -408,7 +408,7 @@ function manageCarPage() {
         $("#home").attr("style", "display : none !important");
         $("#manageCustomers").attr("style", "display : none !important");
         $("#viewCustomer").attr("style", "display : none !important");
-        $("#manageCar").attr("style", "display : none !important");
+        // $("#manageCar").attr("style", "display : none !important");
         $("#viewCar").attr("style", "display : block !important");
         $("#manageDriver").attr("style", "display : none !important");
         $("#drivers").attr("style", "display : none !important");
@@ -573,8 +573,8 @@ function manageDriverPage() {
         $("#manageCustomers").attr("style", "display : none !important");
         $("#manageCar").attr("style", "display : none !important");
         $("#viewCar").attr("style", "display : none !important");
-        $("#manageDriver").attr("style", "display : block !important");
-        $("#drivers").attr("style", "display : none !important");
+        $("#manageDriver").attr("style", "display : none !important");
+        $("#drivers").attr("style", "display : block !important");
         $("#rents").attr("style", "display : none !important");
         $("#payments").attr("style", "display : none !important");
 
