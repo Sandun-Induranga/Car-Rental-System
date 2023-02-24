@@ -236,7 +236,7 @@ function manageCartPage() {
                     </table>
                 
                 <section class="mb-2">
-                    <button class="btn btn-danger"><i class="bi bi-calendar-x-fill"></i> Cancel</button>
+                    <button class="btn btn-success btnMultiPurchase"><i class="bi bi-upc-scan"></i> Purchase</button>
                     <button class="btn btn-danger"><i class="bi bi-calendar-x-fill"></i> Cancel</button>
                 </section>  
                  
@@ -269,6 +269,23 @@ function manageCartPage() {
         `);
 
         }
+
+        $("#btnMultiPurchase").on("click", function () {
+
+            rent.rentDetails = cart;
+
+            $.ajax({
+                url: baseurl + "rent",
+                method: "post",
+                data: JSON.stringify(rent),
+                dataType: "json",
+                contentType: "application/json",
+                success: function (res) {
+
+                }
+            });
+
+        })
 
     });
 
