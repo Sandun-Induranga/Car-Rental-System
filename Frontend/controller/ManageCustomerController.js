@@ -270,9 +270,11 @@ function manageCartPage() {
 
         }
 
-        $("#btnMultiPurchase").on("click", function () {
+        $(".btnMultiPurchase").on("click", function () {
 
             rent.rentDetails = cart;
+
+            console.log(rent)
 
             $.ajax({
                 url: baseurl + "rent",
@@ -285,7 +287,7 @@ function manageCartPage() {
                 }
             });
 
-        })
+        });
 
     });
 
@@ -416,7 +418,7 @@ $("#btnRequestCar").on("click", function () {
 
     let json = {
         rentId: rentId,
-        nic: customer.nic,
+        nic: customer,
         pickUpDate: $("#pickUpDate").val(),
         pickUpTime: $("#pickUpTime").val(),
         returnDate: $("#returnDate").val(),
