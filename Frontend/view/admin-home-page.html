@@ -220,6 +220,75 @@
                         </table>
 
                     </section>
+
+                    <div class="modal fade" id="registerDriver" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                         aria-labelledby="staticBackdropLabel1" aria-hidden="true">
+                        <div class="modal-dialog modal-fullscreen">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel3">Manage Car</h5>
+                                    <button type="button" class="btn-close text-white bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+
+                                <form class="row justify-content-between p-5 rounded-5" id="customerForm">
+                                    <div class="mb-3 col-md-5 shadow p-3 rounded rounded-4">
+                                        <label for="cusName" class="form-label">Full Name</label>
+                                        <input type="text" class="form-control" id="cusName" name="name">
+                                    </div>
+                                    <div class="mb-3 col-md-5 shadow p-3 rounded rounded-4">
+                                        <label for="cusEmail" class="form-label">Email address</label>
+                                        <input type="email" class="form-control" id="cusEmail" name="email">
+                                    </div>
+                                    <div class="mb-3 col-md-5 shadow p-3 rounded rounded-4">
+                                        <label for="cusNic" class="form-label">NIC</label>
+                                        <input type="text" class="form-control" id="cusNic" name="nic" aria-describedby="emailHelp">
+                                    </div>
+                                    <div class="mb-3 col-md-5 shadow p-3 rounded rounded-4">
+                                        <label for="cusUsername" class="form-label">Username</label>
+                                        <input type="text" class="form-control" id="cusUsername" name="username" aria-describedby="emailHelp">
+                                    </div>
+                                    <div class="mb-3 col-md-5 shadow p-3 rounded rounded-4">
+                                        <label for="cusLicense" class="form-label">License Number</label>
+                                        <input type="text" class="form-control" id="cusLicense" name="license" aria-describedby="emailHelp">
+                                    </div>
+                                    <div class="mb-3 col-md-5 shadow p-3 rounded rounded-4">
+                                        <label for="cusPassword" class="form-label">Password</label>
+                                        <input type="password" class="form-control" id="cusPassword" name="password">
+                                    </div>
+                                    <div class="mb-3 col-md-5 shadow p-3 rounded rounded-4">
+                                        <label for="cusAddress" class="form-label">Address</label>
+                                        <input type="text" class="form-control" id="cusAddress" name="address" aria-describedby="emailHelp">
+                                    </div>
+                                    <div class="mb-3 col-md-5 shadow p-3 rounded rounded-4">
+                                        <label for="cusRe-password" class="form-label">Confirm Password</label>
+                                        <input type="password" class="form-control" id="cusRe-password">
+                                    </div>
+
+                                    <div class="mb-3 col-md-5 shadow p-3 rounded rounded-4">
+                                        <label for="cusContact" class="form-label">Contact Number</label>
+                                        <input type="text" class="form-control" id="cusContact" name="contact">
+                                    </div>
+
+                                    <div class=" col-md-5 shadow p-3 rounded rounded-4">
+                                        <div class="image-context border border-2 rounded-3" id="cusLicenseImgContext"></div>
+                                        <label for="cusLicenseImage" class="form-label">License Photo</label>
+                                        <input type="file" id="cusLicenseImage" class="form-control" name="licenseImage">
+                                    </div>
+
+                                    <div class="mb-3 col-md-5 d-flex flex-column shadow p-3 rounded rounded-4">
+                                        <div class="image-context border border-2 rounded-3" id="cusNicImgContext"></div>
+                                        <label for="cusNicImage" class="form-label">NIC Photo</label>
+                                        <input type="file" id="cusNicImage" class="form-control" name="nicImage">
+                                    </div>
+
+                                    <div class="mt-5 col-md-5 d-flex flex-column shadow p-3 rounded rounded-4">
+                                        <button type="button" class="btn btn-primary mt-3" id="btnSaveCustomer">Submit</button>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </main>
 
                 <main class="mt-5 min-vh-100" id="manageCustomers">

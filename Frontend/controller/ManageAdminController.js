@@ -21,24 +21,8 @@ $.ajax({
     success: function (res) {
         currentUser = res.data;
         $("#user").text(res.data.username);
-        // getCustomer();
     }
 });
-
-// getCustomer();
-// function getCustomer() {
-//     $.ajax({
-//         url: baseurl + `rent?username=${currentUser.username}`,
-//         method: "get",
-//         async: false,
-//         dataType: "json",
-//         contentType: "application/json",
-//         success: function (res) {
-//             customer = res.data;
-//             console.log(customer)
-//         }
-//     });
-// }
 
 manageCustomerPage();
 manageCarPage();
@@ -310,94 +294,6 @@ function manageCustomerPage() {
 }
 
 
-// /** ********************************************************* Rent ***************************************************** **/
-//
-// function getDetail() {
-//
-//     $(".rent").on("click", function () {
-//
-//         regNum = $(this).parent().parent().children(":eq(6)").text();
-//         dailyMileage = $(this).parent().parent().children(":eq(4)").children(":eq(1)").text();
-//         monthlyMileage = $(this).parent().parent().children(":eq(4)").children(":eq(2)").text();
-//         dailyPrice = $(this).parent().parent().children(":eq(4)").children(":eq(1)").text();
-//         monthlyPrice = $(this).parent().parent().children(":eq(4)").children(":eq(2)").text();
-//         console.log(regNum + dailyMileage + monthlyMileage + dailyPrice + monthlyPrice);
-//
-//     });
-//
-// }
-//
-// $("#btnRequestCar").on("click", function () {
-//
-//     let json = {
-//         rentId: rentId,
-//         nic: customer,
-//         pickUpDate: $("#pickUpDate").val(),
-//         pickUpTime: $("#pickUpTime").val(),
-//         returnDate: $("#returnDate").val(),
-//         returnTime: $("#returnTime").val(),
-//         driverRequest: $('#driverRequest').is(':checked') ? "YES" : "NO",
-//         status: "Pending",
-//         cost: $("#cost").val(),
-//         description: $("#description").val(),
-//         rentDetails: [
-//             {
-//                 rentId: rentId,
-//                 nic: null,
-//                 regNum: regNum,
-//                 driverCost: $("#driverCost").val(),
-//                 carCost: $("#carCost").val()
-//             }
-//         ]
-//     }
-//
-//     $.ajax({
-//         url: baseurl + "rent",
-//         method: "post",
-//         data: JSON.stringify(json),
-//         dataType: "json",
-//         contentType: "application/json",
-//         success: function (res) {
-//
-//         }
-//     });
-//
-// });
-//
-// $("#pickUpDate").on("change", function () {
-//     setCosts();
-// });
-//
-// $("#returnDate").on("change", function () {
-//     setCosts();
-// });
-//
-//
-// function setCosts() {
-//
-//     let days = (new Date(Date.parse($("#returnDate").val()) - Date.parse($("#pickUpDate").val()))) / 1000 / 60 / 60 / 24;
-//     let carCost = days < 30 ? dailyPrice.split(" ")[0] * days : monthlyPrice.split(" ")[0] * (days / 30);
-//     $("#carCost").val(carCost);
-//     $("#driverCost").val(1000 * days);
-//
-// }
-//
-// generateNewRentId();
-//
-// function generateNewRentId() {
-//     $.ajax({
-//         url: baseurl + "rent",
-//         method: "get",
-//         async: false,
-//         dataType: "json",
-//         contentType: "application/json",
-//         success: function (res) {
-//             rentId = res.data;
-//         }
-//     });
-// }
-
-
 /* ***************************************************************    Car    ***************************************************** */
 
 
@@ -419,20 +315,6 @@ function manageCarPage() {
         loadSelectedImage("#back");
         loadSelectedImage("#side");
         loadSelectedImage("#interior");
-
-        // $("#btnAddNewCar").on("click", function () {
-        //     $("#manageCar").attr("style", "display : block !important");
-        //     $("#viewCar").attr("style", "display : none !important");
-        //     $(this).attr("style", "display : block !important");
-        //     $("#btnSaveCar").text("Save");
-        // });
-
-        // $("#btnBackCar").on("click", function () {
-        //     $("#manageCar").attr("style", "display : none !important");
-        //     $("#viewCar").attr("style", "display : block !important");
-        //     $(this).attr("style", "display : block !important");
-        //     $("#btnSaveCar").text("Save");
-        // });
 
         $("#btnSaveCar").on("click", function () {
 
