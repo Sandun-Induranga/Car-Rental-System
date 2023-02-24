@@ -243,24 +243,22 @@ function manageCartPage() {
                 </div>   
             `);
 
-    });
+        for (let rendDetail of cart) {
 
-    for (let rendDetail of cart) {
+            let photo;
 
-        let photo;
+            $.ajax({
+                url: baseurl + "car?regNum=" + rendDetail.regNum,
+                async: false,
+                method: "get",
+                dataType: "json",
+                success: function (res) {
+                    photo = res.data.photos.front;
+                    console.log(res)
+                }
+            });
 
-        $.ajax({
-            url: baseurl + "car?regNum=" + rendDetail.regNum,
-            async: false,
-            method: "get",
-            dataType: "json",
-            success: function (res) {
-                photo = res.data.photos.front;
-                console.log(res)
-            }
-        });
-
-        $(`#${rent.rentId}`).append(`
+            $(`#${rent.rentId}`).append(`
                 <tr>
                     <td><img src="../assets/${photo}" width="150px" height="80px" alt=""></td>
                     <td>${rendDetail.regNum}</td>
@@ -270,7 +268,9 @@ function manageCartPage() {
                 </tr>
         `);
 
-    }
+        }
+
+    });
 
 }
 
@@ -336,7 +336,7 @@ function manageRentPage() {
                             }
                         });
 
-                        $(`#rent${rent.rentId}`).append(`
+                        $(`#rent${rent.rentId} > tbody`).append(`
                             <tr>
                                 <td><img src="../assets/${photo}" width="150px" height="80px" alt=""></td>
                                 <td>${rendDetail.regNum}</td>
@@ -396,8 +396,6 @@ function managePaymentPage() {
 }
 
 $("#btnRequestCar").on("click", function () {
-
-    alert("invoked")
 
     let json = {
         rentId: rentId,
