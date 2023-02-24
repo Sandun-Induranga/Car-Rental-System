@@ -361,10 +361,10 @@ function manageCarPage() {
                         $("#passengers").val(res.data.passengers);
                         $("#lostDamageCost").val(res.data.lostDamageCost);
                         $("#meterValue").val(res.data.meterValue);
-                        $("#front").val(res.data.front);
-                        $("#back").val(res.data.back);
-                        $("#side").val(res.data.side);
-                        $("#interior").val(res.data.interior);
+                        $("#frontImgContext").attr(`style`,`background : url(../assets${res.data.photos.front}); background-position: center; background-size: cover`)
+                        $("#backImgContext").attr(`style`,`background : url(../assets${res.data.photos.back}); background-position: center; background-size: cover`)
+                        $("#sideImgContext").attr(`style`,`background : url(../assets${res.data.photos.side}); background-position: center; background-size: cover`)
+                        $("#interiorImgContext").attr(`style`,`background : url(../assets${res.data.photos.interior}); background-position: center; background-size: cover`)
 
                     }
                 });
