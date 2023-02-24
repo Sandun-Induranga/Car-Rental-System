@@ -60,11 +60,11 @@ function generateNewRentId() {
     });
 }
 
+manageHomePage();
 manageCarPage();
 manageCartPage();
 manageRentPage();
 managePaymentPage();
-manageHomePage();
 
 function manageHomePage() {
 
