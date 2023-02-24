@@ -567,6 +567,8 @@ function manageCarPage() {
 function manageDriverPage() {
     $("#btnDriver").on("click", function () {
 
+        loadAllDrivers();
+
         $('#manageDriver').fadeIn();
         $("#home").attr("style", "display : none !important");
         $("#viewCustomer").attr("style", "display : none !important");
@@ -593,9 +595,26 @@ function manageDriverPage() {
                 processData: false,
                 success: function (res) {
 
+                    loadAllDrivers();
+
                 }
             });
         });
+
+        function loadAllDrivers() {
+
+            $.ajax({
+                url: baseurl + "driver",
+                method: "get",
+                dataType:"json",
+                success: function (res) {
+
+
+
+                }
+            });
+
+        }
 
     });
 }
