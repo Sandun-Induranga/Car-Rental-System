@@ -341,10 +341,31 @@ function manageCarPage() {
 
                 $.ajax({
                     url: baseurl + "car?regNum=" + regNum,
-                    method: "put",
+                    async:false,
+                    method: "get",
                     dataType: "json",
                     success: function (res) {
-                        loadAllCars();
+
+                        $("#regNum").val(res.data.regNum);
+                        $("#carType").val(res.data.type);
+                        $("#color").val(res.data.color);
+                        $("#brand").val(res.data.brand);
+                        $("#dailyRate").val(res.data.dailyRate);
+                        $("#monthlyRate").val(res.data.monthlyRate);
+                        $("#fuelType").val(res.data.fuelType);
+                        $("#availability").val(res.data.availability);
+                        $("#dailyPriceRate").val(res.data.dailyPriceRate);
+                        $("#monthlyPriceRate").val(res.data.monthlyPriceRate);
+                        $("#transmission").val(res.data.transmissionType);
+                        $("#extraKMPrice").val(res.data.extraKMPrice);
+                        $("#passengers").val(res.data.passengers);
+                        $("#lostDamageCost").val(res.data.lostDamageCost);
+                        $("#meterValue").val(res.data.meterValue);
+                        $("#front").val(res.data.front);
+                        $("#back").val(res.data.back);
+                        $("#side").val(res.data.side);
+                        $("#interior").val(res.data.interior);
+
                     }
                 });
 
@@ -407,7 +428,7 @@ function manageCarPage() {
                     </section>
                         
                     <section class="d-flex justify-content-between flex-lg-row flex-column gap-1">
-                        <button class="btn btn-warning btnUpdate"><p class="card-text"><i class="bi bi-app-indicator"></i> ${car.availability == "YES" ? "Add to Maintains" : "Remove From Maintains"} </p></button>
+                        <button class="btn btn-warning btnUpdate"><p class="card-text"><i class="bi bi-app-indicator"></i> Update </p></button>
                         <button class="btn btn-danger btnDelete"><p class="card-text"><i class="bi bi-trash-fill"></i> Delete </p></button>
                     </section>
 
