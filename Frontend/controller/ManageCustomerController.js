@@ -64,11 +64,27 @@ manageCarPage();
 manageCartPage();
 manageRentPage();
 managePaymentPage();
+manageHomePage();
+
+function manageHomePage() {
+
+    $("#home").attr("style", "display : block !important");
+    $("#manageCar").attr("style", "display : none !important");
+    $("#manageCart").attr("style", "display : none !important");
+    $("#manageRent").attr("style", "display : none !important");
+    $("#payments").attr("style", "display : none !important");
+
+}
+
+$("#btnHome").on("click", function () {
+    manageHomePage();
+})
 
 function manageCarPage() {
 
     $("#btnCar").on("click", function () {
 
+        $("#home").attr("style", "display : none !important");
         $("#manageCar").attr("style", "display : block !important");
         $("#manageCart").attr("style", "display : none !important");
         $("#manageRent").attr("style", "display : none !important");
@@ -201,6 +217,7 @@ function manageCartPage() {
 
     $("#btnCart").on("click", function () {
 
+        $("#home").attr("style", "display : none !important");
         $("#manageCar").attr("style", "display : none !important");
         $("#manageCart").attr("style", "display : block !important");
         $("#manageRent").attr("style", "display : none !important");
@@ -298,6 +315,8 @@ function manageCartPage() {
 function manageRentPage() {
 
     $("#btnRent").on("click", function () {
+
+        $("#home").attr("style", "display : none !important");
         $("#manageCar").attr("style", "display : none !important");
         $("#manageCart").attr("style", "display : none !important");
         $("#manageRent").attr("style", "display : block !important");
@@ -379,12 +398,13 @@ function manageRentPage() {
 
 function managePaymentPage() {
 
-    $("#manageCar").attr("style", "display : none !important");
-    $("#manageCart").attr("style", "display : none !important");
-    $("#manageRent").attr("style", "display : none !important");
-    $("#payments").attr("style", "display : block !important");
-
     $("#btnManagePayment").on("click", function () {
+
+        $("#home").attr("style", "display : none !important");
+        $("#manageCar").attr("style", "display : none !important");
+        $("#manageCart").attr("style", "display : none !important");
+        $("#manageRent").attr("style", "display : none !important");
+        $("#payments").attr("style", "display : block !important");
 
         $.ajax({
             url: baseurl + `payment?nic=`+customer.nic,
