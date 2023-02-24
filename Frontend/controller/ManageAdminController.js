@@ -609,7 +609,21 @@ function manageDriverPage() {
                 dataType:"json",
                 success: function (res) {
 
+                    for (let driver of res.data) {
 
+                        $("#tblDriver").append(`
+                            <tr>
+                              <td>${driver.nic}</td>
+                              <td>${driver.name}</td>
+                              <td>${driver.email}</td>
+                              <td>${driver.address}</td>
+                              <td>${driver.license}</td>
+                              <td>${driver.licenseImage}</td>
+                              <td>${driver.availabilityStatus}</td>
+                            </tr>  
+                        `)
+
+                    }
 
                 }
             });
