@@ -61,7 +61,7 @@ public class DriverServiceImpl implements DriverService {
             throw new RuntimeException(e);
         }
 
-        System.out.println(driverDTO);
+        driver.setAvailabilityStatus("YES");
 
         driverRepo.save(driver);
 

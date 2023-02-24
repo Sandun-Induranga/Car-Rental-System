@@ -620,7 +620,7 @@ function manageDriverPage() {
                               <td>${driver.email}</td>
                               <td>${driver.address}</td>
                               <td>${driver.license}</td>
-                              <td>${driver.licenseImage}</td>
+                              <td><img src="../assets${driver.licenseImage}" width="150" height="100" alt="license"></td>
                               <td>${driver.availabilityStatus}</td>
                             </tr>  
                         `)
