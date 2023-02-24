@@ -63,37 +63,37 @@ function manageHomePage() {
 
 
         $.ajax({
-            url:baseurl+"customer/count",
-            method:"get",
-            dataType:"json",
-            success:function (res) {
+            url: baseurl + "customer/count",
+            method: "get",
+            dataType: "json",
+            success: function (res) {
                 $("#reg-users").text(res.data);
             }
         });
 
         $.ajax({
-            url:baseurl+"rent/count",
-            method:"get",
-            dataType:"json",
-            success:function (res) {
+            url: baseurl + "rent/count",
+            method: "get",
+            dataType: "json",
+            success: function (res) {
                 $("#rent-count").text(res.data);
             }
         });
 
         $.ajax({
-            url:baseurl+"car/count",
-            method:"get",
-            dataType:"json",
-            success:function (res) {
+            url: baseurl + "car/count",
+            method: "get",
+            dataType: "json",
+            success: function (res) {
                 $("#available-cars").text(res.data);
             }
         });
 
         $.ajax({
-            url:baseurl+"car/count/reserved",
-            method:"get",
-            dataType:"json",
-            success:function (res) {
+            url: baseurl + "car/count/reserved",
+            method: "get",
+            dataType: "json",
+            success: function (res) {
                 $("#reserved-cars").text(res.data);
             }
         });
@@ -114,20 +114,21 @@ function manageHomePage() {
         },
         data: [{
             type: "column",
-            yValueFormatString: "#,##0.0#"%"",
+            yValueFormatString: "#,##0.0#" % "",
             dataPoints: [
-                { label: "Iraq", y: 10.09 },
-                { label: "Turks & Caicos Islands", y: 9.40 },
-                { label: "Nauru", y: 8.50 },
-                { label: "Ethiopia", y: 7.96 },
-                { label: "Uzbekistan", y: 7.80 },
-                { label: "Nepal", y: 7.56 },
-                { label: "Iceland", y: 7.20 },
-                { label: "India", y: 7.1 }
+                {label: "Iraq", y: 10.09},
+                {label: "Turks & Caicos Islands", y: 9.40},
+                {label: "Nauru", y: 8.50},
+                {label: "Ethiopia", y: 7.96},
+                {label: "Uzbekistan", y: 7.80},
+                {label: "Nepal", y: 7.56},
+                {label: "Iceland", y: 7.20},
+                {label: "India", y: 7.1}
 
             ]
         }]
     };
+
     $("#chartContainer").CanvasJSChart(options);
 
 }
@@ -440,7 +441,7 @@ function manageCarPage() {
             $.ajax({
                 url: baseurl + "car",
                 async: false,
-                data:data,
+                data: data,
                 method: "post",
                 contentType: false,
                 processData: false,
@@ -457,9 +458,9 @@ function manageCarPage() {
                 regNum = $(this).parent().parent().children(":eq(6)").children(":eq(0)").text().trim();
 
                 $.ajax({
-                    url: baseurl + "car?regNum="+regNum,
+                    url: baseurl + "car?regNum=" + regNum,
                     method: "put",
-                    dataType:"json",
+                    dataType: "json",
                     success: function (res) {
                         loadAllCars();
                     }
@@ -524,7 +525,7 @@ function manageCarPage() {
                     </section>
                         
                     <section class="d-flex justify-content-between flex-lg-row flex-column gap-1">
-                        <button class="btn btn-warning btnUpdate"><p class="card-text"><i class="bi bi-app-indicator"></i> ${car.availability=="YES"?"Add to Maintains":"Remove From Maintains"} </p></button>
+                        <button class="btn btn-warning btnUpdate"><p class="card-text"><i class="bi bi-app-indicator"></i> ${car.availability == "YES" ? "Add to Maintains" : "Remove From Maintains"} </p></button>
                         <button class="btn btn-danger btnDelete"><p class="card-text"><i class="bi bi-trash-fill"></i> Delete </p></button>
                     </section>
 
