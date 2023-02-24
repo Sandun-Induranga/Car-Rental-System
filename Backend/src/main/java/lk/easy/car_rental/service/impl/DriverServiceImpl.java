@@ -46,8 +46,8 @@ public class DriverServiceImpl implements DriverService {
         try {
             byte[] licenseFileBytes = driverDTO.getLicenseImage().getBytes();
 
-            String serverPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getParentFile().getParentFile().getAbsolutePath();
-            Path licenseLocation = Paths.get(serverPath + "/bucket/driver/license_" + driver.getNic() + ".jpeg");
+            String projectPath = "/media/sandu/0559F5C021740317/GDSE/Project_Zone/IdeaProjects/Car_Rental_System/Frontend/assets";
+            Path licenseLocation = Paths.get(projectPath + "/image/bucket/driver/license_" + driver.getNic() + ".jpeg");
 
             Files.write(licenseLocation, licenseFileBytes);
 
@@ -56,8 +56,6 @@ public class DriverServiceImpl implements DriverService {
             driver.setLicenseImage(licenseLocation.toString());
 
         } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }
 
