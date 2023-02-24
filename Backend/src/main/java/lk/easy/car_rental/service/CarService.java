@@ -28,4 +28,6 @@ public interface CarService {
 
     public void updateCar(CarDTO carDTO) throws  RuntimeException;
 
+    public void deleteCar(String regNum) throws RuntimeException;
+
 }

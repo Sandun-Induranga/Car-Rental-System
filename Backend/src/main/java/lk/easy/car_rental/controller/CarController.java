@@ -91,4 +91,11 @@ public class CarController {
 
     }
 
+    @DeleteMapping
+    public ResponseUtil deleteCar(@RequestParam String regNum){
+
+
+
+    }
+
 }
