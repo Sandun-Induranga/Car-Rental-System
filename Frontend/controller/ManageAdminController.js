@@ -350,13 +350,30 @@ function manageCarPage() {
                         $("#carType").val(res.data.type);
                         $("#color").val(res.data.color);
                         $("#brand").val(res.data.brand);
-                        $("#dailyRate").val(res.data.dailyRate);
-                        $("#monthlyRate").val(res.data.monthlyRate);
-                        $("#fuelType").val(res.data.fuelType);
-                        $("#availability").val(res.data.availability);
-                        $("#dailyPriceRate").val(res.data.dailyPriceRate);
-                        $("#monthlyPriceRate").val(res.data.monthlyPriceRate);
-                        $("#transmission").val(res.data.transmissionType);
+                        $("#dailyRate").val(res.data.freeMileage.dailyRate);
+                        $("#monthlyRate").val(res.data.freeMileage.monthlyRate);
+
+                        if (res.data.fuelType == "petrol"){
+                            $("#petrol").prop("checked", true)
+                        }else {
+                            $("#diesel").prop("checked", true)
+                        }
+
+                        if (res.data.availability == "YES"){
+                            $("#yes").prop("checked", true)
+                        }else {
+                            $("#no").prop("checked", true)
+                        }
+
+                        $("#dailyPriceRate").val(res.data.price.dailyPriceRate);
+                        $("#monthlyPriceRate").val(res.data.price.monthlyPriceRate);
+
+                        if (res.data.transmissionType == "manual"){
+                            $("#manual").prop("checked", true)
+                        }else {
+                            $("#auto").prop("checked", true)
+                        }
+
                         $("#extraKMPrice").val(res.data.extraKMPrice);
                         $("#passengers").val(res.data.passengers);
                         $("#lostDamageCost").val(res.data.lostDamageCost);
@@ -437,8 +454,8 @@ function manageCarPage() {
             </div>
         </div>`);
                         getDetail();
-                        bindUpdateEvent();
                     }
+                    bindUpdateEvent();
                 }
 
             });
