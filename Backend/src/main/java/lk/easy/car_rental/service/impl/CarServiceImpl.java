@@ -119,4 +119,27 @@ public class CarServiceImpl implements CarService {
 
     }
 
+    @Override
+    public void updateCar(CarDTO carDTO) throws RuntimeException {
+        if (!carRepo.existsById(carDTO.getRegNum())) throw new RuntimeException("Car Doesn't Exist..!");
+
+        Car car = mapper.map(carDTO, Car.class);
+        try {
+
+            if (car.getPhotos()!=null){
+                car.getPhotos().setFront(new WriteImageUtil().writeImage(carDTO.getPhotos().getFront(), Paths.get(WriteImageUtil.projectPath + "/image/bucket/car/front_" + carDTO.getRegNum() + ".jpeg")));
+                car.getPhotos().setBack(new WriteImageUtil().writeImage(carDTO.getPhotos().getBack(), Paths.get(WriteImageUtil.projectPath + "/image/bucket/car/back_" + carDTO.getRegNum() + ".jpeg")));
+                car.getPhotos().setSide(new WriteImageUtil().writeImage(carDTO.getPhotos().getSide(), Paths.get(WriteImageUtil.projectPath + "/image/bucket/car/side_" + carDTO.getRegNum() + ".jpeg")));
+                car.getPhotos().setInterior(new WriteImageUtil().writeImage(carDTO.getPhotos().getInterior(), Paths.get(WriteImageUtil.projectPath + "/image/bucket/car/interior_" + carDTO.getRegNum() + ".jpeg")));
+            }
+
+            carRepo.save(car);
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
