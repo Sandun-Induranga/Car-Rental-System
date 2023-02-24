@@ -85,7 +85,7 @@ public class CarController {
         carDTO.setPrice(price);
         carDTO.setFreeMileage(freeMileage);
 
-        carService.saveCar(carDTO);
+        carService.updateCar(carDTO);
 
         return new ResponseUtil("OK", "Successfully Loaded..!", "");
 

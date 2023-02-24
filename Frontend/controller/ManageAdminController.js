@@ -341,7 +341,6 @@ function manageCarPage() {
 
                 $.ajax({
                     url: baseurl + "car/update",
-                    async: false,
                     data: data,
                     method: "post",
                     contentType: false,
