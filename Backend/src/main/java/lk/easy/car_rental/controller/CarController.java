@@ -23,12 +23,14 @@ public class CarController {
     CarService carService;
 
     @PostMapping
-    public void saveCar(@ModelAttribute CarPhotoDTO carPhotoDTO, @ModelAttribute Price price, @ModelAttribute FreeMileage freeMileage, @ModelAttribute CarDTO carDTO) {
+    public ResponseUtil saveCar(@ModelAttribute CarPhotoDTO carPhotoDTO, @ModelAttribute Price price, @ModelAttribute FreeMileage freeMileage, @ModelAttribute CarDTO carDTO) {
         carDTO.setPhotos(carPhotoDTO);
         carDTO.setPrice(price);
         carDTO.setFreeMileage(freeMileage);
 
         carService.saveCar(carDTO);
+
+        return new ResponseUtil("OK", "Successfully Saved..!", "");
 
     }
 
@@ -77,9 +79,15 @@ public class CarController {
     }
 
     @PostMapping(path = "/update")
-    public ResponseUtil updateCar(){
+    public ResponseUtil updateCar(@ModelAttribute CarPhotoDTO carPhotoDTO, @ModelAttribute Price price, @ModelAttribute FreeMileage freeMileage, @ModelAttribute CarDTO carDTO) {
 
+        carDTO.setPhotos(carPhotoDTO);
+        carDTO.setPrice(price);
+        carDTO.setFreeMileage(freeMileage);
 
+        carService.saveCar(carDTO);
+
+        return new ResponseUtil("OK", "Successfully Loaded..!", "");
 
     }
 
