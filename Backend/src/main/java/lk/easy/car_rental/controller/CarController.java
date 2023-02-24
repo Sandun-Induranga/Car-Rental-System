@@ -92,9 +92,10 @@ public class CarController {
     }
 
     @DeleteMapping
-    public ResponseUtil deleteCar(@RequestParam String regNum){
+    public ResponseUtil deleteCar(@RequestParam String regNum) {
 
-
+        carService.deleteCar(regNum);
+        return new ResponseUtil("OK", "Successfully Deleted..!", "");
 
     }
 
