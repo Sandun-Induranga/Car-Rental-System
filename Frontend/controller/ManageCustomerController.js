@@ -10,6 +10,12 @@ let cart = [];
 let cart1 = [];
 let rent;
 
+let regNum;
+let dailyMileage;
+let monthlyMileage;
+let dailyPrice;
+let monthlyPrice;
+
 $.ajax({
     url: baseurl + "login",
     method: "get",
@@ -67,12 +73,6 @@ function manageCarPage() {
         $("#manageCart").attr("style", "display : none !important");
         $("#manageRent").attr("style", "display : none !important");
         $("#payments").attr("style", "display : none !important");
-
-        let regNum;
-        let dailyMileage;
-        let monthlyMileage;
-        let dailyPrice;
-        let monthlyPrice;
 
 
         loadAllCars();
@@ -175,51 +175,6 @@ function manageCarPage() {
             });
 
         }
-
-
-        $("#btnRequestCar").on("click", function () {
-
-            let json = {
-                rentId: rentId,
-                nic: customer.nic,
-                pickUpDate: $("#pickUpDate").val(),
-                pickUpTime: $("#pickUpTime").val(),
-                returnDate: $("#returnDate").val(),
-                returnTime: $("#returnTime").val(),
-                driverRequest: $('#driverRequest').is(':checked') ? "YES" : "NO",
-                status: "Pending",
-                cost: $("#cost").val(),
-                description: $("#description").val(),
-                rentDetails: {
-                    rentId: rentId,
-                    nic: null,
-                    regNum: regNum,
-                    driverCost: $("#driverCost").val(),
-                    carCost: $("#carCost").val()
-                }
-
-            }
-
-            rent = json;
-            cart1.push(json.rentDetails);
-
-
-            if ($("#btnRequestCar").text() == "Request") {
-
-                $.ajax({
-                    url: baseurl + "rent",
-                    method: "post",
-                    data: JSON.stringify(json),
-                    dataType: "json",
-                    contentType: "application/json",
-                    success: function (res) {
-
-                    }
-                });
-
-            }
-
-        });
 
         $("#pickUpDate").on("change", function () {
             setCosts();
@@ -439,3 +394,55 @@ function managePaymentPage() {
     });
 
 }
+
+$("#btnRequestCar").on("click", function () {
+
+    alert("invoked")
+
+    let json = {
+        rentId: rentId,
+        nic: customer.nic,
+        pickUpDate: $("#pickUpDate").val(),
+        pickUpTime: $("#pickUpTime").val(),
+        returnDate: $("#returnDate").val(),
+        returnTime: $("#returnTime").val(),
+        driverRequest: $('#driverRequest').is(':checked') ? "YES" : "NO",
+        status: "Pending",
+        cost: $("#cost").val(),
+        description: $("#description").val(),
+        rentDetails: {
+            rentId: rentId,
+            nic: null,
+            regNum: regNum,
+            driverCost: $("#driverCost").val(),
+            carCost: $("#carCost").val()
+        }
+
+    }
+
+
+    if ($(this).text() == "Request") {
+
+        $.ajax({
+            url: baseurl + "rent",
+            method: "post",
+            data: JSON.stringify(json),
+            dataType: "json",
+            contentType: "application/json",
+            success: function (res) {
+
+            }
+        });
+
+    }else {
+        rent = json;
+        cart.push({
+            rentId: rentId,
+            nic: null,
+            regNum: regNum,
+            driverCost: $("#driverCost").val(),
+            carCost: $("#carCost").val()
+        });
+    }
+
+});
