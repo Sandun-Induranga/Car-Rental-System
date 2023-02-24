@@ -304,7 +304,6 @@ function manageCarPage() {
         $("#home").attr("style", "display : none !important");
         $("#manageCustomers").attr("style", "display : none !important");
         $("#viewCustomer").attr("style", "display : none !important");
-        // $("#manageCar").attr("style", "display : none !important");
         $("#viewCar").attr("style", "display : block !important");
         $("#manageDriver").attr("style", "display : none !important");
         $("#drivers").attr("style", "display : none !important");
@@ -316,21 +315,43 @@ function manageCarPage() {
         loadSelectedImage("#side");
         loadSelectedImage("#interior");
 
+        $("#btnAddNewCar").on("click", function () {
+            $("#btnSaveCar").text("Save");
+        })
+
         $("#btnSaveCar").on("click", function () {
 
             let data = new FormData($("#carForm")[0]);
 
-            $.ajax({
-                url: baseurl + "car",
-                async: false,
-                data: data,
-                method: "post",
-                contentType: false,
-                processData: false,
-                success: function (res) {
-                    loadAllCars();
-                }
-            });
+            if ($("#btnSaveCar").text() == "Save") {
+
+                $.ajax({
+                    url: baseurl + "car",
+                    async: false,
+                    data: data,
+                    method: "post",
+                    contentType: false,
+                    processData: false,
+                    success: function (res) {
+                        loadAllCars();
+                    }
+                });
+
+            } else {
+
+                $.ajax({
+                    url: baseurl + "car/update",
+                    async: false,
+                    data: data,
+                    method: "post",
+                    contentType: false,
+                    processData: false,
+                    success: function (res) {
+                        loadAllCars();
+                    }
+                });
+
+            }
 
         });
 
@@ -341,7 +362,7 @@ function manageCarPage() {
 
                 $.ajax({
                     url: baseurl + "car?regNum=" + regNum,
-                    async:false,
+                    async: false,
                     method: "get",
                     dataType: "json",
                     success: function (res) {
@@ -353,24 +374,26 @@ function manageCarPage() {
                         $("#dailyRate").val(res.data.freeMileage.dailyRate);
                         $("#monthlyRate").val(res.data.freeMileage.monthlyRate);
 
-                        if (res.data.fuelType == "petrol"){
+                        if (res.data.fuelType == "petrol") {
                             $("#petrol").prop("checked", true)
-                        }else {
+                        } else {
                             $("#diesel").prop("checked", true)
                         }
 
-                        if (res.data.availability == "YES"){
-                            $("#yes").prop("checked", true)
-                        }else {
-                            $("#no").prop("checked", true)
+                        if (res.data.availability == "YES") {
+                            $("#yes").prop("checked", true);
+                        } else if (res.data.availability == "NO") {
+                            $("#no").prop("checked", true);
+                        } else {
+                            $("#maintain").prop("checked", true);
                         }
 
                         $("#dailyPriceRate").val(res.data.price.dailyPriceRate);
                         $("#monthlyPriceRate").val(res.data.price.monthlyPriceRate);
 
-                        if (res.data.transmissionType == "manual"){
+                        if (res.data.transmissionType == "manual") {
                             $("#manual").prop("checked", true)
-                        }else {
+                        } else {
                             $("#auto").prop("checked", true)
                         }
 
@@ -378,10 +401,12 @@ function manageCarPage() {
                         $("#passengers").val(res.data.passengers);
                         $("#lostDamageCost").val(res.data.lostDamageCost);
                         $("#meterValue").val(res.data.meterValue);
-                        $("#frontImgContext").attr(`style`,`background : url(../assets${res.data.photos.front}); background-position: center; background-size: cover`)
-                        $("#backImgContext").attr(`style`,`background : url(../assets${res.data.photos.back}); background-position: center; background-size: cover`)
-                        $("#sideImgContext").attr(`style`,`background : url(../assets${res.data.photos.side}); background-position: center; background-size: cover`)
-                        $("#interiorImgContext").attr(`style`,`background : url(../assets${res.data.photos.interior}); background-position: center; background-size: cover`)
+                        $("#frontImgContext").attr(`style`, `background : url(../assets${res.data.photos.front}); background-position: center; background-size: cover`)
+                        $("#backImgContext").attr(`style`, `background : url(../assets${res.data.photos.back}); background-position: center; background-size: cover`)
+                        $("#sideImgContext").attr(`style`, `background : url(../assets${res.data.photos.side}); background-position: center; background-size: cover`)
+                        $("#interiorImgContext").attr(`style`, `background : url(../assets${res.data.photos.interior}); background-position: center; background-size: cover`)
+
+                        $("#btnSaveCar").text("Update");
 
                     }
                 });
@@ -526,7 +551,7 @@ function manageDriverPage() {
             $.ajax({
                 url: baseurl + "driver/all",
                 method: "get",
-                dataType:"json",
+                dataType: "json",
                 success: function (res) {
 
                     $("#tblDriver").empty();
