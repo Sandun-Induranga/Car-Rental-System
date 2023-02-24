@@ -482,7 +482,7 @@ function manageCarPage() {
                     $("#cars").empty();
 
                     for (let car of res.data) {
-                        $("#cars").append(`<div class="col col-12 col-md-5 col-lg-3">
+                        $("#cars").append(`<div class="col col-lg-4">
             <div class="card">
                 <img src="../assets/${car.photos.front}" class="card-img-top" alt="car">
 
