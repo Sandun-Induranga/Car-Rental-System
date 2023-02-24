@@ -420,19 +420,19 @@ function manageCarPage() {
         loadSelectedImage("#side");
         loadSelectedImage("#interior");
 
-        $("#btnAddNewCar").on("click", function () {
-            $("#manageCar").attr("style", "display : block !important");
-            $("#viewCar").attr("style", "display : none !important");
-            $(this).attr("style", "display : block !important");
-            $("#btnSaveCar").text("Save");
-        });
+        // $("#btnAddNewCar").on("click", function () {
+        //     $("#manageCar").attr("style", "display : block !important");
+        //     $("#viewCar").attr("style", "display : none !important");
+        //     $(this).attr("style", "display : block !important");
+        //     $("#btnSaveCar").text("Save");
+        // });
 
-        $("#btnBackCar").on("click", function () {
-            $("#manageCar").attr("style", "display : none !important");
-            $("#viewCar").attr("style", "display : block !important");
-            $(this).attr("style", "display : block !important");
-            $("#btnSaveCar").text("Save");
-        });
+        // $("#btnBackCar").on("click", function () {
+        //     $("#manageCar").attr("style", "display : none !important");
+        //     $("#viewCar").attr("style", "display : block !important");
+        //     $(this).attr("style", "display : block !important");
+        //     $("#btnSaveCar").text("Save");
+        // });
 
         $("#btnSaveCar").on("click", function () {
 
