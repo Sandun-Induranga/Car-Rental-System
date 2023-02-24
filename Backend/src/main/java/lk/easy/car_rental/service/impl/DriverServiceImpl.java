@@ -1,7 +1,7 @@
 package lk.easy.car_rental.service.impl;
 
-import lk.easy.car_rental.dto.CustomerDTO;
 import lk.easy.car_rental.dto.DriverDTO;
+import lk.easy.car_rental.dto.DriverSpDTO;
 import lk.easy.car_rental.entity.Driver;
 import lk.easy.car_rental.repo.DriverRepo;
 import lk.easy.car_rental.service.DriverService;
@@ -77,7 +77,7 @@ public class DriverServiceImpl implements DriverService {
     @Override
     public List<DriverDTO> getAllDrivers() throws RuntimeException {
 
-        return mapper.map(driverRepo.findAll(), new TypeToken<ArrayList<CustomerDTO>>() {
+        return mapper.map(driverRepo.findAll(), new TypeToken<ArrayList<DriverSpDTO>>() {
         }.getType());
 
     }

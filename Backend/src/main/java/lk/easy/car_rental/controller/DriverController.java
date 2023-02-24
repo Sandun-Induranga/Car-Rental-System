@@ -48,7 +48,7 @@ public class DriverController {
     }
 
     @GetMapping(path = "/all")
-    public ResponseUtil getAll(){
+    public ResponseUtil getAll() {
 
         return new ResponseUtil("OK", "Successfully Loaded..!", driverService.getAllDrivers());
 
