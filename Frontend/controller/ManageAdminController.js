@@ -428,7 +428,7 @@ function manageCarPage() {
                     </section>
                         
                     <section class="d-flex justify-content-between flex-lg-row flex-column gap-1">
-                        <button class="btn btn-warning btnUpdate"><p class="card-text"><i class="bi bi-app-indicator"></i> Update </p></button>
+                        <button class="btn btn-warning btnUpdate" data-bs-toggle="modal" data-bs-target="#registerCar"><p class="card-text"><i class="bi bi-app-indicator"></i> Update </p></button>
                         <button class="btn btn-danger btnDelete"><p class="card-text"><i class="bi bi-trash-fill"></i> Delete </p></button>
                     </section>
 
@@ -437,8 +437,8 @@ function manageCarPage() {
             </div>
         </div>`);
                         getDetail();
+                        bindUpdateEvent();
                     }
-                    bindUpdateEvent();
                 }
 
             });
