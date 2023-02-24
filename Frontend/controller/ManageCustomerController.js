@@ -68,6 +68,7 @@ managePaymentPage();
 
 function manageHomePage() {
 
+    $("#home").fadeIn();
     $("#home").attr("style", "display : block !important");
     $("#manageCar").attr("style", "display : none !important");
     $("#manageCart").attr("style", "display : none !important");

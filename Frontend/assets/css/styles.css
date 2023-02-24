@@ -1,3 +1,7 @@
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
 .background-img {
     background: url("../image/background.png");
 }
