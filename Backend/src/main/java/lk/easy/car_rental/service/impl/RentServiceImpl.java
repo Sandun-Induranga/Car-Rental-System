@@ -62,11 +62,14 @@ public class RentServiceImpl implements RentService {
             int i;
 
             for (RentDetail rentDetail : rent.getRentDetails()) {
+
                 i = new Random().nextInt(drivers.size());
                 rentDetail.setNic(drivers.get(i).getNic());
                 Car car = carRepo.findById(rentDetail.getRegNum()).get();
                 car.setAvailability("NO");
+
                 carRepo.save(car);
+
                 drivers.get(i).setAvailabilityStatus("NO");
                 driverRepo.save(drivers.get(i));
             }
@@ -106,7 +109,7 @@ public class RentServiceImpl implements RentService {
         Rent rent = rentRepo.findById(rentId).get();
 
         rent.setStatus("Accepted");
-        rent.setDescription("Rent Accepted On " + LocalDate.now() + LocalTime.now());
+        rent.setDescription("Rent Accepted on " + LocalDate.now() +" "+ LocalTime.now());
 
         rentRepo.save(rent);
 

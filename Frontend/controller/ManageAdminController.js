@@ -609,6 +609,8 @@ function manageDriverPage() {
                 dataType:"json",
                 success: function (res) {
 
+                    $("#tblDriver").empty();
+
                     for (let driver of res.data) {
 
                         $("#tblDriver").append(`
