@@ -2,6 +2,7 @@
  * @author : Sandun Induranga
  * @since : 0.1.0
  **/
+import {Alert} from "../assets/js/bootstrap.esm";
 
 let regNum;
 let dailyMileage;
@@ -194,9 +195,9 @@ function manageCustomerPage() {
                 contentType: false,
                 processData: false,
                 success: function (res) {
-                    alert(res.message);
-                    $("#manageCustomers").attr("style", "display : none !important");
-                    $("#viewCustomer").attr("style", "display : block !important");
+
+                    saveAlert();
+
                 }
             });
             loadAllCustomers();
@@ -227,7 +228,7 @@ function manageCustomerPage() {
                         <td>${customer.contact}</td>
                         <td><img src="${customer.nicImage}" alt="" srcset="" width="80px" height="60px"></td>
                         <td><img src="${customer.licenseImage}" alt="" srcset="" width="80px" height="60px"></td>
-                        <td><i class="bi bi-pen-fill text-success text-center btn btnUpdate"></i><i class="bi bi-trash-fill text-danger text-center btn btnDelete"></i></td>
+                        <td><i class="bi bi-pen-fill text-success text-center btn btnUpdate" data-bs-toggle="modal" data-bs-target="#registerCustomerModal"></i><i class="bi bi-trash-fill text-danger text-center btn btnDelete"></i></td>
                     </tr>
                     `);
                     }
@@ -255,9 +256,6 @@ function manageCustomerPage() {
                 $("#cusUsername").val($(this).parent().parent().children(":eq(5)").text());
                 $("#cusPassword").val($(this).parent().parent().children(":eq(6)").text());
 
-                $("#manageCustomers").attr("style", "display : block !important");
-                $("#viewCustomer").attr("style", "display : none !important");
-                $(this).attr("style", "display : block !important");
                 $("#btnSaveCustomer").text("Update");
 
             });
@@ -279,9 +277,7 @@ function manageCustomerPage() {
                     contentType: false,
                     processData: false,
                     success: function (res) {
-                        alert(res.message);
-                        $("#manageCustomers").attr("style", "display : none !important");
-                        $("#viewCustomer").attr("style", "display : block !important");
+                        deleteAlert();
                         loadAllCustomers();
                     }
                 });
@@ -333,6 +329,7 @@ function manageCarPage() {
                     contentType: false,
                     processData: false,
                     success: function (res) {
+                        saveAlert();
                         loadAllCars();
                     }
                 });
@@ -346,6 +343,7 @@ function manageCarPage() {
                     contentType: false,
                     processData: false,
                     success: function (res) {
+                        updateAlert();
                         loadAllCars();
                     }
                 });
@@ -426,6 +424,7 @@ function manageCarPage() {
                         dataType: "json",
                         contentType: "application/json",
                         success: function (res) {
+                            deleteAlert();
                             loadAllCars();
                         }
                     });
@@ -581,6 +580,7 @@ function manageDriverPage() {
                 processData: false,
                 success: function (res) {
 
+                    saveAlert();
                     loadAllDrivers();
 
                 }
