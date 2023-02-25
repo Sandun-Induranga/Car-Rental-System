@@ -315,10 +315,16 @@
 
                     <section class="d-flex justify-content-between align-items-center">
 
-                        <aside>
+                        <aside class="d-flex justify-content-center">
                             <form class="d-flex" role="search">
                                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="search">
-                                <button class="btn btn-outline-success me-5" type="submit">Search</button>
+
+                                <div class="col-md-5">
+                                    <select name="type" id="fuelTypes" class="form-select">
+                                        <option value="Lost_Damage_Payment">Petrol</option>
+                                        <option value="Normal_Payment">Diesel</option>
+                                    </select>
+                                </div>
                             </form>
                         </aside>
 
