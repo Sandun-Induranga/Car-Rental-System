@@ -2,7 +2,6 @@
  * @author : Sandun Induranga
  * @since : 0.1.0
  **/
-import {Alert} from "../assets/js/bootstrap.esm";
 
 let regNum;
 let dailyMileage;
@@ -722,7 +721,7 @@ function manageRentPage() {
                     dataType: "json",
                     contentType: "application/json",
                     success: function (res) {
-
+                        saveAlert();
                     }
                 });
 
@@ -759,7 +758,7 @@ function manageRentPage() {
                     dataType: "json",
                     contentType: "application/json",
                     success: function (res) {
-
+                        saveAlert();
                     }
                 });
 
