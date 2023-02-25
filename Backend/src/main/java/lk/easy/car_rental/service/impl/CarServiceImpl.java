@@ -151,4 +151,9 @@ public class CarServiceImpl implements CarService {
 
     }
 
+    @Override
+    public List<CarSpDTO> filterCarsByRegNum(String regNum) throws RuntimeException {
+        return null;
+    }
+
 }

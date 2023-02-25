@@ -30,4 +30,6 @@ public interface CarService {
 
     public void deleteCar(String regNum) throws RuntimeException;
 
+    public List<CarSpDTO> filterCarsByRegNum(String regNum) throws RuntimeException;
+
 }
