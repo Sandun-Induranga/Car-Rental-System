@@ -328,8 +328,8 @@ function manageCarPage() {
                     contentType: false,
                     processData: false,
                     success: function (res) {
-                        saveAlert();
                         loadAllCars();
+                        saveAlert();
                     }
                 });
 
@@ -342,8 +342,8 @@ function manageCarPage() {
                     contentType: false,
                     processData: false,
                     success: function (res) {
-                        updateAlert();
                         loadAllCars();
+                        updateAlert();
                     }
                 });
 

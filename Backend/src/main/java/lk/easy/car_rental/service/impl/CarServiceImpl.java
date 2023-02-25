@@ -4,8 +4,10 @@ import lk.easy.car_rental.dto.CarDTO;
 import lk.easy.car_rental.dto.CarPhotoDTO;
 import lk.easy.car_rental.dto.CarSpDTO;
 import lk.easy.car_rental.entity.Car;
+import lk.easy.car_rental.entity.RentDetail;
 import lk.easy.car_rental.enums.SearchType;
 import lk.easy.car_rental.repo.CarRepo;
+import lk.easy.car_rental.repo.RentDetailRepo;
 import lk.easy.car_rental.service.CarService;
 import lk.easy.car_rental.util.WriteImageUtil;
 import org.modelmapper.ModelMapper;
@@ -34,6 +36,9 @@ public class CarServiceImpl implements CarService {
 
     @Autowired
     CarRepo carRepo;
+
+    @Autowired
+    RentDetailRepo rentDetailRepo;
 
     @Override
     public void saveCar(CarDTO carDTO) throws RuntimeException {
@@ -145,6 +150,11 @@ public class CarServiceImpl implements CarService {
     public void deleteCar(String regNum) throws RuntimeException {
 
         if (!carRepo.existsById(regNum)) throw new RuntimeException("Car Doesn't Exist..!");
+//        Car car = carRepo.findById(regNum).get();
+        rentDetailRepo.deleteRentDetailByRegNum(regNum);
+
+//        rentDetailRepo.deleteAllById(detail.getRentId());
+
         carRepo.deleteById(regNum);
 
     }
@@ -152,6 +162,8 @@ public class CarServiceImpl implements CarService {
     @Override
     public List<CarSpDTO> filterCarsByRegNum(String text, String search, String fuel) throws RuntimeException {
 
+
+        fuel = fuel.equals("ALL") ? "" : fuel;
 
         switch (search) {
             case "REG_NUM":
