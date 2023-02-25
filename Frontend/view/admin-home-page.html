@@ -313,8 +313,16 @@
 
                 <main class="mt-5 min-vh-100" id="viewCar">
 
-                    <section class="d-flex justify-content-end">
-                        <button class="btn btn-warning me-5 mt-2" id="btnAddNewCar" data-bs-toggle="modal"
+                    <section class="d-flex justify-content-between align-items-center">
+
+                        <aside>
+                            <form class="d-flex" role="search">
+                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                <button class="btn btn-outline-success me-5" type="submit">Search</button>
+                            </form>
+                        </aside>
+
+                        <button class="btn btn-warning mx-5 mt-2" id="btnAddNewCar" data-bs-toggle="modal"
                                 data-bs-target="#registerCar">Add New Car
                         </button>
                     </section>
