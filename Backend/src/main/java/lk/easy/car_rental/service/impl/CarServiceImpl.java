@@ -152,9 +152,10 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public List<CarSpDTO> filterCarsByRegNum(String regNum) throws RuntimeException {
+    public List<CarSpDTO> filterCarsByRegNum(String text) throws RuntimeException {
 
-
+        return mapper.map(carRepo.findByRegNumLike("%" + text + "%"), new TypeToken<ArrayList<CarSpDTO>>() {
+        }.getType());
 
     }
 

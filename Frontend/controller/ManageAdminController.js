@@ -510,12 +510,12 @@ function manageCarPage() {
 
         $("#search").on("keyup", function () {
             $.ajax({
-                url: baseurl + "car/filterByRegNum?text="+$("#search").text(),
-                method: "delete",
+                url: baseurl + "car/filterByRegNum?text="+$("#search").val(),
+                method: "get",
                 dataType:"json",
                 contentType: "application/json",
                 success: function (res) {
-                    loadAllCars();
+                    // loadAllCars();
                 }
             });
         });

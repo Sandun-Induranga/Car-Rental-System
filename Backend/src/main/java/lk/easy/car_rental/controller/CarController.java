@@ -102,7 +102,7 @@ public class CarController {
     @GetMapping(path = "/filterByRegNum")
     public ResponseUtil filterByRegNum(@RequestParam String text){
 
-
+        return new ResponseUtil("OK", "Successfully Deleted..!", carService.filterCarsByRegNum(text));
 
     }
 
