@@ -13,13 +13,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 /**
  * @author : Sandun Induranga
@@ -146,7 +144,6 @@ public class CarServiceImpl implements CarService {
     public void deleteCar(String regNum) throws RuntimeException {
 
         if (!carRepo.existsById(regNum)) throw new RuntimeException("Car Doesn't Exist..!");
-
         carRepo.deleteById(regNum);
 
     }

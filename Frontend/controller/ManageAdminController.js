@@ -419,11 +419,11 @@ function manageCarPage() {
 
                 regNum = $(this).parent().parent().children(":eq(6)").children(":eq(0)").text().trim();
 
-                if (confirm("Are You Sure..?")){
+                if (confirm("Are You Sure..?")) {
                     $.ajax({
-                        url: baseurl + "car?regNum="+regNum,
+                        url: baseurl + "car?regNum=" + regNum,
                         method: "delete",
-                        dataType:"json",
+                        dataType: "json",
                         contentType: "application/json",
                         success: function (res) {
                             loadAllCars();
@@ -434,20 +434,23 @@ function manageCarPage() {
 
         }
 
-        loadAllCars();
 
-        function loadAllCars() {
+        $.ajax({
+            url: baseurl + "car",
+            method: "get",
 
-            $.ajax({
-                url: baseurl + "car",
-                method: "get",
+            success: function (res) {
+                loadAllCars(res.data);
+            }
 
-                success: function (res) {
+        });
 
-                    $("#cars").empty();
+        function loadAllCars(cars) {
 
-                    for (let car of res.data) {
-                        $("#cars").append(`<div class="col col-lg-4">
+            $("#cars").empty();
+
+            for (let car of cars) {
+                $("#cars").append(`<div class="col col-lg-4">
             <div class="card">
                 <img src="../assets/${car.photos.front}" class="card-img-top" alt="car">
 
@@ -498,24 +501,21 @@ function manageCarPage() {
 
             </div>
         </div>`);
-                        getDetail();
-                    }
-                    bindUpdateEvent();
-                    bindDeleteEvent();
-                }
-
-            });
+                getDetail();
+            }
+            bindUpdateEvent();
+            bindDeleteEvent();
 
         }
 
         $("#search").on("keyup", function () {
             $.ajax({
-                url: baseurl + "car/filterByRegNum?text="+$("#search").val(),
+                url: baseurl + "car/filterByRegNum?text=" + $("#search").val(),
                 method: "get",
-                dataType:"json",
+                dataType: "json",
                 contentType: "application/json",
                 success: function (res) {
-                    // loadAllCars();
+                    loadAllCars(res.data);
                 }
             });
         });
