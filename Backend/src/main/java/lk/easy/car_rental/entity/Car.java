@@ -1,8 +1,8 @@
 package lk.easy.car_rental.entity;
 
-import lk.easy.car_rental.embed.CarPhoto;
-import lk.easy.car_rental.embed.FreeMileage;
-import lk.easy.car_rental.embed.Price;
+import lk.easy.car_rental.embedded.CarPhoto;
+import lk.easy.car_rental.embedded.FreeMileage;
+import lk.easy.car_rental.embedded.Price;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

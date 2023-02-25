@@ -2,8 +2,8 @@ package lk.easy.car_rental.controller;
 
 import lk.easy.car_rental.dto.CarDTO;
 import lk.easy.car_rental.dto.CarPhotoDTO;
-import lk.easy.car_rental.embed.FreeMileage;
-import lk.easy.car_rental.embed.Price;
+import lk.easy.car_rental.embedded.FreeMileage;
+import lk.easy.car_rental.embedded.Price;
 import lk.easy.car_rental.service.CarService;
 import lk.easy.car_rental.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;

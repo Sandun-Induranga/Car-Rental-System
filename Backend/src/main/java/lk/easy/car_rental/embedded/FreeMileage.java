@@ -1,4 +1,4 @@
-package lk.easy.car_rental.embed;
+package lk.easy.car_rental.embedded;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,7 +18,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Data
 @ToString
-public class Price {
-    private BigDecimal dailyPriceRate;
-    private BigDecimal monthlyPriceRate;
+public class FreeMileage {
+    private BigDecimal dailyRate;
+    private BigDecimal monthlyRate;
 }
