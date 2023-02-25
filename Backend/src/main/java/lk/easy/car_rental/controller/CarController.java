@@ -99,4 +99,11 @@ public class CarController {
 
     }
 
+    @GetMapping(path = "/filterByRegNum")
+    public ResponseUtil filterByRegNum(@RequestParam String text){
+
+
+
+    }
+
 }

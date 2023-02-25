@@ -510,7 +510,7 @@ function manageCarPage() {
 
         $("#search").on("keyup", function () {
             $.ajax({
-                url: baseurl + "car/filterById?text="+$("#search").text(),
+                url: baseurl + "car/filterByRegNum?text="+$("#search").text(),
                 method: "delete",
                 dataType:"json",
                 contentType: "application/json",
