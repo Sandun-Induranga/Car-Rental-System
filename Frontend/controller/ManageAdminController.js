@@ -508,9 +508,16 @@ function manageCarPage() {
 
         }
 
+        // Filter
+
         $("#search").on("keyup", function () {
+
+            let text = $("#search").val();
+            let searchBy = $("#searchBy").val();
+            let fuel = $("#fuelTypes").val();
+
             $.ajax({
-                url: baseurl + "car/filterByRegNum?text=" + $("#search").val(),
+                url: baseurl + `car/filterByRegNum?text=${text}&search=${searchBy}&fuel=${fuel}`,
                 method: "get",
                 dataType: "json",
                 contentType: "application/json",
