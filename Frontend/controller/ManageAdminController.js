@@ -525,6 +525,7 @@ function manageCarPage() {
                     loadAllCars(res.data);
                 }
             });
+
         });
 
         function getDetail() {
