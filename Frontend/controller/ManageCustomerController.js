@@ -15,6 +15,7 @@ let dailyMileage;
 let monthlyMileage;
 let dailyPrice;
 let monthlyPrice;
+let lostDamage;
 
 $.ajax({
     url: baseurl + "login",
@@ -175,7 +176,7 @@ function manageCarPage() {
                 monthlyMileage = $(this).parent().parent().children(":eq(4)").children(":eq(2)").text();
                 dailyPrice = $(this).parent().parent().children(":eq(4)").children(":eq(1)").text();
                 monthlyPrice = $(this).parent().parent().children(":eq(4)").children(":eq(2)").text();
-                console.log(regNum)
+                lostDamage = $(this).parent().parent().children(":eq(5)").children(":eq(1)").text();
 
             });
 
@@ -185,10 +186,12 @@ function manageCarPage() {
 
             $(".rent").on("click", function () {
                 $("#btnRequestCar").text("Request");
+                $("#lostDamageCost").val(lostDamage);
             });
 
             $(".cart").on("click", function () {
                 $("#btnRequestCar").text("Add To Cart");
+                $("#lostDamageCost").val(lostDamage);
             });
 
         }
@@ -207,6 +210,7 @@ function manageCarPage() {
             let carCost = days < 30 ? dailyPrice.split(" ")[0] * days : monthlyPrice.split(" ")[0] * (days / 30);
             $("#carCost").val(carCost);
             $("#driverCost").val(1000 * days);
+            $("#cost").val(parseFloat($("#carCost").val()) + parseFloat($("#driverCost").val()))
 
         }
 
