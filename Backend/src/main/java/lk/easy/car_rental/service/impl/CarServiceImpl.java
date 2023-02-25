@@ -4,6 +4,7 @@ import lk.easy.car_rental.dto.CarDTO;
 import lk.easy.car_rental.dto.CarPhotoDTO;
 import lk.easy.car_rental.dto.CarSpDTO;
 import lk.easy.car_rental.entity.Car;
+import lk.easy.car_rental.enums.SearchType;
 import lk.easy.car_rental.repo.CarRepo;
 import lk.easy.car_rental.service.CarService;
 import lk.easy.car_rental.util.WriteImageUtil;
@@ -151,8 +152,24 @@ public class CarServiceImpl implements CarService {
     @Override
     public List<CarSpDTO> filterCarsByRegNum(String text, String search, String fuel) throws RuntimeException {
 
-        return mapper.map(carRepo.findByRegNumLike("%" + text + "%"), new TypeToken<ArrayList<CarSpDTO>>() {
-        }.getType());
+
+        switch (search) {
+            case "REG_NUM":
+                return mapper.map(carRepo.findByRegNumLikeAndFuelType("%" + text + "%", fuel), new TypeToken<ArrayList<CarSpDTO>>() {
+                }.getType());
+
+            case "BRAND":
+                return mapper.map(carRepo.findByBrandLikeAndFuelType("%" + text + "%", fuel), new TypeToken<ArrayList<CarSpDTO>>() {
+                }.getType());
+
+            case "COLOR":
+                return mapper.map(carRepo.findByColorLikeAndFuelType("%" + text + "%", fuel), new TypeToken<ArrayList<CarSpDTO>>() {
+                }.getType());
+
+            default:
+                return null;
+
+        }
 
     }
 

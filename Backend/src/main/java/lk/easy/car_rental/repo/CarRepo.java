@@ -22,10 +22,10 @@ public interface CarRepo extends JpaRepository<Car, String> {
     @Query(value = "SELECT COUNT(regNum) FROM Car WHERE Availability='NO'", nativeQuery = true)
     Long countReservedCars() throws RuntimeException;
 
-    List<Car> findByRegNumLikeAndFuelTypeLike(String regNum, String fuelType) throws RuntimeException;
+    List<Car> findByRegNumLikeAndFuelType(String regNum, String fuelType) throws RuntimeException;
 
-    List<Car> findByBrandLikeAndFuelTypeLike(String brand, String fuelType) throws RuntimeException;
+    List<Car> findByBrandLikeAndFuelType(String brand, String fuelType) throws RuntimeException;
 
-    List<Car> findByColorLikeAndFuelTypeLike(String color, String fuelType) throws RuntimeException;
+    List<Car> findByColorLikeAndFuelType(String color, String fuelType) throws RuntimeException;
 
 }
