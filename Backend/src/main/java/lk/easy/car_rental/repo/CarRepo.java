@@ -1,8 +1,11 @@
 package lk.easy.car_rental.repo;
 
+import lk.easy.car_rental.dto.CarSpDTO;
 import lk.easy.car_rental.entity.Car;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+
+import java.util.List;
 
 /**
  * @author : Sandun Induranga
@@ -18,5 +21,7 @@ public interface CarRepo extends JpaRepository<Car, String> {
 
     @Query(value = "SELECT COUNT(regNum) FROM Car WHERE Availability='NO'", nativeQuery = true)
     Long countReservedCars() throws RuntimeException;
+
+    List<CarSpDTO> findCarsByRegNumLike(String regNum) throws RuntimeException;
 
 }
