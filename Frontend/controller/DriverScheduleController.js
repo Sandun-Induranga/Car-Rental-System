@@ -13,7 +13,7 @@ $.ajax({
     contentType: "application/json",
     success: function (res) {
         currentUser = res.data;
-        $("#username").text(res.data.user.username);
+        $("#user").text(res.data.user.username);
     }
 });
 
