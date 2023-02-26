@@ -18,6 +18,6 @@ public interface PaymentRepo extends JpaRepository<Payment, Integer> {
 //    SELECT `date`, SUM(total) FROM Payment GROUP BY `date` HAVING `date`+7>= DATE(now())
 
     @Query(value = "SELECT `date`, SUM(total) FROM Payment GROUP BY `date`",nativeQuery = true)
-    List<Payment> getDailyIncome() throws RuntimeException;
+    List getDailyIncome() throws RuntimeException;
 
 }

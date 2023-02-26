@@ -17,4 +17,6 @@ public interface PaymentService {
 
     public List<PaymentDTO> getPaymentsByNic(String nic) throws RuntimeException;
 
+    public List getDailyIncome() throws RuntimeException;
+
 }
