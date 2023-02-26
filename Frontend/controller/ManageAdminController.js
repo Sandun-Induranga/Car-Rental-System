@@ -284,6 +284,96 @@ function manageCustomerPage() {
             });
         }
 
+        // customer regular expressions
+        const cusNameRegEx = /^[A-z ]{5,20}$/;
+        const cusEmailRegEx = /^[a-z ]{5,20}@[a-z]{1,}[.com]$/;
+        const cusNicRegEx = /^[0-9]{9,10}[A-z]?$/;
+        const cusAddressRegEx = /^[0-9/A-z. ,]{5,}$/;
+        const cusContactRegEx = /^[0-9]{10}$/;
+        const cusSalaryRegEx = /^[0-9]{1,}[.]?[0-9]{1,2}$/;
+
+        let customerValidations = [];
+        customerValidations.push({reg: cusNameRegEx, field: $('#cusName'), error: 'Customer Name Pattern is Wrong : A-z 5-20'});
+        customerValidations.push({
+            reg: cusNicRegEx,
+            field: $('#cusNic'),
+            error: 'NIC Pattern is Wrong : 2001134561'
+        });
+        customerValidations.push({
+            reg: cusNicRegEx,
+            field: $('#cusLicense'),
+            error: 'NIC Pattern is Wrong : 2001134561'
+        });
+        customerValidations.push({
+            reg: cusAddressRegEx,
+            field: $('#cusAddress'),
+            error: 'Customer Address Pattern is Wrong : A-z 0-9 ,/'
+        });
+        customerValidations.push({
+            reg: cusContactRegEx,
+            field: $('#cusContact'),
+            error: 'Contact Pattern is Wrong : 0-9 ,/'
+        });
+        customerValidations.push({
+            reg: cusEmailRegEx,
+            field: $('#cusEmail'),
+            error: 'Email Pattern is Wrong : example@gmail.com'
+        });
+        customerValidations.push({
+            reg: cusAddressRegEx,
+            field: $('#cusUsername'),
+            error: 'Invalid Username'
+        });
+        customerValidations.push({
+            reg: cusAddressRegEx,
+            field: $('#cusPassword'),
+            error: 'Password Pattern is not Strong'
+        });
+        customerValidations.push({
+            reg: cusAddressRegEx,
+            field: $('#cusRe-password'),
+            error: 'Password Pattern is not Strong'
+        });
+
+
+        $("#cusName,#cusNic,#cusLicense,#cusAddress,#cusContact,#cusEmail,#cusUsername,#cusPassword,#cusRe-password").on('keyup', function (event) {
+            checkValidity(customerValidations);
+        });
+
+        $("#cusName,#cusNic,#cusLicense,#cusAddress,#cusContact,#cusEmail,#cusUsername,#cusPassword,#cusRe-password").on('blur', function (event) {
+            checkValidity(customerValidations);
+        });
+
+        $("#cusName").on('keydown', function (event) {
+            if (event.key == "Enter" && check(cusNameRegEx, $("#cusName"))) {
+                $("#cusNic").focus();
+            } else {
+                focusText($("#txtCusId"));
+            }
+        });
+
+        $("#cusNic").on('keydown', function (event) {
+            if (event.key == "Enter" && check(cusNicRegEx, $("#cusNic"))) {
+                focusText($("#cusLicense"));
+            }
+        });
+
+        $("#cusLicense").on('keydown', function (event) {
+            if (event.key == "Enter" && check(cusAddressRegEx, $("#cusLicense"))) {
+                focusText($("#cusAddress"));
+            }
+        });
+
+        $("#cusAddress").on('keydown', function (event) {
+            if (event.key == "Enter" && check(cusSalaryRegEx, $("#txtSalary"))) {
+                let res = confirm("Do you want to add this customer.?");
+                if (res) {
+                    saveCustomer();
+                    clearAllCustomerTexts(customerValidations);
+                }
+            }
+        });
+
 
     });
 }
