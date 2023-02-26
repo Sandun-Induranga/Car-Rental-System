@@ -106,4 +106,11 @@ public class CarController {
 
     }
 
+    @GetMapping(path = "/brand")
+    public ResponseUtil countCarsByBrand() {
+
+        return new ResponseUtil("OK", "Successfully Loaded..!", carService.countCarsByBrand());
+
+    }
+
 }
