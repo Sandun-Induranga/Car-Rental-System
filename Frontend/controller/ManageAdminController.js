@@ -44,6 +44,7 @@ function manageHomePage() {
         $("#drivers").attr("style", "display : none !important");
         $("#rents").attr("style", "display : none !important");
         $("#payments").attr("style", "display : none !important");
+        $("#reports").attr("style", "display : none !important");
 
 
         $.ajax({
@@ -130,6 +131,7 @@ function manageCustomerPage() {
         $("#drivers").attr("style", "display : none !important");
         $("#rents").attr("style", "display : none !important");
         $("#payments").attr("style", "display : none !important");
+        $("#reports").attr("style", "display : none !important");
 
         // Upload NIC Image
         loadSelectedImage("#cusNicImage");
@@ -293,7 +295,11 @@ function manageCustomerPage() {
         const cusSalaryRegEx = /^[0-9]{1,}[.]?[0-9]{1,2}$/;
 
         let customerValidations = [];
-        customerValidations.push({reg: cusNameRegEx, field: $('#cusName'), error: 'Customer Name Pattern is Wrong : A-z 5-20'});
+        customerValidations.push({
+            reg: cusNameRegEx,
+            field: $('#cusName'),
+            error: 'Customer Name Pattern is Wrong : A-z 5-20'
+        });
         customerValidations.push({
             reg: cusNicRegEx,
             field: $('#cusNic'),
@@ -425,6 +431,7 @@ function manageCarPage() {
         $("#drivers").attr("style", "display : none !important");
         $("#rents").attr("style", "display : none !important");
         $("#payments").attr("style", "display : none !important");
+        $("#reports").attr("style", "display : none !important");
 
         loadSelectedImage("#front");
         loadSelectedImage("#back");
@@ -684,6 +691,7 @@ function manageDriverPage() {
         $("#drivers").attr("style", "display : block !important");
         $("#rents").attr("style", "display : none !important");
         $("#payments").attr("style", "display : none !important");
+        $("#reports").attr("style", "display : none !important");
 
         // Upload License Image
         loadSelectedImage("#licenseImage");
@@ -758,6 +766,7 @@ function manageRentPage() {
         $("#drivers").attr("style", "display : none !important");
         $("#rents").attr("style", "display : block !important");
         $("#payments").attr("style", "display : none !important");
+        $("#reports").attr("style", "display : none !important");
 
         $.ajax({
 
@@ -935,6 +944,7 @@ function managePaymentsPage() {
         $("#drivers").attr("style", "display : none !important");
         $("#rents").attr("style", "display : none !important");
         $("#payments").attr("style", "display : block !important");
+        $("#reports").attr("style", "display : none !important");
 
     });
 
@@ -967,5 +977,21 @@ function managePaymentsPage() {
         });
 
     }
+
+}
+
+function manageReports() {
+
+    $('#reports').fadeIn();
+    $("#home").attr("style", "display : none !important");
+    $("#viewCustomer").attr("style", "display : none !important");
+    $("#manageCustomers").attr("style", "display : none !important");
+    $("#manageCar").attr("style", "display : none !important");
+    $("#viewCar").attr("style", "display : none !important");
+    $("#manageDriver").attr("style", "display : none !important");
+    $("#drivers").attr("style", "display : none !important");
+    $("#rents").attr("style", "display : none !important");
+    $("#payments").attr("style", "display : none !important");
+    $("#reports").attr("style", "display : block !important");
 
 }
