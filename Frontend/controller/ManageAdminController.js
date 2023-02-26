@@ -843,7 +843,14 @@ function manageRentPage() {
                     dataType: "json",
                     contentType: "application/json",
                     success: function (res) {
-                        saveAlert();
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Accepted..!',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        loadCards();
                     }
                 });
 
@@ -851,7 +858,7 @@ function manageRentPage() {
         }
 
         function bindRejectEvent() {
-            $(".btnAccept").on("click", function () {
+            $(".btnReject").on("click", function () {
 
                 let text = $(this).parent().parent().children(":eq(0)").children(":eq(0)").text();
 
@@ -861,7 +868,14 @@ function manageRentPage() {
                     dataType: "json",
                     contentType: "application/json",
                     success: function (res) {
-                        saveAlert();
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'warning',
+                            title: 'Rejected..!',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        loadCards();
                     }
                 });
 
