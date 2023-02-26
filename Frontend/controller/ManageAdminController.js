@@ -122,6 +122,36 @@ function manageHomePage() {
         }
     });
 
+    var brandOptions = {
+        title: {
+            text: "Desktop OS Market Share in 2017"
+        },
+        subtitles: [{
+            text: "As of November, 2017"
+        }],
+        animationEnabled: true,
+        data: [{
+            type: "pie",
+            startAngle: 40,
+            toolTipContent: "<b>{label}</b>: {y}%",
+            showInLegend: "true",
+            legendText: "{label}",
+            indexLabelFontSize: 16,
+            indexLabel: "{label} - {y}%",
+            dataPoints: [
+                { y: 48.36, label: "Windows 7" },
+                { y: 26.85, label: "Windows 10" },
+                { y: 1.49, label: "Windows 8" },
+                { y: 6.98, label: "Windows XP" },
+                { y: 6.53, label: "Windows 8.1" },
+                { y: 2.45, label: "Linux" },
+                { y: 3.32, label: "Mac OS X 10.12" },
+                { y: 4.03, label: "Others" }
+            ]
+        }]
+    };
+    $("#brandChart").CanvasJSChart(brandOptions);
+
 }
 
 
@@ -1001,59 +1031,37 @@ function manageReports() {
         $("#payments").attr("style", "display : none !important");
         $("#reports").attr("style", "display : block !important");
 
-        // var options = {
-        //     animationEnabled: true,
-        //     title: {
-        //         text: "GDP Growth Rate - 2016"
-        //     },
-        //     axisY: {
-        //         title: "Growth Rate (in %)",
-        //         suffix: "%"
-        //     },
-        //     axisX: {
-        //         title: "Countries"
-        //     },
-        //     data: [{
-        //         type: "column",
-        //         yValueFormatString: "#,##0.0#" % "",
-        //         dataPoints: [
-        //             {label: "Iraq", y: 10.09},
-        //             {label: "Turks & Caicos Islands", y: 9.40},
-        //             {label: "Nauru", y: 8.50},
-        //             {label: "Ethiopia", y: 7.96},
-        //             {label: "Uzbekistan", y: 7.80},
-        //             {label: "Nepal", y: 7.56},
-        //             {label: "Iceland", y: 7.20},
-        //             {label: "India", y: 7.1}
-        //
-        //         ]
-        //     }]
-        // };
-        //
-        // $("#chartContainer").CanvasJSChart(options);
-
-
         var dataPoints = [];
 
         var options = {
-            animationEnabled: true,
-            theme: "light2",
             title: {
-                text: "Daily Sales Data"
+                text: "Desktop OS Market Share in 2017"
             },
-            axisX: {
-                valueFormatString: "DD MMM YYYY",
-            },
-            axisY: {
-                title: "USD",
-                titleFontSize: 24
-            },
+            subtitles: [{
+                text: "As of November, 2017"
+            }],
+            animationEnabled: true,
             data: [{
-                type: "spline",
-                yValueFormatString: "$#,###.##",
-                dataPoints: dataPoints
+                type: "pie",
+                startAngle: 40,
+                toolTipContent: "<b>{label}</b>: {y}%",
+                showInLegend: "true",
+                legendText: "{label}",
+                indexLabelFontSize: 16,
+                indexLabel: "{label} - {y}%",
+                dataPoints: [
+                    { y: 48.36, label: "Windows 7" },
+                    { y: 26.85, label: "Windows 10" },
+                    { y: 1.49, label: "Windows 8" },
+                    { y: 6.98, label: "Windows XP" },
+                    { y: 6.53, label: "Windows 8.1" },
+                    { y: 2.45, label: "Linux" },
+                    { y: 3.32, label: "Mac OS X 10.12" },
+                    { y: 4.03, label: "Others" }
+                ]
             }]
         };
+        $("#chartContainer").CanvasJSChart(options);
 
         $.ajax({
             url: baseurl + "payment/daily",
