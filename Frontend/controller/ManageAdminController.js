@@ -122,6 +122,8 @@ function manageHomePage() {
         }
     });
 
+    let points = [];
+
     var brandOptions = {
         title: {
             text: "Desktop OS Market Share in 2017"
@@ -138,19 +140,33 @@ function manageHomePage() {
             legendText: "{label}",
             indexLabelFontSize: 16,
             indexLabel: "{label} - {y}%",
-            dataPoints: [
-                { y: 48.36, label: "Windows 7" },
-                { y: 26.85, label: "Windows 10" },
-                { y: 1.49, label: "Windows 8" },
-                { y: 6.98, label: "Windows XP" },
-                { y: 6.53, label: "Windows 8.1" },
-                { y: 2.45, label: "Linux" },
-                { y: 3.32, label: "Mac OS X 10.12" },
-                { y: 4.03, label: "Others" }
-            ]
-        }]
+            dataPoints: points
+        //         { y: 48.36, label: "Windows 7" },
+        //         { y: 26.85, label: "Windows 10" },
+        //         { y: 1.49, label: "Windows 8" },
+        //         { y: 6.98, label: "Windows XP" },
+        //         { y: 6.53, label: "Windows 8.1" },
+        //         { y: 2.45, label: "Linux" },
+        //         { y: 3.32, label: "Mac OS X 10.12" },
+        //         { y: 4.03, label: "Others" }
+        //     ]
+         }]
     };
-    $("#brandChart").CanvasJSChart(brandOptions);
+    // $("#brandChart").CanvasJSChart(brandOptions);
+
+    $.ajax({
+        url: baseurl + "car/brand",
+        method:"get",
+        success:function (res) {
+            for (var i = 0; i < res.data.length; i++) {
+                points.push({
+                    y: res.data[i][1],
+                    label:res.data[i][0]
+                });
+            }
+            $("#brandChart").CanvasJSChart(brandOptions);
+        }
+    });
 
 }
 
