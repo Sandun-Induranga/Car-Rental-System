@@ -3,7 +3,11 @@
  * @since : 0.1.0
  **/
 
-loadAllCars();
+$("#btnCars").on("click", function () {
+    $("#home").css("display","none");
+    $("#manageCar").attr("style","display : block");
+    loadAllCars();
+});
 
 function loadAllCars() {
 
