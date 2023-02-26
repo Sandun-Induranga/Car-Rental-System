@@ -30,6 +30,7 @@ manageDriverPage();
 manageRentPage();
 managePaymentsPage();
 manageHomePage();
+manageReports();
 
 function manageHomePage() {
 
@@ -982,16 +983,86 @@ function managePaymentsPage() {
 
 function manageReports() {
 
-    $('#reports').fadeIn();
-    $("#home").attr("style", "display : none !important");
-    $("#viewCustomer").attr("style", "display : none !important");
-    $("#manageCustomers").attr("style", "display : none !important");
-    $("#manageCar").attr("style", "display : none !important");
-    $("#viewCar").attr("style", "display : none !important");
-    $("#manageDriver").attr("style", "display : none !important");
-    $("#drivers").attr("style", "display : none !important");
-    $("#rents").attr("style", "display : none !important");
-    $("#payments").attr("style", "display : none !important");
-    $("#reports").attr("style", "display : block !important");
+    $("#btnReport").on("click", function () {
+        $('#reports').fadeIn();
+        $("#home").attr("style", "display : none !important");
+        $("#viewCustomer").attr("style", "display : none !important");
+        $("#manageCustomers").attr("style", "display : none !important");
+        $("#manageCar").attr("style", "display : none !important");
+        $("#viewCar").attr("style", "display : none !important");
+        $("#manageDriver").attr("style", "display : none !important");
+        $("#drivers").attr("style", "display : none !important");
+        $("#rents").attr("style", "display : none !important");
+        $("#payments").attr("style", "display : none !important");
+        $("#reports").attr("style", "display : block !important");
+
+        // var options = {
+        //     animationEnabled: true,
+        //     title: {
+        //         text: "GDP Growth Rate - 2016"
+        //     },
+        //     axisY: {
+        //         title: "Growth Rate (in %)",
+        //         suffix: "%"
+        //     },
+        //     axisX: {
+        //         title: "Countries"
+        //     },
+        //     data: [{
+        //         type: "column",
+        //         yValueFormatString: "#,##0.0#" % "",
+        //         dataPoints: [
+        //             {label: "Iraq", y: 10.09},
+        //             {label: "Turks & Caicos Islands", y: 9.40},
+        //             {label: "Nauru", y: 8.50},
+        //             {label: "Ethiopia", y: 7.96},
+        //             {label: "Uzbekistan", y: 7.80},
+        //             {label: "Nepal", y: 7.56},
+        //             {label: "Iceland", y: 7.20},
+        //             {label: "India", y: 7.1}
+        //
+        //         ]
+        //     }]
+        // };
+        //
+        // $("#chartContainer").CanvasJSChart(options);
+
+
+        var dataPoints = [];
+
+        var options = {
+            animationEnabled: true,
+            theme: "light2",
+            title: {
+                text: "Daily Sales Data"
+            },
+            axisX: {
+                valueFormatString: "DD MMM YYYY",
+            },
+            axisY: {
+                title: "USD",
+                titleFontSize: 24
+            },
+            data: [{
+                type: "spline",
+                yValueFormatString: "$#,###.##",
+                dataPoints: dataPoints
+            }]
+        };
+
+        function addData(data) {
+            for (var i = 0; i < data.length; i++) {
+                dataPoints.push({
+                    x: new Date(data[i].date),
+                    y: data[i].units
+                });
+            }
+            $("#chart").CanvasJSChart(options);
+
+        }
+
+        $.getJSON("https://canvasjs.com/data/gallery/jquery/daily-sales-data.json", addData);
+
+    });
 
 }
