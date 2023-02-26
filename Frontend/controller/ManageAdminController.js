@@ -86,36 +86,41 @@ function manageHomePage() {
 
     });
 
+    var dataPoints = [];
+
     var options = {
         animationEnabled: true,
+        theme: "light2",
         title: {
-            text: "GDP Growth Rate - 2016"
-        },
-        axisY: {
-            title: "Growth Rate (in %)",
-            suffix: "%"
+            text: "Daily Sales Income"
         },
         axisX: {
-            title: "Countries"
+            valueFormatString: "DD MMM YYYY",
+        },
+        axisY: {
+            title: "LKR",
+            titleFontSize: 24
         },
         data: [{
-            type: "column",
-            yValueFormatString: "#,##0.0#" % "",
-            dataPoints: [
-                {label: "Iraq", y: 10.09},
-                {label: "Turks & Caicos Islands", y: 9.40},
-                {label: "Nauru", y: 8.50},
-                {label: "Ethiopia", y: 7.96},
-                {label: "Uzbekistan", y: 7.80},
-                {label: "Nepal", y: 7.56},
-                {label: "Iceland", y: 7.20},
-                {label: "India", y: 7.1}
-
-            ]
+            type: "spline",
+            yValueFormatString: "$#,###.##",
+            dataPoints: dataPoints
         }]
     };
 
-    $("#chartContainer").CanvasJSChart(options);
+    $.ajax({
+        url: baseurl + "payment/daily",
+        method:"get",
+        success:function (res) {
+            for (var i = 0; i < res.data.length; i++) {
+                dataPoints.push({
+                    x: new Date(res.data[i][0]),
+                    y: res.data[i][1]
+                });
+            }
+            $("#chartContainer").CanvasJSChart(options);
+        }
+    });
 
 }
 
@@ -1050,18 +1055,22 @@ function manageReports() {
             }]
         };
 
-        function addData(data) {
-            for (var i = 0; i < data.length; i++) {
-                dataPoints.push({
-                    x: new Date(data[i].date),
-                    y: data[i].units
-                });
+        $.ajax({
+            url: baseurl + "payment/daily",
+            method:"get",
+            success:function (res) {
+                for (var i = 0; i < res.data.length; i++) {
+                    dataPoints.push({
+                        x: new Date(res.data[i][0]),
+                        y: res.data[i][1]
+                    });
+                }
+                $("#chart").CanvasJSChart(options);
             }
-            $("#chart").CanvasJSChart(options);
+        });
 
-        }
 
-        $.getJSON("https://canvasjs.com/data/gallery/jquery/daily-sales-data.json", addData);
+        // $.getJSON("https://canvasjs.com/data/gallery/jquery/daily-sales-data.json", addData);
 
     });
 
