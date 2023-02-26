@@ -359,20 +359,62 @@ function manageCustomerPage() {
         });
 
         $("#cusLicense").on('keydown', function (event) {
-            if (event.key == "Enter" && check(cusAddressRegEx, $("#cusLicense"))) {
+            if (event.key == "Enter" && check(cusNicRegEx, $("#cusLicense"))) {
                 focusText($("#cusAddress"));
             }
         });
 
         $("#cusAddress").on('keydown', function (event) {
-            if (event.key == "Enter" && check(cusSalaryRegEx, $("#txtSalary"))) {
-                let res = confirm("Do you want to add this customer.?");
-                if (res) {
-                    saveCustomer();
-                    clearAllCustomerTexts(customerValidations);
-                }
+            if (event.key == "Enter" && check(cusAddressRegEx, $("#cusAddress"))) {
+                focusText($("#cusContact"));
             }
         });
+
+        $("#cusContact").on('keydown', function (event) {
+            if (event.key == "Enter" && check(cusAddressRegEx, $("#cusContact"))) {
+                focusText($("#cusEmail"));
+            }
+        });
+
+        $("#cusEmail").on('keydown', function (event) {
+            if (event.key == "Enter" && check(cusEmailRegEx, $("#cusEmail"))) {
+                focusText($("#cusUsername"));
+            }
+        });
+
+        $("#cusUsername").on('keydown', function (event) {
+            if (event.key == "Enter" && check(cusNameRegEx, $("#cusUsername"))) {
+                focusText($("#cusPassword"));
+            }
+        });
+
+        $("#cusUsername").on('keydown', function (event) {
+            if (event.key == "Enter" && check(cusNameRegEx, $("#cusUsername"))) {
+                focusText($("#cusPassword"));
+            }
+        });
+
+        $("#cusPassword").on('keydown', function (event) {
+            if (event.key == "Enter" && check(cusAddressRegEx, $("#cusPassword"))) {
+                focusText($("#cusRe-password"));
+            }
+        });
+
+        $("#cusRe-password").on('keydown', function (event) {
+            if (event.key == "Enter" && check(cusAddressRegEx, $("#cusRe-password"))) {
+
+            }
+        });
+
+        // $("#cusAddress").on('keydown', function (event) {
+        //     if (event.key == "Enter" && check(cusAddressRegEx, $("#cusAddress"))) {
+        //         let res = confirm("Do you want to add this customer.?");
+        //         if (res) {
+        //             saveCustomer();
+        //             clearAllCustomerTexts(customerValidations);
+        //         }
+        //     }
+        // });
 
 
     });
