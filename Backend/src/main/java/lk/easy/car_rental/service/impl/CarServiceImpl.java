@@ -185,4 +185,11 @@ public class CarServiceImpl implements CarService {
 
     }
 
+    @Override
+    public List countCarsByBrand() throws RuntimeException {
+
+        return carRepo.countCarBrands();
+
+    }
+
 }

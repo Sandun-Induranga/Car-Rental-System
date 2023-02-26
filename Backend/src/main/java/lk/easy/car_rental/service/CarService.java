@@ -33,4 +33,6 @@ public interface CarService {
 
     public List<CarSpDTO> filterCarsByRegNum(String text, String search, String fuel) throws RuntimeException;
 
+    public List countCarsByBrand() throws RuntimeException;
+
 }
