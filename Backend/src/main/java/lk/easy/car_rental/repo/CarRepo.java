@@ -28,4 +28,7 @@ public interface CarRepo extends JpaRepository<Car, String> {
 
     List<Car> findByColorLikeAndFuelType(String color, String fuelType) throws RuntimeException;
 
+    @Query(value = "SELECT brand, COUNT(brand) FROM Car GROUP BY brand",nativeQuery = true)
+    List countCarBrands() throws RuntimeException;
+
 }
