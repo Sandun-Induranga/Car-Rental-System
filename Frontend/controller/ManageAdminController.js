@@ -406,17 +406,6 @@ function manageCustomerPage() {
             }
         });
 
-        // $("#cusAddress").on('keydown', function (event) {
-        //     if (event.key == "Enter" && check(cusAddressRegEx, $("#cusAddress"))) {
-        //         let res = confirm("Do you want to add this customer.?");
-        //         if (res) {
-        //             saveCustomer();
-        //             clearAllCustomerTexts(customerValidations);
-        //         }
-        //     }
-        // });
-
-
     });
 }
 
@@ -816,7 +805,7 @@ function manageRentPage() {
                 <section class="mb-2">
                     <button class="btn btn-success me-2 btnAccept"><i class="bi bi-calendar2-check"></i> Accept</button>
                     <button class="btn btn-success me-2 btn-warning pay" data-bs-toggle="modal" data-bs-target="#paymentModel"><i class="bi bi-paypal"></i> Pay</button>
-                    <button class="btn btn-danger"><i class="bi bi-calendar-x-fill"></i> Reject</button>
+                    <button class="btn btn-danger btnReject"><i class="bi bi-calendar-x-fill"></i> Reject</button>
                 </section>
             </div>
             `);
@@ -838,7 +827,8 @@ function manageRentPage() {
 
             bindAcceptEvent();
             bindManagePayment();
-            bindPayEvent()
+            bindPayEvent();
+            bindRejectEvent();
 
         }
 
@@ -848,7 +838,25 @@ function manageRentPage() {
                 let text = $(this).parent().parent().children(":eq(0)").children(":eq(0)").text();
 
                 $.ajax({
-                    url: baseurl + `rent?rentId=${text}`,
+                    url: baseurl + `rent?rentId=${text}&option=accept`,
+                    method: "put",
+                    dataType: "json",
+                    contentType: "application/json",
+                    success: function (res) {
+                        saveAlert();
+                    }
+                });
+
+            });
+        }
+
+        function bindRejectEvent() {
+            $(".btnAccept").on("click", function () {
+
+                let text = $(this).parent().parent().children(":eq(0)").children(":eq(0)").text();
+
+                $.ajax({
+                    url: baseurl + `rent?rentId=${text}&option=reject`,
                     method: "put",
                     dataType: "json",
                     contentType: "application/json",

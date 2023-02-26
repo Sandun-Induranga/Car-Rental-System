@@ -104,12 +104,12 @@ public class RentServiceImpl implements RentService {
     }
 
     @Override
-    public void acceptRentRequest(String rentId) throws RuntimeException {
+    public void acceptRentRequest(String rentId, String option) throws RuntimeException {
 
         Rent rent = rentRepo.findById(rentId).get();
 
         rent.setStatus("Accepted");
-        rent.setDescription("Rent Accepted on " + LocalDate.now() +" "+ LocalTime.now());
+        rent.setDescription((option.equals("accept") ? "Rent Accepted on " : "Rent Rejected on ") + LocalDate.now() + " " + LocalTime.now());
 
         rentRepo.save(rent);
 

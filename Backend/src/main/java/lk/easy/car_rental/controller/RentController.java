@@ -56,9 +56,9 @@ public class RentController {
     }
 
     @PutMapping(params = "rentId")
-    public ResponseUtil acceptRentRequest(@RequestParam String rentId) {
+    public ResponseUtil acceptAndRejectRentRequest(@RequestParam String rentId, @RequestParam String option) {
 
-        rentService.acceptRentRequest(rentId);
+        rentService.acceptRentRequest(rentId, option);
         return new ResponseUtil("OK", "Successfully Loaded..!", "");
 
     }

@@ -20,7 +20,7 @@ public interface RentService {
 
     public List<RentDTO> getAllRents() throws RuntimeException;
 
-    public void acceptRentRequest(String rentId) throws RuntimeException;
+    public void acceptRentRequest(String rentId, String option) throws RuntimeException;
 
     public RentDTO getRentByRentId(String rentId) throws RuntimeException;
 
