@@ -225,8 +225,8 @@ function manageCustomerPage() {
                         <td>${customer.user.username}</td>
                         <td>${customer.user.password}</td>
                         <td>${customer.contact}</td>
-                        <td><img src="${customer.nicImage}" alt="" srcset="" width="80px" height="60px"></td>
-                        <td><img src="${customer.licenseImage}" alt="" srcset="" width="80px" height="60px"></td>
+                        <td><img src="${customer.nicImage}" alt="" srcset="" width="150" height="100"></td>
+                        <td><img src="${customer.licenseImage}" alt="" srcset="" width="150" height="100"></td>
                         <td><i class="bi bi-pen-fill text-success text-center btn btnUpdate" data-bs-toggle="modal" data-bs-target="#registerCustomerModal"></i><i class="bi bi-trash-fill text-danger text-center btn btnDelete"></i></td>
                     </tr>
                     `);
