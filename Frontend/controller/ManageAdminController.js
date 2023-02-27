@@ -958,7 +958,8 @@ function manageDriverPage() {
                               <td>${driver.license}</td>
                               <td><img src="../assets${driver.licenseImage}" width="150" height="100" alt="license"></td>
                               <td>${driver.availabilityStatus}</td>
-                            </tr>  
+                              <td><i class="bi bi-pen-fill text-success text-center btn btnUpdate" data-bs-toggle="modal" data-bs-target="#registerCustomerModal"></i><i class="bi bi-trash-fill text-danger text-center btn btnDelete"></i></td>
+                            </tr>
                         `)
 
                     }
