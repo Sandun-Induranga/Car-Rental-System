@@ -70,9 +70,6 @@ public class CustomerServiceImpl implements CustomerService {
 
                 imageDTO.getNicImage().transferTo(nicLocation);
                 imageDTO.getLicenseImage().transferTo(licenseLocation);
-
-            } else {
-                throw new RuntimeException("Photos Required..!");
             }
 
         } catch (IOException e) {
@@ -82,6 +79,7 @@ public class CustomerServiceImpl implements CustomerService {
         customer.setNicImage("/assets/image/bucket/customer/nic/nic_" + nic + ".jpeg");
         customer.setLicenseImage("/assets/image/bucket/customer/license/license_" + nic + ".jpeg");
 
+        customer.getUser().setRole("Customer");
         customerRepo.save(customer);
 
     }
