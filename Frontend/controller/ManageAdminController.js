@@ -824,6 +824,7 @@ function manageRentPage() {
         $.ajax({
 
             url: baseurl + "rent/all",
+            async:false,
             method: "get",
             contentType: "application/json",
             dataType: "json",
@@ -901,10 +902,12 @@ function manageRentPage() {
 
                 $.ajax({
                     url: baseurl + `rent?rentId=${text}&option=accepted`,
+                    async:false,
                     method: "put",
                     dataType: "json",
                     contentType: "application/json",
                     success: function (res) {
+                        loadCards();
                         Swal.fire({
                             position: 'top-end',
                             icon: 'success',
@@ -912,7 +915,6 @@ function manageRentPage() {
                             showConfirmButton: false,
                             timer: 1500
                         });
-                        loadCards();
                     }
                 });
 
@@ -926,10 +928,12 @@ function manageRentPage() {
 
                 $.ajax({
                     url: baseurl + `rent?rentId=${text}&option=reject`,
+                    async:false,
                     method: "put",
                     dataType: "json",
                     contentType: "application/json",
                     success: function (res) {
+                        loadCards();
                         Swal.fire({
                             position: 'top-end',
                             icon: 'warning',
@@ -937,7 +941,6 @@ function manageRentPage() {
                             showConfirmButton: false,
                             timer: 1500
                         });
-                        loadCards();
                     }
                 });
 
@@ -969,6 +972,7 @@ function manageRentPage() {
 
                 $.ajax({
                     url: baseurl + `payment`,
+                    async:false,
                     method: "post",
                     data: JSON.stringify(json),
                     dataType: "json",
@@ -1007,6 +1011,7 @@ function managePaymentsPage() {
 
         $.ajax({
             url: baseurl + `payment`,
+            async:false,
             method: "get",
             dataType: "json",
             success: function (res) {
@@ -1073,6 +1078,7 @@ function manageReports() {
 
         $.ajax({
             url: baseurl + "payment/daily",
+            async:false,
             method:"get",
             success:function (res) {
                 for (var i = 0; i < res.data.length; i++) {
