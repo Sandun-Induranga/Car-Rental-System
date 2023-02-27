@@ -52,8 +52,11 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void saveImages(String nic, CustomerImageDTO imageDTO) throws RuntimeException {
+
+        Customer customer = customerRepo.findById(nic).get();
+
         try {
-            if (imageDTO.getLicenseImage() != null && imageDTO.getNicImage() != null) {
+            if (customer.getLicenseImage() == null && customer.getNicImage() == null) {
 
                 byte[] nicFileBytes = imageDTO.getNicImage().getBytes();
                 byte[] licenseFileBytes = imageDTO.getLicenseImage().getBytes();
@@ -68,18 +71,19 @@ public class CustomerServiceImpl implements CustomerService {
                 imageDTO.getNicImage().transferTo(nicLocation);
                 imageDTO.getLicenseImage().transferTo(licenseLocation);
 
-                Customer customer = customerRepo.findById(nic).get();
-
-                customer.setNicImage("/assets/image/bucket/customer/nic/nic_" + nic + ".jpeg");
-                customer.setLicenseImage("/assets/image/bucket/customer/license/license_" + nic + ".jpeg");
-
-                customerRepo.save(customer);
-
+            } else {
+                throw new RuntimeException("Photos Required..!");
             }
 
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+        customer.setNicImage("/assets/image/bucket/customer/nic/nic_" + nic + ".jpeg");
+        customer.setLicenseImage("/assets/image/bucket/customer/license/license_" + nic + ".jpeg");
+
+        customerRepo.save(customer);
+
     }
 
     @Override

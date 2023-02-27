@@ -42,7 +42,7 @@ $("#btnSaveCustomer").on("click", function () {
         contentType: false,
         processData: false,
         success: function (res) {
-            saveAlert();
+            // saveAlert();
             window.open("login-form.html", '_self');
         },
         error: function (res) {
