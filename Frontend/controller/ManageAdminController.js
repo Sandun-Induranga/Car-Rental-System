@@ -215,7 +215,12 @@ function manageCustomerPage() {
                 contentType: "application/json",
                 dataType: "json",
                 success: function (res) {
-
+                    if ($("#btnSaveCustomer").text() == "Save") {
+                        saveAlert();
+                    }else {
+                        updateAlert();
+                    }
+                    loadAllCustomers();
                 }
             });
 
@@ -231,12 +236,10 @@ function manageCustomerPage() {
                 contentType: false,
                 processData: false,
                 success: function (res) {
-
                     saveAlert();
-
+                    loadAllCustomers();
                 }
             });
-            loadAllCustomers();
 
         });
 
@@ -492,7 +495,16 @@ function manageCarPage() {
                     processData: false,
                     success: function (res) {
                         saveAlert();
-                        // loadAllCars();
+
+                        $.ajax({
+                            url: baseurl + "car",
+                            method: "get",
+
+                            success: function (res) {
+                                loadAllCars(res.data);
+                            }
+
+                        });
                     }
                 });
 
@@ -506,7 +518,16 @@ function manageCarPage() {
                     processData: false,
                     success: function (res) {
                         updateAlert();
-                        // loadAllCars();
+
+                        $.ajax({
+                            url: baseurl + "car",
+                            method: "get",
+
+                            success: function (res) {
+                                loadAllCars(res.data);
+                            }
+
+                        });
                     }
                 });
 
@@ -587,7 +608,15 @@ function manageCarPage() {
                         contentType: "application/json",
                         success: function (res) {
                             deleteAlert();
-                            // loadAllCars();
+                            $.ajax({
+                                url: baseurl + "car",
+                                method: "get",
+
+                                success: function (res) {
+                                    loadAllCars(res.data);
+                                }
+
+                            });
                         }
                     });
                 }
