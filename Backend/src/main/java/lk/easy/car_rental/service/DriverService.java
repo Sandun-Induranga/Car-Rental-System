@@ -19,4 +19,6 @@ public interface DriverService {
 
     public List<DriverDTO> getAllDrivers() throws RuntimeException;
 
+    public void deleteDriver(String nic) throws RuntimeException;
+
 }

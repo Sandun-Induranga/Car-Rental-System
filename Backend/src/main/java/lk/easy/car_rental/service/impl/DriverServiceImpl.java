@@ -115,4 +115,12 @@ public class DriverServiceImpl implements DriverService {
 
     }
 
+    @Override
+    public void deleteDriver(String nic) throws RuntimeException {
+
+        if (!driverRepo.existsById(nic)) throw new RuntimeException("Invalid Driver..!");
+        driverRepo.deleteById(nic);
+
+    }
+
 }
