@@ -25,6 +25,9 @@ $("#btnLogin").on("click", function () {
                     alert("none");
             }
 
+        },
+        error:function (res) {
+            deleteAlert();
         }
     });
 

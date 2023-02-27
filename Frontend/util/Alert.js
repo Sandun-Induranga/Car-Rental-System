@@ -34,3 +34,13 @@ function deleteAlert() {
         timer: 1500
     });
 }
+
+function errorAlert() {
+    Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Something Went Wrong..!',
+        showConfirmButton: false,
+        timer: 1500
+    });
+}
