@@ -53,7 +53,7 @@ public class DriverServiceImpl implements DriverService {
 
             driverDTO.getLicenseImage().transferTo(licenseLocation);
 
-            driver.setLicenseImage(licenseLocation.toString());
+            driver.setLicenseImage("/image/bucket/driver/license_" + driver.getNic() + ".jpeg");
 
         } catch (IOException e) {
             throw new RuntimeException(e);
