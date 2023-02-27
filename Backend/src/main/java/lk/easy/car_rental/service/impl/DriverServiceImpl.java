@@ -70,6 +70,37 @@ public class DriverServiceImpl implements DriverService {
     }
 
     @Override
+    public void updateDriver(DriverDTO driverDTO) throws RuntimeException {
+        Driver driver = mapper.map(driverDTO, Driver.class);
+
+        if (!driverRepo.existsById(driverDTO.getNic())) throw new RuntimeException("Invalid Driver..!");
+
+        try {
+            if (driverDTO.getLicenseImage() != null) {
+
+                byte[] licenseFileBytes = driverDTO.getLicenseImage().getBytes();
+
+                String projectPath = "/media/sandu/0559F5C021740317/GDSE/Project_Zone/IdeaProjects/Car_Rental_System/Frontend/assets";
+                Path licenseLocation = Paths.get(projectPath + "/image/bucket/driver/license_" + driver.getNic() + ".jpeg");
+
+                Files.write(licenseLocation, licenseFileBytes);
+
+                driverDTO.getLicenseImage().transferTo(licenseLocation);
+
+                driver.setLicenseImage("/image/bucket/driver/license_" + driver.getNic() + ".jpeg");
+
+            }
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        driver.setAvailabilityStatus("YES");
+
+        driverRepo.save(driver);
+    }
+
+    @Override
     public DriverDTO getDriver() throws RuntimeException {
 
         return mapper.map(driverRepo.getDriverByUsername(CurrentUserUtil.currentUser.getUsername()), DriverDTO.class);

@@ -29,7 +29,7 @@ public class DriverController {
 
         driverDTO.setUser(new UserDTO(username, password, "Driver"));
         driverService.saveDriver(driverDTO);
-        return new ResponseUtil("OK", "Successfully Loaded..!", "");
+        return new ResponseUtil("OK", "Successfully Saved..!", "");
 
     }
 
@@ -51,6 +51,15 @@ public class DriverController {
     public ResponseUtil getAll() {
 
         return new ResponseUtil("OK", "Successfully Loaded..!", driverService.getAllDrivers());
+
+    }
+
+    @PostMapping(path = "/update")
+    public ResponseUtil updateDriver(@RequestParam String username, @RequestParam String password, @ModelAttribute DriverDTO driverDTO) {
+
+        driverDTO.setUser(new UserDTO(username, password, "Driver"));
+        driverService.updateDriver(driverDTO);
+        return new ResponseUtil("OK", "Successfully Updated..!", "");
 
     }
 
