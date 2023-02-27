@@ -1013,7 +1013,7 @@ function manageDriverPage() {
 
 
                 $.ajax({
-                    url: baseurl + "customer?nic=" + nic,
+                    url: baseurl + "driver?nic=" + nic,
                     method: "delete",
                     async: false,
                     data: nic,
@@ -1021,7 +1021,7 @@ function manageDriverPage() {
                     processData: false,
                     success: function (res) {
                         deleteAlert();
-                        loadAllCustomers();
+                        loadAllDrivers();
                     }
                 });
 
