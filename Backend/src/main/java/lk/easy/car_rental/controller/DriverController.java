@@ -63,4 +63,12 @@ public class DriverController {
 
     }
 
+    @DeleteMapping
+    public ResponseUtil deleteDriver(String nic){
+
+        driverService.deleteDriver(nic);
+        return new ResponseUtil("OK", "Successfully Deleted..!", "");
+
+    }
+
 }
