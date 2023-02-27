@@ -130,7 +130,7 @@ public class CarServiceImpl implements CarService {
         Car car = mapper.map(carDTO, Car.class);
         try {
 
-            if (car.getPhotos() != null) {
+            if (carDTO.getPhotos().getFront() != null && carDTO.getPhotos().getBack() != null && carDTO.getPhotos().getSide() != null && carDTO.getPhotos().getInterior() != null) {
                 car.getPhotos().setFront(new WriteImageUtil().writeImage(carDTO.getPhotos().getFront(), Paths.get(WriteImageUtil.projectPath + "/image/bucket/car/front_" + carDTO.getRegNum() + ".jpeg")));
                 car.getPhotos().setBack(new WriteImageUtil().writeImage(carDTO.getPhotos().getBack(), Paths.get(WriteImageUtil.projectPath + "/image/bucket/car/back_" + carDTO.getRegNum() + ".jpeg")));
                 car.getPhotos().setSide(new WriteImageUtil().writeImage(carDTO.getPhotos().getSide(), Paths.get(WriteImageUtil.projectPath + "/image/bucket/car/side_" + carDTO.getRegNum() + ".jpeg")));
