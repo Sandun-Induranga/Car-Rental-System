@@ -64,6 +64,7 @@ public class DriverServiceImpl implements DriverService {
         }
 
         driver.setAvailabilityStatus("YES");
+        driver.getUser().setRole("Driver");
 
         driverRepo.save(driver);
 

@@ -8,7 +8,7 @@ function saveAlert() {
         position: 'top-end',
         icon: 'success',
         async:false,
-        title: 'Saved..!',
+        title: 'Successfully Saved..!',
         showConfirmButton: false,
         timer: 1500
     });
@@ -19,7 +19,7 @@ function updateAlert() {
         position: 'top-end',
         icon: 'success',
         async:false,
-        title: 'Updated..!',
+        title: 'Successfully Updated..!',
         showConfirmButton: false,
         timer: 1500
     });
@@ -29,7 +29,7 @@ function deleteAlert() {
     Swal.fire({
         position: 'top-end',
         icon: 'warning',
-        title: 'Deleted..!',
+        title: 'Successfully Deleted..!',
         showConfirmButton: false,
         timer: 1500
     });

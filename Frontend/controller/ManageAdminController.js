@@ -31,22 +31,27 @@ manageRentPage();
 managePaymentsPage();
 manageHomePage();
 manageReports();
+loadHome();
+
+function loadHome() {
+    $('#home').fadeIn();
+    $("#home").attr("style", "display : block !important");
+    $("#viewCustomer").attr("style", "display : none !important");
+    $("#manageCustomers").attr("style", "display : none !important");
+    $("#manageCar").attr("style", "display : none !important");
+    $("#viewCar").attr("style", "display : none !important");
+    $("#manageDriver").attr("style", "display : none !important");
+    $("#drivers").attr("style", "display : none !important");
+    $("#rents").attr("style", "display : none !important");
+    $("#payments").attr("style", "display : none !important");
+    $("#reports").attr("style", "display : none !important");
+}
 
 function manageHomePage() {
 
     $("#btnHome").on("click", function () {
-        $('#home').fadeIn();
-        $("#home").attr("style", "display : block !important");
-        $("#viewCustomer").attr("style", "display : none !important");
-        $("#manageCustomers").attr("style", "display : none !important");
-        $("#manageCar").attr("style", "display : none !important");
-        $("#viewCar").attr("style", "display : none !important");
-        $("#manageDriver").attr("style", "display : none !important");
-        $("#drivers").attr("style", "display : none !important");
-        $("#rents").attr("style", "display : none !important");
-        $("#payments").attr("style", "display : none !important");
-        $("#reports").attr("style", "display : none !important");
 
+        loadHome();
 
         $.ajax({
             url: baseurl + "customer/count",
@@ -210,23 +215,14 @@ function manageCustomerPage() {
                 url: baseurl + "customer",
                 method: $("#btnSaveCustomer").text() == "Save" ? "post" : "put",
                 async: false,
-                cache: false,
                 data: JSON.stringify(json),
                 contentType: "application/json",
                 dataType: "json",
                 success: function (res) {
-                    if ($("#btnSaveCustomer").text() == "Save") {
-                        saveAlert();
-                    } else {
-                        updateAlert();
-                    }
+
                     loadAllCustomers();
                 }
             });
-
-            if ($('#cusNicImage').get(0).files.length === 0 || $('#cusLicenseImage').get(0).files.length === 0) {
-                return;
-            }
 
             $.ajax({
                 url: baseurl + "customer?image",
@@ -236,7 +232,12 @@ function manageCustomerPage() {
                 contentType: false,
                 processData: false,
                 success: function (res) {
-                    saveAlert();
+
+                    if ($("#btnSaveCustomer").text() == "Save") {
+                        saveAlert();
+                    } else {
+                        updateAlert();
+                    }
                     loadAllCustomers();
                 }
             });

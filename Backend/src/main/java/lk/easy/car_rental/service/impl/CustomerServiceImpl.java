@@ -56,7 +56,7 @@ public class CustomerServiceImpl implements CustomerService {
         Customer customer = customerRepo.findById(nic).get();
 
         try {
-            if (customer.getLicenseImage() == null && customer.getNicImage() == null) {
+            if (imageDTO.getLicenseImage() != null && imageDTO.getNicImage() != null) {
 
                 byte[] nicFileBytes = imageDTO.getNicImage().getBytes();
                 byte[] licenseFileBytes = imageDTO.getLicenseImage().getBytes();
@@ -88,7 +88,10 @@ public class CustomerServiceImpl implements CustomerService {
     public void updateCustomer(CustomerDTO customerDTO) throws RuntimeException {
 
         if (!customerRepo.existsById(customerDTO.getNic())) throw new RuntimeException("Invalid Customer..!");
-        customerRepo.save(mapper.map(customerDTO, Customer.class));
+        Customer customer = mapper.map(customerDTO, Customer.class);
+        customer.setLicenseImage(customer.getLicenseImage());
+        customer.setNicImage(customer.getNicImage());
+        customerRepo.save(customer);
 
     }
 
