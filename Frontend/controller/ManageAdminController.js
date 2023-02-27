@@ -918,19 +918,28 @@ function manageDriverPage() {
         // Upload License Image
         loadSelectedImage("#licenseImage");
 
+        $("#btnAddNewDriver").on("click", function () {
+            $("#btnSaveDriver").text("Save");
+        })
+
         $("#btnSaveDriver").on("click", function () {
 
             let data = new FormData($("#driverForm")[0]);
 
             $.ajax({
-                url: baseurl + "driver",
+                url: baseurl + ($("#btnSaveDriver").text() == "Save" ? "driver" : "driver/update"),
                 method: "post",
                 data: data,
                 contentType: false,
                 processData: false,
                 success: function (res) {
 
-                    saveAlert();
+                    if ($("#btnSaveDriver").text() == "Save") {
+                        saveAlert();
+                    }else {
+                        updateAlert();
+                    }
+
                     loadAllDrivers();
 
                 }
@@ -942,6 +951,7 @@ function manageDriverPage() {
             $.ajax({
                 url: baseurl + "driver/all",
                 method: "get",
+                async:false,
                 dataType: "json",
                 success: function (res) {
 
@@ -989,7 +999,7 @@ function manageDriverPage() {
                 $("#password").val($(this).parent().parent().children(":eq(8)").text());
                 loadSelectedImage("#licenseImageContext");
 
-                $("#btnSaveCustomer").text("Update");
+                $("#btnSaveDriver").text("Update");
 
             });
         }
