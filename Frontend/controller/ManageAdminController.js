@@ -756,66 +756,66 @@ function manageCarPage() {
         });
 
 
-        $("#name,#nic,#license,#address,#address,#email,#username,#contact,#password,#re-password").on('keyup', function (event) {
-            checkValidity(driverValidations);
+        $("#regNum,#color,#brand,#dailyPriceRate,#monthlyPriceRate,#extraKMPrice,#passengers,#lostDamageCost,#meterValue").on('keyup', function (event) {
+            checkValidity(carValidations);
         });
 
-        $("#name,#nic,#license,#address,#address,#email,#username,#contact,#password,#re-password").on('blur', function (event) {
-            checkValidity(driverValidations);
+        $("#regNum,#color,#brand,#dailyPriceRate,#monthlyPriceRate,#extraKMPrice,#passengers,#lostDamageCost,#meterValue").on('blur', function (event) {
+            checkValidity(carValidations);
         });
 
-        $("#name").on('keydown', function (event) {
-            if (event.key == "Enter" && check(cusNameRegEx, $("#name"))) {
-                $("#nic").focus();
+        $("#regNum").on('keydown', function (event) {
+            if (event.key == "Enter" && check(regNumRegEx, $("#regNum"))) {
+                $("#color").focus();
             } else {
-                focusText($("#txtCusId"));
+                focusText($("#regNum"));
             }
         });
 
-        $("#nic").on('keydown', function (event) {
-            if (event.key == "Enter" && check(cusNicRegEx, $("#nic"))) {
-                focusText($("#license"));
+        $("#color").on('keydown', function (event) {
+            if (event.key == "Enter" && check(colorRegEx, $("#color"))) {
+                focusText($("#brand"));
             }
         });
 
-        $("#license").on('keydown', function (event) {
-            if (event.key == "Enter" && check(cusNicRegEx, $("#license"))) {
-                focusText($("#address"));
+        $("#brand").on('keydown', function (event) {
+            if (event.key == "Enter" && check(brandRegEx, $("#brand"))) {
+                focusText($("#dailyPriceRate"));
             }
         });
 
-        $("#address").on('keydown', function (event) {
-            if (event.key == "Enter" && check(cusAddressRegEx, $("#address"))) {
-                focusText($("#contact"));
+        $("#dailyPriceRate").on('keydown', function (event) {
+            if (event.key == "Enter" && check(priceRegEx, $("#dailyPriceRate"))) {
+                focusText($("#monthlyPriceRate"));
             }
         });
 
-        $("#contact").on('keydown', function (event) {
-            if (event.key == "Enter" && check(cusAddressRegEx, $("#contact"))) {
-                focusText($("#email"));
+        $("#monthlyPriceRate").on('keydown', function (event) {
+            if (event.key == "Enter" && check(priceRegEx, $("#monthlyPriceRate"))) {
+                focusText($("#extraKMPrice"));
             }
         });
 
-        $("#email").on('keydown', function (event) {
-            if (event.key == "Enter" && check(cusEmailRegEx, $("#email"))) {
-                focusText($("#username"));
+        $("#extraKMPrice").on('keydown', function (event) {
+            if (event.key == "Enter" && check(priceRegEx, $("#extraKMPrice"))) {
+                focusText($("#passengers"));
             }
         });
 
-        $("#username").on('keydown', function (event) {
-            if (event.key == "Enter" && check(cusNameRegEx, $("#username"))) {
-                focusText($("#password"));
+        $("#passengers").on('keydown', function (event) {
+            if (event.key == "Enter" && check(priceRegEx, $("#passengers"))) {
+                focusText($("#lostDamageCost"));
             }
         });
 
-        $("#password").on('keydown', function (event) {
-            if (event.key == "Enter" && check(cusAddressRegEx, $("#password"))) {
-                focusText($("#re-password"));
+        $("#lostDamageCost").on('keydown', function (event) {
+            if (event.key == "Enter" && check(priceRegEx, $("#lostDamageCost"))) {
+                focusText($("#meterValue"));
             }
         });
 
-        $("#re-password").on('keydown', function (event) {
-            if (event.key == "Enter" && check(cusAddressRegEx, $("#re-password"))) {
+        $("#meterValue").on('keydown', function (event) {
+            if (event.key == "Enter" && check(priceRegEx, $("#meterValue"))) {
 
             }
         });
