@@ -217,7 +217,7 @@ function manageCustomerPage() {
                 success: function (res) {
                     if ($("#btnSaveCustomer").text() == "Save") {
                         saveAlert();
-                    }else {
+                    } else {
                         updateAlert();
                     }
                     loadAllCustomers();
