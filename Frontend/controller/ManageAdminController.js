@@ -956,17 +956,66 @@ function manageDriverPage() {
                               <td>${driver.email}</td>
                               <td>${driver.address}</td>
                               <td>${driver.license}</td>
+                              <td>${driver.contact}</td>
+                              <td>${driver.user.username}</td>
+                              <td>${driver.user.password}</td>
                               <td><img src="../assets${driver.licenseImage}" width="150" height="100" alt="license"></td>
                               <td>${driver.availabilityStatus}</td>
-                              <td><i class="bi bi-pen-fill text-success text-center btn btnUpdate" data-bs-toggle="modal" data-bs-target="#registerCustomerModal"></i><i class="bi bi-trash-fill text-danger text-center btn btnDelete"></i></td>
+                              <td><i class="bi bi-pen-fill text-success text-center btn btnUpdate" data-bs-toggle="modal" data-bs-target="#registerDriver"></i><i class="bi bi-trash-fill text-danger text-center btn btnDelete"></i></td>
                             </tr>
                         `)
 
                     }
 
+                    bindUpdateEvent();
+                    bindDeleteEvent();
+
                 }
             });
 
+        }
+
+        function bindUpdateEvent() {
+            $(".btnUpdate").on("click", function () {
+
+                $("#nic").val($(this).parent().parent().children(":eq(0)").text());
+                $("#name").val($(this).parent().parent().children(":eq(1)").text());
+                $("#email").val($(this).parent().parent().children(":eq(2)").text());
+                $("#address").val($(this).parent().parent().children(":eq(3)").text());
+                $("#license").val($(this).parent().parent().children(":eq(4)").text());
+                $("#availability").val($(this).parent().parent().children(":eq(9)").text());
+                $("#contact").val($(this).parent().parent().children(":eq(5)").text());
+                $("#username").val($(this).parent().parent().children(":eq(6)").text());
+                $("#password").val($(this).parent().parent().children(":eq(8)").text());
+                loadSelectedImage("#licenseImageContext");
+
+                $("#btnSaveCustomer").text("Update");
+
+            });
+        }
+
+        function bindDeleteEvent() {
+            $(".btnDelete").on("click", function () {
+
+                let nic = $(this).parent().parent().children(":eq(0)").text();
+
+                if (!confirm("Are You Sure")) return;
+
+
+                $.ajax({
+                    url: baseurl + "customer?nic=" + nic,
+                    method: "delete",
+                    async: false,
+                    data: nic,
+                    contentType: false,
+                    processData: false,
+                    success: function (res) {
+                        deleteAlert();
+                        loadAllCustomers();
+                    }
+                });
+
+            });
         }
 
         const cusNameRegEx = /^[A-z ]{5,20}$/;
