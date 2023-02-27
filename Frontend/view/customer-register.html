@@ -12,8 +12,92 @@
     <meta name="viewport" content="width=device-width initial-scale=1">
 
 </head>
-<body>
+<body class="container">
 
+<header class="fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-white shadow-sm">
+        <div class="container-fluid">
+            <a class="navbar-brand text-success" href="#">Easy Car Rental</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main>
+
+    <form class="row justify-content-between p-5 rounded-5 overflow-auto mt-5" id="customerForm">
+        <div class="mb-3 col-md-5">
+            <label for="cusName" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="cusName" name="name">
+        </div>
+        <div class="mb-3 col-md-5">
+            <label for="cusEmail" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="cusEmail" name="email">
+        </div>
+        <div class="mb-3 col-md-5">
+            <label for="cusNic" class="form-label">NIC</label>
+            <input type="text" class="form-control" id="cusNic" name="nic"
+                   aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3 col-md-5">
+            <label for="cusUsername" class="form-label">Username</label>
+            <input type="text" class="form-control" id="cusUsername" name="username"
+                   aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3 col-md-5">
+            <label for="cusLicense" class="form-label">License Number</label>
+            <input type="text" class="form-control" id="cusLicense" name="license"
+                   aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3 col-md-5">
+            <label for="cusPassword" class="form-label">Password</label>
+            <input type="password" class="form-control" id="cusPassword" name="password">
+        </div>
+        <div class="mb-3 col-md-5">
+            <label for="cusAddress" class="form-label">Address</label>
+            <input type="text" class="form-control" id="cusAddress" name="address"
+                   aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3 col-md-5">
+            <label for="cusRe-password" class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" id="cusRe-password">
+        </div>
+
+        <div class="mb-3 col-md-5">
+            <label for="cusContact" class="form-label">Contact Number</label>
+            <input type="text" class="form-control" id="cusContact" name="contact">
+        </div>
+
+        <div class=" col-md-5">
+            <div class="image-context border border-2 rounded-3"
+                 id="cusLicenseImgContext"></div>
+            <label for="cusLicenseImage" class="form-label">License Photo</label>
+            <input type="file" id="cusLicenseImage" class="form-control"
+                   name="licenseImage">
+        </div>
+
+        <div class="mb-3 col-md-5 d-flex flex-column">
+            <div class="image-context border border-2 rounded-3"
+                 id="cusNicImgContext"></div>
+            <label for="cusNicImage" class="form-label">NIC Photo</label>
+            <input type="file" id="cusNicImage" class="form-control" name="nicImage">
+        </div>
+
+        <div class="mt-5 col-md-5 d-flex flex-column">
+            <button type="button" class="btn btn-primary mt-3" id="btnSaveCustomer">Submit
+            </button>
+        </div>
+    </form>
+
+</main>
 
 <!-- JS For Bootstrap -->
 <script src="../assets/js/bootstrap.min.js"></script>
