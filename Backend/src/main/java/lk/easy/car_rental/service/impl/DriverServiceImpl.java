@@ -44,16 +44,20 @@ public class DriverServiceImpl implements DriverService {
         if (driverRepo.existsById(driverDTO.getNic())) throw new RuntimeException("Customer Already Exits..!");
 
         try {
-            byte[] licenseFileBytes = driverDTO.getLicenseImage().getBytes();
+            if (driverDTO.getLicenseImage() != null) {
 
-            String projectPath = "/media/sandu/0559F5C021740317/GDSE/Project_Zone/IdeaProjects/Car_Rental_System/Frontend/assets";
-            Path licenseLocation = Paths.get(projectPath + "/image/bucket/driver/license_" + driver.getNic() + ".jpeg");
+                byte[] licenseFileBytes = driverDTO.getLicenseImage().getBytes();
 
-            Files.write(licenseLocation, licenseFileBytes);
+                String projectPath = "/media/sandu/0559F5C021740317/GDSE/Project_Zone/IdeaProjects/Car_Rental_System/Frontend/assets";
+                Path licenseLocation = Paths.get(projectPath + "/image/bucket/driver/license_" + driver.getNic() + ".jpeg");
 
-            driverDTO.getLicenseImage().transferTo(licenseLocation);
+                Files.write(licenseLocation, licenseFileBytes);
 
-            driver.setLicenseImage("/image/bucket/driver/license_" + driver.getNic() + ".jpeg");
+                driverDTO.getLicenseImage().transferTo(licenseLocation);
+
+                driver.setLicenseImage("/image/bucket/driver/license_" + driver.getNic() + ".jpeg");
+
+            }
 
         } catch (IOException e) {
             throw new RuntimeException(e);

@@ -900,7 +900,7 @@ function manageRentPage() {
                 let text = $(this).parent().parent().children(":eq(0)").children(":eq(0)").text();
 
                 $.ajax({
-                    url: baseurl + `rent?rentId=${text}&option=accept`,
+                    url: baseurl + `rent?rentId=${text}&option=accepted`,
                     method: "put",
                     dataType: "json",
                     contentType: "application/json",

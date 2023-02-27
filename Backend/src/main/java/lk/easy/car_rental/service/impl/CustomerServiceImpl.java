@@ -37,6 +37,7 @@ public class CustomerServiceImpl implements CustomerService {
     public void saveCustomer(CustomerDTO customerDTO) throws RuntimeException {
 
         if (customerRepo.existsById(customerDTO.getNic())) throw new RuntimeException("Customer Already Exits..!");
+        customerDTO.getUser().setRole("Customer");
         customerRepo.save(mapper.map(customerDTO, Customer.class));
 
     }
@@ -52,25 +53,29 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void saveImages(String nic, CustomerImageDTO imageDTO) throws RuntimeException {
         try {
-            byte[] nicFileBytes = imageDTO.getNicImage().getBytes();
-            byte[] licenseFileBytes = imageDTO.getLicenseImage().getBytes();
+            if (imageDTO.getLicenseImage() != null && imageDTO.getNicImage() != null) {
 
-            String projectPath = "/media/sandu/0559F5C021740317/GDSE/Project_Zone/IdeaProjects/Car_Rental_System/Frontend/assets";
-            Path nicLocation = Paths.get(projectPath + "/image/bucket/customer/nic/nic_" + nic + ".jpeg");
-            Path licenseLocation = Paths.get(projectPath + "/image/bucket/customer/license/license_" + nic + ".jpeg");
+                byte[] nicFileBytes = imageDTO.getNicImage().getBytes();
+                byte[] licenseFileBytes = imageDTO.getLicenseImage().getBytes();
 
-            Files.write(nicLocation, nicFileBytes);
-            Files.write(licenseLocation, licenseFileBytes);
+                String projectPath = "/media/sandu/0559F5C021740317/GDSE/Project_Zone/IdeaProjects/Car_Rental_System/Frontend/assets";
+                Path nicLocation = Paths.get(projectPath + "/image/bucket/customer/nic/nic_" + nic + ".jpeg");
+                Path licenseLocation = Paths.get(projectPath + "/image/bucket/customer/license/license_" + nic + ".jpeg");
 
-            imageDTO.getNicImage().transferTo(nicLocation);
-            imageDTO.getLicenseImage().transferTo(licenseLocation);
+                Files.write(nicLocation, nicFileBytes);
+                Files.write(licenseLocation, licenseFileBytes);
 
-            Customer customer = customerRepo.findById(nic).get();
+                imageDTO.getNicImage().transferTo(nicLocation);
+                imageDTO.getLicenseImage().transferTo(licenseLocation);
 
-            customer.setNicImage("/assets/image/bucket/customer/nic/nic_" + nic + ".jpeg");
-            customer.setLicenseImage("/assets/image/bucket/customer/license/license_" + nic + ".jpeg");
+                Customer customer = customerRepo.findById(nic).get();
 
-            customerRepo.save(customer);
+                customer.setNicImage("/assets/image/bucket/customer/nic/nic_" + nic + ".jpeg");
+                customer.setLicenseImage("/assets/image/bucket/customer/license/license_" + nic + ".jpeg");
+
+                customerRepo.save(customer);
+
+            }
 
         } catch (IOException e) {
             throw new RuntimeException(e);
