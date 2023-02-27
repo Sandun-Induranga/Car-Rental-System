@@ -703,6 +703,123 @@ function manageCarPage() {
 
         }
 
+        const regNumRegEx = /^[0-9/A-z.]{2,20}$/;
+        const colorRegEx = /^[A-z ]{2,20}$/;
+        const brandRegEx = /^[A-z ]{2,20}$/;
+        const priceRegEx = /^[0-9]{1,}[.]?[0-9]{1,2}$/;
+
+        let carValidations = [];
+        carValidations.push({
+            reg: regNumRegEx,
+            field: $('#regNum'),
+            error: 'Car Number Pattern is Wrong : AAA-5500'
+        });
+        carValidations.push({
+            reg: colorRegEx,
+            field: $('#color'),
+            error: 'Color Pattern is Wrong'
+        });
+        carValidations.push({
+            reg: brandRegEx,
+            field: $('#brand'),
+            error: 'Brand Pattern is Wrong'
+        });
+        carValidations.push({
+            reg: priceRegEx,
+            field: $('#dailyPriceRate'),
+            error: 'Price Pattern is Wrong'
+        });
+        carValidations.push({
+            reg: priceRegEx,
+            field: $('#monthlyPriceRate'),
+            error: 'Price Pattern is Wrong'
+        });
+        carValidations.push({
+            reg: priceRegEx,
+            field: $('#extraKMPrice'),
+            error: 'Price Pattern is Wrong'
+        });
+        carValidations.push({
+            reg: priceRegEx,
+            field: $('#passengers'),
+            error: 'Invalid Number'
+        });
+        carValidations.push({
+            reg: priceRegEx,
+            field: $('#lostDamageCost'),
+            error: 'Price Pattern is Wrong'
+        });
+        carValidations.push({
+            reg: priceRegEx,
+            field: $('#meterValue'),
+            error: 'Meter Value Pattern is Wrong'
+        });
+
+
+        $("#name,#nic,#license,#address,#address,#email,#username,#contact,#password,#re-password").on('keyup', function (event) {
+            checkValidity(driverValidations);
+        });
+
+        $("#name,#nic,#license,#address,#address,#email,#username,#contact,#password,#re-password").on('blur', function (event) {
+            checkValidity(driverValidations);
+        });
+
+        $("#name").on('keydown', function (event) {
+            if (event.key == "Enter" && check(cusNameRegEx, $("#name"))) {
+                $("#nic").focus();
+            } else {
+                focusText($("#txtCusId"));
+            }
+        });
+
+        $("#nic").on('keydown', function (event) {
+            if (event.key == "Enter" && check(cusNicRegEx, $("#nic"))) {
+                focusText($("#license"));
+            }
+        });
+
+        $("#license").on('keydown', function (event) {
+            if (event.key == "Enter" && check(cusNicRegEx, $("#license"))) {
+                focusText($("#address"));
+            }
+        });
+
+        $("#address").on('keydown', function (event) {
+            if (event.key == "Enter" && check(cusAddressRegEx, $("#address"))) {
+                focusText($("#contact"));
+            }
+        });
+
+        $("#contact").on('keydown', function (event) {
+            if (event.key == "Enter" && check(cusAddressRegEx, $("#contact"))) {
+                focusText($("#email"));
+            }
+        });
+
+        $("#email").on('keydown', function (event) {
+            if (event.key == "Enter" && check(cusEmailRegEx, $("#email"))) {
+                focusText($("#username"));
+            }
+        });
+
+        $("#username").on('keydown', function (event) {
+            if (event.key == "Enter" && check(cusNameRegEx, $("#username"))) {
+                focusText($("#password"));
+            }
+        });
+
+        $("#password").on('keydown', function (event) {
+            if (event.key == "Enter" && check(cusAddressRegEx, $("#password"))) {
+                focusText($("#re-password"));
+            }
+        });
+
+        $("#re-password").on('keydown', function (event) {
+            if (event.key == "Enter" && check(cusAddressRegEx, $("#re-password"))) {
+
+            }
+        });
+
     });
 
 }
