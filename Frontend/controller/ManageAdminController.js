@@ -766,9 +766,16 @@ function manageCarPage() {
 
         $("#regNum").on('keydown', function (event) {
             if (event.key == "Enter" && check(regNumRegEx, $("#regNum"))) {
-                $("#color").focus();
+                $("#carType").focus();
             } else {
                 focusText($("#regNum"));
+            }
+        });
+
+        $("#carType").on('keydown', function (event) {
+            if (event.key == "Enter") {
+                focusText($("#color"));
+                textSuccess($("#carType"), "");
             }
         });
 
@@ -780,6 +787,34 @@ function manageCarPage() {
 
         $("#brand").on('keydown', function (event) {
             if (event.key == "Enter" && check(brandRegEx, $("#brand"))) {
+                focusText($("#dailyRate"));
+            }
+        });
+
+        $("#dailyRate").on('keydown', function (event) {
+            if (event.key == "Enter") {
+                textSuccess($("#dailyRate"), "");
+                focusText($("#monthlyRate"));
+            }
+        });
+
+        $("#monthlyRate").on('keydown', function (event) {
+            if (event.key == "Enter") {
+                textSuccess($("#monthlyRate"), "");
+                focusText($("#petrol"));
+            }
+        });
+
+        $("#petrol").on('keydown', function (event) {
+            if (event.key == "Enter") {
+                textSuccess($("#petrol"), "");
+                focusText($("#yes"));
+            }
+        });
+
+        $("#yes").on('keydown', function (event) {
+            if (event.key == "Enter") {
+                textSuccess($("#yes"), "");
                 focusText($("#dailyPriceRate"));
             }
         });
@@ -791,6 +826,12 @@ function manageCarPage() {
         });
 
         $("#monthlyPriceRate").on('keydown', function (event) {
+            if (event.key == "Enter" && check(priceRegEx, $("#monthlyPriceRate"))) {
+                focusText($("#auto"));
+            }
+        });
+
+        $("#auto").on('keydown', function (event) {
             if (event.key == "Enter" && check(priceRegEx, $("#monthlyPriceRate"))) {
                 focusText($("#extraKMPrice"));
             }
