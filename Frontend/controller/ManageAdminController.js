@@ -110,8 +110,8 @@ function manageHomePage() {
 
     $.ajax({
         url: baseurl + "payment/daily",
-        method:"get",
-        success:function (res) {
+        method: "get",
+        success: function (res) {
             for (var i = 0; i < res.data.length; i++) {
                 dataPoints.push({
                     x: new Date(res.data[i][0]),
@@ -141,17 +141,17 @@ function manageHomePage() {
             indexLabelFontSize: 16,
             indexLabel: "{label} - {y}%",
             dataPoints: points
-         }]
+        }]
     };
 
     $.ajax({
         url: baseurl + "car/brand",
-        method:"get",
-        success:function (res) {
+        method: "get",
+        success: function (res) {
             for (var i = 0; i < res.data.length; i++) {
                 points.push({
                     y: res.data[i][1],
-                    label:res.data[i][0]
+                    label: res.data[i][0]
                 });
             }
             $("#brandChart").CanvasJSChart(brandOptions);
@@ -210,7 +210,7 @@ function manageCustomerPage() {
                 url: baseurl + "customer",
                 method: $("#btnSaveCustomer").text() == "Save" ? "post" : "put",
                 async: false,
-                cache:false,
+                cache: false,
                 data: JSON.stringify(json),
                 contentType: "application/json",
                 dataType: "json",
@@ -587,7 +587,7 @@ function manageCarPage() {
                         contentType: "application/json",
                         success: function (res) {
                             deleteAlert();
-                            loadAllCars();
+                            // loadAllCars();
                         }
                     });
                 }
@@ -781,6 +781,125 @@ function manageDriverPage() {
 
         }
 
+        const cusNameRegEx = /^[A-z ]{5,20}$/;
+        const cusEmailRegEx = /^[a-z ]{5,20}@[a-z][gmail.com]$/;
+        const cusNicRegEx = /^[0-9]{9,10}[A-z]?$/;
+        const cusAddressRegEx = /^[0-9/A-z. ,]{5,}$/;
+        const cusContactRegEx = /^[0-9]{10}$/;
+        const cusSalaryRegEx = /^[0-9]{1,}[.]?[0-9]{1,2}$/;
+
+        let driverValidations = [];
+        driverValidations.push({
+            reg: cusNameRegEx,
+            field: $('#cusName'),
+            error: 'Customer Name Pattern is Wrong : A-z 5-20'
+        });
+        driverValidations.push({
+            reg: cusNicRegEx,
+            field: $('#cusNic'),
+            error: 'NIC Pattern is Wrong : 2001134561'
+        });
+        driverValidations.push({
+            reg: cusNicRegEx,
+            field: $('#cusLicense'),
+            error: 'NIC Pattern is Wrong : 2001134561'
+        });
+        driverValidations.push({
+            reg: cusAddressRegEx,
+            field: $('#cusAddress'),
+            error: 'Customer Address Pattern is Wrong : A-z 0-9 ,/'
+        });
+        driverValidations.push({
+            reg: cusContactRegEx,
+            field: $('#cusContact'),
+            error: 'Contact Pattern is Wrong : 0-9 ,/'
+        });
+        driverValidations.push({
+            reg: cusEmailRegEx,
+            field: $('#cusEmail'),
+            error: 'Email Pattern is Wrong : example@gmail.com'
+        });
+        driverValidations.push({
+            reg: cusAddressRegEx,
+            field: $('#cusUsername'),
+            error: 'Invalid Username'
+        });
+        driverValidations.push({
+            reg: cusAddressRegEx,
+            field: $('#cusPassword'),
+            error: 'Password Pattern is not Strong'
+        });
+        driverValidations.push({
+            reg: cusAddressRegEx,
+            field: $('#cusRe-password'),
+            error: 'Password Pattern is not Strong'
+        });
+
+
+        $("#name,#nic,#license,#address,#address,#email,#username,#password,#re-password").on('keyup', function (event) {
+            checkValidity(driverValidations);
+        });
+
+        $("#name,#nic,#license,#address,#address,#email,#username,#password,#re-password").on('blur', function (event) {
+            checkValidity(driverValidations);
+        });
+
+        $("#name").on('keydown', function (event) {
+            if (event.key == "Enter" && check(cusNameRegEx, $("#name"))) {
+                $("#nic").focus();
+            } else {
+                focusText($("#txtCusId"));
+            }
+        });
+
+        $("#nic").on('keydown', function (event) {
+            if (event.key == "Enter" && check(cusNicRegEx, $("#nic"))) {
+                focusText($("#license"));
+            }
+        });
+
+        $("#license").on('keydown', function (event) {
+            if (event.key == "Enter" && check(cusNicRegEx, $("#license"))) {
+                focusText($("#address"));
+            }
+        });
+
+        $("#address").on('keydown', function (event) {
+            if (event.key == "Enter" && check(cusAddressRegEx, $("#address"))) {
+                focusText($("#contact"));
+            }
+        });
+
+        $("#contact").on('keydown', function (event) {
+            if (event.key == "Enter" && check(cusAddressRegEx, $("#contact"))) {
+                focusText($("#email"));
+            }
+        });
+
+        $("#email").on('keydown', function (event) {
+            if (event.key == "Enter" && check(cusEmailRegEx, $("#email"))) {
+                focusText($("#username"));
+            }
+        });
+
+        $("#username").on('keydown', function (event) {
+            if (event.key == "Enter" && check(cusNameRegEx, $("#username"))) {
+                focusText($("#password"));
+            }
+        });
+
+        $("#password").on('keydown', function (event) {
+            if (event.key == "Enter" && check(cusAddressRegEx, $("#password"))) {
+                focusText($("#re-password"));
+            }
+        });
+
+        $("#re-password").on('keydown', function (event) {
+            if (event.key == "Enter" && check(cusAddressRegEx, $("#re-password"))) {
+
+            }
+        });
+
     });
 }
 
@@ -806,7 +925,7 @@ function manageRentPage() {
         $.ajax({
 
             url: baseurl + "rent/all",
-            async:false,
+            async: false,
             method: "get",
             contentType: "application/json",
             dataType: "json",
@@ -884,7 +1003,7 @@ function manageRentPage() {
 
                 $.ajax({
                     url: baseurl + `rent?rentId=${text}&option=accepted`,
-                    async:false,
+                    async: false,
                     method: "put",
                     dataType: "json",
                     contentType: "application/json",
@@ -910,7 +1029,7 @@ function manageRentPage() {
 
                 $.ajax({
                     url: baseurl + `rent?rentId=${text}&option=reject`,
-                    async:false,
+                    async: false,
                     method: "put",
                     dataType: "json",
                     contentType: "application/json",
@@ -954,7 +1073,7 @@ function manageRentPage() {
 
                 $.ajax({
                     url: baseurl + `payment`,
-                    async:false,
+                    async: false,
                     method: "post",
                     data: JSON.stringify(json),
                     dataType: "json",
@@ -1065,9 +1184,9 @@ function manageReports() {
 
         $.ajax({
             url: baseurl + "payment/daily",
-            async:false,
-            method:"get",
-            success:function (res) {
+            async: false,
+            method: "get",
+            success: function (res) {
                 for (var i = 0; i < res.data.length; i++) {
                     dataPoints.push({
                         x: new Date(res.data[i][0]),
