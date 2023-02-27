@@ -141,18 +141,8 @@ function manageHomePage() {
             indexLabelFontSize: 16,
             indexLabel: "{label} - {y}%",
             dataPoints: points
-        //         { y: 48.36, label: "Windows 7" },
-        //         { y: 26.85, label: "Windows 10" },
-        //         { y: 1.49, label: "Windows 8" },
-        //         { y: 6.98, label: "Windows XP" },
-        //         { y: 6.53, label: "Windows 8.1" },
-        //         { y: 2.45, label: "Linux" },
-        //         { y: 3.32, label: "Mac OS X 10.12" },
-        //         { y: 4.03, label: "Others" }
-        //     ]
          }]
     };
-    // $("#brandChart").CanvasJSChart(brandOptions);
 
     $.ajax({
         url: baseurl + "car/brand",
@@ -192,18 +182,10 @@ function manageCustomerPage() {
         loadSelectedImage("#cusLicenseImage");
 
         $("#btnAddNewCustomer").on("click", function () {
-            // $("#manageCustomers").attr("style", "display : block !important");
-            // $("#viewCustomer").attr("style", "display : none !important");
-            // $(this).attr("style", "display : block !important");
-            $("#btnSaveCustomer").text("Save");
-        });
 
-        // $("#btnBackCustomer").on("click", function () {
-        //     $("#manageCustomers").attr("style", "display : none !important");
-        //     $("#viewCustomer").attr("style", "display : block !important");
-        //     $(this).attr("style", "display : block !important");
-        //     $("#btnSaveCustomer").text("Save");
-        // });
+            $("#btnSaveCustomer").text("Save");
+
+        });
 
         // Save Customer
         $("#btnSaveCustomer").on("click", function () {
@@ -509,8 +491,8 @@ function manageCarPage() {
                     contentType: false,
                     processData: false,
                     success: function (res) {
-                        loadAllCars();
                         saveAlert();
+                        // loadAllCars();
                     }
                 });
 
@@ -523,8 +505,8 @@ function manageCarPage() {
                     contentType: false,
                     processData: false,
                     success: function (res) {
-                        loadAllCars();
                         updateAlert();
+                        // loadAllCars();
                     }
                 });
 
@@ -979,6 +961,7 @@ function manageRentPage() {
                     contentType: "application/json",
                     success: function (res) {
                         saveAlert();
+                        managePaymentsPage();
                     }
                 });
 
@@ -1003,6 +986,8 @@ function managePaymentsPage() {
         $("#payments").attr("style", "display : block !important");
         $("#reports").attr("style", "display : none !important");
 
+        loadAllPayments();
+
     });
 
     loadAllPayments();
@@ -1011,10 +996,12 @@ function managePaymentsPage() {
 
         $.ajax({
             url: baseurl + `payment`,
-            async:false,
             method: "get",
             dataType: "json",
             success: function (res) {
+
+                $("#tblPayment").empty();
+
                 for (let payment of res.data) {
                     $("#tblPayment").append(`
                     <tr>
