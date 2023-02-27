@@ -50,8 +50,8 @@ function focusText(txtField) {
 
 function setButtonState(value) {
     if (value > 0) {
-        $("#btnSaveCustomer").attr('disabled', true);
+        $("#btnSaveCustomer, #btnSaveDriver").attr('disabled', true);
     } else {
-        $("#btnSaveCustomer").attr('disabled', false);
+        $("#btnSaveCustomer, #btnSaveDriver").attr('disabled', false);
     }
 }

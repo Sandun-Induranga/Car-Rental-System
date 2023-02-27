@@ -791,56 +791,56 @@ function manageDriverPage() {
         let driverValidations = [];
         driverValidations.push({
             reg: cusNameRegEx,
-            field: $('#cusName'),
+            field: $('#name'),
             error: 'Customer Name Pattern is Wrong : A-z 5-20'
         });
         driverValidations.push({
             reg: cusNicRegEx,
-            field: $('#cusNic'),
+            field: $('#nic'),
             error: 'NIC Pattern is Wrong : 2001134561'
         });
         driverValidations.push({
             reg: cusNicRegEx,
-            field: $('#cusLicense'),
+            field: $('#license'),
             error: 'NIC Pattern is Wrong : 2001134561'
         });
         driverValidations.push({
             reg: cusAddressRegEx,
-            field: $('#cusAddress'),
+            field: $('#address'),
             error: 'Customer Address Pattern is Wrong : A-z 0-9 ,/'
         });
         driverValidations.push({
             reg: cusContactRegEx,
-            field: $('#cusContact'),
+            field: $('#contact'),
             error: 'Contact Pattern is Wrong : 0-9 ,/'
         });
         driverValidations.push({
             reg: cusEmailRegEx,
-            field: $('#cusEmail'),
+            field: $('#email'),
             error: 'Email Pattern is Wrong : example@gmail.com'
         });
         driverValidations.push({
             reg: cusAddressRegEx,
-            field: $('#cusUsername'),
+            field: $('#username'),
             error: 'Invalid Username'
         });
         driverValidations.push({
             reg: cusAddressRegEx,
-            field: $('#cusPassword'),
+            field: $('#password'),
             error: 'Password Pattern is not Strong'
         });
         driverValidations.push({
             reg: cusAddressRegEx,
-            field: $('#cusRe-password'),
+            field: $('#re-password'),
             error: 'Password Pattern is not Strong'
         });
 
 
-        $("#name,#nic,#license,#address,#address,#email,#username,#password,#re-password").on('keyup', function (event) {
+        $("#name,#nic,#license,#address,#address,#email,#username,#contact,#password,#re-password").on('keyup', function (event) {
             checkValidity(driverValidations);
         });
 
-        $("#name,#nic,#license,#address,#address,#email,#username,#password,#re-password").on('blur', function (event) {
+        $("#name,#nic,#license,#address,#address,#email,#username,#contact,#password,#re-password").on('blur', function (event) {
             checkValidity(driverValidations);
         });
 
