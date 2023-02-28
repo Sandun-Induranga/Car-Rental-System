@@ -1408,6 +1408,26 @@ function manageReports() {
         $("#payments").attr("style", "display : none !important");
         $("#reports").attr("style", "display : block !important");
 
+        $.ajax({
+            url:baseurl+"payment/day",
+            method:"get",
+            success:function (res) {
+                if (res.data!=null){
+                    $("#day").text(res.data);
+                }
+            }
+        });
+
+        $.ajax({
+            url:baseurl+"payment/month",
+            method:"get",
+            success:function (res) {
+                if (res.data!=null){
+                    $("#month").text(res.data);
+                }
+            }
+        });
+
         var dataPoints = [];
 
         var options = {
