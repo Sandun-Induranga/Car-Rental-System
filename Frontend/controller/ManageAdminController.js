@@ -1190,7 +1190,7 @@ function manageRentPage() {
             for (let rent of res.data) {
 
                 $("#rent-context").append(`
-            <div class="card text-center p-2 w-50 shadow">
+            <div class="card col col-6 text-center p-2 w-50 shadow">
                 <div class="card-body" id="${res.rentId}">
                     <h5 class="card-title">${rent.rentId}</h5>
                     <p class="card-text">Customer NIC : ${rent.nic.nic}</p>
@@ -1218,7 +1218,7 @@ function manageRentPage() {
                     <button class="btn btn-success me-2 btnAccept"><i class="bi bi-calendar2-check"></i> Accept</button>
                     <button class="btn btn-success me-2 btn-warning pay" data-bs-toggle="modal" data-bs-target="#paymentModel"><i class="bi bi-paypal"></i> Pay</button>
                     <button class="btn btn-danger btnReject"><i class="bi bi-calendar-x-fill"></i> Reject</button>
-                    <button class="btn btn-danger btnReject"><i class="bi bi-calendar-x-fill"></i> Reject</button>
+                    <button class="btn btn-dark btnClose"><i class="bi bi-calendar-x-fill"></i> Close</button>
                 </section>
             </div>
             `);
@@ -1257,13 +1257,24 @@ function manageRentPage() {
                     dataType: "json",
                     contentType: "application/json",
                     success: function (res) {
-                        loadCards();
                         Swal.fire({
                             position: 'top-end',
                             icon: 'success',
                             title: 'Accepted..!',
                             showConfirmButton: false,
                             timer: 1500
+                        });
+                        $.ajax({
+
+                            url: baseurl + "rent/all",
+                            async: false,
+                            method: "get",
+                            contentType: "application/json",
+                            dataType: "json",
+                            success: function (res) {
+                                loadCards(res);
+                            }
+
                         });
                     }
                 });
@@ -1283,13 +1294,24 @@ function manageRentPage() {
                     dataType: "json",
                     contentType: "application/json",
                     success: function (res) {
-                        loadCards();
                         Swal.fire({
                             position: 'top-end',
                             icon: 'warning',
                             title: 'Rejected..!',
                             showConfirmButton: false,
                             timer: 1500
+                        });
+                        $.ajax({
+
+                            url: baseurl + "rent/all",
+                            async: false,
+                            method: "get",
+                            contentType: "application/json",
+                            dataType: "json",
+                            success: function (res) {
+                                loadCards(res);
+                            }
+
                         });
                     }
                 });
