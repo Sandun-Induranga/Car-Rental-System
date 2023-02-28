@@ -52,7 +52,13 @@ function manageHomePage() {
     $("#btnHome").on("click", function () {
 
         loadHome();
+        loadData();
 
+    });
+
+    loadData();
+
+    function loadData() {
         $.ajax({
             url: baseurl + "customer/count",
             method: "get",
@@ -89,7 +95,15 @@ function manageHomePage() {
             }
         });
 
-    });
+        $.ajax({
+            url: baseurl + "car/count/maintain",
+            method: "get",
+            dataType: "json",
+            success: function (res) {
+                $("#maintain-cars").text(res.data);
+            }
+        });
+    }
 
     var dataPoints = [];
 
@@ -131,10 +145,10 @@ function manageHomePage() {
 
     var brandOptions = {
         title: {
-            text: "Desktop OS Market Share in 2017"
+            text: "Car Brands"
         },
         subtitles: [{
-            text: "As of November, 2017"
+            text: "About Car Brands"
         }],
         animationEnabled: true,
         data: [{
