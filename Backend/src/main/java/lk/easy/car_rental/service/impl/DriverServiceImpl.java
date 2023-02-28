@@ -43,7 +43,7 @@ public class DriverServiceImpl implements DriverService {
 
         if (driverRepo.existsById(driverDTO.getNic())) throw new RuntimeException("Customer Already Exits..!");
         try {
-            if (driverDTO.getLicenseImage().getBytes()!=null) {
+            if (driverDTO.getLicenseImage().getBytes() != null) {
 
                 byte[] licenseFileBytes = driverDTO.getLicenseImage().getBytes();
 
@@ -76,9 +76,9 @@ public class DriverServiceImpl implements DriverService {
         if (!driverRepo.existsById(driverDTO.getNic())) throw new RuntimeException("Invalid Driver..!");
 
         try {
-            if (!driverDTO.getLicenseImage().isEmpty()) {
 
-                byte[] licenseFileBytes = driverDTO.getLicenseImage().getBytes();
+            byte[] licenseFileBytes = driverDTO.getLicenseImage().getBytes();
+            if (licenseFileBytes.length != 0) {
 
                 String projectPath = "/media/sandu/0559F5C021740317/GDSE/Project_Zone/IdeaProjects/Car_Rental_System/Frontend/assets";
                 Path licenseLocation = Paths.get(projectPath + "/image/bucket/driver/license_" + driver.getNic() + ".jpeg");
@@ -89,15 +89,15 @@ public class DriverServiceImpl implements DriverService {
 
                 driver.setLicenseImage("/image/bucket/driver/license_" + driver.getNic() + ".jpeg");
 
+                driver.setAvailabilityStatus("YES");
+
+                driverRepo.save(driver);
+
             }
 
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-        driver.setAvailabilityStatus("YES");
-
-        driverRepo.save(driver);
     }
 
     @Override
