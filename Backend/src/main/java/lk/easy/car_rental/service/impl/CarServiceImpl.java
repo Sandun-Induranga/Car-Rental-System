@@ -167,15 +167,15 @@ public class CarServiceImpl implements CarService {
 
         switch (search) {
             case "REG_NUM":
-                return mapper.map(carRepo.findByRegNumLikeAndFuelType("%" + text + "%", fuel), new TypeToken<ArrayList<CarSpDTO>>() {
+                return mapper.map(carRepo.findByRegNumLikeAndFuelTypeLike("%" + text + "%", "%"+fuel+"%"), new TypeToken<ArrayList<CarSpDTO>>() {
                 }.getType());
 
             case "BRAND":
-                return mapper.map(carRepo.findByBrandLikeAndFuelType("%" + text + "%", fuel), new TypeToken<ArrayList<CarSpDTO>>() {
+                return mapper.map(carRepo.findByBrandLikeAndFuelTypeLike("%" + text + "%", "%"+fuel+"%"), new TypeToken<ArrayList<CarSpDTO>>() {
                 }.getType());
 
             case "COLOR":
-                return mapper.map(carRepo.findByColorLikeAndFuelType("%" + text + "%", fuel), new TypeToken<ArrayList<CarSpDTO>>() {
+                return mapper.map(carRepo.findByColorLikeAndFuelTypeLike("%" + text + "%", "%"+fuel+"%"), new TypeToken<ArrayList<CarSpDTO>>() {
                 }.getType());
 
             default:

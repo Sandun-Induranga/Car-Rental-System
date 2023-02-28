@@ -719,6 +719,22 @@ function manageCarPage() {
 
         });
 
+        $("#searchBy, #fuelTypes").change(function () {
+            let text = $("#search").val();
+            let searchBy = $("#searchBy").val();
+            let fuel = $("#fuelTypes").val();
+
+            $.ajax({
+                url: baseurl + `car/filterByRegNum?text=${text}&search=${searchBy}&fuel=${fuel}`,
+                method: "get",
+                dataType: "json",
+                contentType: "application/json",
+                success: function (res) {
+                    loadAllCars(res.data);
+                }
+            });
+        });
+
         function getDetail() {
 
             $(".rent").on("click", function () {
@@ -1398,6 +1414,10 @@ function manageRentPage() {
     });
 }
 
+
+/* **********************************************************    Payment    ****************************************************** */
+
+
 function managePaymentsPage() {
 
     $("#btnManagePayment").on("click", function () {
@@ -1440,9 +1460,9 @@ function managePaymentsPage() {
                         <td>${payment.total}</td>
                         <td>${payment.cash}</td>
                         <td>${payment.balance}</td>
-                        <td>${payment.date}</td>
-                        <td>${payment.time}</td>
-                        <td></td>
+                        <td>${payment.date.toString().replaceAll(",","-")}</td>
+                        <td>${payment.time.toString().replaceAll(",",":")}</td>
+                        <td><i class="bi bi-pen-fill text-success text-center btn btnUpdate" data-bs-toggle="modal" data-bs-target="#registerDriver"></i><i class="bi bi-trash-fill text-danger text-center btn btnDelete"></i></td>
                     </tr>
                 `);
                 }
@@ -1452,6 +1472,10 @@ function managePaymentsPage() {
     }
 
 }
+
+
+/* **********************************************************    Reports    ****************************************************** */
+
 
 function manageReports() {
 
