@@ -499,53 +499,62 @@ function manageCarPage() {
 
             let data = new FormData($("#carForm")[0]);
 
-            if ($("#btnSaveCar").text() == "Save") {
+            if ($("#cusNicImage").val().trim() != "") {
 
-                $.ajax({
-                    url: baseurl + "car",
-                    async: false,
-                    data: data,
-                    method: "post",
-                    contentType: false,
-                    processData: false,
-                    success: function (res) {
-                        saveAlert();
+                if ($("#btnSaveCar").text() == "Save") {
 
-                        $.ajax({
-                            url: baseurl + "car",
-                            method: "get",
+                    $.ajax({
+                        url: baseurl + "car",
+                        async: false,
+                        data: data,
+                        method: "post",
+                        contentType: false,
+                        processData: false,
+                        success: function (res) {
+                            saveAlert();
 
-                            success: function (res) {
-                                loadAllCars(res.data);
-                            }
+                            $.ajax({
+                                url: baseurl + "car",
+                                method: "get",
 
-                        });
-                    }
-                });
+                                success: function (res) {
+                                    loadAllCars(res.data);
+                                }
 
+                            });
+                        },
+                        error: function (res) {
+                            let parse = JSON.parse(res);
+                            errorAlert(parse.message);
+                        }
+                    });
+
+                } else {
+
+                    $.ajax({
+                        url: baseurl + "car/update",
+                        data: data,
+                        method: "post",
+                        contentType: false,
+                        processData: false,
+                        success: function (res) {
+                            updateAlert();
+
+                            $.ajax({
+                                url: baseurl + "car",
+                                method: "get",
+
+                                success: function (res) {
+                                    loadAllCars(res.data);
+                                }
+
+                            });
+                        }
+                    });
+
+                }
             } else {
-
-                $.ajax({
-                    url: baseurl + "car/update",
-                    data: data,
-                    method: "post",
-                    contentType: false,
-                    processData: false,
-                    success: function (res) {
-                        updateAlert();
-
-                        $.ajax({
-                            url: baseurl + "car",
-                            method: "get",
-
-                            success: function (res) {
-                                loadAllCars(res.data);
-                            }
-
-                        });
-                    }
-                });
-
+                errorAlert("You Should Upload Photos")
             }
 
         });
@@ -967,7 +976,7 @@ function manageDriverPage() {
 
                     if ($("#btnSaveDriver").text() == "Save") {
                         saveAlert();
-                    }else {
+                    } else {
                         updateAlert();
                     }
 
@@ -982,7 +991,7 @@ function manageDriverPage() {
             $.ajax({
                 url: baseurl + "driver/all",
                 method: "get",
-                async:false,
+                async: false,
                 dataType: "json",
                 success: function (res) {
 
@@ -1474,8 +1483,8 @@ function managePaymentsPage() {
                         <td>${payment.total}</td>
                         <td>${payment.cash}</td>
                         <td>${payment.balance}</td>
-                        <td>${payment.date.toString().replaceAll(",","-")}</td>
-                        <td>${payment.time.toString().replaceAll(",",":")}</td>
+                        <td>${payment.date.toString().replaceAll(",", "-")}</td>
+                        <td>${payment.time.toString().replaceAll(",", ":")}</td>
                         <td><i class="bi bi-pen-fill text-success text-center btn btnUpdate" data-bs-toggle="modal" data-bs-target="#registerDriver"></i><i class="bi bi-trash-fill text-danger text-center btn btnDelete"></i></td>
                     </tr>
                 `);
@@ -1507,20 +1516,20 @@ function manageReports() {
         $("#reports").attr("style", "display : block !important");
 
         $.ajax({
-            url:baseurl+"payment/day",
-            method:"get",
-            success:function (res) {
-                if (res.data!=null){
+            url: baseurl + "payment/day",
+            method: "get",
+            success: function (res) {
+                if (res.data != null) {
                     $("#day").text(res.data);
                 }
             }
         });
 
         $.ajax({
-            url:baseurl+"payment/month",
-            method:"get",
-            success:function (res) {
-                if (res.data!=null){
+            url: baseurl + "payment/month",
+            method: "get",
+            success: function (res) {
+                if (res.data != null) {
                     $("#month").text(res.data);
                 }
             }

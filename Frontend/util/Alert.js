@@ -7,7 +7,6 @@ function saveAlert() {
     Swal.fire({
         position: 'top-end',
         icon: 'success',
-        async:false,
         title: 'Successfully Saved..!',
         showConfirmButton: false,
         timer: 1500
@@ -18,7 +17,6 @@ function updateAlert() {
     Swal.fire({
         position: 'top-end',
         icon: 'success',
-        async:false,
         title: 'Successfully Updated..!',
         showConfirmButton: false,
         timer: 1500
@@ -35,11 +33,11 @@ function deleteAlert() {
     });
 }
 
-function errorAlert() {
+function errorAlert(title) {
     Swal.fire({
         position: 'top-end',
         icon: 'error',
-        title: 'Something Went Wrong..!',
+        title: title,
         showConfirmButton: false,
         timer: 1500
     });
