@@ -111,9 +111,12 @@ public class RentServiceImpl implements RentService {
         if (option.equals("accepted")) {
             rent.setStatus("Accepted");
             rent.setDescription("Rent Accepted on " + LocalDate.now() + " " + LocalTime.now());
-        }else {
+        } else if (option.equals("reject")) {
             rent.setStatus("Rejected");
             rent.setDescription("Rent Rejected on " + LocalDate.now() + " " + LocalTime.now());
+        } else {
+            rent.setStatus("Closed");
+            rent.setDescription("Rent Closed on " + LocalDate.now() + " " + LocalTime.now());
         }
 
         rentRepo.save(rent);

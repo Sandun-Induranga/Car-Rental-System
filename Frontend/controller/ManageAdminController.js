@@ -1242,6 +1242,7 @@ function manageRentPage() {
             bindManagePayment();
             bindPayEvent();
             bindRejectEvent();
+            bindCloseEvent();
 
         }
 
@@ -1298,6 +1299,43 @@ function manageRentPage() {
                             position: 'top-end',
                             icon: 'warning',
                             title: 'Rejected..!',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        $.ajax({
+
+                            url: baseurl + "rent/all",
+                            async: false,
+                            method: "get",
+                            contentType: "application/json",
+                            dataType: "json",
+                            success: function (res) {
+                                loadCards(res);
+                            }
+
+                        });
+                    }
+                });
+
+            });
+        }
+
+        function bindCloseEvent() {
+            $(".btnClose").on("click", function () {
+
+                let text = $(this).parent().parent().children(":eq(0)").children(":eq(0)").text();
+
+                $.ajax({
+                    url: baseurl + `rent?rentId=${text}&option=closed`,
+                    async: false,
+                    method: "put",
+                    dataType: "json",
+                    contentType: "application/json",
+                    success: function (res) {
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Closed..!',
                             showConfirmButton: false,
                             timer: 1500
                         });

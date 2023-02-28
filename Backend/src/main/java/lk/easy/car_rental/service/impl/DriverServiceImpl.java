@@ -42,9 +42,8 @@ public class DriverServiceImpl implements DriverService {
         Driver driver = mapper.map(driverDTO, Driver.class);
 
         if (driverRepo.existsById(driverDTO.getNic())) throw new RuntimeException("Customer Already Exits..!");
-
         try {
-            if (driverDTO.getLicenseImage() != null) {
+            if (driverDTO.getLicenseImage().getBytes()!=null) {
 
                 byte[] licenseFileBytes = driverDTO.getLicenseImage().getBytes();
 
@@ -77,7 +76,7 @@ public class DriverServiceImpl implements DriverService {
         if (!driverRepo.existsById(driverDTO.getNic())) throw new RuntimeException("Invalid Driver..!");
 
         try {
-            if (driverDTO.getLicenseImage() != null) {
+            if (!driverDTO.getLicenseImage().isEmpty()) {
 
                 byte[] licenseFileBytes = driverDTO.getLicenseImage().getBytes();
 
