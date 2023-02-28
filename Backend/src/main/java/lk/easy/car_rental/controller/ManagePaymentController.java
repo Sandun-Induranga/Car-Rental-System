@@ -49,4 +49,11 @@ public class ManagePaymentController {
 
     }
 
+    @GetMapping(path = "/monthly")
+    public ResponseUtil getMonthlyIncome() {
+
+        return new ResponseUtil("OK", "Successfully Loaded..!", paymentService.getMonthlyIncome());
+
+    }
+
 }

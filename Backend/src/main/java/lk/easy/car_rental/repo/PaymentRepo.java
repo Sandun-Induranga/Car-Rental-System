@@ -19,7 +19,7 @@ public interface PaymentRepo extends JpaRepository<Payment, Integer> {
     @Query(value = "SELECT `date`, SUM(total) FROM Payment GROUP BY `date`",nativeQuery = true)
     List getDailyIncome() throws RuntimeException;
 
-    @Query(value = "SELECT `date`, SUM(total) FROM Payment GROUP BY MONTH(`date`) HAVING YEAR(`date`)= YEAR(DATE(now()))", nativeQuery = true)
+    @Query(value = "SELECT MONTH(`date`), SUM(total) FROM Payment GROUP BY MONTH(`date`)", nativeQuery = true)
     List getMonthlyIncome() throws RuntimeException;
 
 }

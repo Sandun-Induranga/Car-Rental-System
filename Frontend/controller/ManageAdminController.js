@@ -1411,43 +1411,38 @@ function manageReports() {
         var dataPoints = [];
 
         var options = {
-            title: {
-                text: "Desktop OS Market Share in 2017"
-            },
-            subtitles: [{
-                text: "As of November, 2017"
-            }],
             animationEnabled: true,
+            theme: "light2",
+            title: {
+                text: "Monthly Sales Income"
+            },
+            axisX: {
+                valueFormatString: "#",
+            },
+            axisY: {
+                title: "LKR",
+                titleFontSize: 24
+            },
             data: [{
-                type: "pie",
-                startAngle: 40,
-                toolTipContent: "<b>{label}</b>: {y}%",
-                showInLegend: "true",
-                legendText: "{label}",
-                indexLabelFontSize: 16,
-                indexLabel: "{label} - {y}%",
+                type: "spline",
+                yValueFormatString: "$#,###.##",
                 dataPoints: dataPoints
             }]
         };
-        $("#chartContainer").CanvasJSChart(options);
 
         $.ajax({
-            url: baseurl + "payment/daily",
-            async: false,
+            url: baseurl + "payment/monthly",
             method: "get",
             success: function (res) {
                 for (var i = 0; i < res.data.length; i++) {
                     dataPoints.push({
-                        x: new Date(res.data[i][0]),
+                        x: res.data[i][0],
                         y: res.data[i][1]
                     });
                 }
                 $("#chart").CanvasJSChart(options);
             }
         });
-
-
-        // $.getJSON("https://canvasjs.com/data/gallery/jquery/daily-sales-data.json", addData);
 
     });
 
