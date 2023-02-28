@@ -24,7 +24,7 @@ public interface PaymentRepo extends JpaRepository<Payment, Integer> {
     List getMonthlyIncome() throws RuntimeException;
 
     @Query(value = "SELECT SUM(total) FROM Payment WHERE MONTH(`date`)=MONTH(DATE(now()))", nativeQuery = true)
-    BigDecimal getCurrentMonthlyIncome() throws RuntimeException;
+    BigDecimal getCurrentMonthIncome() throws RuntimeException;
 
     @Query(value = "SELECT SUM(total) FROM Payment WHERE MONTH(`date`)= DATE(now()) ", nativeQuery = true)
     BigDecimal getCurrentDayIncome() throws RuntimeException;

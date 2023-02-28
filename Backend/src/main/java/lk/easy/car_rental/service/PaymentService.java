@@ -2,6 +2,7 @@ package lk.easy.car_rental.service;
 
 import lk.easy.car_rental.dto.PaymentDTO;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -20,5 +21,9 @@ public interface PaymentService {
     public List getDailyIncome() throws RuntimeException;
 
     public List getMonthlyIncome() throws RuntimeException;
+
+    public BigDecimal getCurrentDayIncome() throws RuntimeException;
+
+    public BigDecimal getCurrentMonthIncome() throws RuntimeException;
 
 }
