@@ -35,4 +35,6 @@ public interface CarService {
 
     public List countCarsByBrand() throws RuntimeException;
 
+    public Long countMaintainingCars() throws RuntimeException;
+
 }
