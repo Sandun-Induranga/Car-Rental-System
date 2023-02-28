@@ -655,7 +655,7 @@ function manageCarPage() {
             $("#cars").empty();
 
             for (let car of cars) {
-                $("#cars").append(`<div class="col col-lg-3">
+                $("#cars").append(`<div class="col col-lg-3" style="min-height: 700px !important;">
             <div class="card">
                 <img src="../assets/${car.photos.front}" class="card-img-top" alt="car">
 
@@ -763,7 +763,7 @@ function manageCarPage() {
 
         }
 
-        const regNumRegEx = /^[0-9/A-z.]{2,20}$/;
+        const regNumRegEx = /^[A-Z]{3}-?\d{3}|^\d{3}-?[A-Z]{3}$/;
         const colorRegEx = /^[A-z ]{2,20}$/;
         const brandRegEx = /^[A-z ]{2,20}$/;
         const priceRegEx = /^[0-9]{1,}[.]?[0-9]{1,2}$/;
