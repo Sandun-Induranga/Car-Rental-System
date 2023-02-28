@@ -192,6 +192,7 @@ function manageCarPage() {
             $(".cart").on("click", function () {
                 $("#btnRequestCar").text("Add To Cart");
                 $("#lostDamageCost").val(lostDamage);
+                setCosts();
             });
 
         }
