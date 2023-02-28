@@ -70,3 +70,38 @@ function loadAllCars(cars) {
 
 }
 
+// Filter
+
+$("#search").on("keyup", function () {
+
+    let text = $("#search").val();
+    let searchBy = $("#searchBy").val();
+    let fuel = $("#fuelTypes").val();
+
+    $.ajax({
+        url: baseurl + `car/filterByRegNum?text=${text}&search=${searchBy}&fuel=${fuel}`,
+        method: "get",
+        dataType: "json",
+        contentType: "application/json",
+        success: function (res) {
+            loadAllCars(res.data);
+        }
+    });
+
+});
+
+$("#searchBy, #fuelTypes").change(function () {
+    let text = $("#search").val();
+    let searchBy = $("#searchBy").val();
+    let fuel = $("#fuelTypes").val();
+
+    $.ajax({
+        url: baseurl + `car/filterByRegNum?text=${text}&search=${searchBy}&fuel=${fuel}`,
+        method: "get",
+        dataType: "json",
+        contentType: "application/json",
+        success: function (res) {
+            loadAllCars(res.data);
+        }
+    });
+});
