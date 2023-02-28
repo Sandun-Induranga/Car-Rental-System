@@ -113,4 +113,11 @@ public class CarController {
 
     }
 
+    @GetMapping(path = "/count/maintain")
+    public ResponseUtil countMaintainingCars() {
+
+        return new ResponseUtil("OK", "Successfully Loaded..!", carService.countMaintainingCars());
+
+    }
+
 }
