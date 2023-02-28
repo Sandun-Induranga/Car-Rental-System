@@ -75,29 +75,35 @@ public class DriverServiceImpl implements DriverService {
 
         if (!driverRepo.existsById(driverDTO.getNic())) throw new RuntimeException("Invalid Driver..!");
 
-        try {
+        Driver driver1 = driverRepo.findById(driverDTO.getNic()).get();
 
-            byte[] licenseFileBytes = driverDTO.getLicenseImage().getBytes();
-            if (licenseFileBytes.length != 0) {
+        driver.setLicenseImage(driver1.getLicenseImage());
 
-                String projectPath = "/media/sandu/0559F5C021740317/GDSE/Project_Zone/IdeaProjects/Car_Rental_System/Frontend/assets";
-                Path licenseLocation = Paths.get(projectPath + "/image/bucket/driver/license_" + driver.getNic() + ".jpeg");
+//        try {
+//
+//            byte[] licenseFileBytes = driverDTO.getLicenseImage().getBytes();
+//            if (licenseFileBytes.length != 0) {
+//
+//                String projectPath = "/media/sandu/0559F5C021740317/GDSE/Project_Zone/IdeaProjects/Car_Rental_System/Frontend/assets";
+//                Path licenseLocation = Paths.get(projectPath + "/image/bucket/driver/license_" + driver.getNic() + ".jpeg");
+//
+//                Files.write(licenseLocation, licenseFileBytes);
+//
+//                driverDTO.getLicenseImage().transferTo(licenseLocation);
+//
+//                driver.setLicenseImage("/image/bucket/driver/license_" + driver.getNic() + ".jpeg");
+//
+//                driver.setAvailabilityStatus("YES");
+//
+//                driverRepo.save(driver);
+//
+//            }
+//
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+        driverRepo.save(driver);
 
-                Files.write(licenseLocation, licenseFileBytes);
-
-                driverDTO.getLicenseImage().transferTo(licenseLocation);
-
-                driver.setLicenseImage("/image/bucket/driver/license_" + driver.getNic() + ".jpeg");
-
-                driver.setAvailabilityStatus("YES");
-
-                driverRepo.save(driver);
-
-            }
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     @Override
