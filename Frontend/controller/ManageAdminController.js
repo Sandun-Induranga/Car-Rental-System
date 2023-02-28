@@ -499,7 +499,7 @@ function manageCarPage() {
 
             let data = new FormData($("#carForm")[0]);
 
-            if ($("#cusNicImage").val().trim() != "") {
+            // if ($("#cusNicImage").val().trim() != "") {
 
                 if ($("#btnSaveCar").text() == "Save") {
 
@@ -553,9 +553,9 @@ function manageCarPage() {
                     });
 
                 }
-            } else {
-                errorAlert("You Should Upload Photos")
-            }
+            // } else {
+            //     errorAlert("You Should Upload Photos")
+            // }
 
         });
 
