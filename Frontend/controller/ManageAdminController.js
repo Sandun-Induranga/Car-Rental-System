@@ -773,7 +773,7 @@ function manageCarPage() {
         const regNumRegEx = /^[A-Z]{3}-?\d{3}|^\d{3}-?[A-Z]{3}$/;
         const colorRegEx = /^[A-z ]{2,20}$/;
         const brandRegEx = /^[A-z ]{2,20}$/;
-        const priceRegEx = /^[0-9]{*}[.]?[0-9]{1,2}$/;
+        const priceRegEx = /^[0-9]{1,}[.]?[0-9]{1,2}$/;
 
         let carValidations = [];
         carValidations.push({

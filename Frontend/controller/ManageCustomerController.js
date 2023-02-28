@@ -455,13 +455,13 @@ $("#btnRequestCar").on("click", function () {
         status: "Pending",
         cost: $("#cost").val(),
         description: $("#description").val(),
-        rentDetails: {
+        rentDetails: [{
             rentId: rentId,
             nic: null,
             regNum: regNum,
             driverCost: $("#driverCost").val(),
             carCost: $("#carCost").val()
-        }
+        }]
 
     }
 
@@ -475,6 +475,14 @@ $("#btnRequestCar").on("click", function () {
             dataType: "json",
             contentType: "application/json",
             success: function (res) {
+
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Successfully Requested..!',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
 
             }
         });
