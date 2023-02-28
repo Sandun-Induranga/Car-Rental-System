@@ -113,9 +113,19 @@ public class RentServiceImpl implements RentService {
             rent.setDescription("Rent Accepted on " + LocalDate.now() + " " + LocalTime.now());
         } else if (option.equals("reject")) {
             rent.setStatus("Rejected");
+            for (RentDetail rentDetail : rent.getRentDetails()) {
+                if (rentDetail.getDriver()!=null){
+                    rentDetail.getDriver().setAvailabilityStatus("YES");
+                }
+            }
             rent.setDescription("Rent Rejected on " + LocalDate.now() + " " + LocalTime.now());
         } else {
             rent.setStatus("Closed");
+            for (RentDetail rentDetail : rent.getRentDetails()) {
+                if (rentDetail.getDriver()!=null){
+                    rentDetail.getDriver().setAvailabilityStatus("YES");
+                }
+            }
             rent.setDescription("Rent Closed on " + LocalDate.now() + " " + LocalTime.now());
         }
 

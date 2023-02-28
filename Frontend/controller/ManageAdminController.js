@@ -1066,7 +1066,7 @@ function manageDriverPage() {
             });
         }
 
-        const cusNameRegEx = /^[A-z ]{5,20}$/;
+        const cusNameRegEx = /^[A-z ]{4,20}$/;
         const cusEmailRegEx = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-]+)(\.[a-zA-Z]{2,5}){1,2}$/;
         const cusNicRegEx = /^[0-9]{9,10}[A-z]?$/;
         const cusAddressRegEx = /^[0-9/A-z. ,]{5,}$/;

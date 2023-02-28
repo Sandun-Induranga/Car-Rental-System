@@ -102,6 +102,7 @@ public class DriverServiceImpl implements DriverService {
 //        } catch (IOException e) {
 //            throw new RuntimeException(e);
 //        }
+        driver.setAvailabilityStatus("YES");
         driverRepo.save(driver);
 
     }
