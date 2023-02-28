@@ -15,9 +15,11 @@ public interface PaymentRepo extends JpaRepository<Payment, Integer> {
 
     List<Payment> findAllByRentId_Nic_Nic(String nic) throws RuntimeException;
 
-//    SELECT `date`, SUM(total) FROM Payment GROUP BY `date` HAVING `date`+7>= DATE(now())
 
     @Query(value = "SELECT `date`, SUM(total) FROM Payment GROUP BY `date`",nativeQuery = true)
     List getDailyIncome() throws RuntimeException;
+
+    @Query(value = "SELECT `date`, SUM(total) FROM Payment GROUP BY MONTH(`date`) HAVING YEAR(`date`)= YEAR(DATE(now()))", nativeQuery = true)
+    List getMonthlyIncome() throws RuntimeException;
 
 }
