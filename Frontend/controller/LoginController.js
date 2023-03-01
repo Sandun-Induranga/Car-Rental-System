@@ -27,7 +27,7 @@ $("#btnLogin").on("click", function () {
 
         },
         error:function (res) {
-            deleteAlert();
+            errorAlert("Wrong User Details");
         }
     });
 
