@@ -339,7 +339,7 @@ function manageRentPage() {
                     $("#manage-rent-context").empty();
 
                     $("#manage-rent-context").append(`
-<div class="card text-center p-2 w-75 shadow">
+<div class="card text-center pt-5 p-2 shadow-sm col col-6">
                     <p class="card-text">Status : ${rent.status}</p>
                     <p class="card-text">Total Cost : ${rent.cost}</p>
                     <p class="card-text">Description : ${rent.description}</p>
@@ -430,8 +430,8 @@ function managePaymentPage() {
                         <td>${payment.total}</td>
                         <td>${payment.cash}</td>
                         <td>${payment.balance}</td>
-                        <td>${payment.date}</td>
-                        <td>${payment.time}</td>
+                        <td>${payment.date.toString().replaceAll(",","-")}</td>
+                        <td>${payment.time.toString().replaceAll(",",":")}</td>
                     </tr>
                 `);
                 }
