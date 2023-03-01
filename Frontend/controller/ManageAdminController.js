@@ -1276,12 +1276,13 @@ function manageRentPage() {
             }
 
             bindAcceptEvent();
-            bindManagePayment();
             bindPayEvent();
             bindRejectEvent();
             bindCloseEvent();
 
         }
+
+        bindManagePayment();
 
         function bindAcceptEvent() {
             $(".btnAccept").on("click", function () {
