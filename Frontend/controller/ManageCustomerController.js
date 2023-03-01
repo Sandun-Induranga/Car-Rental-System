@@ -104,9 +104,9 @@ function manageCarPage() {
                 success: function (res) {
                     $("#cars").empty();
                     for (let car of res.data) {
-                        $("#cars").append(`<div class="col col-lg-4">
-            <div class="card border border-0 pt-2">
-                <img src="../assets/${car.photos.front}" class="card-img-top" alt="car">
+                        $("#cars").append(`<div class="col col-lg-3">
+            <div class="card">
+                <img src="../assets/${car.photos.front}" class="card-img-top" height="230px" alt="car">
 
                 <div class="card-body">
                     <h5 class="card-title">${car.brand}</h5>
@@ -308,7 +308,13 @@ function manageCartPage() {
                 dataType: "json",
                 contentType: "application/json",
                 success: function (res) {
-
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Successfully Requested..!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
                 }
             });
 
@@ -335,8 +341,9 @@ function manageRentPage() {
             dataType: "json",
             success: function (res) {
 
+                $("#manage-rent-context").empty();
+
                 for (let rent of res.data) {
-                    $("#manage-rent-context").empty();
 
                     $("#manage-rent-context").append(`
 <div class="card text-center pt-5 p-2 shadow-sm col col-6">
@@ -495,6 +502,13 @@ $("#btnRequestCar").on("click", function () {
             regNum: regNum,
             driverCost: $("#driverCost").val(),
             carCost: $("#carCost").val()
+        });
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Successfully Added..!',
+            showConfirmButton: false,
+            timer: 1500
         });
     }
 
