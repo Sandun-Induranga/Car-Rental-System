@@ -774,6 +774,7 @@ function manageCarPage() {
         const colorRegEx = /^[A-z ]{2,20}$/;
         const brandRegEx = /^[A-z ]{2,20}$/;
         const priceRegEx = /^[0-9]{1,}[.]?[0-9]{1,2}$/;
+        const passengersRegEx = /^[0-9]$/;
 
         let carValidations = [];
         carValidations.push({
@@ -807,7 +808,7 @@ function manageCarPage() {
             error: 'Price Pattern is Wrong'
         });
         carValidations.push({
-            reg: priceRegEx,
+            reg: passengersRegEx,
             field: $('#passengers'),
             error: 'Invalid Number'
         });
@@ -911,7 +912,7 @@ function manageCarPage() {
         });
 
         $("#passengers").on('keydown', function (event) {
-            if (event.key == "Enter" && check(priceRegEx, $("#passengers"))) {
+            if (event.key == "Enter" && check(passengersRegEx , $("#passengers"))) {
                 focusText($("#lostDamageCost"));
             }
         });
