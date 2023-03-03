@@ -109,7 +109,35 @@
 
                 <main class="mt-3" id="manageCar">
                     <section>
-                        <div class="row row-cols-1 row-cols-md-3 g-4 mt-5" id="cars">
+
+                        <section class="d-flex justify-content-between align-items-center mt-5 mb-3">
+
+                            <aside class="d-flex justify-content-center mt-2">
+                                <form class="d-flex" role="search">
+                                    <div class="col-md-3">
+                                        <select name="type" id="searchBy" class="form-select">
+                                            <option value="REG_NUM" selected>Vehicle Number</option>
+                                            <option value="BRAND">Brand</option>
+                                            <option value="COLOR">Color</option>
+                                        </select>
+                                    </div>
+
+                                    <input class="form-control" type="search" placeholder="Search" aria-label="Search" id="search"
+                                           style="width: 350px !important;">
+
+                                    <div class="col-md-2 mx-5">
+                                        <select name="type" id="fuelTypes" class="form-select">
+                                            <option value="ALL" selected>All</option>
+                                            <option value="PETROL">Petrol</option>
+                                            <option value="DIESEL">Diesel</option>
+                                        </select>
+                                    </div>
+                                </form>
+                            </aside>
+
+                        </section>
+
+                        <div class="row row-cols-1 row-cols-md-3 g-4" id="cars">
 
 
                         </div>
