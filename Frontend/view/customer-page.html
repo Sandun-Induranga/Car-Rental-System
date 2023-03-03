@@ -26,10 +26,16 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+
                 </ul>
             </div>
 
-            <a href="index.html" class="text-decoration-none"><p class="text-secondary"><i class="bi bi-box-arrow-left text-secondary"></i> Logout</p></a>
+            <section class="d-flex justify-content-center align-items-center gap-2">
+                <i class="fs-4 bi-bell-fill text-secondary"></i></i>
+                <i class="fs-4 bi-gear-fill text-secondary"></i>
+                <a href="index.html" class="text-decoration-none mx-2 p-0"><p class="text-secondary m-0"><i class="fs-4 bi-box-arrow-left text-secondary"></i> Logout</p></a>
+            </section>
 
         </div>
     </nav>
@@ -85,7 +91,7 @@
                     </ul>
                     <hr>
                     <div class="pb-4">
-                        <img src="https://github.com/mdo.png" alt="user" width="30" height="30"
+                        <img src="../assets/image/user.png" alt="user" width="30" height="30"
                              class="rounded-circle">
                         <p class="d-none d-sm-inline mx-1" id="user">User</p>
                     </div>
@@ -192,23 +198,6 @@
                                                 </div>
                                             </section>
 
-                                            <section>
-                                                <div class="container mt-5 d-flex justify-content-center text-secondary">
-                                                    <div class="card p-4">
-                                                        <div class="d-flex justify-content-between align-items-center">
-                                                            <h5 class="total-amount">Total amount</h5>
-                                                            <div class="amount-container"><span class="amount-text"><span>LKR</span>375</span></div>
-                                                        </div>
-                                                        <div class="pt-4"> <label class="d-flex justify-content-between"> <span class="label-text label-text-cc-number">CARD NUMBER</span><img src="https://img.icons8.com/dusk/64/000000/visa.png" width="30" class="visa-icon" /></label> <input type="tel" name="credit-number" class="form-control credit-card-number" maxlength="19" placeholder="Card number"> </div>
-                                                        <div class="d-flex justify-content-between pt-4">
-                                                            <div> <label><span class="label-text">EXPIRY</span> </label> <input type="date" name="expiry-date" class="form-control expiry-class text-secondary" placeholder="MM / YY"> </div>
-                                                            <div> <label><span class="label-text">CVV</span></label> <input type="tel" name="cvv-number" class="form-control cvv-class" maxlength="4" pattern="\d*"> </div>
-                                                        </div>
-                                                        <div class="d-flex justify-content-between pt-5 align-items-center"> <button type="button" class="btn cancel-btn text-secondary">Cancel</button> <button style="background: #673AB7" type="button" class="btn payment-btn text-white">Make Payment</button> </div>
-                                                    </div>
-                                                </div>
-                                            </section>
-
                                         </form>
                                     </div>
 
@@ -237,6 +226,29 @@
                                         <h5 class="modal-title" id="staticBackdropLabel4">Rent Car</h5>
                                         <button type="button" class="btn-close text-white bg-white"
                                                 data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+
+                                    <!-- Form -->
+                                    <div class="d-flex justify-content-center mt-4">
+                                        <form id="paymentForm" class="d-flex flex-column">
+                                            <section>
+                                                <div class="container mt-5 d-flex justify-content-center text-secondary">
+                                                    <div class="card p-4">
+                                                        <div class="d-flex justify-content-between align-items-center">
+                                                            <h5 class="total-amount">Total amount</h5>
+                                                            <div class="amount-container"><span class="amount-text"><span>LKR</span>375</span></div>
+                                                        </div>
+                                                        <div class="pt-4"> <label class="d-flex justify-content-between"> <span class="label-text label-text-cc-number">CARD NUMBER</span><img src="https://img.icons8.com/dusk/64/000000/visa.png" width="30" class="visa-icon" /></label> <input type="tel" name="credit-number" class="form-control credit-card-number" maxlength="19" placeholder="Card number"> </div>
+                                                        <div class="d-flex justify-content-between pt-4">
+                                                            <div> <label><span class="label-text">EXPIRY</span> </label> <input type="date" name="expiry-date" class="form-control expiry-class text-secondary" placeholder="MM / YY"> </div>
+                                                            <div> <label><span class="label-text">CVV</span></label> <input type="tel" name="cvv-number" class="form-control cvv-class" maxlength="4" pattern="\d*"> </div>
+                                                        </div>
+                                                        <div class="d-flex justify-content-between pt-5 align-items-center"> <button type="button" class="btn cancel-btn text-secondary">Cancel</button> <button style="background: #673AB7" type="button" class="btn payment-btn text-white">Make Payment</button> </div>
+                                                    </div>
+                                                </div>
+                                            </section>
+
+                                        </form>
                                     </div>
 
                                     <p class="p-5 small text-secondary text-center">You should pay the lost damage cost
