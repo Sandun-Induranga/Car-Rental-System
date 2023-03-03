@@ -93,18 +93,21 @@ function manageCarPage() {
         $("#payments").attr("style", "display : none !important");
 
 
-        loadAllCars();
+        $.ajax({
+            url: baseurl + "car",
+            method: "get",
 
-        function loadAllCars() {
+            success: function (res) {
+                loadAllCars(res.data);
+            }
 
-            $.ajax({
-                url: baseurl + "car",
-                method: "get",
+        });
 
-                success: function (res) {
-                    $("#cars").empty();
-                    for (let car of res.data) {
-                        $("#cars").append(`<div class="col col-lg-3">
+        function loadAllCars(cars) {
+
+            $("#cars").empty();
+            for (let car of cars) {
+                $("#cars").append(`<div class="col col-lg-3">
             <div class="card">
                 <img src="../assets/${car.photos.front}" class="card-img-top" height="230px" alt="car">
 
@@ -155,17 +158,47 @@ function manageCarPage() {
 
             </div>
         </div>`);
-                    }
+            }
 
-                    getDetail();
+            getDetail();
 
-                    bindButtonEvents();
-
-                }
-
-            });
+            bindButtonEvents();
 
         }
+
+        $("#search").on("keyup", function () {
+
+            let text = $("#search").val();
+            let searchBy = $("#searchBy").val();
+            let fuel = $("#fuelTypes").val();
+
+            $.ajax({
+                url: baseurl + `car/filterByRegNum?text=${text}&search=${searchBy}&fuel=${fuel}`,
+                method: "get",
+                dataType: "json",
+                contentType: "application/json",
+                success: function (res) {
+                    loadAllCars(res.data);
+                }
+            });
+
+        });
+
+        $("#searchBy, #fuelTypes").change(function () {
+            let text = $("#search").val();
+            let searchBy = $("#searchBy").val();
+            let fuel = $("#fuelTypes").val();
+
+            $.ajax({
+                url: baseurl + `car/filterByRegNum?text=${text}&search=${searchBy}&fuel=${fuel}`,
+                method: "get",
+                dataType: "json",
+                contentType: "application/json",
+                success: function (res) {
+                    loadAllCars(res.data);
+                }
+            });
+        });
 
         function getDetail() {
 
@@ -494,7 +527,7 @@ $("#btnRequestCar").on("click", function () {
             }
         });
 
-    }else {
+    } else {
         rent = json;
         cart.push({
             rentId: rentId,
