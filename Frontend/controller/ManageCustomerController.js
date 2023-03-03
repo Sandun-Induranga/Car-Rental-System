@@ -513,3 +513,7 @@ $("#btnRequestCar").on("click", function () {
     }
 
 });
+
+$("#make-payment").on("click", function () {
+
+})
