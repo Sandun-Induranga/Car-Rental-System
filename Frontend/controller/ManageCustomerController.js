@@ -229,7 +229,7 @@ function manageCartPage() {
         $("#manageRent").attr("style", "display : none !important");
         $("#payments").attr("style", "display : none !important");
 
-        if (cart.length != 0){
+        if (cart.length != 0) {
             $("#rent-context").empty();
         }
 
@@ -420,7 +420,7 @@ function managePaymentPage() {
         $("#payments").attr("style", "display : block !important");
 
         $.ajax({
-            url: baseurl + `payment?nic=`+customer.nic,
+            url: baseurl + `payment?nic=` + customer.nic,
             method: "get",
             dataType: "json",
             success: function (res) {
@@ -437,8 +437,8 @@ function managePaymentPage() {
                         <td>${payment.total}</td>
                         <td>${payment.cash}</td>
                         <td>${payment.balance}</td>
-                        <td>${payment.date.toString().replaceAll(",","-")}</td>
-                        <td>${payment.time.toString().replaceAll(",",":")}</td>
+                        <td>${payment.date.toString().replaceAll(",", "-")}</td>
+                        <td>${payment.time.toString().replaceAll(",", ":")}</td>
                     </tr>
                 `);
                 }
@@ -512,8 +512,34 @@ $("#btnRequestCar").on("click", function () {
         });
     }
 
+    $("#lostCost").text(lostDamage.toString().replaceAll(" LKR", ""));
+
 });
 
 $("#make-payment").on("click", function () {
+    let json = {
+        balance: 0,
+        cash: lostDamage.toString().replaceAll(" LKR", ""),
+        description: "Lost Damage Cost Paid",
+        total: lostDamage.toString().replaceAll(" LKR", ""),
+        type: "Lost_Damage_Payment",
+        rentId: {
+            rentId: rentId
+        }
+    }
 
+    $.ajax({
+        url: baseurl + `payment`,
+        async: false,
+        method: "post",
+        data: JSON.stringify(json),
+        dataType: "json",
+        contentType: "application/json",
+        success: function (res) {
+            saveAlert();
+        },
+        error: function () {
+            errorAlert("Something Went Wrong..!")
+        }
+    });
 })
