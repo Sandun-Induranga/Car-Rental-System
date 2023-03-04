@@ -585,3 +585,31 @@ $("#cusContact").val(customer.contact);
 $("#cusEmail").val(customer.email);
 $("#cusUsername").val(customer.user.username);
 $("#cusPassword").val(customer.user.password);
+
+let data = new FormData($("#customerForm")[0]);
+
+let json = {
+    nic: $("#cusNic").val(),
+    name: $("#cusName").val(),
+    license: $("#cusLicense").val(),
+    address: $("#cusAddress").val(),
+    contact: $("#cusContact").val(),
+    email: $("#cusEmail").val(),
+    user: {
+        username: $("#cusUsername").val(),
+        password: $("#cusPassword").val(),
+    }
+
+}
+
+$.ajax({
+    url: baseurl + "customer",
+    method: "put",
+    async: false,
+    data: JSON.stringify(json),
+    contentType: "application/json",
+    dataType: "json",
+    success: function (res) {
+        updateAlert();
+    }
+});
