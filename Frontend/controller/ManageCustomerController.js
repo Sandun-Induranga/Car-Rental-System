@@ -602,14 +602,16 @@ let json = {
 
 }
 
-$.ajax({
-    url: baseurl + "customer",
-    method: "put",
-    async: false,
-    data: JSON.stringify(json),
-    contentType: "application/json",
-    dataType: "json",
-    success: function (res) {
-        updateAlert();
-    }
+$("#btnUpdateCustomer").on("click", function () {
+    $.ajax({
+        url: baseurl + "customer",
+        method: "put",
+        async: false,
+        data: JSON.stringify(json),
+        contentType: "application/json",
+        dataType: "json",
+        success: function (res) {
+            updateAlert();
+        }
+    });
 });
