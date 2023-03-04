@@ -89,8 +89,9 @@ public class CustomerServiceImpl implements CustomerService {
 
         if (!customerRepo.existsById(customerDTO.getNic())) throw new RuntimeException("Invalid Customer..!");
         Customer customer = mapper.map(customerDTO, Customer.class);
-        customer.setLicenseImage(customer.getLicenseImage());
-        customer.setNicImage(customer.getNicImage());
+        Customer customer1 = customerRepo.findById(customerDTO.getNic()).get();
+        customer.setLicenseImage(customer1.getLicenseImage());
+        customer.setNicImage(customer1.getNicImage());
         customerRepo.save(customer);
 
     }
