@@ -576,3 +576,12 @@ $("#make-payment").on("click", function () {
         }
     });
 })
+
+$("#cusNic").val(customer.nic);
+$("#cusName").val(customer.name);
+$("#cusLicense").val(customer.license);
+$("#cusAddress").val(customer.address);
+$("#cusContact").val(customer.contact);
+$("#cusEmail").val(customer.email);
+$("#cusUsername").val(customer.user.username);
+$("#cusPassword").val(customer.user.password);
