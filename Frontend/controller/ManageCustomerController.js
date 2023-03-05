@@ -623,16 +623,18 @@ $.ajax({
     success: function (res) {
 
         for (let rent of res.data) {
+
             if (rent.status != "Closed") {
                 $("#cusNic").prop("disabled", true);
                 $("#cusName").prop("disabled", true);
                 $("#cusLicense").prop("disabled", true);
                 $("#cusAddress").prop("disabled", true);
-                $("#cusContact").prop("disabled", true);
                 $("#cusEmail").prop("disabled", true);
                 $("#cusUsername").prop("disabled", true);
                 $("#cusPassword").prop("disabled", true);
+                break;
             }
+
         }
 
     }
