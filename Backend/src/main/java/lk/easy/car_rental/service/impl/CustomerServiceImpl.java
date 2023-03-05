@@ -92,6 +92,7 @@ public class CustomerServiceImpl implements CustomerService {
         Customer customer1 = customerRepo.findById(customerDTO.getNic()).get();
         customer.setLicenseImage(customer1.getLicenseImage());
         customer.setNicImage(customer1.getNicImage());
+        customer.getUser().setRole("Customer");
         customerRepo.save(customer);
 
     }
