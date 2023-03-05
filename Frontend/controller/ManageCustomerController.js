@@ -588,8 +588,6 @@ $("#cusPassword").val(customer.user.password);
 
 $("#btnUpdateCustomer").on("click", function () {
 
-    // let data = new FormData($("#customerForm")[0]);
-
     let json = {
         nic: $("#cusNic").val(),
         name: $("#cusName").val(),
@@ -615,4 +613,27 @@ $("#btnUpdateCustomer").on("click", function () {
             updateAlert();
         }
     });
+});
+
+$.ajax({
+    url: baseurl + "rent?nic=" + customer.nic,
+    async: false,
+    method: "get",
+    dataType: "json",
+    success: function (res) {
+
+        for (let rent of res.data) {
+            if (rent.status != "Closed") {
+                $("#cusNic").prop("disabled", true);
+                $("#cusName").prop("disabled", true);
+                $("#cusLicense").prop("disabled", true);
+                $("#cusAddress").prop("disabled", true);
+                $("#cusContact").prop("disabled", true);
+                $("#cusEmail").prop("disabled", true);
+                $("#cusUsername").prop("disabled", true);
+                $("#cusPassword").prop("disabled", true);
+            }
+        }
+
+    }
 });
