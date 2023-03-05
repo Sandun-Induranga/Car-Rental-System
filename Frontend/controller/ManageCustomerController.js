@@ -585,6 +585,8 @@ $("#cusContact").val(customer.contact);
 $("#cusEmail").val(customer.email);
 $("#cusUsername").val(customer.user.username);
 $("#cusPassword").val(customer.user.password);
+$("#cusNicImgContext").attr(`style`, `background : url(..${customer.nicImage}); background-position: center; background-size: cover`);
+$("#cusLicenseImgContext").attr(`style`, `background : url(..${customer.licenseImage}); background-position: center; background-size: cover`);
 
 $("#btnUpdateCustomer").on("click", function () {
 
