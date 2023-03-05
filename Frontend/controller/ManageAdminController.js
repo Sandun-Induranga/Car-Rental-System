@@ -299,6 +299,18 @@ function manageCustomerPage() {
         function bindUpdateEvent() {
             $(".btnUpdate").on("click", function () {
 
+                $.ajax({
+                    url: baseurl + `rent?username=${$(this).parent().parent().children(":eq(5)").text()}`,
+                    method: "get",
+                    async: false,
+                    dataType: "json",
+                    // contentType: "application/json",
+                    success: function (res) {
+                        $("#cusNicImgContext").attr(`style`, `background : url(..${res.data.nicImage}); background-position: center; background-size: cover`)
+                        $("#cusLicenseImgContext").attr(`style`, `background : url(..${res.data.licenseImage}); background-position: center; background-size: cover`)
+                    }
+                });
+
                 $("#cusNic").val($(this).parent().parent().children(":eq(0)").text());
                 $("#cusName").val($(this).parent().parent().children(":eq(1)").text());
                 $("#cusLicense").val($(this).parent().parent().children(":eq(4)").text());
