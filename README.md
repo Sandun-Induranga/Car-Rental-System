@@ -14,3 +14,12 @@
 * MySQL
 * Hibernate
 * Lombok
+
+*Frontend Technologies*
+
+* Html
+* CSS
+* JavaScript
+* jQuery
+* Bootstrap
+* Sweet Alert
