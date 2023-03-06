@@ -1,2 +1,8 @@
-# Car-Rental-System
-Full Stack Web Application using Spring framework as backend. 
+# Car Rental System
+**Full Stack Web Application**
+<br>
+<br>
+***Technologies***
+
+*Backend Technologies*
+
