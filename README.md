@@ -9,10 +9,11 @@
 
 * Java
 * Spring Web MVC
-* Spring JPA
+* Spring Data JPA
 * Maven
 * MySQL
 * Hibernate
+* Tomcat Server
 * Lombok
 
 *Frontend Technologies*
