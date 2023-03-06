@@ -1,13 +1,13 @@
 # 🚘 Car Rental System 🚘
 
-**Full Stack Web Application**
+**📲 Full Stack Web Application 📲**
 <br>
 <br>
-***Technologies***
+***💻 Technologies 💻***
 
 *Backend Technologies*
 
-* Java
+* Java 
 * Spring Web MVC
 * Spring Data JPA
 * Maven
