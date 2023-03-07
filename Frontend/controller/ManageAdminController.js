@@ -234,6 +234,7 @@ function manageCustomerPage() {
                 dataType: "json",
                 success: function (res) {
 
+                    $("#btnSaveCustomer").text() == "Save" ? saveAlert() : updateAlert();
                     loadAllCustomers();
                 }
             });
