@@ -4,6 +4,7 @@ import lk.easy.car_rental.dto.CustomerDTO;
 import lk.easy.car_rental.dto.CustomerImageDTO;
 import lk.easy.car_rental.entity.Customer;
 import lk.easy.car_rental.repo.CustomerRepo;
+import lk.easy.car_rental.repo.UserRepo;
 import lk.easy.car_rental.service.CustomerService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -29,6 +30,9 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
     CustomerRepo customerRepo;
+
+    @Autowired
+    UserRepo userRepo;
 
     @Autowired
     ModelMapper mapper;
@@ -101,6 +105,7 @@ public class CustomerServiceImpl implements CustomerService {
     public void deleteCustomer(String nic) throws RuntimeException {
 
         if (!customerRepo.existsById(nic)) throw new RuntimeException("Invalid Customer..!");
+        userRepo.deleteById(customerRepo.findById(nic).get().getUser().getUsername());
         customerRepo.deleteById(nic);
 
     }
