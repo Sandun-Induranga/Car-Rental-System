@@ -1241,10 +1241,10 @@ function manageRentPage() {
 
             for (let rent of res.data) {
 
-                if ($("#searchRent").val()  == rent.rentId){
+                if ($("#searchRent").val()  == rent.rentId || $("#searchRent").val() == ""){
 
                     $("#rent-context").append(`
-            <div class="card col col-6 text-center p-2 shadow-sm">
+            <div class="card col col-5 text-center p-2 shadow-sm">
                 <div class="card-body" id="${res.rentId}">
                     <h5 class="card-title">${rent.rentId}</h5>
                     <p class="card-text">Customer NIC : ${rent.nic.nic}</p>
