@@ -21,6 +21,7 @@ public interface PaymentService {
     public List getDailyIncome() throws RuntimeException;
 
     public List getMonthlyIncome() throws RuntimeException;
+    public List getYearlyIncome() throws RuntimeException;
 
     public BigDecimal getCurrentDayIncome() throws RuntimeException;
 
