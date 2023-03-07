@@ -18,7 +18,7 @@ public interface RentRepo extends JpaRepository<Rent, String> {
 
     List<Rent> getRentsByNic_Nic(String nic) throws RuntimeException;
 
-    @Query(value = "SELECT COUNT(rentId) FROM Rent", nativeQuery = true)
+    @Query(value = "SELECT COUNT(rentId) FROM Rent WHERE status!='Closed'", nativeQuery = true)
     Long countBookings() throws RuntimeException;
 
 }
