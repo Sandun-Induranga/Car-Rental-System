@@ -32,9 +32,6 @@ public class CustomerServiceImpl implements CustomerService {
     CustomerRepo customerRepo;
 
     @Autowired
-    UserRepo userRepo;
-
-    @Autowired
     ModelMapper mapper;
 
     @Override
@@ -105,7 +102,6 @@ public class CustomerServiceImpl implements CustomerService {
     public void deleteCustomer(String nic) throws RuntimeException {
 
         if (!customerRepo.existsById(nic)) throw new RuntimeException("Invalid Customer..!");
-        userRepo.deleteById(customerRepo.findById(nic).get().getUser().getUsername());
         customerRepo.deleteById(nic);
 
     }
