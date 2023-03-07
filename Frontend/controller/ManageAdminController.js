@@ -103,6 +103,25 @@ function manageHomePage() {
                 $("#maintain-cars").text(res.data);
             }
         });
+
+        $.ajax({
+            url: baseurl + "driver/available",
+            method: "get",
+            dataType: "json",
+            success: function (res) {
+                $("#available-drivers").text(res.data);
+            }
+        });
+
+        $.ajax({
+            url: baseurl + "driver/reserved",
+            method: "get",
+            dataType: "json",
+            success: function (res) {
+                $("#reserved-drivers").text(res.data);
+            }
+        });
+
     }
 
     var dataPoints = [];

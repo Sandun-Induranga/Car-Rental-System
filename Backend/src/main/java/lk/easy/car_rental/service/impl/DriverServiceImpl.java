@@ -138,4 +138,11 @@ public class DriverServiceImpl implements DriverService {
 
     }
 
+    @Override
+    public Long countReservedDrivers() throws RuntimeException {
+
+        return driverRepo.countReservedDrivers();
+
+    }
+
 }

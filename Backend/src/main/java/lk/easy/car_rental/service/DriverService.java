@@ -23,4 +23,6 @@ public interface DriverService {
 
     public Long countAvailableDrivers() throws RuntimeException;
 
+    public Long countReservedDrivers() throws RuntimeException;
+
 }
