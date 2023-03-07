@@ -21,4 +21,6 @@ public interface DriverService {
 
     public void deleteDriver(String nic) throws RuntimeException;
 
+    public Long countAvailableDrivers() throws RuntimeException;
+
 }
