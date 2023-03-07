@@ -71,4 +71,11 @@ public class DriverController {
 
     }
 
+    @GetMapping(path = "/count")
+    public ResponseUtil availableDrivers() {
+
+        return new ResponseUtil("OK", "Successfully Loaded..!", driverService.countAvailableDrivers());
+
+    }
+
 }
