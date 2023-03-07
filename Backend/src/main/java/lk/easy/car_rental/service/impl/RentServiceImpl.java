@@ -125,6 +125,7 @@ public class RentServiceImpl implements RentService {
             for (RentDetail rentDetail : rent.getRentDetails()) {
                 if (rentDetail.getDriver()!=null){
                     rentDetail.getDriver().setAvailabilityStatus("YES");
+                    rentDetail.getCar().setAvailability("MAINTAIN");
                 }
             }
             rent.setDescription("Rent Closed on " + LocalDate.now() + " " + LocalTime.now());
