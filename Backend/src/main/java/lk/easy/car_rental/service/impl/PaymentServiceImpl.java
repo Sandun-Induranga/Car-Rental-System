@@ -95,4 +95,11 @@ public class PaymentServiceImpl implements PaymentService {
 
     }
 
+    @Override
+    public BigDecimal getCurrentYearIncome() throws RuntimeException {
+
+        return paymentRepo.getCurrentYearIncome();
+
+    }
+
 }
