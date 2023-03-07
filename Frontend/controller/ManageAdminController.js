@@ -1238,9 +1238,12 @@ function manageRentPage() {
 
             $("#rent-context").empty();
 
+
             for (let rent of res.data) {
 
-                $("#rent-context").append(`
+                if ($("#searchRent").val()  == rent.rentId){
+
+                    $("#rent-context").append(`
             <div class="card col col-6 text-center p-2 shadow-sm">
                 <div class="card-body" id="${res.rentId}">
                     <h5 class="card-title">${rent.rentId}</h5>
@@ -1274,10 +1277,10 @@ function manageRentPage() {
             </div>
             `);
 
-                $(`#${res.rentId} > tbody`).empty();
+                    $(`#${res.rentId} > tbody`).empty();
 
-                for (let rentDetail of rent.rentDetails) {
-                    $(`#${rent.rentId} > tbody`).append(`
+                    for (let rentDetail of rent.rentDetails) {
+                        $(`#${rent.rentId} > tbody`).append(`
                     <tr>
                       <td>${rentDetail.regNum}</td>
                       <td>${rentDetail.carCost}</td>
@@ -1285,6 +1288,8 @@ function manageRentPage() {
                       <td>${rentDetail.nic == null ? "--" : rentDetail.nic}</td>
                     </tr>  
                 `);
+                    }
+
                 }
 
             }
@@ -1295,6 +1300,21 @@ function manageRentPage() {
             bindCloseEvent();
 
         }
+
+        $("#searchRent").on("keyup", function () {
+            $.ajax({
+
+                url: baseurl + "rent/all",
+                async: false,
+                method: "get",
+                contentType: "application/json",
+                dataType: "json",
+                success: function (res) {
+                    loadCards(res);
+                }
+
+            });
+        });
 
         // bindManagePayment();
 
