@@ -380,6 +380,7 @@ function manageRentPage() {
 
                     $("#manage-rent-context").append(`
 <div class="card text-center pt-5 p-2 shadow-sm col col-6">
+                    <h5 class="card-text">Status : ${rent.rentId}</h5>
                     <p class="card-text">Status : ${rent.status}</p>
                     <p class="card-text">Total Cost : ${rent.cost}</p>
                     <p class="card-text">Description : ${rent.description}</p>
