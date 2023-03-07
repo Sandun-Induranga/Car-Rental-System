@@ -1295,7 +1295,7 @@ function manageRentPage() {
 
         }
 
-        bindManagePayment();
+        // bindManagePayment();
 
         function bindAcceptEvent() {
             $(".btnAccept").on("click", function () {
@@ -1416,6 +1416,7 @@ function manageRentPage() {
             });
 
         }
+        bindManagePayment();
 
         function bindManagePayment() {
             $("#btnPayment").on("click", function () {
