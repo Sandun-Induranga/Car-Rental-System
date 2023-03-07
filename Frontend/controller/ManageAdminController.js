@@ -1244,7 +1244,7 @@ function manageRentPage() {
                 if ($("#searchRent").val()  == rent.rentId || $("#searchRent").val() == ""){
 
                     $("#rent-context").append(`
-            <div class="card col col-5 text-center p-2 shadow-sm">
+            <div class="card col col-5 text-center p-2 shadow-sm" style="min-height: 570px!important;">
                 <div class="card-body" id="${res.rentId}">
                     <h5 class="card-title">${rent.rentId}</h5>
                     <p class="card-text">Customer NIC : ${rent.nic.nic}</p>
@@ -1271,7 +1271,7 @@ function manageRentPage() {
                 <section class="mb-2">
                     <button class="btn btn-success me-2 btnAccept"><i class="bi bi-calendar2-check"></i> Accept</button>
                     <button class="btn btn-success me-2 btn-warning pay" data-bs-toggle="modal" data-bs-target="#paymentModel"><i class="bi bi-paypal"></i> Pay</button>
-                    <button class="btn btn-danger btnReject"><i class="bi bi-calendar-x-fill"></i> Reject</button>
+                    <button class="btn btn-danger btnReject me-2"><i class="bi bi-calendar-x-fill"></i> Reject</button>
                     <button class="btn btn-dark btnClose"><i class="bi bi-calendar-x-fill"></i> Close</button>
                 </section>
             </div>
