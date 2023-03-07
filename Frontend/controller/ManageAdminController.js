@@ -1569,6 +1569,16 @@ function manageReports() {
             }
         });
 
+        $.ajax({
+            url: baseurl + "payment/year",
+            method: "get",
+            success: function (res) {
+                if (res.data != null) {
+                    $("#year").text(res.data);
+                }
+            }
+        });
+
         var dataPoints = [];
 
         var options = {
