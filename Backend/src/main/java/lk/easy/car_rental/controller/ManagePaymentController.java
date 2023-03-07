@@ -56,6 +56,13 @@ public class ManagePaymentController {
 
     }
 
+    @GetMapping(path = "/yearly")
+    public ResponseUtil getYearlyIncome() {
+
+        return new ResponseUtil("OK", "Successfully Loaded..!", paymentService.getYearlyIncome());
+
+    }
+
     @GetMapping(path = "/day")
     public ResponseUtil getDayIncome() {
 

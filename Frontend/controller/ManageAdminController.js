@@ -1585,6 +1585,42 @@ function manageReports() {
             }
         });
 
+        var yearDataPoints = [];
+
+        var year = {
+            animationEnabled: true,
+            theme: "light2",
+            title: {
+                text: "Yearly Sales Income"
+            },
+            axisX: {
+                valueFormatString: "#",
+            },
+            axisY: {
+                title: "LKR",
+                titleFontSize: 24
+            },
+            data: [{
+                type: "spline",
+                yValueFormatString: "$#,###.##",
+                dataPoints: yearDataPoints
+            }]
+        };
+
+        $.ajax({
+            url: baseurl + "payment/yearly",
+            method: "get",
+            success: function (res) {
+                for (var i = 0; i < res.data.length; i++) {
+                    yearDataPoints.push({
+                        x: res.data[i][0],
+                        y: res.data[i][1]
+                    });
+                }
+                $("#yearChart").CanvasJSChart(year);
+            }
+        });
+
     });
 
 }
