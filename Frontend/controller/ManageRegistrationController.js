@@ -177,3 +177,6 @@ $("#cusRe-password").on('keydown', function (event) {
 
     }
 });
+
+loadSelectedImage("#cusNicImage");
+loadSelectedImage("#cusLicenseImage");

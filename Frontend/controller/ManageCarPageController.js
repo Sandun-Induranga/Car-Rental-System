@@ -22,7 +22,7 @@ function loadAllCars(cars) {
     for (let car of cars) {
         $("#cars").append(`<div class="col col-lg-3">
             <div class="card">
-                <img src="../assets/${car.photos.front}" class="card-img-top" alt="car">
+                <img src="../assets/${car.photos.front}" height="230px" class="card-img-top" alt="car">
 
                 <div class="card-body">
                     <h5 class="card-title">${car.brand}</h5>

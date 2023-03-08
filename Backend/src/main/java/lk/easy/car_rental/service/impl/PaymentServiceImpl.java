@@ -2,6 +2,7 @@ package lk.easy.car_rental.service.impl;
 
 import lk.easy.car_rental.dto.PaymentDTO;
 import lk.easy.car_rental.entity.Payment;
+import lk.easy.car_rental.entity.Rent;
 import lk.easy.car_rental.repo.PaymentRepo;
 import lk.easy.car_rental.repo.RentRepo;
 import lk.easy.car_rental.service.PaymentService;
@@ -39,7 +40,8 @@ public class PaymentServiceImpl implements PaymentService {
     public void savePayment(PaymentDTO paymentDTO) throws RuntimeException {
 
         Payment payment = mapper.map(paymentDTO, Payment.class);
-        payment.setRentId(rentRepo.findById(paymentDTO.getRentId().getRentId()).get());
+        Rent rent = rentRepo.findById(paymentDTO.getRentId().getRentId()).get();
+        payment.setRentId(rent);
         payment.setDate(LocalDate.now());
         payment.setTime(LocalTime.now());
         paymentRepo.save(payment);
