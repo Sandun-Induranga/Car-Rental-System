@@ -22,6 +22,7 @@
 * CSS
 * JavaScript
 * jQuery
+* Ajax
 * Bootstrap
 * Sweet Alert
 

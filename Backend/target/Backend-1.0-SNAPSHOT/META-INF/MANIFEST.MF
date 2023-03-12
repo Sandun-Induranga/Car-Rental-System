@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
 Created-By: IntelliJ IDEA
 Built-By: sandu
-Build-Jdk: Amazon Corretto version 1.8.0_362
+Build-Jdk: version 1.8.0_362
 
